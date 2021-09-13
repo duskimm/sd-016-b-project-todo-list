@@ -68,6 +68,12 @@ body {
   text-align: left;
 }
 
-li {
+.line {
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
   margin-bottom: 10px;
+}
+
+.line:hover {
+  background-color: rgb(154 , 209 , 212);
 }

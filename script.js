@@ -2,19 +2,47 @@ const listaOrdenada = document.getElementById('lista-tarefas');
 const textoTarefa = document.getElementById('texto-tarefa');
 const btnCriaTarefa = document.getElementById('criar-tarefa');
 
-function getTextoTarefa() {
-  const novaTarefa = textoTarefa.value;
-  // console.log(novaTarefa);
-  return novaTarefa;
-}
+const pegaListaTarefas = localStorage.getItem('tarefas');
+const tarefas = pegaListaTarefas === null ? [] : pegaListaTarefas.split(',');
 
-textoTarefa.addEventListener('change', getTextoTarefa);
+function capturaTextoTarefa() {
+  console.log(textoTarefa.value);
+  const tarefa = textoTarefa.value;
+  return tarefa;
+}
+textoTarefa.addEventListener('change', capturaTextoTarefa);
 
 function adicionaTarefa() {
-  const criaLinha = document.createElement('li');
-  criaLinha.innerText = getTextoTarefa();
-  listaOrdenada.appendChild(criaLinha);
-  textoTarefa.value = '';
+  tarefas.push(capturaTextoTarefa());
+  localStorage.setItem('tarefas', tarefas);
+  window.location.reload(true);
+}
+btnCriaTarefa.addEventListener('click', adicionaTarefa);
+
+function listaTarefas(tasks) {
+  if (tarefas.length > 0) {
+    for (let index = 0; index < tasks.length; index += 1) {
+      const novaLinha = document.createElement('li');
+      novaLinha.classList.add('line');
+      novaLinha.style.backgroundColor = 'rgb(255, 255, 255)';
+      novaLinha.innerText = tasks[index];
+      listaOrdenada.append(novaLinha);
+    }
+  }
+}
+listaTarefas(tarefas);
+
+const linhas = document.querySelectorAll('.line');
+
+function selecionaLinha(event) {
+  const selecionado = event.target.style;
+  if (selecionado.backgroundColor === 'rgb(255, 255, 255)') {
+    selecionado.backgroundColor = 'rgb(128,128,128)';
+  } else {
+    selecionado.backgroundColor = 'rgb(255, 255, 255)';
+  }
 }
 
-btnCriaTarefa.addEventListener('click', adicionaTarefa);
+for (let index = 0; index < linhas.length; index += 1) {
+  linhas[index].addEventListener('click', selecionaLinha);
+}
