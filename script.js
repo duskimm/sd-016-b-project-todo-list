@@ -46,8 +46,18 @@ function selecionaLinha(event) {
   }
 }
 
+function marcarTarefaConcluida(event) {
+  const selecionado = event.target;
+  if (selecionado.classList.contains('completed')) {
+    selecionado.classList.remove('completed');
+  } else {
+    selecionado.classList.add('completed');
+  }
+}
+
 for (let index = 0; index < linhas.length; index += 1) {
   linhas[index].addEventListener('click', selecionaLinha);
+  linhas[index].addEventListener('dblclick', marcarTarefaConcluida);
 }
 
 function deletaLista() {

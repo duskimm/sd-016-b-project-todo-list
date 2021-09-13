@@ -76,3 +76,7 @@ body {
 .line:hover {
   background-color: rgb(154 , 209 , 212);
 }
+
+.completed {
+  text-decoration: line-through;
+}
