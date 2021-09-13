@@ -1,6 +1,7 @@
 let botaoAdicionar = document.getElementById('criar-tarefa');
 let listaTarefas = document.getElementById('lista-tarefas');
 let botaoLimpar = document.getElementById('apaga-tudo');
+let botaoRemover = document.getElementById('remover-finalizados');
 
 function createTask() {
   botaoAdicionar.addEventListener('click', function() {
@@ -38,12 +39,24 @@ function clearList() {
   })
 }
 
+function removeCompleteds() {
+  botaoRemover.addEventListener('click', function() {
+    for (let index = 0; index < listaTarefas.children.length; index++) {
+      if (listaTarefas.children[index].className == 'completed') {
+        listaTarefas.children[index].remove();
+      }
 
-
-
-
+      for (let index = 0; index < listaTarefas.children.length; index++) {
+        if (listaTarefas.children[index].className == 'completed') {
+          listaTarefas.children[index].remove();
+        }
+      }
+    }
+  })
+}
 
 createTask();
 setBackGround();
 setCompleted();
 clearList();
+removeCompleteds()
