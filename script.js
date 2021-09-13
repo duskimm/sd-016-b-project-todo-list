@@ -1,6 +1,7 @@
 const txtInput = document.querySelector('input#texto-tarefa');
 const addBtn = document.querySelector('button#criar-tarefa');
 const toDoList = document.querySelector('ol#lista-tarefas');
+const eraseBtn = document.querySelector('button#remover-finalizados');
 
 function addTask() {
   addBtn.addEventListener('click', () => {
@@ -43,20 +44,20 @@ function taskDone() {
 taskDone();
 
 function eraseAll() {
-  const eraseBtn = document.querySelector('button#apaga-tudo');
-  eraseBtn.addEventListener('click', () => {
+  const eraseAllBtn = document.querySelector('button#apaga-tudo');
+  eraseAllBtn.addEventListener('click', () => {
     toDoList.innerHTML = '';
   });
 }
 
 eraseAll();
 
-function eraseDone() {
-  const eraseBtn = document.querySelector('button#remover-finalizados');
-  const taskDoneList = document.querySelectorAll('.completed');
-  eraseBtn.addEventListener('click', () => {
-    console.log(taskDoneList);
-  });
-}
+eraseBtn.addEventListener('click', eraseDone);
 
-eraseDone();
+function eraseDone() {
+  const taskDoneList = document.querySelectorAll('.completed');
+  for (let i = 0; i < taskDoneList.length; i += 1) {
+    taskDoneList[i].remove();
+    // console.log(taskDoneList);
+  }
+}
