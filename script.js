@@ -8,13 +8,10 @@ function addtask() {
 }
 
 //indicação para tirar ideia do video: https://www.youtube.com/watch?v=pRwxgtqImZQ
-
-const selectedItem = document.querySelectorAll('li')
+//altera o fundo do texto clicado para cinza 
 const toGray = document.getElementById('lista-tarefas');
-const clearitens = document.getElementById('apaga-tudo');
-
-
 function changeColor(event) {
+  const selectedItem = document.querySelectorAll('li')
   for (let index = 0; index < selectedItem.length; index += 1) {
     selectedItem[index].style.backgroundColor = ""
   }
@@ -23,7 +20,7 @@ function changeColor(event) {
 toGray.addEventListener('click', changeColor);
 
 
-
+//adiciona uma linha no meio do texto qunado clicado duas vezes
 function lineThrough(event) {
   if (event.target.className === "completed") {
     event.target.className = ""
@@ -34,6 +31,8 @@ function lineThrough(event) {
 toGray.addEventListener("dblclick", lineThrough);
 
 
+//limpa a lista de itens
+const clearitens = document.getElementById('apaga-tudo');
 function removeAll() {
   let deleteAll = document.querySelectorAll('li')
   if (deleteAll.length > 0) {
@@ -43,3 +42,16 @@ function removeAll() {
   }
 }
 clearitens.addEventListener('click', removeAll);
+
+//remove todos os itens com a classe .completed
+const removeFinishedItens = document.getElementById('remover-finalizados');
+removeFinishedItens.addEventListener('click', removeRiscado);
+function removeRiscado() {
+  let completedTasks = document.querySelectorAll('.completed')
+  console.log(completedTasks)
+  if (completedTasks.length > 0) {
+    for (index = 0; index < completedTasks.length; index += 1) {
+      completedTasks[index].remove()
+    }
+  }
+}
