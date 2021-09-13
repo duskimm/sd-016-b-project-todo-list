@@ -1,3 +1,4 @@
+// Requisito 5 e 6
 let createTaskButton = document.querySelector('#criar-tarefa');
 let toDoList = document.querySelector('#lista-tarefas'); 
 
@@ -7,4 +8,9 @@ createTaskButton.addEventListener('click', () => {
   newTask.innerText = taskText.value;
   toDoList.appendChild(newTask);
   taskText.value = '';
+});
+
+// Requisito 7
+toDoList.addEventListener('click', (event) => {
+  event.target.classList.toggle('gray');
 });
