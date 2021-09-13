@@ -1,3 +1,5 @@
+const taskList = document.getElementById('lista-tarefas');
+
 function appendTask(task, taskListSelector) {
   document.querySelector(taskListSelector).append(task);
 }
@@ -26,24 +28,39 @@ function toggleCompletedTask(evt) {
   taskSelected.classList.toggle('completed');
 }
 
+function addTaskEventListeners(task) {
+  task.addEventListener('click', selectTask);
+  task.addEventListener('dblclick', toggleCompletedTask);
+}
+
 function createTask() {
   const newTask = document.createElement('li');
   newTask.innerText = getTaskText();
-  newTask.addEventListener('click', selectTask);
-  newTask.addEventListener('dblclick', toggleCompletedTask);
+  addTaskEventListeners(newTask);
   appendTask(newTask, '#lista-tarefas');
 }
 
 function clearTaskList() {
-  const taskList = document.getElementById('lista-tarefas');
   taskList.innerText = '';
 }
 
+function saveTasks() {
+  window.localStorage.setItem('tasks', JSON.stringify(taskList.innerHTML));
+}
+
+function getTasks() {
+  const tasks = JSON.parse(window.localStorage.getItem('tasks'));
+  taskList.innerHTML = tasks;
+  Array.from(taskList.children).forEach((task) => {
+    addTaskEventListeners(task);
+  });
+}
+
 function removeCompletedTask() {
-  const taskList = document.getElementById('lista-tarefas');
   Array.from(taskList.children).forEach((task) => {
     if (task.classList.contains('completed')) task.remove();
   });
+  saveTasks();
 }
 
 window.onload = () => {
@@ -53,4 +70,7 @@ window.onload = () => {
   clearTaskListButton.addEventListener('click', clearTaskList);
   const removeCompletedButton = document.getElementById('remover-finalizados');
   removeCompletedButton.addEventListener('click', removeCompletedTask);
+  const saveTasksButton = document.getElementById('salvar-tarefas');
+  saveTasksButton.addEventListener('click', saveTasks);
+  getTasks();
 };
