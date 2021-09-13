@@ -69,7 +69,6 @@ body {
 }
 
 .line {
-  background-color: rgb(255, 255, 255);
   cursor: pointer;
   margin-bottom: 10px;
 }
