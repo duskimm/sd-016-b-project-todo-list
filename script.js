@@ -39,9 +39,18 @@ function clearTaskList() {
   taskList.innerText = '';
 }
 
+function removeCompletedTask() {
+  const taskList = document.getElementById('lista-tarefas');
+  Array.from(taskList.children).forEach((task) => {
+    if (task.classList.contains('completed')) task.remove();
+  });
+}
+
 window.onload = () => {
   const createTaskButton = document.getElementById('criar-tarefa');
   createTaskButton.addEventListener('click', createTask);
   const clearTaskListButton = document.getElementById('apaga-tudo');
   clearTaskListButton.addEventListener('click', clearTaskList);
+  const removeCompletedButton = document.getElementById('remover-finalizados');
+  removeCompletedButton.addEventListener('click', removeCompletedTask);
 };
