@@ -29,8 +29,15 @@ function addTask(list) {
 window.onload = () => {
   const list = document.querySelector('#lista-tarefas');
   const createTaskBtn = document.querySelector('#criar-tarefa');
+  const clearBtn = document.querySelector('#apaga-tudo');
 
   createTaskBtn.addEventListener('click', () => {
     addTask(list);
+  });
+
+  clearBtn.addEventListener('click', () => {
+    while (list.firstChild) {
+      list.removeChild(list.firstChild);
+    }
   });
 };
