@@ -37,6 +37,7 @@ body {
 
 #texto-tarefa {
   font-size: 1.8rem;
+  width: 32rem;
 }
 
 .input__content {
