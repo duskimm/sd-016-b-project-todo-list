@@ -33,3 +33,14 @@ document.addEventListener('click', (event) => {
 		event.target.classList.add('selected');
 	}
 });
+
+document.addEventListener('dblclick', (event) => {
+	const todo = event.target;
+	if (todo.classList.contains('todo')) {
+		if (todo.classList.contains('completed')) {
+			todo.classList.remove('completed');
+		} else {
+			todo.classList.add('completed');
+		}
+	}
+});
