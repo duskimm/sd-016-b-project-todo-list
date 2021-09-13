@@ -40,3 +40,13 @@ window.ondblclick = function(event) {
     }
   }
 };
+
+// requisito 10
+let botaoLimpar = document.querySelector('#apaga-tudo');
+botaoLimpar.addEventListener('click', function(){
+  let lista = document.querySelector('#lista-tarefas')
+  while (lista.firstChild) {
+    lista.firstChild.remove()
+  }
+});
+
