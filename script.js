@@ -36,6 +36,12 @@ function addMultiplesEvents(element, eventsName, listener) {
   });
 }
 
+function addMultiplesListeners(arr, event, listener) {
+  arr.forEach((i) => {
+    i.addEventListener(event, listener, false);
+  });
+}
+
 // global variables
 
 const user = {
@@ -54,20 +60,35 @@ function getTask() {
   });
 }
 
-// Adicionar texto a lista ao clicar no botão 'criar'
-
 function createTaskItem() {
   const newTaskItem = createElement('li');
-  addClass(newTaskItem, '.task-item');
+  addClass(newTaskItem, 'task-item');
   newTaskItem.innerText = user.msg;
   plugHtml(taskList, newTaskItem);
 }
 
 function addTaskToList() {
-  buttonAdd.addEventListener('click', createTaskItem);
+  buttonAdd.addEventListener('click', () => {
+    createTaskItem();
+    selectAllTasks();
+  });
 }
 
 // Seleção de elemento (retirada do backgorundColor)
+
+function selectAllTasks() {
+  const taskItems = getAll('.task-item');
+
+  addMultiplesListeners(taskItems, 'click', changeSelection)
+}
+
+function changeSelection(event) {
+  const taskItem = event.target;
+
+  if (taskItem.className === 'task-item') {
+    removeClass(taskItem, 'task-item');
+  }
+}
 
 // Riscar elemento (line-through solid rgb(0, 0, 0)) ao clicar duas vezes
 
