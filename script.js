@@ -55,3 +55,12 @@ btnApagarTudo.addEventListener('click', () => {
     li[index].remove();
   }
 });
+
+// 11 - Adicione um botão com id="remover-finalizados" que quando clicado remove somente os elementos finalizados da sua lista.
+const removeCompleted = document.getElementById('remover-finalizados');
+removeCompleted.addEventListener('click', () => {
+  const itemCompleted = document.getElementsByClassName('completed');
+  for (let index = itemCompleted.length - 1; index >= 0; index -= 1) {
+    itemCompleted[index].remove();
+  }
+});
