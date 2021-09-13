@@ -26,6 +26,22 @@ function clearChilds(elementById) {
   }
 }
 
+// Remove todas os filhos de um elemento com a class especificada
+function clearElementByClass(elementById, elementClass) {
+  const element = document.querySelector(elementById);
+	let elementChild = element.firstChild;
+	let k = 0;
+	while (elementChild) {
+    if (elementChild.classList.contains(elementClass)) {
+			elementChild.remove();
+			elementChild = element.firstChild;
+		} else {
+			elementChild = elementChild.nextSibling;
+		}
+		console.log(elementChild);
+  }
+}
+
 document.querySelector('#criar-tarefa').addEventListener('click', () => {
 	const inputText = document.querySelector('#texto-tarefa');
 	const todoList = document.querySelector('#lista-tarefas');
@@ -37,6 +53,10 @@ document.querySelector('#criar-tarefa').addEventListener('click', () => {
 
 document.querySelector('#apaga-tudo').addEventListener('click', () => {
 	clearChilds('#lista-tarefas');
+});
+
+document.querySelector('#remover-finalizados').addEventListener('click', () => {
+	clearElementByClass('#lista-tarefas', 'completed')
 });
 
 document.addEventListener('click', (event) => {
