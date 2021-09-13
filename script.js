@@ -2,6 +2,7 @@ let botaoAdicionar = document.getElementById('criar-tarefa');
 let listaTarefas = document.getElementById('lista-tarefas');
 let botaoLimpar = document.getElementById('apaga-tudo');
 let botaoRemover = document.getElementById('remover-finalizados');
+let botaoSalvar = document.getElementById('salvar-tarefas');
 
 function createTask() {
   botaoAdicionar.addEventListener('click', function() {
@@ -55,8 +56,21 @@ function removeCompleteds() {
   })
 }
 
+function saveTasks() {
+  botaoSalvar.addEventListener('click', function() {
+    let savedList = document.getElementById('lista-tarefas').innerHTML;
+    localStorage.setItem('list', savedList);
+  })
+
+}
+
+window.onload = function() {
+  document.getElementById('lista-tarefas').innerHTML = localStorage.getItem('list');
+}
+
 createTask();
 setBackGround();
 setCompleted();
 clearList();
-removeCompleteds()
+removeCompleteds();
+saveTasks();
