@@ -12,12 +12,10 @@ function setId(elementName, idName) {
   element.id = idName;
 }
 
-/*
 function setClass(elementName, className) {
   const element = elementName;
   element.classList.add(className);
 }
-*/
 
 function setInnerText(elementName, text) {
   const element = elementName;
@@ -42,24 +40,37 @@ setId(input, 'texto-tarefa');
 input.type = 'text';
 addElementToDOM(main, input);
 
-const taskList = creatElementHTML('ol');
-setId(taskList, 'lista-tarefas');
-addElementToDOM(main, taskList);
-
 const button = creatElementHTML('button');
 setId(button, 'criar-tarefa');
 setInnerText(button, 'Criar');
 addElementToDOM(main, button);
 
+const taskList = creatElementHTML('ol');
+setId(taskList, 'lista-tarefas');
+addElementToDOM(main, taskList);
+
+let tasks = [];
+
+function changeTaskBackgroundColor() {
+  for (let index = 0; index < tasks.length; index += 1) {
+    tasks[index].addEventListener('click', (event) => {
+      setClass(event.target, 'gray-background');
+    });
+  }
+}
+
 function createTask() {
   if (input.value !== '') {
     const task = creatElementHTML('li');
+    setClass(task, 'task');
     setInnerText(task, input.value);
     addElementToDOM(taskList, task);
     input.value = '';
   } else {
     alert('Ops! Você ainda não inseriu a tarefa.');
   }
+  tasks = document.getElementsByClassName('task');
+  changeTaskBackgroundColor();
 }
 
 button.addEventListener('click', createTask);
