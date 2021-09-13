@@ -32,12 +32,29 @@ taskButton();
 const textoInput = document.querySelector('#texto-tarefa');
 const ol = document.querySelector('#lista-tarefas');
 // Variaveis Globais
+function removeSelected() {
+  const li = document.querySelectorAll('.not-selected');
+  for (let index = 0; index < li.length; index += 1) {
+    li[index].classList.remove('selected');
+    li[index].style.background = 'white';
+  }
+}
+
+function addClick(event) {
+  const targetE = event.target;
+  removeSelected();
+  targetE.style.background = 'rgb(128, 128, 128)';
+}
+
 sectionButton.addEventListener('click', () => {
   const li = document.createElement('li');
+  li.className = 'not-selected';
   li.innerText = textoInput.value;
   ol.appendChild(li);
   textoInput.value = '';
+  li.addEventListener('click', addClick);
 });
+// Variaveis globais
 
 // const listButton = document.getElementById('criar-tarefa');
 // const eventTarget = event.target;
