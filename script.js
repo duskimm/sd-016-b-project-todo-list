@@ -22,10 +22,10 @@ createListOrdenada();
 
 // Cria botão criar tarefa.
 function createButtonTarefa() {
-  const button = document.createElement('button');
-  button.id = 'criar-tarefa';
-  button.innerText = 'Adicionar tarefa';
-  inputArea.appendChild(button);
+  const buttonTarefa = document.createElement('button');
+  buttonTarefa.id = 'criar-tarefa';
+  buttonTarefa.innerText = 'Adicionar tarefa';
+  inputArea.appendChild(buttonTarefa);
 }
 createButtonTarefa();
 
@@ -35,10 +35,12 @@ const buttonAddItem = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 buttonAddItem.addEventListener('click', () => {
   const inputValue = document.querySelector('#texto-tarefa').value;
-  const li = document.createElement('li');
-  li.innerText = inputValue;
-  olList.appendChild(li);
-  input.value = '';
+  if (inputValue !== '') {
+    const li = document.createElement('li');
+    li.innerText = inputValue;
+    olList.appendChild(li);
+    input.value = '';
+  }
 });
 
 // Evento para mudar o background color do item.
@@ -71,10 +73,10 @@ olList.addEventListener('dblclick', (event) => {
 
 // Adiciona um botão para apagar tudo.
 function createButtonClearList() {
-  const button = document.createElement('button');
-  button.id = 'apaga-tudo';
-  button.innerText = 'Limpar lista';
-  buttonsArea.appendChild(button);
+  const buttonClearList = document.createElement('button');
+  buttonClearList.id = 'apaga-tudo';
+  buttonClearList.innerText = 'Limpar lista';
+  buttonsArea.appendChild(buttonClearList);
 }
 createButtonClearList();
 
@@ -82,4 +84,22 @@ createButtonClearList();
 const buttonClear = document.getElementById('apaga-tudo');
 buttonClear.addEventListener('click', () => {
   olList.innerHTML = '';
+});
+
+// Cria botão que remove os finalizados
+function createButtonRemoveFinalizado() {
+  const buttonRemove = document.createElement('button');
+  buttonRemove.id = 'remover-finalizados';
+  buttonRemove.innerHTML = 'Limpar completos';
+  buttonsArea.appendChild(buttonRemove);
+}
+createButtonRemoveFinalizado();
+
+// Remove as tarefas completadas.
+const buttonRemoveCompleted = document.getElementById('remover-finalizados');
+buttonRemoveCompleted.addEventListener('click', () => {
+  const selectedItens = document.querySelectorAll('.completed');
+  for (let index = 0; index < selectedItens.length; index += 1) {
+    olList.removeChild(selectedItens[index]);
+  }
 });
