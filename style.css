@@ -50,20 +50,20 @@ body {
   border-radius: 30px;
 }
 
-button:hover {
+#conteudo button:hover {
   cursor: pointer;
   background-color: rgb(255 , 111 , 0);
 }
 
-.selected {
+#conteudo .selected {
   background-color: gray;
 }
 
-.completed {
-  text-decoration: line-through;
+#conteudo .completed {
+  text-decoration: line-through solid rgb(0 , 0 , 0);
 }
 
-.itens {
+#conteudo .itens {
   cursor: pointer;
   padding: 3px 0;
   margin-bottom: 3px;
