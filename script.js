@@ -21,3 +21,12 @@ const getListelements = document.getElementById('lista-tarefas').children;
 for (let index = 0; index < getListelements.length; index += 1) {
   getListelements[index].addEventListener('click', changeBackgroundColorToGray);
 }
+
+// apagar tudo
+function eraseAll() {
+  const orderedList = document.getElementById('lista-tarefas');
+  orderedList.innerHTML = '';
+}
+
+let eraseButton = document.getElementById('apaga-tudo');
+eraseButton.addEventListener('click', eraseAll);
