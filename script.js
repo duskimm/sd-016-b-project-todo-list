@@ -16,11 +16,11 @@ taskButton.addEventListener('click', addNewTask);
 // Função que seleciona a tarefa
 function selectListItem(event) {
   let listItens = document.getElementsByClassName('list-item');
-  for (let index = 0; index < listItens.length; index += 1) {
-    listItens[index].classList.remove('selected');
-  }
-
+  
   if (event.target.classList.contains('list-item')) {
+      for (let index = 0; index < listItens.length; index += 1) {
+        listItens[index].classList.remove('selected');
+      }
     event.target.classList.add('selected');
   }
 }
@@ -68,14 +68,14 @@ document.getElementById('remover-finalizados').addEventListener('click', deleteC
 // Adicionando tarefas ao local storage
 
 function addTasksToLocalStorage() {
-    localStorage.setItem('task', JSON.stringify([]));
-    let localList = JSON.parse(localStorage.getItem('task'));
-    let list = document.getElementById('lista-tarefas').innerHTML;
-    
-    localList.push(list);
-    
-    localStorage.setItem('task', JSON.stringify(localList));
-    
+  localStorage.setItem('task', JSON.stringify([]));
+  let localList = JSON.parse(localStorage.getItem('task'));
+  let list = document.getElementById('lista-tarefas').innerHTML;
+
+  localList.push(list);
+
+  localStorage.setItem('task', JSON.stringify(localList));
+
 }
 
 function insertTaskInDOM() {
@@ -87,3 +87,37 @@ window.onload = insertTaskInDOM();
 let saveButton = document.getElementById('salvar-tarefas');
 
 saveButton.addEventListener('click', addTasksToLocalStorage);
+
+// Função que move pra baixo
+function moveDown() {
+  let selectedItem = document.querySelector('.selected');
+
+  if (selectedItem !== null) {
+    let nxtSibling = selectedItem.nextElementSibling;
+    if (nxtSibling !== null) {
+      selectedItem.parentNode.insertBefore(nxtSibling, selectedItem);
+    }
+  }
+}
+
+let moveDownButton = document.getElementById('mover-baixo');
+
+moveDownButton.addEventListener('click', moveDown)
+
+// Função que move pra cima
+
+function moveUp() {
+  let selectedItem = document.querySelector('.selected');
+
+  if (selectedItem !== null) {
+    let previousSibling = selectedItem.previousElementSibling;
+
+    if (previousSibling !== null) {
+      selectedItem.parentNode.insertBefore(selectedItem, previousSibling);
+    }
+  }
+}
+
+let moveUpButton = document.getElementById('mover-cima');
+
+moveUpButton.addEventListener('click', moveUp);
