@@ -62,6 +62,7 @@ const taskInput = getOne('#texto-tarefa');
 const taskList = getOne('#lista-tarefas');
 const buttonAdd = getOne('#criar-tarefa');
 const buttonReset = getOne('#apaga-tudo');
+const buttonDone = getOne('#remover-finalizados');
 
 // functions for the project
 
@@ -83,6 +84,7 @@ function addTaskToList() {
     createTaskItem();
     selectAllTasks();
     deleteAllTasks();
+    deleteDoneTasks();
   });
 }
 
@@ -119,6 +121,7 @@ function changeDone(event) {
   const taskItem = event.target;
   
   addClass(taskItem, 'done');
+  deleteDoneTasks();
 }
 
 function deleteAllTasks() {
@@ -131,7 +134,15 @@ function deleteAllTasks() {
   });
 }
 
-// Apagar itens riscados através do botão 'Prontos'
+function deleteDoneTasks() {
+  const doneTasks = getAll('.done');
+
+  buttonDone.addEventListener('click', () => {
+    doneTasks.forEach((task) => {
+      task.remove();
+    });
+  });
+}
 
 window.onload = () => {
   getTask();
