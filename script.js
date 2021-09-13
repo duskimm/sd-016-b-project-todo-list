@@ -70,3 +70,16 @@ function wipeList() {
   });
 }
 wipeList();
+
+// Requisito 11 - Botão remove finalizados
+const elementsFinalizados = document.getElementsByClassName('completed');
+const completedRemovButton = document.getElementById('remover-finalizados');
+
+function removeCompleted() {
+  completedRemovButton.addEventListener('click', () => {
+    while (elementsFinalizados.length > 0) {
+      listaOrdenada.removeChild(elementsFinalizados[0]);
+    }
+  });
+}
+removeCompleted();
