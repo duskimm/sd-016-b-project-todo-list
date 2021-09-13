@@ -6,23 +6,15 @@ const btnRemoveCompleted = document.querySelector('#remover-finalizados');
 const btnSaveTask = document.querySelector('#salvar-tarefas');
 const btnUp = document.querySelector('#mover-cima');
 const btnDown = document.querySelector('#mover-baixo');
-btnUp.addEventListener('click', moveTaskUp);
-btnDown.addEventListener('click', moveTaskDown);
-btnSaveTask.addEventListener('click', saveTask);
-btnRemoveCompleted.addEventListener('click', removeCompleted);
-btnRemoveAll.addEventListener('click', removeAll);
-btnAddTask.addEventListener('click', createTask);
-list.addEventListener('click', changeBackgroundColor);
-list.addEventListener('dblclick', addTaskToCompleted);
-
+const btnRemoveSelect = document.querySelector('#remover-selecionado');
 
 function createTask() {
-  let inputValue = inputTask.value;
+  const inputValue = inputTask.value;
   if (inputValue === '') {
-    window.alert('Insira uma tarefa valida!')
+    window.alert('Insira uma tarefa valida!');
   } else {
     const createListItem = document.createElement('li');
-    createListItem.className = "list-item";
+    createListItem.className = 'list-item';
     createListItem.innerHTML = inputValue;
     list.appendChild(createListItem);
     inputTask.value = '';
@@ -30,29 +22,28 @@ function createTask() {
 }
 
 function changeBackgroundColor(event) {
-  const task = document.querySelectorAll('.list-item')
-  let eventTarget = event.target;
+  const task = document.querySelectorAll('.list-item');
+  const eventTarget = event.target;
   /* verifica se existe a classe taskSelected na tarefa */
   for (let i = 0; i < task.length; i += 1) {
     if (task[i].classList.contains('taskSelected')) {
       task[i].classList.remove('taskSelected');
-    } 
-  } eventTarget.classList.add('taskSelected')
+    }
+  } eventTarget.classList.add('taskSelected');
 }
 
 function addTaskToCompleted(event) {
   const eventTarget = event.target;
   if (eventTarget.classList.contains('completed') === false) {
     event.target.classList.add('completed');
-  }
-  else {
+  } else {
     event.target.classList.remove('completed');
   }
 }
 
 function removeAll() {
   if (list.length === undefined) {
-    window.alert('Nao existem tarefas a serem removidas')
+    window.alert('Nao existem tarefas a serem removidas');
   }
   while (list.firstChild) {
     list.removeChild(list.firstChild);
@@ -60,54 +51,68 @@ function removeAll() {
 }
 
 function removeCompleted() {
-  const taskCompleted = document.getElementsByClassName('completed')
+  const taskCompleted = document.getElementsByClassName('completed');
   while (taskCompleted[0]) {
     taskCompleted[0].parentNode.removeChild(taskCompleted[0]);
   }
 }
 
 function saveTask() {
-  const listItem = document.getElementsByClassName('list-item')
-  listItens = []
-  listItensClass = []
- for(let i = 0; i < listItem.length; i += 1) {
-   listItens.push(listItem[i].innerHTML)
-   listItensClass.push(listItem[i].className)
- }
- localStorage.setItem('minhasTarefas', JSON.stringify(listItens))
- localStorage.setItem('listClassItens', JSON.stringify(listItensClass))
-
+  const listItem = document.getElementsByClassName('list-item');
+  const listItens = [];
+  const listItensClass = [];
+  for (let i = 0; i < listItem.length; i += 1) {
+    listItens.push(listItem[i].innerHTML);
+    listItensClass.push(listItem[i].className);
+  }
+  localStorage.setItem('minhasTarefas', JSON.stringify(listItens));
+  localStorage.setItem('listClassItens', JSON.stringify(listItensClass));
 }
 
 function moveTaskUp() {
-  let listItens = list.children
-  for (let i = 0 ; i < listItens.length; i += 1) { 
-    if(listItens[i].classList.contains('taskSelected')) {
-      list.insertBefore(listItens[i], listItens[i].previousSibling)
+  const listItens = list.children;
+  for (let i = 0; i < listItens.length; i += 1) {
+    if (listItens[i].classList.contains('taskSelected')) {
+      list.insertBefore(listItens[i], listItens[i].previousSibling);
       break;
     }
   }
 }
 
-function moveTaskDown () {
-  let listItens = list.children
-  for (let i = 0 ; i < listItens.length - 1; i += 1) { 
-    if(listItens[i].classList.contains('taskSelected')) {
-      list.insertBefore(listItens[i].nextSibling, listItens[i])
+function moveTaskDown() {
+  const listItens = list.children;
+  for (let i = 0; i < listItens.length - 1; i += 1) {
+    if (listItens[i].classList.contains('taskSelected')) {
+      list.insertBefore(listItens[i].nextSibling, listItens[i]);
       break;
     }
   }
 }
 
-window.onload = function () {
-  let minhasTarefas = JSON.parse(localStorage.getItem('minhasTarefas')) 
-  let listItensClass = JSON.parse(localStorage.getItem('listClassItens')) 
-  if(minhasTarefas) {
+function removeTaskSelected() {
+  const selectedTask = document.getElementsByClassName('taskSelected');
+  while (selectedTask[0]) {
+    selectedTask[0].parentNode.removeChild(selectedTask[0]);
+  }
+}
+
+window.onload = () => {
+  const minhasTarefas = JSON.parse(localStorage.getItem('minhasTarefas'));
+  const listItensClass = JSON.parse(localStorage.getItem('listClassItens'));
+  if (minhasTarefas) {
     for (let i = 0; i < minhasTarefas.length; i += 1) {
       const createListItem = document.createElement('li');
       createListItem.className = listItensClass[i];
       createListItem.innerText = minhasTarefas[i];
       list.appendChild(createListItem);
     }
-  }
-}
+  } btnRemoveSelect.addEventListener('click', removeTaskSelected);
+  btnUp.addEventListener('click', moveTaskUp);
+  btnDown.addEventListener('click', moveTaskDown);
+  btnSaveTask.addEventListener('click', saveTask);
+  btnRemoveCompleted.addEventListener('click', removeCompleted);
+  btnRemoveAll.addEventListener('click', removeAll);
+  btnAddTask.addEventListener('click', createTask);
+  list.addEventListener('click', changeBackgroundColor);
+  list.addEventListener('dblclick', addTaskToCompleted);
+};
