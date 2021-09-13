@@ -2,6 +2,8 @@ const btnAddTask = document.querySelector('#criar-tarefa');
 const inputTask = document.querySelector('#texto-tarefa');
 const list = document.querySelector('#lista-tarefas')
 const btnRemoveAll = document.querySelector('#apaga-tudo')
+const btnRemoveCompleted = document.querySelector('#remover-finalizados')
+btnRemoveCompleted.addEventListener('click', removeCompleted)
 btnRemoveAll.addEventListener('click', removeAll)
 btnAddTask.addEventListener('click', createTask);
 list.addEventListener('click', changeBackgroundColor)
@@ -43,8 +45,17 @@ function addTaskToCompleted(event) {
 }
 
 function removeAll() {
+  if (list.length === undefined) {
+    window.alert('Nao existem tarefas a serem removidas')
+  }
   while (list.firstChild) {
     list.removeChild(list.firstChild);
   }
+}
 
+function removeCompleted() {
+  const taskCompleted = document.getElementsByClassName('completed')
+  while (taskCompleted[0]) {
+    taskCompleted[0].parentNode.removeChild(taskCompleted[0]);
+}
 }
