@@ -168,11 +168,13 @@ function listenListItem() {
 }
 
 function getTasks() {
-  // tasksArray.forEach((task) => {
-  //   encodeTask(task);
-  // });
+  const filteredTasks = [];
 
-  controlUserData('tasks', tasksArray);
+  tasksArray.forEach((task) => {
+    filteredTasks.push(`li.${task.className}=${task.innerText}`);
+  });
+
+  controlUserData('tasks', filteredTasks);
 }
 
 function encodeTask(str) {
