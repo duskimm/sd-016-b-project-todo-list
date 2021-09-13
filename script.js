@@ -28,6 +28,12 @@ function plugHtml(fatherElement, sonElement) {
   fatherElement.appendChild(sonElement);
 }
 
+function addMultiplesListeners(arr, eventName, listener) {
+  arr.forEach((element) => {
+    element.addEventListener(eventName, listener, false);
+  });
+}
+
 function addMultiplesEventsAndListeners(arr, eventsName, listener) {
   const events = eventsName.split(' ');
 
@@ -44,11 +50,12 @@ const user = {
   msg: '',
 };
 
-const taskInput = getOne('#texto-tarefa');
-const taskList = getOne('#lista-tarefas');
-const buttonAdd = getOne('#criar-tarefa');
-const buttonReset = getOne('#apaga-tudo');
-const buttonDone = getOne('#remover-finalizados');
+const taskInput = getOne('#texto-tarefa'),
+      taskList = getOne('#lista-tarefas'),
+      buttonAdd = getOne('#criar-tarefa'),
+      buttonReset = getOne('#apaga-tudo'),
+      buttonDone = getOne('#remover-finalizados'),
+      buttonRemoveSelected = getOne('#remover-selecionado');
 
 // functions for the project
 
@@ -127,10 +134,6 @@ function resetInput() {
 function addTaskToList() {
   buttonAdd.addEventListener('click', () => {
     createTaskItem();
-    selectAllTasks();
-    deleteAllTasks();
-    deleteDoneTasks();
-    resetInput();
   });
 }
 
@@ -140,7 +143,35 @@ function addTaskToList() {
 
 // botão remover selecionado
 
+function deleteSelectedTask() {
+  const selected = getOne('.selected');
+
+  buttonRemoveSelected.addEventListener('click', () => {
+    selected.remove();
+  });
+}
+
+function listenListItem() {
+  const listItems = getAll('li');
+
+  addMultiplesListeners(listItems, 'click', deleteSelectedTask);
+}
+
+function attFunctions() {
+  const buttons = getAll('button');
+
+  addMultiplesListeners(buttons, 'click', () => {
+    selectAllTasks();
+    deleteAllTasks();
+    deleteDoneTasks();
+    resetInput();
+    listenListItem();
+  });
+
+}
+
 window.onload = () => {
   getTask();
   addTaskToList();
+  attFunctions();
 };
