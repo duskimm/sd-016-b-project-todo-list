@@ -2,6 +2,7 @@ const getAddButton = document.getElementById('criar-tarefa');
 const getList = document.getElementById('lista-tarefas');
 const getInput = document.getElementById('texto-tarefa');
 const getListItem = document.getElementsByTagName('li');
+const getCleanButton = document.getElementById('apaga-tudo');
 
 function eraseInputInformation() {
   getInput.value = '';
@@ -22,7 +23,7 @@ function assigningColor() {
 
 function completedTask(ev) {
   if (ev.target.classList.contains('completed') === true) {
-    ev.target.classList.remove('completed')
+    ev.target.classList.remove('completed');
   } else {
     ev.target.classList.add('completed');
   }
@@ -44,3 +45,9 @@ function createTask() {
 }
 
 getAddButton.addEventListener('click', createTask);
+
+function cleanList() {
+  getList.innerHTML = '';
+}
+
+getCleanButton.addEventListener('click', cleanList);
