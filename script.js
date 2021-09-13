@@ -7,10 +7,20 @@ function selectTask(event) {
   task.classList.add('selected');
 }
 
+function completeTask(event) {
+  const task = event.target;
+  if (task.classList.contains('completed')) {
+    task.classList.remove('completed');
+  } else {
+    task.classList.add('completed');
+  }
+}
+
 function addTask(list) {
   const input = document.querySelector('#texto-tarefa');
   const task = document.createElement('li');
   task.addEventListener('click', selectTask);
+  task.addEventListener('dblclick', completeTask);
   task.innerText = input.value;
   input.value = '';
   list.appendChild(task);
