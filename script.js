@@ -17,4 +17,10 @@ addListOl.addEventListener('click', function(event) {
   event.target.style.backgroundColor = 'rgb(128, 128, 128)';
 });
 
-
+addListOl.addEventListener('dblclick', function(event) {
+  if (event.target.className === 'completed') {
+    event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
+  }
+});
