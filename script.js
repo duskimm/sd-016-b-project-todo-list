@@ -32,3 +32,23 @@ function createOl() {
   document.body.appendChild(newOl);
 }
 createOl();
+
+// 5. Create button
+function createButton() {
+  const newButton = document.createElement('button');
+  newButton.id = 'criar-tarefa';
+  document.body.appendChild(newButton);
+}
+createButton();
+
+function textInput() {
+  const buttonClick = document.createElement('li');
+  const inputValue = document.getElementById('texto-tarefa');
+  const inputOl = document.getElementById('lista-tarefas');
+  buttonClick.innerHTML = inputValue.value;
+  inputValue.value = '';
+  inputOl.appendChild(buttonClick);
+}
+
+const getButtonText = document.getElementById('criar-tarefa');
+getButtonText.addEventListener('click', textInput);
