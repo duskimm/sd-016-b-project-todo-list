@@ -1,14 +1,5 @@
 const toDoList = document.querySelector('#lista-tarefas');
 
-function addToList() {
-  const list = document.createElement('li');
-  const input = document.getElementById('texto-tarefa');
-  list.innerText = input.value;
-  toDoList.appendChild(list);
-  input.value = '';
-  click();
-}
-
 // https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/removeProperty
 function markText(event) {
   const paintGrey = event.target;
@@ -19,8 +10,33 @@ function markText(event) {
 }
 
 function click() {
-  for (let index = 0; index < document.getElementsByTagName('li').length; index += 1){
-    document.getElementsByTagName('li')[index].addEventListener('click', markText)
+  for (let index = 0; index < document.getElementsByTagName('li').length; index += 1) {
+    document.getElementsByTagName('li')[index].addEventListener('click', markText);
+  }
+}
+
+function addToList() {
+  const list = document.createElement('li');
+  const input = document.getElementById('texto-tarefa');
+  list.innerText = input.value;
+  toDoList.appendChild(list);
+  input.value = '';
+  // click();
+  // doubleclick();
+}
+
+function tachada(event) {
+  const tachado = event.target;
+  if (tachado.className === 'completed') {
+    tachado.removeAttribute('class');
+  } else {
+    tachado.classList.add('completed');
+  }
+}
+
+function doubleclick() {
+  for (let index = 0; index < document.getElementsByTagName('li').length; index += 1) {
+    document.querySelectorAll('li')[index].addEventListener('dblclick', tachada);
   }
 }
 
