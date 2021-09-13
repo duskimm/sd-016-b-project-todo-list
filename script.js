@@ -1,11 +1,18 @@
 const btnTask = document.getElementById('criar-tarefa');
 
+function removeClass(list) {
+  list.forEach((item) => {
+    item.classList.remove('active-task');
+  });
+}
+
 function itemTask() {
   const tasks = document.querySelectorAll('#lista-tarefas li');
   tasks.forEach((item) => {
     item.addEventListener('click', () => {
       const element = item;
-      element.style.backgroundColor = 'rgb(128, 128, 128)';
+      removeClass(tasks);
+      element.classList.add('active-task');
     });
   });
 }

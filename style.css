@@ -8,6 +8,10 @@ body {
   padding: 20px;
 }
 
+.active-task {
+  background-color: gray;
+}
+
 #funcionamento {
   margin-top: 10px;
 }
