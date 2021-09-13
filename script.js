@@ -31,3 +31,11 @@ function creationInput() {
 
 creationInput();
 
+function creationTaskList() {
+  const body = document.querySelector('body');
+  const taskList = document.createElement('ol');
+  taskList.id = 'lista-tarefas';
+  body.appendChild(taskList);
+}
+
+creationTaskList();
