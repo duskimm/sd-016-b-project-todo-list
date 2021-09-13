@@ -3,9 +3,22 @@
 }
 
 #texto-tarefa{
-
+    display: inline-block;
 }
 
 #lista-tarefas{
 
+}
+
+#container{
+    border: solid 5px black;
+}
+
+#criar-tarefa{
+    display: inline-block;
+    margin-left: 50px;
+}
+
+#tarefa{
+    
 }
