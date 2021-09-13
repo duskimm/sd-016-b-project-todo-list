@@ -42,3 +42,12 @@ function completedTask(event) {
 }
 
 document.addEventListener('dblclick', completedTask);
+
+// Função que apaga todas as tarefas
+function deleteAllTasks() {
+  document.getElementById('lista-tarefas').innerHTML = '';
+}
+
+let deleteButton = document.getElementById('apaga-tudo');
+
+deleteButton.addEventListener('click', deleteAllTasks);
