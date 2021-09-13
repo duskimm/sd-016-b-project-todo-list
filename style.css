@@ -1,22 +1,22 @@
 * {
   text-align: center;
-  color: rgb(0, 0, 0);
+  color: black;
 }
 
-body{
-  background-color: #6B5B95;  
+body {
+  background-color: rgb(107 , 91 , 149);
 }
 
-#title{
-   font-family: 'Great Vibes', cursive;
-   margin-bottom: 12px;
-   font-size: 70px;
-   -webkit-text-stroke: 2px white;
+#title {
+  font-family: Great Vibes, cursive;
+  margin-bottom: 12px;
+  font-size: 70px;
+  -webkit-text-stroke: 2px white;
 }
 
-#funcionamento{
-    margin-top: 0;
-    color: white;
+#funcionamento {
+  margin-top: 0;
+  color: white;
 }
 
 p {
@@ -24,56 +24,57 @@ p {
 }
 
 button {
-  border: 1px rgb(12, 12, 12) solid;
-  color:white;
+  border: 1px rgb(12 , 12 , 12) solid;
+  color: white;
 }
+
 input {
   background-color: aliceblue;
-  color: rgb(8, 80, 80);
+  color: rgb(8 , 80 , 80);
   border-color: teal;
   border-radius: 5px;
 }
 
 .select {
-  background-color: rgb(128,128,128);
+  background-color: gray;
 }
 
 .completed {
-  text-decoration: line-through solid rgb(0, 0, 0);  
+  text-decoration: line-through solid black;
 }
 
-.center-task{
+.center-task {
   width: 50%;
   margin: auto;
   justify-content: center;
-  background-color: rgb(255, 217, 252);
+  background-color: rgb(255 , 217 , 252);
   border-radius: 2%;
 }
 
-#criar-tarefa{
-  background-color: rgb(17, 133, 7);
+#criar-tarefa {
+  background-color: rgb(17 , 133 , 7);
 }
 
-#apaga-tudo{
-  background-color: rgb(133, 7, 7);
+#apaga-tudo {
+  background-color: rgb(133 , 7 , 7);
 }
 
-#remover-finalizados{
-  background-color: rgb(185, 109, 10);
+#remover-finalizados {
+  background-color: rgb(185 , 109 , 10);
 }
 
-#salvar-tarefas{
-  background-color: rgb(18, 29, 180);
+#salvar-tarefas {
+  background-color: rgb(18 , 29 , 180);
 }
 
-#mover-cima{
-  background-color: rgb(0, 0, 0); 
+#mover-cima {
+  background-color: black;
 }
 
-#mover-baixo{
-  background-color: rgb(75, 75, 75); 
+#mover-baixo {
+  background-color: rgb(75 , 75 , 75);
 }
 
-#remover-selecionado{
-  background-color: rgb(26, 172, 147);
+#remover-selecionado {
+  background-color: rgb(26 , 172 , 147);
 }
