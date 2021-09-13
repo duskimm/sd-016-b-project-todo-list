@@ -2,6 +2,7 @@ const orderedList = document.getElementById('lista-tarefas');
 const inputTasks = document.getElementById('texto-tarefa');
 const taskButton = document.getElementById('criar-tarefa');
 const itens = document.getElementsByClassName('itens');
+const clearButton = document.getElementById('apaga-tudo');
 
 function addClassSelected(e) {
   for (let i = 0; i < itens.length; i += 1) {
@@ -27,6 +28,12 @@ function addEventLi2() {
   }
 }
 addEventLi2();
+
+function clearTasks() {
+  orderedList.innerHTML = '';
+}
+
+clearButton.addEventListener('click', clearTasks)
 
 function addTasks() {
   const inputValue = inputTasks.value;
