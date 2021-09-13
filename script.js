@@ -47,3 +47,15 @@ function clearList() {
 
 const clearListButton = document.querySelector('#apaga-tudo');
 clearListButton.addEventListener('click', clearList);
+
+function removeCompletedTasks() {
+  const completedTasks = document.querySelectorAll('.completed');
+  if (completedTasks !== null) {
+    for (let index = 0; index < completedTasks.length; index += 1) {
+      completedTasks[index].remove();
+    }
+  }
+}
+
+const removeCompletedTasksButton = document.querySelector('#remover-finalizados');
+removeCompletedTasksButton.addEventListener('click', removeCompletedTasks);
