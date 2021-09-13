@@ -7,11 +7,12 @@ let capturarParagrafo = document.querySelector('p');
 capturarParagrafo.id = 'funcionamento';
 capturarParagrafo.innerHTML = 'Clique duas vezes em um item para marcá-lo como completo';
 
-let capturarBody = document.querySelector('body');
-let criarInput = document.createElement('input');
-criarInput.type = 'text';
-criarInput.id = 'texto-tarefa';
-capturarBody.appendChild(criarInput);
+let capturarInput = document.querySelector('input');
+capturarInput.id = 'texto-tarefa';
+
+let capturarOl = document.querySelector('ol');
+capturarOl.id = 'lista-tarefas';
+
 
 
 
