@@ -1,7 +1,9 @@
 const input = document.getElementById('texto-tarefa');
 const buttonCreate = document.getElementById('criar-tarefa');
 const buttonErase = document.getElementById('apaga-tudo');
+const buttonCompleted = document.getElementById('remover-finalizados');
 const orderedList = document.getElementById('lista-tarefas');
+const completedArr = document.getElementsByClassName('completed');
 
 // Adicionar tarefa na lista
 buttonCreate.addEventListener('click', function () {
@@ -45,8 +47,26 @@ function verifyListItem() {
   return false;
 }
 
+// Remove todos os itens da lista
 buttonErase.addEventListener('click', function () {
   while (verifyListItem()) { // Enquanto a função acima retornar true, ele fica removendo os itens
     orderedList.removeChild(orderedList.firstChild);
+  }
+});
+
+// Função que verifica se tem item selecionado na lista
+function verifyCompletedListitem() {
+  if (completedArr.length > 0) {
+    return true;
+  }
+  return false;
+}
+
+// Remove somente itens marcados
+buttonCompleted.addEventListener('click', function () {
+  while (verifyCompletedListitem()) {
+    for (const li of completedArr) {
+      orderedList.removeChild(li)
+    }
   }
 });
