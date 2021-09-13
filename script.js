@@ -1,6 +1,7 @@
 const inputArea = document.getElementById('input-area');
+const listaArea = document.getElementById('lista-area');
 
-function inputTarefa () {
+function createInputTarefa () {
   const input = document.createElement('input');
   input.id = 'texto-tarefa';
   input.type = 'text';
@@ -8,4 +9,11 @@ function inputTarefa () {
   inputArea.appendChild(input);
 
 }
-inputTarefa();
+createInputTarefa();
+
+function createListOrdenada () {
+  const olList = document.createElement('ol');
+  olList.id = 'lista-tarefas';
+  listaArea.appendChild(olList);
+}
+createListOrdenada();
