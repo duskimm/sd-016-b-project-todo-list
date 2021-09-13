@@ -4,6 +4,7 @@ const taskButton = document.getElementById('criar-tarefa');
 const itens = document.getElementsByClassName('itens');
 const clearButton = document.getElementById('apaga-tudo');
 const clearDoneButton = document.getElementById('remover-finalizados');
+const clearSelectedButton = document.getElementById('remover-selecionado');
 
 function addClassSelected(e) {
   for (let i = 0; i < itens.length; i += 1) {
@@ -45,6 +46,13 @@ function clearDone() {
 /* Recorri a seguinte referência para resolver essa parte:
 https://qastack.com.br/programming/4777077/removing-elements-by-class-name */
 clearDoneButton.addEventListener('click', clearDone);
+
+function clearSelected() {
+  const getSelected = document.getElementsByClassName('selected');
+  getSelected[0].parentNode.removeChild(getSelected[0]);
+}
+
+clearSelectedButton.addEventListener('click', clearSelected);
 
 function addTasks() {
   const inputValue = inputTasks.value;

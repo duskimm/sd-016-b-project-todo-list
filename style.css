@@ -1,7 +1,59 @@
-/** {
+* {
   margin: 0;
   padding: 0;
-} */
+  color: rgb(18 , 18 , 18);
+}
+
+body {
+  background-color: rgb(242 , 242 , 242);
+}
+
+#container {
+  max-width: 900px;
+  padding: 40px;
+  margin: 80px auto;
+  background-color: darkorange;
+  border-radius: 30px;
+}
+
+#header {
+  font-family: Times New Roman, Times, serif;
+  font-size: 20px;
+}
+
+#conteudo {
+  margin-top: 20px;
+}
+
+#conteudo p {
+  color: rgb(56 , 56 , 56);
+}
+
+#input-tasks {
+  margin-top: 10px;
+}
+
+#conteudo ol {
+  min-height: 30px;
+  margin: 20px 30px;
+}
+
+#buttons .btn {
+  margin-right: 15px;
+}
+
+#conteudo .btn {
+  background-color: rgb(242 , 242 , 242);
+  padding: 4px 6px;
+  font-size: 14px;
+  border: solid 2px rgb(18 , 18 , 18);
+  border-radius: 30px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(255 , 111 , 0);
+}
 
 .selected {
   background-color: gray;
@@ -13,4 +65,6 @@
 
 .itens {
   cursor: pointer;
+  padding: 3px 0;
+  margin-bottom: 3px;
 }
