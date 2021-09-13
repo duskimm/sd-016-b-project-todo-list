@@ -1,10 +1,10 @@
 // Requisito 5 e 6
-let createTaskButton = document.querySelector('#criar-tarefa');
-let toDoList = document.querySelector('#lista-tarefas'); 
+const createTaskButton = document.querySelector('#criar-tarefa');
+const toDoList = document.querySelector('#lista-tarefas');
 
 createTaskButton.addEventListener('click', () => {
-  let taskText = document.querySelector('#texto-tarefa');
-  let newTask = document.createElement('li');
+  const taskText = document.querySelector('#texto-tarefa');
+  const newTask = document.createElement('li');
   newTask.innerText = taskText.value;
   toDoList.appendChild(newTask);
   taskText.value = '';
@@ -12,7 +12,7 @@ createTaskButton.addEventListener('click', () => {
 
 // Requisito 7 e 8
 toDoList.addEventListener('click', (event) => {
-  let grayLi = document.querySelector('.gray');
+  const grayLi = document.querySelector('.gray');
   if (grayLi == null) {
     event.target.classList.add('gray');
   } else {
@@ -27,8 +27,18 @@ toDoList.addEventListener('dblclick', (event) => {
 });
 
 // Requisito 10
-let eraseAll = document.querySelector('#apaga-tudo');
+let eraseAllButton = document.querySelector('#apaga-tudo');
 
-eraseAll.addEventListener('click', () => {
+eraseAllButton.addEventListener('click', () => {
   toDoList.innerHTML = '';
+});
+
+// Requisito 11
+const removeFinishedButton = document.querySelector('#remover-finalizados');
+
+removeFinishedButton.addEventListener('click', () => {
+  const completed = document.querySelectorAll('.completed');
+  for (let i = 0; i < completed.length; i += 1) {
+    toDoList.removeChild(completed[i]);
+  }
 });
