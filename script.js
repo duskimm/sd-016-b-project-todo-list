@@ -16,3 +16,10 @@ ol.addEventListener('click', (event) => {
   }
   evento.style.backgroundColor = 'rgb(128, 128, 128)';
 });
+
+ol.addEventListener('dblclick', (event) => {
+  for (let index = 0; index < listTask.length; index += 1) {
+    listTask[index].classList.remove('completed');
+  }
+  event.target.classList.add('completed');
+});
