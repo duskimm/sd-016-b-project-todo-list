@@ -43,10 +43,18 @@ window.ondblclick = function(event) {
 
 // requisito 10
 let botaoLimpar = document.querySelector('#apaga-tudo');
-botaoLimpar.addEventListener('click', function(){
+botaoLimpar.addEventListener('click', function (){
   let lista = document.querySelector('#lista-tarefas')
   while (lista.firstChild) {
     lista.firstChild.remove()
   }
 });
 
+// requisito 11
+// Retirei a ideia do seguinte link: 
+// https://stackoverflow.com/questions/4777077/removing-elements-by-class-name
+let botaoRemoverSelecionados = document.querySelector('#remover-finalizados');
+botaoRemoverSelecionados.addEventListener('click', function (){
+  let finalizados = document.querySelectorAll('.completed');
+  finalizados.forEach(el => el.remove());
+});
