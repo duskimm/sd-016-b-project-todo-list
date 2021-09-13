@@ -1,4 +1,14 @@
 header {
   display: block;
   border: solid black 1px;
+  padding: 40px;
+}
+
+main {
+    border: solid black 1px;
+}
+
+input {
+height: 20px;
+width: 200px;
 }
