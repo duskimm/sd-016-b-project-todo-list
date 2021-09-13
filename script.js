@@ -9,9 +9,12 @@ function addtask() {
 
 //indicação para tirar ideia do video: https://www.youtube.com/watch?v=pRwxgtqImZQ
 
+const selectedItem = document.querySelectorAll('li')
 const toGray = document.getElementById('lista-tarefas');
+const clearitens = document.getElementById('apaga-tudo');
+
+
 function changeColor(event) {
-  const selectedItem = document.querySelectorAll('li')
   for (let index = 0; index < selectedItem.length; index += 1) {
     selectedItem[index].style.backgroundColor = ""
   }
@@ -19,13 +22,24 @@ function changeColor(event) {
 }
 toGray.addEventListener('click', changeColor);
 
-const clearTab = document.getElementById('apaga tudo')
 
-function riscaItem(event) {
+
+function lineThrough(event) {
   if (event.target.className === "completed") {
     event.target.className = ""
   } else {
     event.target.className = "completed"
   }
 }
-toGray.addEventListener("dblclick", riscaItem);
+toGray.addEventListener("dblclick", lineThrough);
+
+
+function removeAll() {
+  let deleteAll = document.querySelectorAll('li')
+  if (deleteAll.length > 0) {
+    for (index = 0; index < deleteAll.length; index += 1) {
+      deleteAll[index].remove();
+    }
+  }
+}
+clearitens.addEventListener('click', removeAll);
