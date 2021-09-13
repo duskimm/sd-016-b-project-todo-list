@@ -7,7 +7,7 @@ function addTask() {
     if (txtInput.value !== '') {
       const listElement = document.createElement('li');
       listElement.innerHTML = txtInput.value;
-      listElement.classList.add('taskDone');
+      listElement.classList.add('task');
       toDoList.appendChild(listElement);
       txtInput.value = '';
       txtInput.focus();
@@ -33,10 +33,30 @@ selectTask();
 
 function taskDone() {
   toDoList.addEventListener('dblclick', (event) => {
-    if (event.target.classList.contains('taskDone')) {
+    if (event.target.classList.contains('task')) {
       event.target.classList.toggle('completed');
+      event.target.classList.toggle('selected');
     }
   });
 }
 
 taskDone();
+
+function eraseAll() {
+  const eraseBtn = document.querySelector('button#apaga-tudo');
+  eraseBtn.addEventListener('click', () => {
+    toDoList.innerHTML = '';
+  });
+}
+
+eraseAll();
+
+function eraseDone() {
+  const eraseBtn = document.querySelector('button#remover-finalizados');
+  const taskDoneList = document.querySelectorAll('.completed');
+  eraseBtn.addEventListener('click', () => {
+    console.log(taskDoneList);
+  });
+}
+
+eraseDone();
