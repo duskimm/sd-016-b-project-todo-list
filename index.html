@@ -51,7 +51,10 @@
             buttonCreateTodo();
         }
         createElementFirstSection();
-        //5 - Adicione um botão com id="criar-tarefa" e, ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo
+        /*
+        5 - Adicione um botão com id="criar-tarefa" e, ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo
+        6 - Ordene os itens da lista de tarefas por ordem de criação
+        */                                                                
         function captureCreateTodoList(){
             let inputElement = document.getElementById('texto-tarefa');
             let buttonElement = document.getElementById('criar-tarefa');
@@ -65,6 +68,17 @@
             });
         }
         captureCreateTodoList();
+        //7 - Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128)
+        function clickChangeColor(){
+            let listaTarefas = document.getElementById('lista-tarefas');
+            listaTarefas.addEventListener('click', function(event){
+                let target = event.target;
+                if(target.tagName === 'LI'){
+                    target.style.backgroundColor = 'rgb(128,128,128)';
+                }
+            });
+        }
+        clickChangeColor();
     </script>
 </body>
 
