@@ -1,9 +1,10 @@
 const input = document.getElementById('texto-tarefa');
-const button = document.getElementById('criar-tarefa');
+const buttonCreate = document.getElementById('criar-tarefa');
+const buttonErase = document.getElementById('apaga-tudo');
 const orderedList = document.getElementById('lista-tarefas');
 
 // Adicionar tarefa na lista
-button.addEventListener('click', function () {
+buttonCreate.addEventListener('click', function () {
   const task = input.value;
   if (task.length > 0) {
     const li = document.createElement('li');
@@ -33,5 +34,19 @@ orderedList.addEventListener('dblclick', function (event) {
     } else {
       event.target.classList.add('completed');
     }
+  }
+});
+
+// Função para verificar se tem item na lista
+function verifyListItem() {
+  if (orderedList.children.length > 0) { // Se a OL tem filho, então retorna true
+    return true;
+  }
+  return false;
+}
+
+buttonErase.addEventListener('click', function () {
+  while (verifyListItem()) { // Enquanto a função acima retornar true, ele fica removendo os itens
+    orderedList.removeChild(orderedList.firstChild);
   }
 });
