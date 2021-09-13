@@ -1,31 +1,31 @@
 body {
-  background-color: #ecf0f1;
+  background-color: lightblue;
   text-align: center;
 }
 
 body * {
-  font-family: 'Dancing Script', cursive;
+  font-family: Dancing Script, cursive;
   margin-left: auto;
   margin-right: auto;
 }
 
 header {
-  background-color: #596275;
+  background-color: slategrey;
   font-size: 1.2rem;
   width: 26.5rem;
   border-radius: 5px 5px 0 0;
 }
 
-p, h1{
+p, h1 {
   margin: 0;
   padding: 0;
-  color: #fff;
+  color: white;
 }
 
 section {
   width: 26.5rem;
   height: 22rem;
-  background-color: #dfe4ea;
+  background-color:snow;
   padding-top: 1rem;
 }
 
@@ -46,9 +46,10 @@ input {
 .buttom {
   padding-bottom: 1rem;
 }
+
 /* ref: Obj: Wrap text Src:https://stackoverflow.com/questions/3058866/  */
 .list {
-  background-color: #ecf0f1;
+  background-color: lightblue;
   width: 17.5rem;
   text-align: justify;
   list-style-position: inside;
@@ -65,14 +66,14 @@ input {
 }
 
 ol {
-  margin: 0 ;
+  margin: 0;
   padding-left: 0.2rem;
   padding-bottom: 0.2rem;
   list-style-type: lower-roman;
 }
 
 li {
-  border-bottom: 0.06rem solid black
+  border-bottom: 0.06rem solid black;
 }
 
 li:hover {
@@ -80,11 +81,11 @@ li:hover {
 }
 
 .selected {
-  background-color: rgb(128,128,128);
+  background-color: grey;
 }
 
 .completed {
-  text-decoration: line-through solid rgb(0, 0, 0);
+  text-decoration: line-through solid black;
 }
 
 footer {
