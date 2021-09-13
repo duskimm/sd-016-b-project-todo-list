@@ -30,11 +30,11 @@ function createButtonTarefa() {
 }
 createButtonTarefa();
 
-// Evento para adicionar o iten na lista.
+// Evento para adicionar o item na lista.
 const olList = document.getElementById('lista-tarefas');
-const buttonAddIten = document.getElementById('criar-tarefa');
+const buttonAddItem = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
-buttonAddIten.addEventListener('click', () => {
+buttonAddItem.addEventListener('click', () => {
   const inputValue = document.querySelector('#texto-tarefa').value;
   const li = document.createElement('li');
   li.innerText = inputValue;
@@ -42,10 +42,21 @@ buttonAddIten.addEventListener('click', () => {
   input.value = '';
 });
 
+// Evento para mudar o background color do item.
 olList.addEventListener('click', (event) => {
   for (let index = 0; index < olList.children.length; index += 1) {
     olList.children[index].style.backgroundColor = '';
   }
   const alvo = event.target;
   alvo.style.backgroundColor = 'grey';
+});
+
+// Clicar duas vezes risca o item.
+olList.addEventListener('dblclick', (event) => {
+  const alvo = event.target;
+  if (alvo.classList.contains('completed')) {
+    alvo.className = '';
+  } else {
+    alvo.classList.add('completed');
+  }
 });
