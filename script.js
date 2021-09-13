@@ -1,5 +1,6 @@
 const body = document.querySelector('body');
 let main;
+let input;
 
 function mkHeader() {
   const createHeader = document.createElement('header');
@@ -24,7 +25,9 @@ function mkInput() {
   const createInput = document.createElement('input');
   const toMain = document.querySelector('main'); main = toMain;
   createInput.id = 'texto-tarefa';
+  createInput.type = 'text';
   main.appendChild(createInput);
+  const toInput = document.querySelector('input'); input = toInput;
 }
 
 function mkList() {
@@ -33,10 +36,29 @@ function mkList() {
   createOl.id = 'lista-tarefas';
 }
 
+function mkNewListItem(inputContent) {
+  const ol = document.querySelector('ol');
+  const createLI = document.createElement('li');
+  createLI.innerHTML = inputContent;
+  ol.appendChild(createLI);
+}
+
+function mkButton() {
+  const createButton = document.createElement('button');
+  createButton.id = 'criar-tarefa';
+  createButton.innerHTML = 'criar-tarefa';
+  main.insertBefore(createButton, main.children[1]);
+  createButton.addEventListener('click', function tkRstInput() {
+    mkNewListItem(input.value);
+    input.value = '';
+  });
+}
+
 window.onload = function start() {
   mkHeader();
   mkMain();
   mkParagraph();
   mkInput();
   mkList();
+  mkButton();
 };
