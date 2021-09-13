@@ -11,7 +11,11 @@ function createTask() {
 }
 
 function setBackGround() {
+
   listaTarefas.addEventListener('click', function(event) {
+    for (let index = 0; index < listaTarefas.children.length; index++) {
+      listaTarefas.children[index].style.backgroundColor = '';
+    }
     event.target.style.backgroundColor = 'rgb(128, 128, 128)';
   })
 }
