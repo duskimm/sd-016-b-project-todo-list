@@ -12,12 +12,12 @@ headH1.id = 'title';
 headH1.append('Minha Lista de Tarefas');
 header.append(headH1);
 
-// // 2 - Adicione abaixo do título um pequeno e discreto parágrafo com id="funcionamento" e com o texto "Clique duas vezes em um item para marcá-lo como completo"
+// 2 - Adicione abaixo do título um pequeno e discreto parágrafo com id="funcionamento" e com o texto "Clique duas vezes em um item para marcá-lo como completo"
 
-// const headPara = document.createElement('p')
-// headPara.id = 'funcionamento';
-// headPara.append('Clique duas vezes em um item para marcá-lo como completo');
-// header.append(headPara);
+const headPara = document.createElement('p')
+headPara.id = 'funcionamento';
+headPara.append('Clique duas vezes em um item para marcá-lo como completo');
+header.append(headPara);
 
 // // 3 - Adicione um input com o id="texto-tarefa" onde a pessoa usuária poderá digitar o nome do item que deseja adicionar à lista
 
