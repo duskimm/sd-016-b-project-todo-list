@@ -2,3 +2,15 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  margin: 10px;
+  line-height: 40px;
+  padding: 20px;
+  font-family: Helvetica, sans-serif;
+  background-color: rgb(194, 194, 194);
+}
+
+header {
+
+}
