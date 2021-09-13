@@ -24,5 +24,13 @@ window.onload = function () {
     assignment.appendChild(assignmentText);
   }
   assignmentInput();
+
+  function orderedList() {
+    const sortList = document.getElementById('header-container');
+    const ordered = document.createElement('ol');
+    ordered.id = 'lista-tarefas';
+    sortList.appendChild(ordered);
+  }
+  orderedList();
 }
 
