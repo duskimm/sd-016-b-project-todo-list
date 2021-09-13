@@ -1,9 +1,23 @@
 const getAddButton = document.getElementById('criar-tarefa');
 const getList = document.getElementById('lista-tarefas');
 const getInput = document.getElementById('texto-tarefa');
+const getListItem = document.getElementsByTagName('li');
 
 function eraseInputInformation() {
   getInput.value = '';
+}
+
+function changeColorOfSelectedTask(ev) {
+  for (let i = 0; i < getListItem.length; i += 1) {
+    getListItem[i].classList.remove('selected');
+  }
+  ev.target.classList.add('selected');
+}
+
+function assigningColor() {
+  for (let i = 0; i < getListItem.length; i += 1) {
+    getListItem[i].addEventListener('click', changeColorOfSelectedTask);
+  }
 }
 
 function createTask() {
@@ -11,6 +25,7 @@ function createTask() {
   itemList.innerText = getInput.value;
   getList.appendChild(itemList);
   eraseInputInformation();
+  assigningColor();
 }
 
 getAddButton.addEventListener('click', createTask);
