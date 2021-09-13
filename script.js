@@ -1,6 +1,7 @@
+const taskList = document.querySelector('#lista-tarefas');
+
 function addTask() {
   const taskInput = document.querySelector('#texto-tarefa');
-  const taskList = document.querySelector('#lista-tarefas');
   const taskElement = document.createElement('li');
 
   taskElement.innerText = taskInput.value;
@@ -41,7 +42,6 @@ document.addEventListener('dblclick', (event) => {
 }, false);
 
 function clearList() {
-  const taskList = document.querySelector('#lista-tarefas');
   taskList.innerHTML = '';
 }
 
@@ -59,3 +59,34 @@ function removeCompletedTasks() {
 
 const removeCompletedTasksButton = document.querySelector('#remover-finalizados');
 removeCompletedTasksButton.addEventListener('click', removeCompletedTasks);
+
+function saveList() {
+  const tasks = document.querySelectorAll('.tarefa');
+  const tasksInfo = [];
+  if (tasks !== null) {
+    for (let index = 0; index < tasks.length; index += 1) {
+      tasksInfo.push({
+        text: tasks[index].innerText,
+        classes: tasks[index].className,
+      });
+    }
+  }
+  localStorage.setItem('tasksInfo', JSON.stringify(tasksInfo));
+}
+
+const saveListButton = document.querySelector('#salvar-tarefas');
+saveListButton.addEventListener('click', saveList);
+
+function initiateList() {
+  const tasksInfo = JSON.parse(localStorage.getItem('tasksInfo'));
+  if (tasksInfo !== null) {
+    for (let index = 0; index < tasksInfo.length; index += 1) {
+      const task = document.createElement('li');
+      task.innerText = tasksInfo[index].text;
+      task.className = tasksInfo[index].classes;
+      taskList.appendChild(task);
+    }
+  }
+}
+
+window.onload = initiateList;
