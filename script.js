@@ -3,6 +3,7 @@ const input = document.getElementById('texto-tarefa');
 const ol = document.getElementById('lista-tarefas');
 const listTask = document.getElementsByTagName('li');
 const buttonClear = document.getElementById('apaga-tudo');
+const buttonRemove = document.getElementById('remover-finalizados');
 button.addEventListener('click', () => {
   const li = document.createElement('li');
   li.innerText = input.value;
@@ -30,5 +31,14 @@ buttonClear.addEventListener('click', () => {
   const removeLi = document.querySelectorAll('li');
   for (let index = 0; index < removeLi.length; index += 1) {
     removeLi[index].remove();
+  }
+});
+
+buttonRemove.addEventListener('click', () => {
+  const removeLi = document.querySelectorAll('li');
+  for (let index = 0; index < removeLi.length; index += 1) {
+    if (removeLi[index].classList.contains('completed')) {
+      removeLi[index].remove();
+    }
   }
 });
