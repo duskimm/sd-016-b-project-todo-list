@@ -1,6 +1,8 @@
 const btnAddTask = document.querySelector('#criar-tarefa');
 const inputTask = document.querySelector('#texto-tarefa');
 const list = document.querySelector('#lista-tarefas')
+const btnRemoveAll = document.querySelector('#apaga-tudo')
+btnRemoveAll.addEventListener('click', removeAll)
 btnAddTask.addEventListener('click', createTask);
 list.addEventListener('click', changeBackgroundColor)
 list.addEventListener('dblclick', addTaskToCompleted)
@@ -38,4 +40,11 @@ function addTaskToCompleted(event) {
   else {
     event.target.classList.remove('completed');
   }
+}
+
+function removeAll() {
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  }
+
 }
