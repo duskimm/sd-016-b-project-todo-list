@@ -1,15 +1,19 @@
 const btnAddTask = document.querySelector('#criar-tarefa');
 const inputTask = document.querySelector('#texto-tarefa');
-const list = document.querySelector('#lista-tarefas')
-const btnRemoveAll = document.querySelector('#apaga-tudo')
-const btnRemoveCompleted = document.querySelector('#remover-finalizados')
-const btnSaveTask = document.querySelector('#salvar-tarefas')
-btnSaveTask.addEventListener('click', saveTask)
-btnRemoveCompleted.addEventListener('click', removeCompleted)
-btnRemoveAll.addEventListener('click', removeAll)
+const list = document.querySelector('#lista-tarefas');
+const btnRemoveAll = document.querySelector('#apaga-tudo');
+const btnRemoveCompleted = document.querySelector('#remover-finalizados');
+const btnSaveTask = document.querySelector('#salvar-tarefas');
+const btnUp = document.querySelector('#mover-cima');
+const btnDown = document.querySelector('#mover-baixo');
+btnUp.addEventListener('click', moveTaskUp);
+btnDown.addEventListener('click', moveTaskDown);
+btnSaveTask.addEventListener('click', saveTask);
+btnRemoveCompleted.addEventListener('click', removeCompleted);
+btnRemoveAll.addEventListener('click', removeAll);
 btnAddTask.addEventListener('click', createTask);
-list.addEventListener('click', changeBackgroundColor)
-list.addEventListener('dblclick', addTaskToCompleted)
+list.addEventListener('click', changeBackgroundColor);
+list.addEventListener('dblclick', addTaskToCompleted);
 
 
 function createTask() {
@@ -73,6 +77,26 @@ function saveTask() {
  localStorage.setItem('minhasTarefas', JSON.stringify(listItens))
  localStorage.setItem('listClassItens', JSON.stringify(listItensClass))
 
+}
+
+function moveTaskUp() {
+  let listItens = list.children
+  for (let i = 0 ; i < listItens.length; i += 1) { 
+    if(listItens[i].classList.contains('taskSelected')) {
+      list.insertBefore(listItens[i], listItens[i].previousSibling)
+      break;
+    }
+  }
+}
+
+function moveTaskDown () {
+  let listItens = list.children
+  for (let i = 0 ; i < listItens.length - 1; i += 1) { 
+    if(listItens[i].classList.contains('taskSelected')) {
+      list.insertBefore(listItens[i].nextSibling, listItens[i])
+      break;
+    }
+  }
 }
 
 window.onload = function () {
