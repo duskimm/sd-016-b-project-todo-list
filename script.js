@@ -64,3 +64,12 @@ function creatinigTasks() {
 }
 
 creatinigTasks();
+
+function clickList() {
+  const orderList = document.querySelector('ol');
+  orderList.addEventListener('click', (event) => {
+    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  });
+}
+
+clickList();
