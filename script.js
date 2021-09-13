@@ -3,6 +3,8 @@ const inputTask = document.querySelector('#texto-tarefa');
 const list = document.querySelector('#lista-tarefas')
 const btnRemoveAll = document.querySelector('#apaga-tudo')
 const btnRemoveCompleted = document.querySelector('#remover-finalizados')
+const btnSaveTask = document.querySelector('#salvar-tarefas')
+btnSaveTask.addEventListener('click', saveTask)
 btnRemoveCompleted.addEventListener('click', removeCompleted)
 btnRemoveAll.addEventListener('click', removeAll)
 btnAddTask.addEventListener('click', createTask);
@@ -57,5 +59,31 @@ function removeCompleted() {
   const taskCompleted = document.getElementsByClassName('completed')
   while (taskCompleted[0]) {
     taskCompleted[0].parentNode.removeChild(taskCompleted[0]);
+  }
 }
+
+function saveTask() {
+  const listItem = document.getElementsByClassName('list-item')
+  listItens = []
+  listItensClass = []
+ for(let i = 0; i < listItem.length; i += 1) {
+   listItens.push(listItem[i].innerHTML)
+   listItensClass.push(listItem[i].className)
+ }
+ localStorage.setItem('minhasTarefas', JSON.stringify(listItens))
+ localStorage.setItem('listClassItens', JSON.stringify(listItensClass))
+
+}
+
+window.onload = function () {
+  let minhasTarefas = JSON.parse(localStorage.getItem('minhasTarefas')) 
+  let listItensClass = JSON.parse(localStorage.getItem('listClassItens')) 
+  if(minhasTarefas) {
+    for (let i = 0; i < minhasTarefas.length; i += 1) {
+      const createListItem = document.createElement('li');
+      createListItem.className = listItensClass[i];
+      createListItem.innerText = minhasTarefas[i];
+      list.appendChild(createListItem);
+    }
+  }
 }
