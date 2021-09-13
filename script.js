@@ -12,5 +12,11 @@ createTaskButton.addEventListener('click', () => {
 
 // Requisito 7
 toDoList.addEventListener('click', (event) => {
-  event.target.classList.toggle('gray');
+  let grayLi = document.querySelector('.gray');
+  if (grayLi == null) {
+    event.target.classList.add('gray');
+  } else {
+    grayLi.classList.remove('gray');
+    event.target.classList.toggle('gray');
+  }
 });
