@@ -34,3 +34,13 @@ function selectItem(event) {
 }
 
 list.addEventListener('click', selectItem);
+
+function completeItem(event) {
+  const item = event.target;
+
+  if (item.classList.contains('completed')) {
+    item.classList.remove('completed');
+  } else item.classList.add('completed');
+}
+
+list.addEventListener('dblclick', completeItem);
