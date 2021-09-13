@@ -1,11 +1,18 @@
-/// Criar nova tarefa
-
 const button = document.getElementById('criar-tarefa');
 const lista = document.getElementById('lista-tarefas');
 
+/// Mudar cor da tarefa selecionada
+
 function mudarCor(event) {
-  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  if (document.getElementById('selected') === null) {
+    event.target.id = 'selected';
+  } else {
+    document.getElementById('selected').id = '';
+    event.target.id = 'selected';
+  }
 }
+
+/// Criar nova tarefa
 
 function criarTarefa() {
   const inputTexto = document.getElementById('texto-tarefa').value;

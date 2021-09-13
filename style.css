@@ -7,3 +7,8 @@ body {
   width: 30px;
   height: 10px;
 }
+
+#selected {
+  width: fit-content;
+  background-color: rgb(128, 128, 128);
+}
