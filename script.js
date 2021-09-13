@@ -8,6 +8,10 @@ const getCleanCompletedTaskButton = document.getElementById('remover-finalizados
 const tasksInAArray = [];
 const classTaskInAArray = [];
 const getSaveButtom = document.getElementById('salvar-tarefas');
+const getDelSelectButtom = document.getElementById('remover-selecionado');
+const getSelectedItem = document.getElementsByClassName('selected');
+const getMovUpButtom = document.getElementById('mover-cima');
+const getMovDownButtom = document.getElementById('mover-baixo');
 
 function eraseInputInformation() {
   getInput.value = '';
@@ -65,6 +69,12 @@ function removeCompletedTask() {
 
 getCleanCompletedTaskButton.addEventListener('click', removeCompletedTask);
 
+function removeSelectedTask() {
+  getSelectedItem[0].remove();
+}
+
+getDelSelectButtom.addEventListener('click', removeSelectedTask);
+
 function saveContent() {
   for (let i = 0; i < getListItem.length; i += 1) {
     tasksInAArray.push(getListItem[i].innerText);
@@ -95,3 +105,4 @@ function createListAfterReopenPage() {
 window.onload = function onload() {
   createListAfterReopenPage();
 };
+

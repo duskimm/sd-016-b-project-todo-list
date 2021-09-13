@@ -1,7 +1,100 @@
+body {
+  background-color: #ecf0f1;
+  text-align: center;
+}
+
+body * {
+  font-family: 'Dancing Script', cursive;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  background-color: #596275;
+  font-size: 1.2rem;
+  width: 26.5rem;
+  border-radius: 5px 5px 0 0;
+}
+
+p, h1{
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+section {
+  width: 26.5rem;
+  height: 22rem;
+  background-color: #dfe4ea;
+  padding-top: 1rem;
+}
+
+button {
+  border-radius: 0.6rem;
+  font-weight: 900;
+  font-size: 0.6rem;
+}
+
+section .input * {
+  display: inline-block;
+}
+
+input {
+  width: 17.5rem;
+}
+
+.buttom {
+  padding-bottom: 1rem;
+}
+/* ref: Obj: Wrap text Src:https://stackoverflow.com/questions/3058866/  */
+.list {
+  background-color: #ecf0f1;
+  width: 17.5rem;
+  text-align: justify;
+  list-style-position: inside;
+  border: 0.06rem solid black;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  word-break: break-all;
+}
+
+.list h2 {
+  padding: 0;
+  margin: 0;
+  margin-left: 0.2rem;
+}
+
+ol {
+  margin: 0 ;
+  padding-left: 0.2rem;
+  padding-bottom: 0.2rem;
+  list-style-type: lower-roman;
+}
+
+li {
+  border-bottom: 0.06rem solid black
+}
+
+li:hover {
+  font-size: 1.25rem;
+}
+
 .selected {
   background-color: rgb(128,128,128);
 }
 
 .completed {
   text-decoration: line-through solid rgb(0, 0, 0);
+}
+
+footer {
+  background-color: black;
+  width: 26.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0 0 5px 5px;
+}
+
+footer p {
+  padding-top: 0.5rem;
+  font-size: 0.5rem;
 }
