@@ -4,6 +4,7 @@ const addButton = document.querySelector("#criar-tarefa");
 const taskInput = document.querySelector('#texto-tarefa');
 const removeAllButton = document.querySelector('#apaga-tudo');
 const removeCompletedButton = document.querySelector('#remover-finalizados')
+const saveButton = document.querySelector('#salvar-tarefas');
 // 
 
 
@@ -23,9 +24,11 @@ addButton.addEventListener('click', newTask);
 function changeBackground (event) {
   let listItems = document.querySelectorAll('li');
   for (let i = 0; i < listItems.length; i += 1) {
-    listItems[i].style.backgroundColor = 'teal'
+    listItems[i].style.backgroundColor = '';
+    listItems[i].classList.remove('selected')
   }
   event.target.style.backgroundColor = 'rgb(128, 128, 128)'
+  event.target.classList.add('selected')
 }
 taskList.addEventListener('click', changeBackground);
 
@@ -40,7 +43,7 @@ taskList.addEventListener ('dblclick', changeTextDecoration);
 
 function changeCompletedClass (event) {
   if (event.target.style.textDecoration === 'line-through') {
-    event.target.className = 'completed'
+    event.target.classList.add('completed')
   } else if (event.target.style.textDecoration === 'none') {
     event.target.classList.remove('completed')
   }
@@ -62,3 +65,16 @@ function removeCompletedTasks () {
   }
 }
 removeCompletedButton.addEventListener('click', removeCompletedTasks);
+
+function saveTasks () {
+  saveButton.addEventListener('click', function(){
+    let savedItems = taskList.innerHTML;
+    localStorage.setItem ('list', savedItems);
+  })
+}
+
+saveTasks();
+
+window.onload = function (){
+  document.getElementById('lista-tarefas').innerHTML = localStorage.getItem('list');
+}
