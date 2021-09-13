@@ -1,0 +1,7 @@
+#criar-tarefa {
+    height: 30px;
+    width: 100px;
+    border-radius: 45%;
+    background-color: rgb(59, 148, 231);
+    border: solid 1px rgb(59, 148, 231);;
+}
