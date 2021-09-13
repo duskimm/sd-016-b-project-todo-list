@@ -52,3 +52,21 @@ function completedTask() {
   });
 }
 completedTask();
+
+// Requisito 10 - Botão limpar tudo
+const deleteAll = document.getElementById('apaga-tudo');
+const childrenOfList = listaOrdenada.children;
+
+function childCont() {
+  return childrenOfList.length;
+}
+
+function wipeList() {
+  deleteAll.addEventListener('click', () => {
+    const childNum = childCont();
+    for (let i = 0; i < childNum; i += 1) {
+      listaOrdenada.removeChild(childrenOfList[0]);
+    }
+  });
+}
+wipeList();
