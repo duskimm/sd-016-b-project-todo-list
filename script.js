@@ -25,3 +25,32 @@ list.addEventListener('click', (evento) => {
   event.classList.add('select');
 });
 
+list.addEventListener('dblclick', (evento) => {
+  const event = evento.target;
+  if (event.classList.contains('completed')) {
+    event.classList.remove('completed');
+  } else {
+    event.classList.add('completed');
+  }
+});
+
+apagar.addEventListener('click', () => {
+  list.innerHTML = '';
+});
+
+apagarFinalizados.addEventListener('click', () => {
+  list = document.querySelectorAll('.completed');
+  for (let index = 0; index < list.length; index += 1) {
+    list[index].remove();
+  }
+});
+
+function salvaTarefa() {
+  salvarTarefa.addEventListener('click', () => {
+    localStorage.setItem('task', list.innerHTML);
+  });
+  const local = localStorage.getItem('task');
+  list.innerHTML = local;
+} salvaTarefa();
+
+
