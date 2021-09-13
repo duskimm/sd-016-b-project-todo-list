@@ -1,26 +1,27 @@
-let taskButton = document.getElementById('criar-tarefa');
-let inputTask = document.getElementById('texto-tarefa');
+const inputTask = document.getElementById('texto-tarefa');
+
+const taskList = document.getElementById('lista-tarefas');
 
 // Função que adiciona uma nova tarefa à lista
 function addNewTask() {
-  let newListItem = document.createElement('li');
+  const newListItem = document.createElement('li');
   newListItem.className = 'list-item';
   newListItem.innerHTML = inputTask.value;
-  document.getElementById('lista-tarefas').appendChild(newListItem);
+  taskList.appendChild(newListItem);
 
   inputTask.value = '';
 }
 
-taskButton.addEventListener('click', addNewTask);
+document.getElementById('criar-tarefa').addEventListener('click', addNewTask);
 
 // Função que seleciona a tarefa
 function selectListItem(event) {
-  let listItens = document.getElementsByClassName('list-item');
-  
+  const listItens = document.getElementsByClassName('list-item');
+
   if (event.target.classList.contains('list-item')) {
-      for (let index = 0; index < listItens.length; index += 1) {
-        listItens[index].classList.remove('selected');
-      }
+    for (let index = 0; index < listItens.length; index += 1) {
+      listItens[index].classList.remove('selected');
+    }
     event.target.classList.add('selected');
   }
 }
@@ -30,7 +31,6 @@ document.addEventListener('click', selectListItem);
 // Função que marca a tarefa como completa
 
 function completedTask(event) {
-  let listItens = document.getElementsByClassName('list-item');
 
   if (event.target.classList.contains('list-item')) {
     if (event.target.classList.contains('completed')) {
@@ -45,16 +45,14 @@ document.addEventListener('dblclick', completedTask);
 
 // Função que apaga todas as tarefas
 function deleteAllTasks() {
-  document.getElementById('lista-tarefas').innerHTML = '';
+  taskList.innerHTML = '';
 }
 
-let deleteButton = document.getElementById('apaga-tudo');
-
-deleteButton.addEventListener('click', deleteAllTasks);
+document.getElementById('apaga-tudo').addEventListener('click', deleteAllTasks);
 
 // Função que apaga tarefas finalizadas
 function deleteCompletedTasks() {
-  let elements = document.getElementsByClassName('completed');
+  const elements = document.getElementsByClassName('completed');
 
   while (elements.length > 0) {
     elements[0].parentNode.removeChild(elements[0])
@@ -69,48 +67,44 @@ document.getElementById('remover-finalizados').addEventListener('click', deleteC
 
 function addTasksToLocalStorage() {
   localStorage.setItem('task', JSON.stringify([]));
-  let localList = JSON.parse(localStorage.getItem('task'));
-  let list = document.getElementById('lista-tarefas').innerHTML;
+  const localList = JSON.parse(localStorage.getItem('task'));
 
-  localList.push(list);
+  localList.push(taskList.innerHTML);
 
   localStorage.setItem('task', JSON.stringify(localList));
-
 }
 
 function insertTaskInDOM() {
-  document.getElementById('lista-tarefas').innerHTML = JSON.parse(localStorage.getItem('task'));
-};
+  taskList.innerHTML = JSON.parse(localStorage.getItem('task'));
+
+  return taskList.innerHTML;
+}
 
 window.onload = insertTaskInDOM();
 
-let saveButton = document.getElementById('salvar-tarefas');
-
-saveButton.addEventListener('click', addTasksToLocalStorage);
+document.getElementById('salvar-tarefas').addEventListener('click', addTasksToLocalStorage);
 
 // Função que move pra baixo
 function moveDown() {
-  let selectedItem = document.querySelector('.selected');
+  const selectedItem = document.querySelector('.selected');
 
   if (selectedItem !== null) {
-    let nxtSibling = selectedItem.nextElementSibling;
+    const nxtSibling = selectedItem.nextElementSibling;
     if (nxtSibling !== null) {
       selectedItem.parentNode.insertBefore(nxtSibling, selectedItem);
     }
   }
 }
 
-let moveDownButton = document.getElementById('mover-baixo');
-
-moveDownButton.addEventListener('click', moveDown)
+document.getElementById('mover-baixo').addEventListener('click', moveDown);
 
 // Função que move pra cima
 
 function moveUp() {
-  let selectedItem = document.querySelector('.selected');
+  const selectedItem = document.querySelector('.selected');
 
   if (selectedItem !== null) {
-    let previousSibling = selectedItem.previousElementSibling;
+    const previousSibling = selectedItem.previousElementSibling;
 
     if (previousSibling !== null) {
       selectedItem.parentNode.insertBefore(selectedItem, previousSibling);
@@ -118,20 +112,16 @@ function moveUp() {
   }
 }
 
-let moveUpButton = document.getElementById('mover-cima');
-
-moveUpButton.addEventListener('click', moveUp);
+document.getElementById('mover-cima').addEventListener('click', moveUp);
 
 // Função que apaga elemento selecionado
 
 function deleteSelected() {
-  let selected = document.querySelector('.selected');
+  const selected = document.querySelector('.selected');
 
   if (selected !== null) {
     selected.parentNode.removeChild(selected);
   }
 }
 
-let deleteTaskButton = document.getElementById('remover-selecionado');
-
-deleteTaskButton.addEventListener('click', deleteSelected);
+document.getElementById('remover-selecionado').addEventListener('click', deleteSelected);
