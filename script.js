@@ -50,3 +50,12 @@ function eraseList() {
 }
 
 document.getElementById('apaga-tudo').addEventListener('click', eraseList);
+
+function removeCompleted() {
+  const remove = document.querySelectorAll('.completed');
+  for (let index = 0; index < remove.length; index += 1) {
+    remove[index].remove();
+  }
+}
+
+document.getElementById('remover-finalizados').addEventListener('click', removeCompleted);
