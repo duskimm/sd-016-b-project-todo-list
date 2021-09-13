@@ -12,8 +12,17 @@ body {
   margin-top: 10px;
 }
 
+#lista-tarefas {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+#lista-tarefas li {
+  margin-top: 10px;
+}
+
 #texto-tarefa {
   font-size: 14px;
   margin-top: 20px;
-  padding: 6px;
+  padding: 4px;
 }
