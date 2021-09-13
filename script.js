@@ -6,7 +6,6 @@ function addtask() {
   document.getElementById('lista-tarefas').innerHTML = list;
   document.getElementById('texto-tarefa').value = null;
 }
-addtask();
 
 // indicação para tirar ideia do video: https://www.youtube.com/watch?v=pRwxgtqImZQ
 // altera o fundo do texto clicado para cinza
@@ -53,4 +52,5 @@ function removeLinedItem() {
     }
   }
 }
+
 removeFinishedItens.addEventListener('click', removeLinedItem);
