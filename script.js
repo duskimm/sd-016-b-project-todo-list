@@ -16,6 +16,10 @@ function addClass(element, newClass) {
   element.classList.add(newClass);
 }
 
+function toggleClass(element, toggleClass) {
+  element.classList.toggle(toggleClass);
+}
+
 function removeClass(element, delClass) {
   element.classList.remove(delClass);
 }
@@ -121,7 +125,7 @@ function controlSelection(event) {
 function changeDone(event) {
   const taskItem = event.target;
   
-  addClass(taskItem, 'done');
+  toggleClass(taskItem, 'completed');
   deleteDoneTasks();
 }
 
@@ -136,7 +140,7 @@ function deleteAllTasks() {
 }
 
 function deleteDoneTasks() {
-  const doneTasks = getAll('.done');
+  const doneTasks = getAll('.completed');
 
   buttonDone.addEventListener('click', () => {
     doneTasks.forEach((task) => {
