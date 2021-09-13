@@ -5,6 +5,9 @@ const taskInput = document.querySelector('#texto-tarefa');
 const removeAllButton = document.querySelector('#apaga-tudo');
 const removeCompletedButton = document.querySelector('#remover-finalizados')
 const saveButton = document.querySelector('#salvar-tarefas');
+const removeSelectedButton = document.querySelector('#remover-selecionado')
+const moveUpButton = document.querySelector('#mover-cima')
+const moveDownButton = document.querySelector('#mover-baixo')
 // 
 
 
@@ -72,8 +75,42 @@ function saveTasks () {
     localStorage.setItem ('list', savedItems);
   })
 }
-
 saveTasks();
+
+function removeSelected () {
+  let selectedTask = document.getElementsByClassName('selected')[0];
+  taskList.removeChild(selectedTask);
+}
+removeSelectedButton.addEventListener('click', removeSelected);
+
+function moveTaskUp () {
+  let selectedTask = document.querySelector('.selected');
+  if (selectedTask == null || undefined) {
+    alert ('Voce precisa selecionar uma tarefa')
+  } else if (selectedTask.previousElementSibling == null || undefined) {
+    alert ('Essa tarefa já é a primeira')
+  } else {
+    let upperTask = selectedTask.previousElementSibling;
+    taskList.insertBefore(selectedTask, upperTask)
+  }
+}
+moveUpButton.addEventListener('click', moveTaskUp);
+// Lógica retirada de https://github.com/tryber/sd-015-b-project-todo-list/pull/129/files'
+
+function moveTaskDown () {
+  let selectedTask = document.querySelector('.selected');
+  if( selectedTask == null || selectedTask == undefined) {
+    alert ('Voce precisa selecionar uma tarefa');
+  } else if (selectedTask.nextElementSibling == null || selectedTask.nextElementSibling == undefined) {
+    alert ('Essa tarefa já é a ultima');
+  } else {
+    let lowerTask = selectedTask.nextElementSibling;
+    let changeTask = lowerTask.nextElementSibling
+    taskList.insertBefore(selectedTask, changeTask);
+  }
+}
+moveDownButton.addEventListener('click', moveTaskDown);
+// Lógica retirada de https://github.com/tryber/sd-015-b-project-todo-list/pull/129/files'
 
 window.onload = function (){
   document.getElementById('lista-tarefas').innerHTML = localStorage.getItem('list');
