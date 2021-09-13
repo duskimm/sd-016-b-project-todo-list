@@ -1,0 +1,24 @@
+#cabecalho {
+    font-size: 40px;
+    text-align: center;
+}
+
+#funcionamento {
+    font-size: 20px;
+}
+
+#cria-tarefa {
+    margin-left: 70px;
+}
+
+#lista-tarefas {
+    font-size: 30px;
+}
+
+.task {
+    width: 300px;
+}
+
+.completed {
+    text-decoration: line-through;
+}
