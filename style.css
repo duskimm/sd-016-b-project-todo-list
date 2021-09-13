@@ -8,11 +8,29 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  background-color: #50608f;
+  font-family: 'Bebas Neue', cursive;
+}
+
 .main__content {
   width: 84rem;
-  margin: 10rem auto;
+  margin: 9rem auto 9rem auto;
+  background-color: #7986ac;
+  height: 58.7rem;
+  border-radius: 1.5rem;
 }
 
 .title__principal {
   font-size: 4.7rem;
+  color: #061339;
+  padding-top: 2rem;
+  padding-left: 3.8rem;
+  letter-spacing: 1rem;
+}
+
+.parHeader {
+  font-size: 1.8rem;
+  padding-left: 3.8rem;
+  letter-spacing: 3px;
 }
