@@ -2,6 +2,8 @@ const list = document.getElementById('lista-tarefas');
 
 const button = document.querySelector('#criar-tarefa');
 
+const items = document.getElementsByTagName('li');
+
 function addTaskToList(event) {
   event.preventDefault();
 
@@ -19,6 +21,13 @@ function addTaskToList(event) {
 button.addEventListener('click', addTaskToList);
 
 function selectItem(event) {
+  for (let i = 0; i < items.length; i += 1) {
+    const currentItem = items[i];
+    if (currentItem.classList.contains('selected')) {
+      currentItem.classList.remove('selected');
+    }
+  }
+
   const selectedTask = event.target;
 
   selectedTask.classList.add('selected');
