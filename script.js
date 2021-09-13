@@ -1,12 +1,23 @@
 function criarNovaTarefa() {
-    const criarTarefa = document.getElementById('criar-tarefa');
-    criarTarefa.addEventListener('click', function() {
-        const textoTarefa = document.getElementById('texto-tarefa');
-        const itemDaLista = document.createElement('li');
-        const listaTarefas = document.getElementById('lista-tarefas');
-        itemDaLista.innerHTML = textoTarefa.value; 
-        textoTarefa.value = '';
-        listaTarefas.appendChild(itemDaLista);
-    });
+  const criarTarefa = document.getElementById('criar-tarefa');
+  criarTarefa.addEventListener('click', function () {
+    const textoTarefa = document.getElementById('texto-tarefa');
+    const itemDaLista = document.createElement('li');
+    itemDaLista.addEventListener('click', alterarCorDeFundoDaLi);
+    const listaTarefas = document.getElementById('lista-tarefas');
+    itemDaLista.innerHTML = textoTarefa.value; 
+    textoTarefa.value = '';
+    listaTarefas.appendChild(itemDaLista);
+  });
 }
 criarNovaTarefa();
+
+function alterarCorDeFundoDaLi (event) {
+  const tarefa = event.target;
+  const li = document.querySelectorAll('li');
+  for (index = 0; index < li.length; index += 1) {
+    li[index].style.backgroundColor = 'white';
+  }
+  tarefa.style.backgroundColor = 'rgb(128, 128, 128)';
+}
+
