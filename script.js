@@ -15,7 +15,14 @@ document.querySelector('#criar-tarefa').addEventListener('click', () => {
 	const inputText = document.querySelector('#texto-tarefa');
 	const todoList = document.querySelector('#lista-tarefas');
 	if (inputText !== '') {
-		todoList.append(newChild('li', inputText.value, '', ''));
+		todoList.append(newChild('li', inputText.value, 'todo', ''));
 		inputText.value = '';
+	}
+});
+
+document.addEventListener('click', (event) => {
+	if (event.target.classList.contains('todo')) {
+		event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+		console.log(event.target);
 	}
 });
