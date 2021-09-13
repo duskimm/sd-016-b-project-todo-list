@@ -1,6 +1,7 @@
 const body = document.querySelector('body');
 let main;
 let input;
+let ol;
 
 function mkHeader() {
   const createHeader = document.createElement('header');
@@ -34,10 +35,10 @@ function mkList() {
   const createOl = document.createElement('ol');
   main.appendChild(createOl);
   createOl.id = 'lista-tarefas';
+  const toOl = document.querySelector('ol'); ol = toOl;
 }
 
 function mkNewListItem(inputContent) {
-  const ol = document.querySelector('ol');
   const createLI = document.createElement('li');
   createLI.innerHTML = inputContent;
   ol.appendChild(createLI);
@@ -54,6 +55,19 @@ function mkButton() {
   });
 }
 
+function mkEvidence() {
+  ol.addEventListener('click', function bgColor(e) {
+    const selected = e.target;
+    const oldSelected = document.querySelector('.selected');
+    if (oldSelected !== null) {
+      oldSelected.classList.remove('selected');
+      oldSelected.style.backgroundColor = 'white';
+    }
+    selected.classList = 'selected';
+    selected.style.backgroundColor = 'grey';
+  });
+}
+
 window.onload = function start() {
   mkHeader();
   mkMain();
@@ -61,4 +75,5 @@ window.onload = function start() {
   mkInput();
   mkList();
   mkButton();
+  mkEvidence();
 };
