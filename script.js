@@ -11,12 +11,31 @@ function adicionar(){
   input.value = ''
   }
 };
-
 buttonAdd.addEventListener('click', adicionar)
 
-//  Requisito 07  // 
-function pintarCinza(event) {
-    event.target.style.background = 'rgb(128, 128, 128)';
-    }  
-   
-   list.addEventListener('click', pintarCinza);
+//  Requisito 07 e 08 // 
+function pintarCinza(event) {       
+  let contemCinza = document.querySelector('.cinza');
+  let cinzar = event.target;
+  if (contemCinza == null){
+   cinzar.classList.add('cinza');
+  } else {   
+  contemCinza.classList.remove('cinza')
+  cinzar.classList.add('cinza');
+ }
+}  
+list.addEventListener('click', pintarCinza);
+
+//  Requisito 09  //
+function clicks(event){
+    let classeCompleted = document.querySelector('.completed')
+    let clicado = event.target;
+    if(clicado.className = classeCompleted){
+        clicado.classList.remove('completed')
+    } else {
+    clicado.classList.add('completed')
+    }
+  };
+
+  
+  list.addEventListener('dblclick', clicks)
