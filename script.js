@@ -64,9 +64,7 @@ function createTaskItem() {
 }
 
 function addTaskToList() {
-  buttonAdd.addEventListener('click', () => {
-    createTaskItem();
-  });
+  buttonAdd.addEventListener('click', createTaskItem);
 }
 
 // Seleção de elemento (retirada do backgorundColor)
