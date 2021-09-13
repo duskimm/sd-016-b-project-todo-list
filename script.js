@@ -1,5 +1,5 @@
 const body = document.querySelector('body');
-const main = document.querySelector('main');
+let main;
 
 function mkHeader() {
   const createHeader = document.createElement('header');
@@ -20,8 +20,23 @@ function mkParagraph() {
   header.appendChild(createParagraph);
 }
 
+function mkInput() {
+  const createInput = document.createElement('input');
+  const toMain = document.querySelector('main'); main = toMain;
+  createInput.id = 'texto-tarefa';
+  main.appendChild(createInput);
+}
+
+function mkList() {
+  const createOl = document.createElement('ol');
+  main.appendChild(createOl);
+  createOl.id = 'lista-tarefas';
+}
+
 window.onload = function start() {
   mkHeader();
   mkMain();
   mkParagraph();
+  mkInput();
+  mkList();
 };
