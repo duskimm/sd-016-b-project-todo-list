@@ -10,8 +10,15 @@ function getTaskText() {
 }
 
 function selectTask(evt) {
-  const task = evt.target;
-  task.classList.toggle('selected');
+  const taskSelected = evt.target;
+  const parent = taskSelected.parentElement;
+  Array.from(parent.children).forEach((task) => {
+    if (taskSelected === task) {
+      task.classList.toggle('selected');
+    } else {
+      task.classList.remove('selected');
+    }
+  });
 }
 
 function createTask() {
