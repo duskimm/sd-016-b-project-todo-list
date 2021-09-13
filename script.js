@@ -82,7 +82,7 @@ function addTaskToList() {
   buttonAdd.addEventListener('click', () => {
     createTaskItem();
     selectAllTasks();
-    resetAllTasks();
+    deleteAllTasks();
   });
 }
 
@@ -90,7 +90,6 @@ function selectAllTasks() {
   const taskItems = getAll('.task-item');
 
   addMultiplesEventsAndListeners(taskItems, 'click dblclick', controlSelection)
-  // addMultiplesListeners(taskItems, 'click', changeSelection);
 }
 
 function resetSelection() {
@@ -98,14 +97,6 @@ function resetSelection() {
 
   listItems.forEach((item) => {
     removeClass(item, 'selected');
-  });
-}
-
-function resetDone() {
-  const listItems = getAll('li');
-
-  listItems.forEach((item) => {
-    removeClass(item, 'done');
   });
 }
 
@@ -127,13 +118,10 @@ function controlSelection(event) {
 function changeDone(event) {
   const taskItem = event.target;
   
-  resetDone();
   addClass(taskItem, 'done');
 }
 
-// Resetar tudo ao clicar no botão 'Apagar'
-
-function resetAllTasks() {
+function deleteAllTasks() {
   const taskItems = getAll('li');
 
   buttonReset.addEventListener('click', () => {
