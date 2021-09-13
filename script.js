@@ -39,7 +39,7 @@ apagar.addEventListener('click', () => {
 });
 
 apagarFinalizados.addEventListener('click', () => {
-  list = document.querySelectorAll('.completed');
+  const list = document.querySelectorAll('.completed');
   for (let index = 0; index < list.length; index += 1) {
     list[index].remove();
   }
@@ -53,4 +53,21 @@ function salvaTarefa() {
   list.innerHTML = local;
 } salvaTarefa();
 
+buttonUp.addEventListener('click', () => {
+  const moveTask = document.querySelector('.select');
+  if (moveTask && moveTask !== list.children[0]) {
+    moveTask.insertAdjacentElement('afterend', moveTask.previousSibling);
+  }
+});
 
+buttonDown.addEventListener('click', () => {
+  const moveTask = document.querySelector('.select');
+  if (moveTask && moveTask !== list.lastChild) {
+    moveTask.insertAdjacentElement('beforebegin', moveTask.nextSibling);
+  }
+});
+
+removeSelecionado.addEventListener('click', () => {
+  const moveTask = document.querySelector('.select');
+  moveTask.remove();
+});
