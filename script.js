@@ -56,7 +56,7 @@ deleteButton.addEventListener('click', deleteAllTasks);
 function deleteCompletedTasks() {
   let elements = document.getElementsByClassName('completed');
 
-  while(elements.length > 0) {
+  while (elements.length > 0) {
     elements[0].parentNode.removeChild(elements[0])
   }
 
@@ -64,3 +64,26 @@ function deleteCompletedTasks() {
 }
 
 document.getElementById('remover-finalizados').addEventListener('click', deleteCompletedTasks);
+
+// Adicionando tarefas ao local storage
+
+function addTasksToLocalStorage() {
+    localStorage.setItem('task', JSON.stringify([]));
+    let localList = JSON.parse(localStorage.getItem('task'));
+    let list = document.getElementById('lista-tarefas').innerHTML;
+    
+    localList.push(list);
+    
+    localStorage.setItem('task', JSON.stringify(localList));
+    
+}
+
+function insertTaskInDOM() {
+  document.getElementById('lista-tarefas').innerHTML = JSON.parse(localStorage.getItem('task'));
+};
+
+window.onload = insertTaskInDOM();
+
+let saveButton = document.getElementById('salvar-tarefas');
+
+saveButton.addEventListener('click', addTasksToLocalStorage);
