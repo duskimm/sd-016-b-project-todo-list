@@ -2,6 +2,7 @@ const listaOrdenada = document.getElementById('lista-tarefas');
 const textoTarefa = document.getElementById('texto-tarefa');
 const btnCriaTarefa = document.getElementById('criar-tarefa');
 const btnApagaTudo = document.getElementById('apaga-tudo');
+const btnRemoverFinalizados = document.getElementById('remover-finalizados');
 
 const pegaListaTarefas = localStorage.getItem('tarefas');
 const tarefas = pegaListaTarefas === null ? [] : pegaListaTarefas.split(',');
@@ -65,3 +66,16 @@ function deletaLista() {
   window.location.reload(true);
 }
 btnApagaTudo.addEventListener('click', deletaLista);
+
+function removerTarefasFinalizadas() {
+  const novaLista = [];
+  for (let index = 0; index < linhas.length; index += 1) {
+    if (linhas[index].classList.contains('completed')) {
+      listaOrdenada.removeChild(linhas[index]);
+    } else {
+      novaLista.push(linhas[index].innerText);
+    }
+  }
+  localStorage.setItem('tarefas', novaLista);
+}
+btnRemoverFinalizados.addEventListener('click', removerTarefasFinalizadas);
