@@ -83,3 +83,34 @@ function removeCompleted() {
   });
 }
 removeCompleted();
+
+// Requisito 12 - Guarda a lista em localStorage para a próxima vez que o site for aberto
+const anteriorTask = [];
+const anteriorTaskClass = [];
+const saveTasksButton = document.getElementById('salvar-tarefas');
+
+function savePreviousTasks() {
+  saveTasksButton.addEventListener('click', () => {
+    for (let i = 0; i < childrenOfList.length; i += 1) {
+      anteriorTask.push(childrenOfList[i].innerText);
+      anteriorTaskClass.push(childrenOfList[i].className);
+    }
+    localStorage.setItem('taskList', JSON.stringify(anteriorTask));
+    localStorage.setItem('classList', JSON.stringify(anteriorTaskClass));
+  });
+}
+savePreviousTasks();
+
+function openPreviousTask() {
+  const beforeTaskList = JSON.parse(localStorage.getItem('taskList'));
+  const beforeClassList = JSON.parse(localStorage.getItem('classList'));
+  if (beforeTaskList !== null) { // Procurei ajuda para chegar nessa lógica, acabei pegando como referência o exercicio 12 do amigo Gabriel FM Pinheiro https://github.com/tryber/sd-016-b-project-todo-list/blob/gabriel-todo-list-project/script.js
+    for (let i = 0; i < beforeTaskList.length; i += 1) {
+      const newLi = document.createElement('li');
+      newLi.innerText = beforeTaskList[i];
+      newLi.className = beforeClassList[i];
+      listaOrdenada.appendChild(newLi);
+    }
+  }
+}
+openPreviousTask();
