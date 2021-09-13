@@ -15,7 +15,7 @@ function createP() {
 }
 createP();
 
-// 3.
+// 3. Criar input
 function createInput() {
   const newInput = document.createElement('input');
   newInput.id = 'texto-tarefa';
@@ -25,4 +25,10 @@ function createInput() {
 }
 createInput();
 
-// 4.
+// 4.Criar OL
+function createOl() {
+  const newOl = document.createElement('ol');
+  newOl.id = 'lista-tarefas';
+  document.body.appendChild(newOl);
+}
+createOl();
