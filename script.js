@@ -56,11 +56,10 @@ function creatinigTasks() {
     const orderedList = document.querySelector('#lista-tarefas');
     const input = document.querySelector('#texto-tarefa');
     const text = input.value;
-    console.log(text);
     const list = document.createElement('li');
     list.innerText = text;
-    console.log(list);
     orderedList.appendChild(list);
+    input.value = '';
   });
 }
 
