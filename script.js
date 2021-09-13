@@ -13,6 +13,10 @@ const addTaskButton = document.querySelector('#criar-tarefa');
 addTaskButton.addEventListener('click', addTask);
 
 function selectTask(event) {
+  const selectedTask = document.querySelector('.selecionada');
+  if (selectedTask !== null) {
+    selectedTask.classList.remove('selecionada');
+  }
   event.target.classList.add('selecionada');
 }
 
