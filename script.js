@@ -34,10 +34,18 @@ function limparLista() {
   }
 }
 
+//  11 Habilita apagar tarefas resolvidas (.completed)
+function limparCompletos() {
+  while (document.querySelector('.completed')) {
+    document.querySelector('.completed').remove();
+  }
+}
+
 //  Configurar a página
 function configurar() {
   document.querySelector('#criar-tarefa').addEventListener('click', addTarefa);
   document.querySelector('#apaga-tudo').addEventListener('click', limparLista);
+  document.querySelector('#remover-finalizados').addEventListener('click', limparCompletos);
 }
 
 window.onload = configurar;
