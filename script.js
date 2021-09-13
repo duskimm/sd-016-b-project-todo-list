@@ -1,5 +1,6 @@
 let botaoAdicionar = document.getElementById('criar-tarefa');
 let listaTarefas = document.getElementById('lista-tarefas');
+let botaoLimpar = document.getElementById('apaga-tudo');
 
 function createTask() {
   botaoAdicionar.addEventListener('click', function() {
@@ -29,9 +30,20 @@ function setCompleted() {
   })
 }
 
+function clearList() {
+  botaoLimpar.addEventListener('click', function() {
+    for (let index = 0; index < listaTarefas.children.length; index = 0) {
+      listaTarefas.children[index].remove();
+    }
+  })
+}
+
+
+
 
 
 
 createTask();
 setBackGround();
 setCompleted();
+clearList();
