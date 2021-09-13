@@ -2,7 +2,7 @@ const getInput = document.getElementById('texto-tarefa');
 const getButton = document.getElementById('criar-tarefa');
 const getOrderlist = document.getElementById('lista-tarefas');
 const getItemList = document.getElementsByClassName('itemList');
-
+const getDeleteButton = document.getElementById('apaga-tudo');
 // Adicinar valores a lista 
 getButton.addEventListener('click', function () {
   const criali = document.createElement('li');
@@ -25,4 +25,13 @@ getOrderlist.addEventListener('dblclick', function(event) {
   const evento = event.target;
   // evento.style.textDecoration = 'line-through solid rgb(0, 0, 0)'
   evento.classList.toggle('completed'); // toggle usado para add e remover a classe retirado do site https://www.w3schools.com/howto/howto_js_toggle_class.asp
+});
+// Botão apagar tudo
+function deleteList(n) {
+  for (let i = 0; i < n; i += 1) {
+    getOrderlist.removeChild(getOrderlist.firstElementChild);
+  }
+};
+getDeleteButton.addEventListener('click', function (){
+deleteList(getItemList.length);
 });
