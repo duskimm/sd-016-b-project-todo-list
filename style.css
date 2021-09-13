@@ -5,11 +5,15 @@
 }
 
 .selecionado {
-  background-color: rgb(128, 128, 128);
+
+  /* background-color: rgb(128, 128, 128); //linter quer gray */
+  background-color: gray;
 }
 
 .completed {
-  text-decoration: line-through solid rgb(0, 0, 0);
+
+  /* text-decoration: line-through solid rgb(0, 0, 0); //linter quer black */
+  text-decoration: line-through solid black;
 }
 
 /* Deixe uma linha no fim pra agradar o linter */
