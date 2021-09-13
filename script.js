@@ -58,14 +58,10 @@ const user = {
   msg: '',
 }
 
-const dinamicVariables = {
-  taskItems: getAll('.task-item'),
-  listItems: getAll('li'),
-}
-
 const taskInput = getOne('#texto-tarefa');
 const taskList = getOne('#lista-tarefas');
 const buttonAdd = getOne('#criar-tarefa');
+const buttonReset = getOne('#apaga-tudo');
 
 // functions for the project
 
@@ -85,20 +81,20 @@ function createTaskItem() {
 function addTaskToList() {
   buttonAdd.addEventListener('click', () => {
     createTaskItem();
-    attVariables();
     selectAllTasks();
+    resetAllTasks();
   });
 }
 
 function selectAllTasks() {
-  const taskItems = dinamicVariables.taskItems;
+  const taskItems = getAll('.task-item');
 
   addMultiplesEventsAndListeners(taskItems, 'click dblclick', controlSelection)
   // addMultiplesListeners(taskItems, 'click', changeSelection);
 }
 
 function resetSelection() {
-  const listItems = dinamicVariables.listItems;
+  const listItems = getAll('li');
 
   listItems.forEach((item) => {
     removeClass(item, 'selected');
@@ -106,7 +102,7 @@ function resetSelection() {
 }
 
 function resetDone() {
-  const listItems = dinamicVariables.listItems;
+  const listItems = getAll('li');
 
   listItems.forEach((item) => {
     removeClass(item, 'done');
@@ -119,13 +115,6 @@ function changeSelection(event) {
   resetSelection();
   addClass(taskItem, 'selected');
 }
-
-function attVariables() {
-  dinamicVariables.listItems = getAll('li');
-  dinamicVariables.taskItems = getAll('.task-item');
-}
-
-// Riscar elemento (line-through solid rgb(0, 0, 0)) ao clicar duas vezes
 
 function controlSelection(event) {
   if (event.type === 'dblclick') {
@@ -143,6 +132,16 @@ function changeDone(event) {
 }
 
 // Resetar tudo ao clicar no botão 'Apagar'
+
+function resetAllTasks() {
+  const taskItems = getAll('li');
+
+  buttonReset.addEventListener('click', () => {
+      taskItems.forEach((item) => {
+        item.remove();
+      });
+  });
+}
 
 // Apagar itens riscados através do botão 'Prontos'
 
