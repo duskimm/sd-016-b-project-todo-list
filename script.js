@@ -7,6 +7,7 @@ function criarTarefa() {
   const inputTexto = document.getElementById('texto-tarefa').value;
   const novaTarefa = document.createElement('li');
   novaTarefa.innerText = inputTexto;
+  document.getElementById('texto-tarefa').value = '';
   lista.appendChild(novaTarefa);
 }
 

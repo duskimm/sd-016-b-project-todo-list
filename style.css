@@ -2,3 +2,8 @@ body {
   background-color: gray;
   font-family: 'Courier New', Courier, monospace;
 }
+
+#criar-tarefa {
+  width: 30px;
+  height: 10px;
+}
