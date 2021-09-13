@@ -42,6 +42,16 @@ function addMultiplesListeners(arr, event, listener) {
   });
 }
 
+function addMultiplesEventsAndListeners(arr, eventsName, listener) {
+  const events = eventsName.split(' ');
+
+  arr.forEach((element) => {
+    events.forEach((event) => {
+      element.addEventListener(event, listener, false);
+    });
+  });
+}
+
 // global variables
 
 const user = {
@@ -80,12 +90,11 @@ function addTaskToList() {
   });
 }
 
-// Seleção de elemento (retirada do backgorundColor)
-
 function selectAllTasks() {
   const taskItems = dinamicVariables.taskItems;
 
-  addMultiplesListeners(taskItems, 'click', changeSelection);
+  addMultiplesEventsAndListeners(taskItems, 'click dblclick', controlSelection)
+  // addMultiplesListeners(taskItems, 'click', changeSelection);
 }
 
 function resetSelection() {
@@ -96,9 +105,17 @@ function resetSelection() {
   });
 }
 
+function resetDone() {
+  const listItems = dinamicVariables.listItems;
+
+  listItems.forEach((item) => {
+    removeClass(item, 'done');
+  });
+}
+
 function changeSelection(event) {
   const taskItem = event.target;
-  
+
   resetSelection();
   addClass(taskItem, 'selected');
 }
@@ -109,6 +126,21 @@ function attVariables() {
 }
 
 // Riscar elemento (line-through solid rgb(0, 0, 0)) ao clicar duas vezes
+
+function controlSelection(event) {
+  if (event.type === 'dblclick') {
+    changeSelection(event);
+  } else if (event.type === 'click') {
+    changeDone(event);
+  }
+}
+
+function changeDone(event) {
+  const taskItem = event.target;
+  
+  resetDone();
+  addClass(taskItem, 'done');
+}
 
 // Resetar tudo ao clicar no botão 'Apagar'
 
