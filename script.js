@@ -9,9 +9,15 @@ function getTaskText() {
   return taskValue;
 }
 
+function selectTask(evt) {
+  const task = evt.target;
+  task.classList.toggle('selected');
+}
+
 function createTask() {
   const newTask = document.createElement('li');
   newTask.innerText = getTaskText();
+  newTask.addEventListener('click', selectTask);
   appendTask(newTask, '#lista-tarefas');
 }
 
