@@ -41,3 +41,39 @@ input {
 .completed {
   text-decoration: line-through solid rgb(0, 0, 0);  
 }
+
+.center-task{
+  width: 50%;
+  margin: auto;
+  justify-content: center;
+  background-color: rgb(255, 217, 252);
+  border-radius: 2%;
+}
+
+#criar-tarefa{
+  background-color: rgb(17, 133, 7);
+}
+
+#apaga-tudo{
+  background-color: rgb(133, 7, 7);
+}
+
+#remover-finalizados{
+  background-color: rgb(185, 109, 10);
+}
+
+#salvar-tarefas{
+  background-color: rgb(18, 29, 180);
+}
+
+#mover-cima{
+  background-color: rgb(0, 0, 0); 
+}
+
+#mover-baixo{
+  background-color: rgb(75, 75, 75); 
+}
+
+#remover-selecionado{
+  background-color: rgb(26, 172, 147);
+}
