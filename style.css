@@ -1,0 +1,60 @@
+body {
+  font-family: monospace;
+  background-color: rgb(197 , 139 , 64);
+}
+
+.completed {
+  text-decoration: line-through solid black;
+}
+
+div {
+  width: 800px;
+  padding: 30px;
+  background-color: aquamarine;
+  margin-top: 50px;
+  margin-left: 10%;
+  border-radius: 30px;
+}
+
+div p {
+  margin-bottom: 60px;
+}
+
+.btn {
+  font-family: monospace;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+#texto-tarefa {
+  height: 30px;
+}
+
+.container-input {
+  display: inline-block;
+}
+
+#apaga-tudo {
+  background-color: blueviolet;
+}
+
+#remover-finalizados {
+  background-color: greenyellow;
+}
+
+#criar-tarefa {
+  background-color: palevioletred;
+}
+
+#funcionamento {
+  font-style: italic;
+  font-size: 15px;
+}
+
+#title {
+  font-size: 30px;
+}
+
+li {
+  font-size: 20px;
+}
