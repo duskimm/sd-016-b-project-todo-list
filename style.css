@@ -6,3 +6,7 @@ header {
   top: 0px;
   /* padding: 50px; */
 }
+
+.completed {
+  text-decoration: line-through;
+}

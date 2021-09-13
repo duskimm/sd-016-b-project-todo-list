@@ -25,3 +25,10 @@ window.onclick = function(event) {
     event.target.style.backgroundColor = 'rgb(' + 128 + ', ' + 128 + ', ' + 128 + ')';
   }
 };
+
+// requisito 9
+window.ondblclick = function(event) {
+  if (event.target.classList.contains('tarefa')) {    
+    event.target.classList.add('completed');
+  }
+};
