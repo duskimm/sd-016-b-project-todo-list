@@ -37,6 +37,7 @@ createOl();
 function createButton() {
   const newButton = document.createElement('button');
   newButton.id = 'criar-tarefa';
+  newButton.innerHTML = 'Adicionar';
   document.body.appendChild(newButton);
 }
 createButton();
@@ -52,3 +53,5 @@ function textInput() {
 
 const getButtonText = document.getElementById('criar-tarefa');
 getButtonText.addEventListener('click', textInput);
+
+// 7.
