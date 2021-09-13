@@ -2,16 +2,17 @@
 const input = document.getElementById('texto-tarefa');
 const buttonAdd = document.getElementById('criar-tarefa');
 const list = document.getElementById('lista-tarefas');
+const clear = document.getElementById('apaga-tudo');
 
 function adicionar(){
   if(input.value !== ''){
   let lista = document.createElement('li');
-  lista.innerText = input.value
+  lista.innerText = input.value;
   list.appendChild(lista);
   input.value = ''
   }
 };
-buttonAdd.addEventListener('click', adicionar)
+buttonAdd.addEventListener('click', adicionar);
 
 //  Requisito 07 e 08 // 
 function pintarCinza(event) {       
@@ -20,7 +21,7 @@ function pintarCinza(event) {
   if (contemCinza == null){
    cinzar.classList.add('cinza');
   } else {   
-  contemCinza.classList.remove('cinza')
+  contemCinza.classList.remove('cinza');
   cinzar.classList.add('cinza');
  }
 }  
@@ -36,6 +37,9 @@ function clicks(event){
     clicado.classList.add('completed')
     }
   };
+list.addEventListener('dblclick', clicks);
 
-  
-  list.addEventListener('dblclick', clicks)
+// Requisito 10 //
+clear.addEventListener('click', function(){
+    list.innerHTML = '';
+});
