@@ -19,7 +19,13 @@ function createTask() {
 }
 
 function changeBackgroundColor(event) {
+  const task = document.querySelectorAll('.list-item')
   let eventTarget = event.target;
-  console.log(eventTarget)
-  eventTarget.style.backgroundColor = ' rgb(128, 128, 128)'
+  /* verifica se existe a classe taskSelected na tarefa */
+  for (let i = 0; i < task.length; i += 1) {
+    if (task[i].classList.contains('taskSelected')) {
+      task[i].classList.remove('taskSelected');
+    } 
+  } eventTarget.classList.add('taskSelected')
+
 }
