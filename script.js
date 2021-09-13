@@ -41,3 +41,15 @@ const input = creatElementHTML('input');
 setId(input, 'texto-tarefa');
 input.type = 'text';
 addElementToDOM(main, input);
+
+const taskList = creatElementHTML('ol');
+setId(taskList, 'lista-tarefas');
+addElementToDOM(main, taskList);
+
+/*
+function generateToDoList() {
+  while (input.value !== ''){
+    document.createElement('');
+  }
+}
+*/
