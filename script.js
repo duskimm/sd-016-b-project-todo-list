@@ -24,10 +24,62 @@ function changeColorOfSelectedTask(ev) {
   ev.target.classList.add('selected');
 }
 
+function takingSelectedTask() {
+  let position;
+  for (let i = 0; i < getListItem.length; i += 1) {
+    if (getListItem[i].classList.contains('selected') === true) {
+      position = i;
+    }
+  }
+  return position;
+}
+
+function movingUp() {
+  const position = takingSelectedTask();
+  if (getSelectedItem.length > 0 && getListItem[position - 1] != null) {
+    const beforeElemText = getListItem[position - 1].innerHTML;
+    const beforeElemClass = getListItem[position - 1].className;
+    const selectedElemText = getListItem[position].innerHTML;
+    const selectedElemclass = getListItem[position].className;
+    getListItem[position].innerHTML = beforeElemText;
+    getListItem[position].className = beforeElemClass;
+    getListItem[position - 1].innerHTML = selectedElemText;
+    getListItem[position - 1].className = selectedElemclass;
+  }
+}
+
+function movingDown() {
+  const position = takingSelectedTask();
+  if (getSelectedItem.length > 0 && getListItem[position + 1] != null) {
+    const beforeElemText = getListItem[position + 1].innerHTML;
+    const beforeElemClass = getListItem[position + 1].className;
+    const selectedElemText = getListItem[position].innerHTML;
+    const selectedElemclass = getListItem[position].className;
+    getListItem[position].innerHTML = beforeElemText;
+    getListItem[position].className = beforeElemClass;
+    getListItem[position + 1].innerHTML = selectedElemText;
+    getListItem[position + 1].className = selectedElemclass;
+  }
+}
+
+function buttonUp() {
+  for (let j = 1; j < getListItem.length; j += 1) {
+    getMovUpButtom.addEventListener('click', movingUp);
+  }
+}
+
+function buttonDown() {
+  for (let j = 0; j < getListItem.length - 1; j += 1) {
+    getMovDownButtom.addEventListener('click', movingDown);
+  }
+}
+
 function assigningColor() {
   for (let i = 0; i < getListItem.length; i += 1) {
     getListItem[i].addEventListener('click', changeColorOfSelectedTask);
   }
+  buttonUp();
+  buttonDown();
 }
 
 function completedTask(ev) {
@@ -105,4 +157,3 @@ function createListAfterReopenPage() {
 window.onload = function onload() {
   createListAfterReopenPage();
 };
-
