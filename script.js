@@ -113,6 +113,7 @@ function cleanList() {
 
 getCleanButton.addEventListener('click', cleanList);
 
+// ref: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/while
 function removeCompletedTask() {
   while (getCompletedTask.length > 0) {
     getCompletedTask[0].remove();

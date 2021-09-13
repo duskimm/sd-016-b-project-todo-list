@@ -27,7 +27,7 @@ section {
   height: 22rem;
   background-color: snow;
   padding-top: 1rem;
-  border-radius: 0px 0px 5px 5px;
+  border-radius: 0 0 5px 5px;
 }
 
 button {
