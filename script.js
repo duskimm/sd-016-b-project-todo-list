@@ -25,3 +25,17 @@ document.addEventListener('click', (event) => {
     selectTask(event);
   }
 }, false);
+
+function completeTask(event) {
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
+  }
+}
+
+document.addEventListener('dblclick', (event) => {
+  if (event.target.classList.contains('tarefa')) {
+    completeTask(event);
+  }
+}, false);
