@@ -3,6 +3,8 @@ const getList = document.getElementById('lista-tarefas');
 const getInput = document.getElementById('texto-tarefa');
 const getListItem = document.getElementsByTagName('li');
 const getCleanButton = document.getElementById('apaga-tudo');
+const getCompletedTask = document.getElementsByClassName('completed');
+const getCleanCompletedTaskButton = document.getElementById('remover-finalizados');
 
 function eraseInputInformation() {
   getInput.value = '';
@@ -51,3 +53,11 @@ function cleanList() {
 }
 
 getCleanButton.addEventListener('click', cleanList);
+
+function removeCompletedTask() {
+  while (getCompletedTask.length > 0) {
+    getCompletedTask[0].remove();
+  }
+}
+
+getCleanCompletedTaskButton.addEventListener('click', removeCompletedTask);
