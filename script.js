@@ -15,16 +15,6 @@ function click() {
   }
 }
 
-function addToList() {
-  const list = document.createElement('li');
-  const input = document.getElementById('texto-tarefa');
-  list.innerText = input.value;
-  toDoList.appendChild(list);
-  input.value = '';
-  // click();
-  // doubleclick();
-}
-
 function tachada(event) {
   const tachado = event.target;
   if (tachado.className === 'completed') {
@@ -38,6 +28,16 @@ function doubleclick() {
   for (let index = 0; index < document.getElementsByTagName('li').length; index += 1) {
     document.querySelectorAll('li')[index].addEventListener('dblclick', tachada);
   }
+}
+
+function addToList() {
+  const list = document.createElement('li');
+  const input = document.getElementById('texto-tarefa');
+  list.innerText = input.value;
+  toDoList.appendChild(list);
+  input.value = '';
+  click();
+  doubleclick();
 }
 
 document.getElementById('criar-tarefa').addEventListener('click', addToList);
