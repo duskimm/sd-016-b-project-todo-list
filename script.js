@@ -52,12 +52,12 @@ const user = {
 
 const tasksArray = [];
 
-const taskInput = getOne('#texto-tarefa'),
-      taskList = getOne('#lista-tarefas'),
-      buttonAdd = getOne('#criar-tarefa'),
-      buttonReset = getOne('#apaga-tudo'),
-      buttonDone = getOne('#remover-finalizados'),
-      buttonRemoveSelected = getOne('#remover-selecionado');
+const taskInput = getOne('#texto-tarefa');
+const taskList = getOne('#lista-tarefas');
+const buttonAdd = getOne('#criar-tarefa');
+const buttonReset = getOne('#apaga-tudo');
+const buttonDone = getOne('#remover-finalizados');
+const buttonRemoveSelected = getOne('#remover-selecionado');
 
 // functions for the project
 
@@ -75,15 +75,15 @@ function createTaskItem() {
   plugHtml(taskList, newTaskItem);
 }
 
-function recoverUserTaskItem() {
-  const conditionDecode = localStorage.tasks.includes('/');
-  localStorage.tasks.split(',').forEach((task) => {
-    const newTaskItem = createElement('li');
-    addClass(newTaskItem, 'task-item');
-    newTaskItem.innerText = conditionDecode ? decodeTask(task) : task;
-    plugHtml(taskList, newTaskItem);
-  });
-}
+// function recoverUserTaskItem() {
+//   const conditionDecode = localStorage.tasks.includes('/');
+//   localStorage.tasks.split(',').forEach((task) => {
+//     const newTaskItem = createElement('li');
+//     addClass(newTaskItem, 'task-item');
+//     newTaskItem.innerText = conditionDecode ? decodeTask(task) : task;
+//     plugHtml(taskList, newTaskItem);
+//   });
+// }
 
 function deleteDoneTasks() {
   const doneTasks = getAll('.completed');
@@ -170,52 +170,52 @@ function listenListItem() {
   addMultiplesListeners(listItems, 'click', deleteSelectedTask);
 }
 
-function getTasks() {
-  tasksArray.forEach((task) => {
-    encodeTask(task);
-  });
+// function getTasks() {
+//   tasksArray.forEach((task) => {
+//     encodeTask(task);
+//   });
 
-  controlUserData('tasks', tasksArray);
-}
+//   controlUserData('tasks', tasksArray);
+// }
 
-function encodeTask(str) {
-  str.replaceAll(' ', '/');
-  return str;
-}
+// function encodeTask(str) {
+//   str.replaceAll(' ', '/');
+//   return str;
+// }
 
-function decodeTask(str) {
-  str.replaceAll('/', ' ');
-}
+// function decodeTask(str) {
+//   str.replaceAll('/', ' ');
+// }
 
-function controlUserData(key, data) {
-  if (key in localStorage) {
-    getUserData(key, data);
-  } else {
-    setUserData(key, data);
-  }
-}
+// function controlUserData(key, data) {
+//   if (key in localStorage) {
+//     getUserData(key, data);
+//   } else {
+//     setUserData(key, data);
+//   }
+// }
 
-function setUserData(key, data) {
-  if (typeof key === 'string' && typeof data === 'string') {
-    localStorage.setItem(key, data)
-  } else {
-    JSON.stringify(key);
-    JSON.stringify(data);
-    localStorage.setItem(key, data)
-  }
-}
+// function setUserData(key, data) {
+//   if (typeof key === 'string' && typeof data === 'string') {
+//     localStorage.setItem(key, data)
+//   } else {
+//     JSON.stringify(key);
+//     JSON.stringify(data);
+//     localStorage.setItem(key, data)
+//   }
+// }
 
-function getUserData(key, data) {
-  localStorage[key] = data;
-}
+// function getUserData(key, data) {
+//   localStorage[key] = data;
+// }
 
-function storeUserData() {
-  getTasks();
-}
+// function storeUserData() {
+//   getTasks();
+// }
 
-function restoreUserSection() {
-  recoverUserTaskItem();
-}
+// function restoreUserSection() {
+//   recoverUserTaskItem();
+// }
 
 function attFunctions() {
   const buttons = getAll('button');
@@ -226,7 +226,7 @@ function attFunctions() {
     deleteDoneTasks();
     resetInput();
     listenListItem();
-    storeUserData();
+    // storeUserData();
   });
 }
 
@@ -234,5 +234,5 @@ window.onload = () => {
   getTask();
   addTaskToList();
   attFunctions();
-  restoreUserSection();
+  // restoreUserSection();
 };
