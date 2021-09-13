@@ -52,4 +52,3 @@ function addLi() {
   
   this.onclick = document.getElementById('texto-tarefa').value = ''; // APAGANDO
 }
-
