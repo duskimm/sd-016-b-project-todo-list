@@ -1,7 +1,8 @@
+const LISTA_TAREFAS = 'lista-tarefas';
 const btnAdd = document.querySelector('#criar-tarefa');
 const addTarefa = document.querySelector('#texto-tarefa');
-const olTasks = document.getElementById('lista-tarefas');
-const arrayLi = document.getElementById('lista-tarefas').childNodes;
+const olTasks = document.getElementById(LISTA_TAREFAS);
+const arrayLi = document.getElementById(LISTA_TAREFAS).childNodes;
 const btnClean = document.getElementById('apaga-tudo');
 const btnCleanComp = document.getElementById('remover-finalizados');
 const btnUp = document.getElementById('mover-cima');
@@ -25,13 +26,14 @@ function resetBackground() {
 btnAdd.addEventListener('click', criaTarefa);
 
 olTasks.addEventListener('click', (evt) => {
+  const event = evt;
   resetBackground();
-  evt.target.style.backgroundColor = 'rgb(128,128,128)';
-  evt.target.classList.add('selected');
+  event.target.style.backgroundColor = 'rgb(128,128,128)';
+  event.target.classList.add('selected');
 });
 
 btnClean.addEventListener('click', () => {
-  const node = document.getElementById('lista-tarefas');
+  const node = document.getElementById(LISTA_TAREFAS);
   while (node.firstChild) {
     node.removeChild(node.lastChild);
   }
