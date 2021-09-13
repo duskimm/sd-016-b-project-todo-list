@@ -17,6 +17,7 @@ function newChild(type, text, classs, id) {
 function removeSelected(selectedTodo) {
   if (selectedTodo !== null) {
     selectedTodo.classList.remove('selected');
+		return true;
   }
 }
 
@@ -42,6 +43,7 @@ function clearElementByClass(elementById, elementClass) {
   }
 }
 
+// Evento de clicar no botao CREATE
 document.querySelector('#criar-tarefa').addEventListener('click', () => {
   const inputText = document.querySelector('#texto-tarefa');
   const todoList = document.querySelector(olId);
@@ -51,21 +53,40 @@ document.querySelector('#criar-tarefa').addEventListener('click', () => {
   }
 });
 
+// Evento de clicar no botao DELETE ALL
 document.querySelector('#apaga-tudo').addEventListener('click', () => {
   clearChilds(olId);
 });
 
+// Evento de clicar no botao REMOVE ALL DONE
 document.querySelector('#remover-finalizados').addEventListener('click', () => {
   clearElementByClass(olId, 'completed');
 });
 
+// Evento de clicar no botao SAVE TAKS
+document.querySelector('#salvar-tarefas').addEventListener('click', () => {
+  const olList = document.getElementsByClassName('todo');
+	localStorage.todoList = '';
+	localStorage.todoClassList = '';
+	for (index = 0; index < olList.length; index += 1) {
+		localStorage.todoList += `${olList[index].innerText}/`;
+		localStorage.todoClassList += `${olList[index].classList}/`;
+	}
+});
+
+// Evento quando clica uma vez em um elemento da todoList
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('todo')) {
-    removeSelected(document.querySelector('.selected'));
-    event.target.classList.add('selected');
+		if (event.target.classList.contains('selected')) {
+			removeSelected(document.querySelector('.selected'));
+		} else {
+			removeSelected(document.querySelector('.selected'));
+			event.target.classList.add('selected');
+		}
   }
 });
 
+// Evento quando clica duas vezes em um elemento da todoList
 document.addEventListener('dblclick', (event) => {
   const todo = event.target;
   if (todo.classList.contains('todo')) {
@@ -76,3 +97,17 @@ document.addEventListener('dblclick', (event) => {
     }
   }
 });
+
+// evento que acontece quando a pagina termina de carregar
+window.onload = () => {
+	const olElement = document.querySelector(olId);
+	let liElements = localStorage.todoList;
+	let liClassElements = localStorage.todoClassList;
+	if (liElements !== undefined) {
+		liElements = liElements.split('/');
+		liClassElements = liClassElements.split('/');
+		for (index = 0; index < liElements.length - 1; index += 1) {
+			olElement.append(newChild('li', liElements[index], liClassElements[index], ''));
+		}
+	}
+};
