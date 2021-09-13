@@ -3,3 +3,20 @@
   text-align: center;
   margin-top: 50px;
   text-decoration: black underline;}
+
+#funcionamento {font-family: Courier New, Courier, monospace;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#texto-tarefa { text-align: center;
+  font-family: Courier New, Courier, monospace;
+  width: 400px;
+  margin-left: 400px;
+  padding: 7px;
+  border: solid black;
+  border-radius: 10px;
+  background-color: rgb(241 , 223 , 252);
+  align-self: center;
+}
