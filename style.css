@@ -11,6 +11,7 @@ html {
 body {
   background-color: #50608f;
   font-family: 'Bebas Neue', cursive;
+  font-size: 1.8rem;
 }
 
 .main__content {
@@ -43,4 +44,17 @@ body {
 .input__content {
   padding-left: 3.8rem;
   padding-top: 2rem;
+}
+
+#criar-tarefa {
+  margin-left: 2rem;
+  font-size: 1.8rem;
+  padding: 0 1rem;
+}
+
+#lista-tarefas {
+  padding-top: 2rem;
+}
+#lista-tarefas li {
+  padding-top: 1rem;
 }
