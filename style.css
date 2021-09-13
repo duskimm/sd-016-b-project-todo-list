@@ -3,6 +3,7 @@ body {
   background-color: rgb(189 , 212 , 231);
   background-image: linear-gradient
     (315deg , rgba(189 , 212 , 231 , 1) 0% , rgba(134 , 147 , 171 , 1) 74%);
+    
 }
 
 .completed {
