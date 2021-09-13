@@ -85,6 +85,7 @@ function addTaskToList() {
     selectAllTasks();
     deleteAllTasks();
     deleteDoneTasks();
+    resetInput();
   });
 }
 
@@ -142,6 +143,10 @@ function deleteDoneTasks() {
       task.remove();
     });
   });
+}
+
+function resetInput() {
+  taskInput.value = '';
 }
 
 window.onload = () => {
