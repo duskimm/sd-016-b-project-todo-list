@@ -4,7 +4,6 @@ const creatTitle = document.createElement('h1');
 creatTitle.innerHTML = 'Minha Lista de Tarefas'
 divBody.appendChild(creatHeader)
 creatHeader.appendChild(creatTitle)
-const listaTarefas = JSON.parse(localStorage.getItem('list_tarefas'))
 
 function paragraph(params) {
     const creatParagraph = document.createElement('p')
@@ -55,12 +54,10 @@ function creatItemList() {
         let creatLi = document.createElement('li')
         creatLi.classList.add('item')
         catchList.appendChild(creatLi)
-        let imputValue = catchimput.value
-        creatLi.innerHTML = imputValue
+        creatLi.innerHTML = catchimput.value
         catchimput.value = ''
-        listaTarefas.push(imputValue)
     })
-    saveList()
+
 }
 creatItemList()
 
@@ -99,10 +96,9 @@ buttons('apaga-tudo', 'apagar')
 function buttonRemove() {
     const catchOl = document.querySelector('#lista-tarefas')
     const catchButtonRemove = document.querySelector('#apaga-tudo')
-    catchButtonRemove.addEventListener('click',() =>{
-       catchOl.innerHTML = ''
+    catchButtonRemove.addEventListener('click', () => {
+        catchOl.innerHTML = ''
     })
-    saveList()
 }
 buttonRemove()
 
@@ -110,18 +106,27 @@ buttons('remover-finalizados', 'apagar finalizados')
 /* essa função while eu peguei com base no repositorio do gabriel rodrigues https://github.com/tryber/sd-016-b-project-todo-list/pull/78/commits/81c677b62f4d88614106cd4f367d971583029898 */
 function buttonRemoveCompleted() {
     const catchButtonRemoveCompleted = document.querySelector('#remover-finalizados')
-    catchButtonRemoveCompleted.addEventListener('click',() =>{
+    catchButtonRemoveCompleted.addEventListener('click', () => {
         while (document.querySelector('.completed')) {
             document.querySelector('.completed').remove();
-          }
-    }) 
-    saveList()
+        }
+    })
 }
 buttonRemoveCompleted()
 
 buttons('salvar-tarefas', 'Salvar Tarefas')
 
 function saveList() {
-localStorage.setItem("list_tarefas",JSON.stringify(listaTarefas))
-    
+
 }
+buttons('remover-selecionado', 'remover selecionados')
+
+function removeSelected() {
+    const catchButtonRemoveSelected = document.querySelector('#remover-selecionado')
+    catchButtonRemoveSelected.addEventListener('click', () => {
+    document.querySelector('.selected').remove();
+        
+    })
+
+}
+removeSelected()
