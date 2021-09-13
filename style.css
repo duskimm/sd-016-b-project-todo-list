@@ -4,9 +4,13 @@
 }
 
 body {
-  font-family: Impact, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
   padding: 20px;
+}
+
+header p {
+  margin-top: 10px;
 }
