@@ -70,20 +70,19 @@ function getTask() {
 function createTaskItem() {
   const newTaskItem = createElement('li');
   addClass(newTaskItem, 'task-item');
-  tasksArray.push(user.msg);
   newTaskItem.innerText = user.msg;
   plugHtml(taskList, newTaskItem);
+  tasksArray.push(newTaskItem);
 }
 
-// function recoverUserTaskItem() {
-//   const conditionDecode = localStorage.tasks.includes('/');
-//   localStorage.tasks.split(',').forEach((task) => {
-//     const newTaskItem = createElement('li');
-//     addClass(newTaskItem, 'task-item');
-//     newTaskItem.innerText = conditionDecode ? decodeTask(task) : task;
-//     plugHtml(taskList, newTaskItem);
-//   });
-// }
+function recoverUserTaskItem() {
+  // localStorage.tasks((task) => {
+  //   const newTaskItem = createElement('li');
+  //   addClass(newTaskItem, 'task-item');
+  //   newTaskItem.innerText = conditionDecode ? decodeTask(task) : task;
+  //   plugHtml(taskList, newTaskItem);
+  // });
+}
 
 function deleteDoneTasks() {
   const doneTasks = getAll('.completed');
@@ -150,11 +149,7 @@ function addTaskToList() {
   });
 }
 
-// botão salvar tarefas (localStorage)
-
 // botões para cima e para baixo, para mover o item selecionado
-
-// botão remover selecionado
 
 function deleteSelectedTask() {
   const selected = getOne('.selected');
@@ -164,58 +159,60 @@ function deleteSelectedTask() {
   });
 }
 
+// botão salvar tarefas (localStorage)
+
 function listenListItem() {
   const listItems = getAll('li');
 
   addMultiplesListeners(listItems, 'click', deleteSelectedTask);
 }
 
-// function getTasks() {
-//   tasksArray.forEach((task) => {
-//     encodeTask(task);
-//   });
+function getTasks() {
+  // tasksArray.forEach((task) => {
+  //   encodeTask(task);
+  // });
 
-//   controlUserData('tasks', tasksArray);
-// }
+  controlUserData('tasks', tasksArray);
+}
 
-// function encodeTask(str) {
-//   str.replaceAll(' ', '/');
-//   return str;
-// }
+function encodeTask(str) {
+  str.replaceAll(' ', '/');
+  return str;
+}
 
-// function decodeTask(str) {
-//   str.replaceAll('/', ' ');
-// }
+function decodeTask(str) {
+  str.replaceAll('/', ' ');
+}
 
-// function controlUserData(key, data) {
-//   if (key in localStorage) {
-//     getUserData(key, data);
-//   } else {
-//     setUserData(key, data);
-//   }
-// }
+function controlUserData(key, data) {
+  if (key in localStorage) {
+    getUserData(key, data);
+  } else {
+    setUserData(key, data);
+  }
+}
 
-// function setUserData(key, data) {
-//   if (typeof key === 'string' && typeof data === 'string') {
-//     localStorage.setItem(key, data)
-//   } else {
-//     JSON.stringify(key);
-//     JSON.stringify(data);
-//     localStorage.setItem(key, data)
-//   }
-// }
+function setUserData(key, data) {
+  if (typeof key === 'string' && typeof data === 'string') {
+    localStorage.setItem(key, data)
+  } else {
+    JSON.stringify(key);
+    JSON.stringify(data);
+    localStorage.setItem(key, data)
+  }
+}
 
-// function getUserData(key, data) {
-//   localStorage[key] = data;
-// }
+function getUserData(key, data) {
+  localStorage[key] = data;
+}
 
-// function storeUserData() {
-//   getTasks();
-// }
+function storeUserData() {
+  getTasks();
+}
 
-// function restoreUserSection() {
-//   recoverUserTaskItem();
-// }
+function restoreUserSection() {
+  recoverUserTaskItem();
+}
 
 function attFunctions() {
   const buttons = getAll('button');
@@ -226,13 +223,14 @@ function attFunctions() {
     deleteDoneTasks();
     resetInput();
     listenListItem();
-    // storeUserData();
+    storeUserData();
   });
 }
 
+const retrieve = localStorage.tasks === '' || localStorage.task === undefined;
 window.onload = () => {
   getTask();
   addTaskToList();
   attFunctions();
-  // restoreUserSection();
+  retrieve ? console.log('joia') : restoreUserSection();
 };
