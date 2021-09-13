@@ -26,8 +26,16 @@ function botaoNovaTarefa (){
   let tarefa = document.querySelector('.tarefa');
   
   function selecionando (event){
-  let evento = event.target;
-  evento.classList.add('selecionado');
+    // remove a seleção dos outros itens 
+    let todasTarefas = document.getElementsByClassName('tarefa');
+
+    for (let i = 0; i < todasTarefas.length; i += 1){
+      todasTarefas[i].classList.remove('selecionado');
+    }
+
+    // seleciona
+    let evento = event.target;
+    evento.classList.add('selecionado');
   }
 }
 
