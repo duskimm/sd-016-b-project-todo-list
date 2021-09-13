@@ -51,3 +51,16 @@ function deleteAllTasks() {
 let deleteButton = document.getElementById('apaga-tudo');
 
 deleteButton.addEventListener('click', deleteAllTasks);
+
+// Função que apaga tarefas finalizadas
+function deleteCompletedTasks() {
+  let elements = document.getElementsByClassName('completed');
+
+  while(elements.length > 0) {
+    elements[0].parentNode.removeChild(elements[0])
+  }
+
+  // Créditos: Veikko Karsikko no Stack Overflow (https://stackoverflow.com/questions/4777077/removing-elements-by-class-name/14066534#14066534?newreg=a0387cf778c645cca68cdc5b3b37c0de)
+}
+
+document.getElementById('remover-finalizados').addEventListener('click', deleteCompletedTasks);
