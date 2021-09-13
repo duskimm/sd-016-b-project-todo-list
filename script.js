@@ -46,3 +46,12 @@ buttonAdicionar.addEventListener('click', () => {
     textTarefa.focus();
   }
 });
+
+// 10 - Adicione um botão com id="apaga-tudo" que quando clicado deve apagar todos os itens da lista.
+const btnApagarTudo = document.getElementById('apaga-tudo');
+btnApagarTudo.addEventListener('click', () => {
+  const li = document.getElementsByClassName('listItem');
+  for (let index = li.length - 1; index >= 0; index -= 1) {
+    li[index].remove();
+  }
+});
