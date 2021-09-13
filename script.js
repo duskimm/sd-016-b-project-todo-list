@@ -1,26 +1,15 @@
-function addTarefa() {
-  if (document.querySelector('#texto-tarefa').value.length > 0) {
-    let li = document.createElement('li');
-    li.innerText = document.querySelector('#texto-tarefa').value;
-    document.querySelector('#texto-tarefa').value = '';
-    li.classList.add('tarefa');
-    li.onclick = selecionar;
-    li.ondblclick = riscar;
-    document.querySelector('#lista-tarefas').appendChild(li);
-  }
-}
-
-//  5-8 Habilita seleção
+//  7-8 Habilita seleção
 function selecionar(e) {
-  if (document.querySelector('.selecionado')) {
-    document.querySelector('.selecionado').classList.remove('selecionado');
+  const s = 'selecionado'; // resolve o linter
+  if (document.querySelector(`.${s}`)) {
+    document.querySelector(`.${s}`).classList.remove(s);
   }
-  e.target.classList.add('selecionado');
+  e.target.classList.add(s);
 }
 
 //  9 Habilita riscar tarefa
 function riscar(e) {
-  if ( e.target.classList.contains('completed')) {
+  if (e.target.classList.contains('completed')) {
     e.target.classList.remove('completed');
   } else {
     e.target.classList.add('completed');
@@ -45,6 +34,20 @@ function limparCompletos() {
 function removeSelecionado() {
   while (document.querySelector('.selecionado')) {
     document.querySelector('.selecionado').remove();
+  }
+}
+
+//  5-6 Habilita adicionar tarefa
+function addTarefa() {
+  const texto = document.querySelector('#texto-tarefa');
+  if (texto.value.length > 0) {
+    const li = document.createElement('li');
+    li.innerText = texto.value;
+    texto.value = '';
+    li.classList.add('tarefa');
+    li.onclick = selecionar;
+    li.ondblclick = riscar;
+    document.querySelector('#lista-tarefas').appendChild(li);
   }
 }
 
