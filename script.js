@@ -48,6 +48,11 @@ const user = {
   msg: '',
 }
 
+const dinamicVariables = {
+  taskItems: getAll('.task-item'),
+  listItems: getAll('li'),
+}
+
 const taskInput = getOne('#texto-tarefa');
 const taskList = getOne('#lista-tarefas');
 const buttonAdd = getOne('#criar-tarefa');
@@ -70,6 +75,7 @@ function createTaskItem() {
 function addTaskToList() {
   buttonAdd.addEventListener('click', () => {
     createTaskItem();
+    attVariables();
     selectAllTasks();
   });
 }
@@ -77,17 +83,29 @@ function addTaskToList() {
 // Seleção de elemento (retirada do backgorundColor)
 
 function selectAllTasks() {
-  const taskItems = getAll('.task-item');
+  const taskItems = dinamicVariables.taskItems;
 
-  addMultiplesListeners(taskItems, 'click', changeSelection)
+  addMultiplesListeners(taskItems, 'click', changeSelection);
+}
+
+function resetSelection() {
+  const listItems = dinamicVariables.listItems;
+
+  listItems.forEach((item) => {
+    removeClass(item, 'selected');
+  });
 }
 
 function changeSelection(event) {
   const taskItem = event.target;
+  
+  resetSelection();
+  addClass(taskItem, 'selected');
+}
 
-  if (taskItem.className === 'task-item') {
-    removeClass(taskItem, 'task-item');
-  }
+function attVariables() {
+  dinamicVariables.listItems = getAll('li');
+  dinamicVariables.taskItems = getAll('.task-item');
 }
 
 // Riscar elemento (line-through solid rgb(0, 0, 0)) ao clicar duas vezes
