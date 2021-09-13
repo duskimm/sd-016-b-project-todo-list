@@ -90,3 +90,13 @@ function initiateList() {
 }
 
 window.onload = initiateList;
+
+function removeSelectedTask() {
+  const selectedTask = document.querySelector('.selecionada');
+  if (selectedTask !== null) {
+    selectedTask.remove();
+  }
+}
+
+const removeSelectedTaskButton = document.querySelector('#remover-selecionado');
+removeSelectedTaskButton.addEventListener('click', removeSelectedTask);
