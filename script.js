@@ -3,6 +3,7 @@ const inputTasks = document.getElementById('texto-tarefa');
 const taskButton = document.getElementById('criar-tarefa');
 const itens = document.getElementsByClassName('itens');
 const clearButton = document.getElementById('apaga-tudo');
+const clearDoneButton = document.getElementById('remover-finalizados');
 
 function addClassSelected(e) {
   for (let i = 0; i < itens.length; i += 1) {
@@ -22,18 +23,28 @@ function addClassCompleted(e) {
   e.target.classList.toggle('completed');
 }
 
-function addEventLi2() {
+function addNewEventLi() {
   for (let i = 0; i < itens.length; i += 1) {
     itens[i].addEventListener('dblclick', addClassCompleted);
   }
 }
-addEventLi2();
+addNewEventLi();
 
 function clearTasks() {
   orderedList.innerHTML = '';
 }
 
-clearButton.addEventListener('click', clearTasks)
+clearButton.addEventListener('click', clearTasks);
+
+function clearDone() {
+  const getCompleted = document.getElementsByClassName('completed');
+  while (getCompleted.length > 0) {
+    getCompleted[0].parentNode.removeChild(getCompleted[0]);
+  }
+}
+/* Recorri a seguinte referência para resolver essa parte:
+https://qastack.com.br/programming/4777077/removing-elements-by-class-name */
+clearDoneButton.addEventListener('click', clearDone);
 
 function addTasks() {
   const inputValue = inputTasks.value;
@@ -43,7 +54,7 @@ function addTasks() {
   orderedList.appendChild(createLi);
   inputTasks.value = '';
   addEventLi();
-  addEventLi2();
+  addNewEventLi();
 }
 
 taskButton.addEventListener('click', addTasks);
