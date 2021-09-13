@@ -13,3 +13,10 @@ function adicionar(){
 };
 
 buttonAdd.addEventListener('click', adicionar)
+
+//  Requisito 07  // 
+function pintarCinza(event) {
+    event.target.style.background = 'rgb(128, 128, 128)';
+    }  
+   
+   list.addEventListener('click', pintarCinza);
