@@ -4,6 +4,7 @@ function creationHeader() {
   body.appendChild(header);
   const h1 = document.createElement('h1');
   h1.innerText = 'Minha Lista de Tarefas.';
+  h1.style.textAlign = 'center';
   header.appendChild(h1);
 }
 
@@ -14,7 +15,19 @@ function creationParagraph() {
   const paragraph = document.createElement('p');
   paragraph.id = 'funcionamento';
   paragraph.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
+  paragraph.style.textAlign = 'center';
   body.appendChild(paragraph);
 }
 
 creationParagraph();
+
+function creationInput() {
+  const body = document.querySelector('body');
+  const input = document.createElement('input');
+  input.id = 'texto-tarefa';
+  input.style.textAlign = '';
+  body.appendChild(input);
+}
+
+creationInput();
+
