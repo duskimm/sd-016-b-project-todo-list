@@ -11,9 +11,10 @@ body * {
 
 header {
   background-color: slategrey;
-  font-size: 1.2rem;
-  width: 26.5rem;
+  font-size: 2rem;
+  width: 50.5rem;
   border-radius: 5px 5px 0 0;
+  padding-bottom: 1rem;
 }
 
 p , h1 {
@@ -23,8 +24,8 @@ p , h1 {
 }
 
 section {
-  width: 26.5rem;
-  height: 22rem;
+  width: 50.5rem;
+  height: 45rem;
   background-color: snow;
   padding-top: 1rem;
   border-radius: 0 0 5px 5px;
@@ -33,7 +34,7 @@ section {
 button {
   border-radius: 0.6rem;
   font-weight: 900;
-  font-size: 0.6rem;
+  font-size: 1.4rem;
 }
 
 section .input * {
@@ -41,7 +42,7 @@ section .input * {
 }
 
 input {
-  width: 17.5rem;
+  width: 35.5rem;
 }
 
 .buttom {
@@ -51,7 +52,7 @@ input {
 /* ref: Obj: Wrap text Src:https://stackoverflow.com/questions/3058866/  */
 .list {
   background-color: lightblue;
-  width: 17.5rem;
+  width: 44rem;
   text-align: justify;
   list-style-position: inside;
   border: 0.06rem solid black;
@@ -75,10 +76,11 @@ ol {
 
 li {
   border-bottom: 0.06rem solid black;
+  font-size: 1.5rem;
 }
 
 li:hover {
-  font-size: 1.25rem;
+  font-size: 2rem;
 }
 
 .selected {
