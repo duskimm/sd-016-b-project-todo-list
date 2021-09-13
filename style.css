@@ -46,6 +46,14 @@ div p {
   background-color: palevioletred;
 }
 
+#mover-cima {
+  background-color: darkred;
+}
+
+#mover-baixo {
+  background-color: gold;
+}
+
 #funcionamento {
   font-style: italic;
   font-size: 15px;
