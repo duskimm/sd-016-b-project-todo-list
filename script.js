@@ -3,6 +3,7 @@ const inputTask = document.querySelector('#texto-tarefa');
 const list = document.querySelector('#lista-tarefas')
 btnAddTask.addEventListener('click', createTask);
 list.addEventListener('click', changeBackgroundColor)
+list.addEventListener('dblclick', addTaskToCompleted)
 
 
 function createTask() {
@@ -27,5 +28,14 @@ function changeBackgroundColor(event) {
       task[i].classList.remove('taskSelected');
     } 
   } eventTarget.classList.add('taskSelected')
+}
 
+function addTaskToCompleted(event) {
+  const eventTarget = event.target;
+  if (eventTarget.classList.contains('completed') === false) {
+    event.target.classList.add('completed');
+  }
+  else {
+    event.target.classList.remove('completed');
+  }
 }
