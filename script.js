@@ -20,3 +20,8 @@ toDoList.addEventListener('click', (event) => {
     event.target.classList.toggle('gray');
   }
 });
+
+// Requisito 8
+toDoList.addEventListener('dblclick', (event) => {
+  event.target.classList.toggle('completed');
+});
