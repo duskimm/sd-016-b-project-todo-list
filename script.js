@@ -14,9 +14,15 @@ getButton.addEventListener('click', function () {
 
 
 
-getOrderlist.addEventListener('click', function(event){
+getOrderlist.addEventListener('click', function(event) {
   for (let i = 0; i < getItemList.length; i += 1) {
     getItemList[i].style.backgroundColor = 'white';
-  }
-  event.target.style.backgroundColor = 'rgb(128, 128, 128)';   
+  };
+  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+});
+
+getOrderlist.addEventListener('dblclick', function(event) {
+  const evento = event.target;
+  // evento.style.textDecoration = 'line-through solid rgb(0, 0, 0)'
+  evento.classList.toggle('completed'); // toggle usado para add e remover a classe retirado do site https://www.w3schools.com/howto/howto_js_toggle_class.asp
 });
