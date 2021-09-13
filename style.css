@@ -1,5 +1,11 @@
-h1 {
-    background-color: greenyellow;
+* {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+.selecionado {
+  background-color: rgb(128, 128, 128);
 }
 
 /* Deixe uma linha no fim pra agradar o linter */
