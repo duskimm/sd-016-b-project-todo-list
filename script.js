@@ -1,4 +1,4 @@
-// Requisito 5 e 6 - Texto do input é limpo após ser inserido e o item é adicionado ao final da lista
+// Requisitos 5 e 6 - Texto do input é limpo após ser inserido e o item é adicionado ao final da lista
 const taskInput = document.getElementById('texto-tarefa');
 const addButton = document.getElementById('criar-tarefa');
 const listaOrdenada = document.getElementById('lista-tarefas');
@@ -21,9 +21,7 @@ function validation() {
 }
 validation();
 
-// Requisito 7 e 8 - Mudar o background color do elemento da lista ao clicar no mesmo
-let alvo = '';
-
+// Requisitos 7 e 8 - Mudar o background color do elemento da lista ao clicar no mesmo
 function removeLastSelected() {
   const listElements = listaOrdenada.children;
   for (let i = 0; i < listElements.length; i += 1) {
@@ -36,8 +34,21 @@ function removeLastSelected() {
 function selectedTask() {
   listaOrdenada.addEventListener('click', (event) => {
     removeLastSelected();
-    alvo = event.target;
+    const alvo = event.target;
     alvo.id = 'selected';
   });
 }
 selectedTask();
+
+// Requisito 9 - Riscar elemento que seja clicado 2x, voltando ao normal caso clicado mais 2x
+function completedTask() {
+  listaOrdenada.addEventListener('dblclick', (event) => {
+    const alvoCompleto = event.target;
+    if (alvoCompleto.className === 'completed') {
+      alvoCompleto.removeAttribute('class');
+    } else {
+      alvoCompleto.className = 'completed';
+    }
+  });
+}
+completedTask();
