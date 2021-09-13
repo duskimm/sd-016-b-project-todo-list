@@ -6,3 +6,11 @@
 .selected {
   background-color: gray;
 }
+
+.completed {
+  text-decoration: line-through;
+}
+
+.itens {
+  cursor: pointer;
+}
