@@ -40,19 +40,30 @@ function removeSelected() {
   }
 }
 
+function clearList(list) {
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  }
+}
+
+function saveList() {
+  const list = document.querySelector('#lista-tarefas').innerHTML;
+  localStorage.setItem('list', list);
+}
+
 window.onload = () => {
   const list = document.querySelector('#lista-tarefas');
+  if (localStorage.getItem('list')) {
+    list.innerHTML = localStorage.list;
+  }
   const createTaskBtn = document.querySelector('#criar-tarefa');
   const clearBtn = document.querySelector('#apaga-tudo');
   const clearCompletedBtn = document.querySelector('#remover-finalizados');
   const removeSelBtn = document.querySelector('#remover-selecionado');
-
+  const saveBtn = document.querySelector('#salvar-tarefas');
   createTaskBtn.addEventListener('click', () => addTask(list));
-  clearBtn.addEventListener('click', () => {
-    while (list.firstChild) {
-      list.removeChild(list.firstChild);
-    }
-  });
+  clearBtn.addEventListener('click', () => clearList(list));
   clearCompletedBtn.addEventListener('click', clearCompleted);
   removeSelBtn.addEventListener('click', removeSelected);
+  saveBtn.addEventListener('click', saveList);
 };
