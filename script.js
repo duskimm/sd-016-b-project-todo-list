@@ -12,12 +12,16 @@ function adicionarLista () {
 let botao = document.querySelector('#criar-tarefa');
 let textoAdicionado = botao.addEventListener('click', adicionarLista);
 
-// Adicionando backgroud na lista selecionada
+// requisito 7 e 8 - só um li pode ser selecionado por vez
+let listaOrdenada = document.querySelector('#lista-tarefas');
+let itensLista = document.querySelectorAll('.tarefa');
+
 window.onclick = function(event) {
   if (event.target.classList.contains('tarefa')) {
-    // console.log('Cor selecionada: ' + recuperaCorAlvo(event));
-    // let corAlvo = recuperaCorAlvo(event);
+    let itensLista = document.querySelectorAll('.tarefa');
+    for (let index = 0; index < itensLista.length; index += 1) {
+      itensLista[index].style.backgroundColor = '';
+    }
     event.target.style.backgroundColor = 'rgb(' + 128 + ', ' + 128 + ', ' + 128 + ')';
   }
-  // console.log(event.target.className);
 };
