@@ -22,6 +22,8 @@ header.append(headPara);
 // // 3 - Adicione um input com o id="texto-tarefa" onde a pessoa usuária poderá digitar o nome do item que deseja adicionar à lista
 
 const input01 = document.createElement('input');
+input01.type = 'text';
+input01.id = 'texto-tarefa';
 document.body.append(input01);
 
 //  4 - Adicione uma lista ordenada de tarefas com o id="lista-tarefas"
@@ -30,5 +32,24 @@ const ordList = document.createElement('ol');
 ordList.id = 'lista-tarefas';
 document.body.append(ordList);
 
-const LIord = document.createElement('li');
-ordList.append(LIord);
+
+// 5 - Adicione um botão com id="criar-tarefa" e, ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo
+
+const button01 = document.createElement('button');
+button01.setAttribute('onclick', 'addLi()');
+button01.id = 'criar-tarefa';
+button01.innerText = 'adicionar';
+document.body.append(button01);
+
+function addLi() {
+  let txtVal = document.getElementById('texto-tarefa').value;
+  let listNode = document.getElementById('lista-tarefas');
+  let liNode = document.createElement('li');
+  let txtNode = document.createTextNode(txtVal);
+
+  liNode.appendChild(txtNode);
+  listNode.appendChild(liNode);
+  
+  this.onclick = document.getElementById('texto-tarefa').value = ''; // APAGANDO
+}
+
