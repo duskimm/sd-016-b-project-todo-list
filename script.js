@@ -41,3 +41,12 @@ function addToList() {
 }
 
 document.getElementById('criar-tarefa').addEventListener('click', addToList);
+
+function eraseList() {
+  const erase = document.querySelectorAll('li');
+  for (let index = 0; index < erase.length; index += 1) {
+    erase[index].remove();
+  }
+}
+
+document.getElementById('apaga-tudo').addEventListener('click', eraseList);
