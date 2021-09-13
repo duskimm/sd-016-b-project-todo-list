@@ -34,7 +34,14 @@ function createTask() {
   appendTask(newTask, '#lista-tarefas');
 }
 
+function clearTaskList() {
+  const taskList = document.getElementById('lista-tarefas');
+  taskList.innerText = '';
+}
+
 window.onload = () => {
   const createTaskButton = document.getElementById('criar-tarefa');
   createTaskButton.addEventListener('click', createTask);
+  const clearTaskListButton = document.getElementById('apaga-tudo');
+  clearTaskListButton.addEventListener('click', clearTaskList);
 };
