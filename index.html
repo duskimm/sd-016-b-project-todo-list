@@ -20,7 +20,7 @@
         <section id="third-section"></section>
     </main>
     <script>
-        
+        let arrayToDo = [];
         function createElementFirstSection() {
             // 3 - Adicione um input com o id="texto-tarefa" onde a pessoa usuária poderá digitar o nome do item que deseja adicionar à lista.
             function createInputTodo(){
@@ -51,6 +51,20 @@
             buttonCreateTodo();
         }
         createElementFirstSection();
+        //5 - Adicione um botão com id="criar-tarefa" e, ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo
+        function captureCreateTodoList(){
+            let inputElement = document.getElementById('texto-tarefa');
+            let buttonElement = document.getElementById('criar-tarefa');
+            buttonElement.addEventListener('click', function(){
+                let text = inputElement.value;
+                let li = document.createElement('li');
+                li.innerHTML = text;
+                let ol = document.getElementById('lista-tarefas');
+                ol.appendChild(li);
+                inputElement.value = '';
+            });
+        }
+        captureCreateTodoList();
     </script>
 </body>
 
