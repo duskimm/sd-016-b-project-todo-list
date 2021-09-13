@@ -3,6 +3,7 @@ const getButton = document.getElementById('criar-tarefa');
 const getOrderlist = document.getElementById('lista-tarefas');
 const getItemList = document.getElementsByClassName('itemList');
 const getDeleteButton = document.getElementById('apaga-tudo');
+const getCompletedButton = document.getElementById('remover-finalizados');
 // Adicinar valores a lista 
 getButton.addEventListener('click', function () {
   const criali = document.createElement('li');
@@ -12,8 +13,6 @@ getButton.addEventListener('click', function () {
   getInput.value = '';
 });
 
-
-
 getOrderlist.addEventListener('click', function(event) {
   for (let i = 0; i < getItemList.length; i += 1) {
     getItemList[i].style.backgroundColor = 'white';
@@ -22,9 +21,8 @@ getOrderlist.addEventListener('click', function(event) {
 });
 
 getOrderlist.addEventListener('dblclick', function(event) {
-  const evento = event.target;
   // evento.style.textDecoration = 'line-through solid rgb(0, 0, 0)'
-  evento.classList.toggle('completed'); // toggle usado para add e remover a classe retirado do site https://www.w3schools.com/howto/howto_js_toggle_class.asp
+  event.target.classList.toggle('completed'); // toggle usado para add e remover a classe retirado do site https://www.w3schools.com/howto/howto_js_toggle_class.asp
 });
 // Botão apagar tudo
 function deleteList(n) {
@@ -34,4 +32,14 @@ function deleteList(n) {
 };
 getDeleteButton.addEventListener('click', function (){
 deleteList(getItemList.length);
+});
+// apagar selecionados
+getCompletedButton.addEventListener('click', function (){
+  const getComplete = document.getElementsByClassName('completed');
+  function retirar () {
+    for (let i = getComplete.length -1; i >= 0; i -= 1){ // Retirado a ideia de fazer um loop inverso do site https://stackoverflow.com/questions/40114681/remove-all-elements-in-the-html-collection
+      getComplete[i].remove();
+    }
+  }
+retirar();
 });
