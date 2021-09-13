@@ -5,6 +5,9 @@ const getListItem = document.getElementsByTagName('li');
 const getCleanButton = document.getElementById('apaga-tudo');
 const getCompletedTask = document.getElementsByClassName('completed');
 const getCleanCompletedTaskButton = document.getElementById('remover-finalizados');
+const tasksInAArray = [];
+const classTaskInAArray = [];
+const getSaveButtom = document.getElementById('salvar-tarefas');
 
 function eraseInputInformation() {
   getInput.value = '';
@@ -61,3 +64,34 @@ function removeCompletedTask() {
 }
 
 getCleanCompletedTaskButton.addEventListener('click', removeCompletedTask);
+
+function saveContent() {
+  for (let i = 0; i < getListItem.length; i += 1) {
+    tasksInAArray.push(getListItem[i].innerText);
+    classTaskInAArray.push(getListItem[i].className);
+  }
+  localStorage.setItem('tasks', JSON.stringify(tasksInAArray));
+  localStorage.setItem('classTask', JSON.stringify(classTaskInAArray));
+}
+
+getSaveButtom.addEventListener('click', saveContent);
+
+function createListAfterReopenPage() {
+  const tasksList = JSON.parse(localStorage.getItem('tasks'));
+  const classesList = JSON.parse(localStorage.getItem('classTask'));
+  if (tasksList !== null) {
+    for (let i = 0; i < tasksList.length; i += 1) {
+      const itemList = document.createElement('li');
+      itemList.innerText = tasksList[i];
+      itemList.className = classesList[i];
+      getList.appendChild(itemList);
+      eraseInputInformation();
+      assigningColor();
+      assigningClassCompleted();
+    }
+  }
+}
+
+window.onload = function onload() {
+  createListAfterReopenPage();
+};
