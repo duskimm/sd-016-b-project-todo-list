@@ -10,7 +10,7 @@ createTaskButton.addEventListener('click', () => {
   taskText.value = '';
 });
 
-// Requisito 7
+// Requisito 7 e 8
 toDoList.addEventListener('click', (event) => {
   let grayLi = document.querySelector('.gray');
   if (grayLi == null) {
@@ -21,7 +21,14 @@ toDoList.addEventListener('click', (event) => {
   }
 });
 
-// Requisito 8
+// Requisito 9
 toDoList.addEventListener('dblclick', (event) => {
   event.target.classList.toggle('completed');
+});
+
+// Requisito 10
+let eraseAll = document.querySelector('#apaga-tudo');
+
+eraseAll.addEventListener('click', () => {
+  toDoList.innerHTML = '';
 });
