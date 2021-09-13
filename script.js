@@ -46,10 +46,20 @@ const taskList = creatElementHTML('ol');
 setId(taskList, 'lista-tarefas');
 addElementToDOM(main, taskList);
 
-/*
-function generateToDoList() {
-  while (input.value !== ''){
-    document.createElement('');
+const button = creatElementHTML('button');
+setId(button, 'criar-tarefa');
+setInnerText(button, 'Criar');
+addElementToDOM(main, button);
+
+function createTask() {
+  if (input.value !== '') {
+    const task = creatElementHTML('li');
+    setInnerText(task, input.value);
+    addElementToDOM(taskList, task);
+    input.value = '';
+  } else {
+    alert('Ops! Você ainda não inseriu a tarefa.');
   }
 }
-*/
+
+button.addEventListener('click', createTask);
