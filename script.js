@@ -58,6 +58,7 @@ const buttonAdd = getOne('#criar-tarefa');
 const buttonReset = getOne('#apaga-tudo');
 const buttonDone = getOne('#remover-finalizados');
 const buttonRemoveSelected = getOne('#remover-selecionado');
+const buttonSave = getOne('#salvar-tarefa');
 
 // functions for the project
 
@@ -75,13 +76,26 @@ function createTaskItem() {
   tasksArray.push(newTaskItem);
 }
 
+function unpackingTasks(str) {
+  return str.split('=');
+}
+
+function addUserClass(element, tasksArr) {
+  const tasks = tasksArr.split(' ');
+  for (let clas of tasks) {
+    addClass(element, clas);
+  }
+}
+
 function recoverUserTaskItem() {
-  // localStorage.tasks((task) => {
-  //   const newTaskItem = createElement('li');
-  //   addClass(newTaskItem, 'task-item');
-  //   newTaskItem.innerText = conditionDecode ? decodeTask(task) : task;
-  //   plugHtml(taskList, newTaskItem);
-  // });
+  localStorage.tasks.split(',').forEach((task) => {
+    const userTaskItem = createElement('li');
+    addUserClass(userTaskItem, unpackingTasks(task)[1]);
+    userTaskItem.innerText = unpackingTasks(task)[2];
+    plugHtml(taskList, userTaskItem);
+
+    console.log(unpackingTasks(task));
+  });
 }
 
 function deleteDoneTasks() {
@@ -159,31 +173,36 @@ function deleteSelectedTask() {
   });
 }
 
+function controlTemp() {
+  deleteSelectedTask();
+  storeUserData();
+}
+
 // botão salvar tarefas (localStorage)
 
 function listenListItem() {
   const listItems = getAll('li');
 
-  addMultiplesListeners(listItems, 'click', deleteSelectedTask);
+  addMultiplesListeners(listItems, 'click', controlTemp);
 }
 
 function getTasks() {
   const filteredTasks = [];
 
   tasksArray.forEach((task) => {
-    filteredTasks.push(`li.${task.className}=${task.innerText}`);
+    filteredTasks.push(`li=${task.className}=${task.innerText}`);
   });
 
   controlUserData('tasks', filteredTasks);
 }
 
 function encodeTask(str) {
-  str.replaceAll(' ', '/');
+  str.replaceAll(' ', '.');
   return str;
 }
 
 function decodeTask(str) {
-  str.replaceAll('/', ' ');
+  str.replaceAll('=', ' ');
 }
 
 function controlUserData(key, data) {
@@ -229,10 +248,15 @@ function attFunctions() {
   });
 }
 
-const retrieve = localStorage.tasks === '' || localStorage.task === undefined;
+function userControl() {
+  if (localStorage.tasks) {
+    restoreUserSection();
+  }
+}
+
 window.onload = () => {
   getTask();
   addTaskToList();
   attFunctions();
-  retrieve ? console.log('joia') : restoreUserSection();
+  userControl();
 };
