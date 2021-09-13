@@ -41,11 +41,19 @@ function limparCompletos() {
   }
 }
 
+//  14 Habilita remover selecionado
+function removeSelecionado() {
+  while (document.querySelector('.selecionado')) {
+    document.querySelector('.selecionado').remove();
+  }
+}
+
 //  Configurar a página
 function configurar() {
   document.querySelector('#criar-tarefa').addEventListener('click', addTarefa);
   document.querySelector('#apaga-tudo').addEventListener('click', limparLista);
   document.querySelector('#remover-finalizados').addEventListener('click', limparCompletos);
+  document.querySelector('#remover-selecionado').addEventListener('click', removeSelecionado);
 }
 
 window.onload = configurar;
