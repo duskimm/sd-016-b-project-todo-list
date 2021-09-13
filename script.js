@@ -18,8 +18,9 @@ ol.addEventListener('click', (event) => {
 });
 
 ol.addEventListener('dblclick', (event) => {
-  for (let index = 0; index < listTask.length; index += 1) {
-    listTask[index].classList.remove('completed');
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
   }
-  event.target.classList.add('completed');
 });
