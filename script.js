@@ -2,6 +2,8 @@
 const taskList = document.querySelector("#lista-tarefas");
 const addButton = document.querySelector("#criar-tarefa");
 const taskInput = document.querySelector('#texto-tarefa');
+const removeAllButton = document.querySelector('#apaga-tudo');
+const removeCompletedButton = document.querySelector('#remover-finalizados')
 // 
 
 
@@ -45,3 +47,18 @@ function changeCompletedClass (event) {
 }
 taskList.addEventListener('dblclick', changeCompletedClass);
 
+function removeAllTasks () {
+  while (taskList.firstChild) {
+    taskList.removeChild(taskList.firstChild)
+  }
+}
+removeAllButton.addEventListener('click', removeAllTasks);
+// Lógica encontrada em https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
+
+function removeCompletedTasks () {
+  let completedTasks = document.querySelectorAll('.completed');
+  for (let i = 0; i < completedTasks.length; i+=1) {
+    taskList.removeChild(completedTasks[i]);
+  }
+}
+removeCompletedButton.addEventListener('click', removeCompletedTasks);
