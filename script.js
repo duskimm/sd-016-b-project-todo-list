@@ -134,6 +134,12 @@ function addTaskToList() {
   });
 }
 
+// botão salvar tarefas (localStorage)
+
+// botões para cima e para baixo, para mover o item selecionado
+
+// botão remover selecionado
+
 window.onload = () => {
   getTask();
   addTaskToList();
