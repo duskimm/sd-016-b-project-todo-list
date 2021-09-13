@@ -16,11 +16,22 @@ button.addEventListener('click', function () {
 // Selecionado tarefa da lista
 orderedList.addEventListener('click', function (event) {
   if (event.target.id !== 'lista-tarefas') {
-    let listItems = orderedList.children;
-    let currentSelection = event.target;
-    for (item of listItems) {
-      item.style.backgroundColor = ''
+    const listItems = orderedList.children;
+    const currentSelection = event.target;
+    for (const item of listItems) {
+      item.style.backgroundColor = '';
     }
     currentSelection.style.backgroundColor = 'rgb(128, 128, 128)';
+  }
+});
+
+// Riscando tarefa da lista
+orderedList.addEventListener('dblclick', function (event) {
+  if (event.target.id !== 'lista-tarefas') {
+    if (event.target.classList[0] === 'completed') {
+      event.target.classList.remove('completed');
+    } else {
+      event.target.classList.add('completed');
+    }
   }
 });
