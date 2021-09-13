@@ -3,3 +3,6 @@ teste.innerText = 'Teste js';
 document.querySelector('body').appendChild(teste);
 
 console.log('ok');
+
+
+// Linter, você está feliz?
