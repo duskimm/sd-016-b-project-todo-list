@@ -16,8 +16,8 @@ function addClass(element, newClass) {
   element.classList.add(newClass);
 }
 
-function toggleClass(element, toggleClass) {
-  element.classList.toggle(toggleClass);
+function toggleClass(element, alternateClass) {
+  element.classList.toggle(alternateClass);
 }
 
 function removeClass(element, delClass) {
@@ -26,24 +26,6 @@ function removeClass(element, delClass) {
 
 function plugHtml(fatherElement, sonElement) {
   fatherElement.appendChild(sonElement);
-}
-
-function removeOfHtml(fatherElement, sonElement) {
-  fatherElement.removeChild(sonElement);
-}
-
-function addMultiplesEvents(element, eventsName, listener) {
-  const events = eventsName.split(' ');
-
-  events.forEach((event) => {
-    element.addEventListener(event, listener, false);
-  });
-}
-
-function addMultiplesListeners(arr, event, listener) {
-  arr.forEach((i) => {
-    i.addEventListener(event, listener, false);
-  });
 }
 
 function addMultiplesEventsAndListeners(arr, eventsName, listener) {
@@ -60,7 +42,7 @@ function addMultiplesEventsAndListeners(arr, eventsName, listener) {
 
 const user = {
   msg: '',
-}
+};
 
 const taskInput = getOne('#texto-tarefa');
 const taskList = getOne('#lista-tarefas');
@@ -83,20 +65,14 @@ function createTaskItem() {
   plugHtml(taskList, newTaskItem);
 }
 
-function addTaskToList() {
-  buttonAdd.addEventListener('click', () => {
-    createTaskItem();
-    selectAllTasks();
-    deleteAllTasks();
-    deleteDoneTasks();
-    resetInput();
+function deleteDoneTasks() {
+  const doneTasks = getAll('.completed');
+
+  buttonDone.addEventListener('click', () => {
+    doneTasks.forEach((task) => {
+      task.remove();
+    });
   });
-}
-
-function selectAllTasks() {
-  const taskItems = getAll('.task-item');
-
-  addMultiplesEventsAndListeners(taskItems, 'click dblclick', controlSelection)
 }
 
 function resetSelection() {
@@ -114,6 +90,12 @@ function changeSelection(event) {
   addClass(taskItem, 'selected');
 }
 
+function changeDone(event) {
+  const taskItem = event.target;
+  toggleClass(taskItem, 'completed');
+  deleteDoneTasks();
+}
+
 function controlSelection(event) {
   if (event.type === 'dblclick') {
     changeDone(event);
@@ -122,29 +104,18 @@ function controlSelection(event) {
   }
 }
 
-function changeDone(event) {
-  const taskItem = event.target;
-  
-  toggleClass(taskItem, 'completed');
-  deleteDoneTasks();
+function selectAllTasks() {
+  const taskItems = getAll('.task-item');
+
+  addMultiplesEventsAndListeners(taskItems, 'click dblclick', controlSelection);
 }
 
 function deleteAllTasks() {
   const taskItems = getAll('li');
 
   buttonReset.addEventListener('click', () => {
-      taskItems.forEach((item) => {
-        item.remove();
-      });
-  });
-}
-
-function deleteDoneTasks() {
-  const doneTasks = getAll('.completed');
-
-  buttonDone.addEventListener('click', () => {
-    doneTasks.forEach((task) => {
-      task.remove();
+    taskItems.forEach((item) => {
+      item.remove();
     });
   });
 }
@@ -153,7 +124,17 @@ function resetInput() {
   taskInput.value = '';
 }
 
+function addTaskToList() {
+  buttonAdd.addEventListener('click', () => {
+    createTaskItem();
+    selectAllTasks();
+    deleteAllTasks();
+    deleteDoneTasks();
+    resetInput();
+  });
+}
+
 window.onload = () => {
   getTask();
   addTaskToList();
-}
+};
