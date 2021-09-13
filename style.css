@@ -1,10 +1,30 @@
 * {
   text-align: center;
+  font-family: sans-serif;
+}
+
+button {
+  border-radius: 17px;
+  padding: 7px;
+  border-style: none;
 }
 
 #lista-tarefas {
   max-width: 60%;
   margin: auto;
+  margin-bottom: 20px;
+}
+
+#criar-tarefa {
+  background-color: blue;
+}
+
+#apaga-tudo {
+  background-color: crimson;
+}
+
+#remover-finalizados {
+  background-color: cyan;
 }
 
 .completed {
