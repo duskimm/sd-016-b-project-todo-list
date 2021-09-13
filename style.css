@@ -1,0 +1,12 @@
+body {
+    background-color: teal;
+}
+
+.task {
+    cursor: pointer;
+}
+
+#lista-tarefas {
+    list-style:upper-roman;
+    font-weight: bold;
+}
