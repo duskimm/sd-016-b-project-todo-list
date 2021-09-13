@@ -6,7 +6,7 @@ function createHeader() {
 }
 createHeader();
 
-// 2.
+// 2. Criar p
 function createP() {
   const newP = document.createElement('p');
   newP.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
@@ -14,3 +14,15 @@ function createP() {
   document.body.appendChild(newP);
 }
 createP();
+
+// 3.
+function createInput() {
+  const newInput = document.createElement('input');
+  newInput.id = 'texto-tarefa';
+  newInput.name = 'input';
+  newInput.value = '';
+  document.body.appendChild(newInput);
+}
+createInput();
+
+// 4.
