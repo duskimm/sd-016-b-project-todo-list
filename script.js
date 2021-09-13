@@ -13,7 +13,6 @@ function addNewTask() {
 
 taskButton.addEventListener('click', addNewTask);
 
-
 // Função que seleciona a tarefa
 function selectListItem(event) {
   let listItens = document.getElementsByClassName('list-item');
@@ -27,3 +26,19 @@ function selectListItem(event) {
 }
 
 document.addEventListener('click', selectListItem);
+
+// Função que marca a tarefa como completa
+
+function completedTask(event) {
+  let listItens = document.getElementsByClassName('list-item');
+
+  if (event.target.classList.contains('list-item')) {
+    if (event.target.classList.contains('completed')) {
+      event.target.classList.remove('completed');
+    } else {
+      event.target.classList.add('completed');
+    }
+  }
+}
+
+document.addEventListener('dblclick', completedTask);
