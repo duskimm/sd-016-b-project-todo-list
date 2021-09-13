@@ -43,6 +43,8 @@ const user = {
 }
 
 const taskInput = getOne('#texto-tarefa');
+const taskList = getOne('#lista-tarefas');
+const buttonAdd = getOne('#criar-tarefa');
 
 // functions for the project
 
@@ -54,6 +56,19 @@ function getTask() {
 
 // Adicionar texto a lista ao clicar no botão 'criar'
 
+function createTaskItem() {
+  const newTaskItem = createElement('li');
+  addClass(newTaskItem, '.task-item');
+  newTaskItem.innerText = user.msg;
+  plugHtml(taskList, newTaskItem);
+}
+
+function addTaskToList() {
+  buttonAdd.addEventListener('click', () => {
+    createTaskItem();
+  });
+}
+
 // Seleção de elemento (retirada do backgorundColor)
 
 // Riscar elemento (line-through solid rgb(0, 0, 0)) ao clicar duas vezes
@@ -64,4 +79,5 @@ function getTask() {
 
 window.onload = () => {
   getTask();
+  addTaskToList();
 }
