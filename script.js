@@ -1,14 +1,26 @@
-//adiciona uma nova tarefa
+firsTime = true;
+
+//adiciona uma nova tarefa e limpa campo de input
 function tarefaCreator () {
   let entrada = document.querySelector('#texto-tarefa').value;
-  azul = entrada;
-  if(azul == ""){
+  if(entrada == ""){
     alert("Adicione um texto para o item");
   }else{
     let list = document.createElement("li");
-    document.querySelector('#lista-tarefas').appendChild(list);
-    list.innerText = azul;
+    let listIl = document.querySelector('#lista-tarefas');
+    listIl.appendChild(list);
+    listIl.lastChild.addEventListener('click', selectItem);
+    list.innerText = entrada;
+    document.querySelector('#texto-tarefa').value = "";
   }
+}
+
+function selectItem(event) {
+  if(firsTime == false){
+    document.querySelector('.selected').classList.remove('selected');
+  }
+  firsTime = false
+  event.target.classList.add('selected');
 }
 
 //apaga toda lista
