@@ -19,7 +19,7 @@ function addTarefaFunction() {
 function checkClass() {
   const arrayClassList = document.getElementsByClassName('item-selected');
   for (let index = 0; index < arrayClassList.length; index += 1) {
-    arrayClassList[index].className = 'item-list';
+    arrayClassList[index].classList.remove('item-selected');
   }
 }
 
@@ -29,6 +29,14 @@ function selectedItem(event) {
   clickItem.classList.add('item-selected');
 }
 
+function todoComplete(event) {
+  const doubleClickItem = event.target.classList;
+
+  doubleClickItem.toggle('completed');
+}
+
 addTarefa.addEventListener('click', addTarefaFunction);
 
 todoList.addEventListener('click', selectedItem);
+
+todoList.addEventListener('dblclick', todoComplete);
