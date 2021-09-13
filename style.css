@@ -1,14 +1,37 @@
 body {
   background-color: lightgray;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "C ourier New", Courier, monospace;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+div {
+  margin-top: 60px;
+}
+
+#header {
+  font-size: 22px;
+  text-align: center;
+  background-color: green;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
 }
 
 #criar-tarefa {
-  width: 30px;
-  height: 10px;
+  width: fit-content;
+  height: fit-content;
 }
 
 #selected {
   width: fit-content;
-  background-color: rgb(128, 128, 128);
+  background-color: rgb(128 ,128 ,128);
+}
+
+.completed {
+  text-decoration: line-through solid rgb(0, 0, 0) ;
 }
