@@ -1,0 +1,73 @@
+* {
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(193 , 244 , 187);
+}
+
+.title {
+  color: rgb(205 , 64 , 99);
+  text-align: center;
+}
+
+.container {
+  text-align: center;
+}
+
+#funcionamento {
+  color: rgb(78 , 72 , 131);
+  font-weight: 600;
+  text-align: center;
+}
+
+#texto-tarefa {
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  margin: 20px;
+  padding: 20px;
+  width: 50%;
+}
+
+.row {
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: rgb(205 , 64 , 99);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 20px;
+}
+
+.btn:hover {
+  background-color: rgb(154 , 209 , 212);
+  color: rgb(78 , 72 , 131);
+}
+
+.list {
+  background-color: white;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding: 20px;
+  width: 50%;
+}
+
+#lista-tarefas {
+  text-align: left;
+}
+
+li {
+  margin-bottom: 10px;
+}
