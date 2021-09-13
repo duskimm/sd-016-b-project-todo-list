@@ -7,12 +7,10 @@ function addElementToDOM(parent, element) {
   parent.appendChild(element);
 }
 
-/*
 function setId(elementName, idName) {
   const element = elementName;
   element.id = idName;
 }
-*/
 
 /*
 function setClass(elementName, className) {
@@ -31,3 +29,8 @@ const header = document.querySelector('header');
 const title = creatElementHTML('h1');
 setInnerText(title, 'Minha Lista de Tarefas');
 addElementToDOM(header, title);
+
+const paragraph = creatElementHTML('p');
+setId(paragraph, 'funcionamento');
+setInnerText(paragraph, 'Clique duas vezes em um item para marcá-lo como completo');
+addElementToDOM(header, paragraph);
