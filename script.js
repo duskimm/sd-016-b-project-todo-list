@@ -11,6 +11,13 @@ function newChild(type, text, classs, id) {
 	return newChildItem;
 }
 
+// Remove a class selected da todoList
+function removeSelected(selectedTodo) {
+	if (selectedTodo !== null) {
+		selectedTodo.classList.remove('selected');
+	}
+};
+
 document.querySelector('#criar-tarefa').addEventListener('click', () => {
 	const inputText = document.querySelector('#texto-tarefa');
 	const todoList = document.querySelector('#lista-tarefas');
@@ -22,7 +29,7 @@ document.querySelector('#criar-tarefa').addEventListener('click', () => {
 
 document.addEventListener('click', (event) => {
 	if (event.target.classList.contains('todo')) {
-		event.target.style.backgroundColor = 'rgb(128, 128, 128)';
-		console.log(event.target);
+		removeSelected(document.querySelector('.selected'));
+		event.target.classList.add('selected');
 	}
 });
