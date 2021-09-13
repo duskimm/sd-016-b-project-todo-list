@@ -20,6 +20,18 @@ function setBackGround() {
   })
 }
 
+function setCompleted() {
+  listaTarefas.addEventListener('dblclick', function(event) {
+
+    if ((event.target.className) == '') {
+      event.target.classList.add('completed');
+    } else event.target.className = ('');
+  })
+}
+
+
+
 
 createTask();
 setBackGround();
+setCompleted();
