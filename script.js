@@ -33,19 +33,26 @@ function addTask(list) {
   list.appendChild(task);
 }
 
+function removeSelected() {
+  const selected = document.querySelector('.selected');
+  if (selected) {
+    selected.parentElement.removeChild(selected);
+  }
+}
+
 window.onload = () => {
   const list = document.querySelector('#lista-tarefas');
   const createTaskBtn = document.querySelector('#criar-tarefa');
   const clearBtn = document.querySelector('#apaga-tudo');
   const clearCompletedBtn = document.querySelector('#remover-finalizados');
+  const removeSelBtn = document.querySelector('#remover-selecionado');
 
-  createTaskBtn.addEventListener('click', () => {
-    addTask(list);
-  });
+  createTaskBtn.addEventListener('click', () => addTask(list));
   clearBtn.addEventListener('click', () => {
     while (list.firstChild) {
       list.removeChild(list.firstChild);
     }
   });
   clearCompletedBtn.addEventListener('click', clearCompleted);
+  removeSelBtn.addEventListener('click', removeSelected);
 };
