@@ -111,9 +111,9 @@ function changeSelection(event) {
 
 function controlSelection(event) {
   if (event.type === 'dblclick') {
-    changeSelection(event);
-  } else if (event.type === 'click') {
     changeDone(event);
+  } else if (event.type === 'click') {
+    changeSelection(event);
   }
 }
 
