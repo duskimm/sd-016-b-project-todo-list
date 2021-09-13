@@ -6,7 +6,7 @@ function addNewTask () {
   let taskListItem = document.createElement('li');
   taskList.appendChild(taskListItem);
   taskListItem.innerText = newTask.value;
-  newTask.value = ' '
+  newTask.value = ''
 }
 
 createNewTask.addEventListener('click', addNewTask);
