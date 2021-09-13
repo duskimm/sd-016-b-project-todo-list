@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Minha Lista de Tarefas</h1>
+        <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+    </header>
+    <main id="main">
+        <section id="first-section"></section>
+        <section id="second-section"></section>
+        <section id="third-section"></section>
+    </main>
+    <script>
+        
+        function createElementFirstSection() {
+            // 3 - Adicione um input com o id="texto-tarefa" onde a pessoa usuária poderá digitar o nome do item que deseja adicionar à lista.
+            function createInputTodo(){
+                let parent = document.getElementById('first-section');
+            let inputTodo = document.createElement('input');
+            inputTodo.id = 'texto-tarefa';
+            inputTodo.type = 'text';
+            inputTodo.placeholder = 'Digite o nome da tarefa';
+            parent.appendChild(inputTodo);
+            }
+            createInputTodo();
+            // 4- Adicione uma lista ordenada de tarefas com o id="lista-tarefas"
+            function createOl(){
+                let parent = document.getElementById('first-section');
+                let ol = document.createElement('ol');
+                ol.id = 'lista-tarefas';
+                parent.appendChild(ol);
+            }
+            createOl();
+            // 5 - Adicione um botão com id="criar-tarefa" e, ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo
+            function buttonCreateTodo(){
+                let parent = document.getElementById('first-section');
+                let button = document.createElement('button');
+                button.id = 'criar-tarefa';
+                button.innerHTML = 'Criar Tarefa';
+                parent.appendChild(button);
+            }
+            buttonCreateTodo();
+        }
+        createElementFirstSection();
+    </script>
+</body>
+
+</html>
