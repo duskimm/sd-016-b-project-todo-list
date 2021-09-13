@@ -29,6 +29,14 @@ window.onclick = function(event) {
 // requisito 9
 window.ondblclick = function(event) {
   if (event.target.classList.contains('tarefa')) {    
-    event.target.classList.add('completed');
+    // let itensLista = document.querySelectorAll('.tarefa');
+    // for (let index = 0; index < itensLista.length; index += 1) {
+    //   itensLista[index].classList.remove('completed');
+    // }
+    if (event.target.classList.contains('completed')) {
+      event.target.classList.remove('completed');
+    } else {
+      event.target.classList.add('completed');
+    }
   }
 };
