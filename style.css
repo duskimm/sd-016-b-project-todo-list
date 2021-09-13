@@ -34,3 +34,12 @@ body {
   padding-left: 3.8rem;
   letter-spacing: 3px;
 }
+
+#texto-tarefa {
+  font-size: 1.8rem;
+}
+
+.input__content {
+  padding-left: 3.8rem;
+  padding-top: 2rem;
+}
