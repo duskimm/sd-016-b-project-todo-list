@@ -18,6 +18,14 @@ function removeSelected(selectedTodo) {
 	}
 };
 
+// Remove todos os elementos filhos de um elemnto pelo id
+function clearChilds(elementById) {
+  const element = document.querySelector(elementById);
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}
+
 document.querySelector('#criar-tarefa').addEventListener('click', () => {
 	const inputText = document.querySelector('#texto-tarefa');
 	const todoList = document.querySelector('#lista-tarefas');
@@ -25,6 +33,10 @@ document.querySelector('#criar-tarefa').addEventListener('click', () => {
 		todoList.append(newChild('li', inputText.value, 'todo', ''));
 		inputText.value = '';
 	}
+});
+
+document.querySelector('#apaga-tudo').addEventListener('click', () => {
+	clearChilds('#lista-tarefas');
 });
 
 document.addEventListener('click', (event) => {
