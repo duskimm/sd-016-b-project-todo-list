@@ -3,6 +3,11 @@ let listaTarefas = document.getElementById('lista-tarefas');
 let botaoLimpar = document.getElementById('apaga-tudo');
 let botaoRemover = document.getElementById('remover-finalizados');
 let botaoSalvar = document.getElementById('salvar-tarefas');
+let botaoRemoverSelecionado = document.getElementById('remover-selecionado');
+
+window.onload = function() {
+  document.getElementById('lista-tarefas').innerHTML = localStorage.getItem('list');
+}
 
 function createTask() {
   botaoAdicionar.addEventListener('click', function() {
@@ -64,9 +69,19 @@ function saveTasks() {
 
 }
 
-window.onload = function() {
-  document.getElementById('lista-tarefas').innerHTML = localStorage.getItem('list');
+function removeSelected() {
+  botaoRemoverSelecionado.addEventListener('click', function() {
+    for (let index = 0; index < listaTarefas.children.length; index++) {
+      if (listaTarefas.children[index].style.backgroundColor == 'rgb(128, 128, 128)') {
+        listaTarefas.children[index].remove();
+      }
+    }
+  })
 }
+
+
+
+
 
 createTask();
 setBackGround();
@@ -74,3 +89,4 @@ setCompleted();
 clearList();
 removeCompleteds();
 saveTasks();
+removeSelected();
