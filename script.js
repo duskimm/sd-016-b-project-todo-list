@@ -13,8 +13,9 @@ function botaoNovaTarefa (){
   CapturandoLI.classList.add('tarefa');
   CapturandoLI.innerText = RecuperandoNovaTarefa;
 
-  // adiciona o evento de clique quando cria o botão
+  // adiciona o evento de selecionar e marcar como completo
   CapturandoLI.addEventListener('click', selecionando);
+  CapturandoLI.addEventListener('dblclick', completo);
 
   // adicionei o Li criado com a tarefa e a classe
   listaDeTarefas.appendChild(CapturandoLI);
@@ -37,5 +38,26 @@ function botaoNovaTarefa (){
     let evento = event.target;
     evento.classList.add('selecionado');
   }
+
+  // marcar como completo
+  function completo (event){
+    let evento2 = event.target;
+
+    // varifica todas as classes que tem na tarefa clicada
+    let vericaClasse = evento2.classList;
+    let classe1 = vericaClasse[0];
+    let classe2 = vericaClasse[1];
+    let classe3 = vericaClasse[2];
+    let classe4 = vericaClasse[3];
+
+      // removendo a classe
+      if (classe1 == 'completed' || classe2 == 'completed' || classe3 == 'completed' || classe4 == 'completed') {
+      evento2.classList.remove('completed');
+      } else {
+      // adicionando a classe
+      evento2.classList.add('completed');
+      }
+  }
+  
 }
 
