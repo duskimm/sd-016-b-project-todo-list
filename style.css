@@ -54,6 +54,10 @@ div p {
   background-color: gold;
 }
 
+#remover-selecionado {
+  background-color: mediumslateblue;
+}
+
 #funcionamento {
   font-style: italic;
   font-size: 15px;

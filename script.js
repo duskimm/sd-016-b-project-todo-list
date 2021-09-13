@@ -6,6 +6,7 @@ const btnClean = document.getElementById('apaga-tudo');
 const btnCleanComp = document.getElementById('remover-finalizados');
 const btnUp = document.getElementById('mover-cima');
 const btnDown = document.getElementById('mover-baixo');
+const btnRemove = document.getElementById('remover-selecionado');
 
 function criaTarefa() {
   const newTask = document.createElement('li');
@@ -37,7 +38,7 @@ btnClean.addEventListener('click', () => {
 });
 
 btnUp.addEventListener('click', () => {
-  for(let i = 1; i < arrayLi.length; i += 1) {
+  for (let i = 1; i < arrayLi.length; i += 1) {
     if (arrayLi[i].classList.contains('selected')) {
       olTasks.insertBefore(arrayLi[i], arrayLi[i].previousSibling);
     }
@@ -53,7 +54,7 @@ olTasks.addEventListener('dblclick', (evt) => {
 });
 
 btnDown.addEventListener('click', () => {
-  for(let i = 0; i < arrayLi.length - 1; i += 1) {
+  for (let i = 0; i < arrayLi.length - 1; i += 1) {
     if (arrayLi[i].classList.contains('selected')) {
       olTasks.insertBefore(arrayLi[i].nextSibling, arrayLi[i]);
       break;
@@ -61,12 +62,18 @@ btnDown.addEventListener('click', () => {
   }
 });
 
-
-
 btnCleanComp.addEventListener('click', () => {
   for (let i = arrayLi.length - 1; i >= 0; i -= 1) {
     if (arrayLi[i].classList.contains('completed')) {
       arrayLi[i].remove();
+    }
+  }
+});
+
+btnRemove.addEventListener('click', () => {
+  for (let i = 0; i < arrayLi.length; i += 1) {
+    if (arrayLi[i].classList.contains('selected')) {
+      olTasks.removeChild(arrayLi[i]);
     }
   }
 });
