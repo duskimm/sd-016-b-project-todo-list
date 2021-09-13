@@ -35,3 +35,33 @@ function addMultiplesEvents(element, eventsName, listener) {
     element.addEventListener(event, listener, false);
   });
 }
+
+// global variables
+
+const user = {
+  msg: '',
+}
+
+const taskInput = getOne('#texto-tarefa');
+
+// functions for the project
+
+function getTask() {
+  taskInput.addEventListener('keyup', (event) => {
+    user.msg = event.target.value;
+  });
+}
+
+// Adicionar texto a lista ao clicar no botão 'criar'
+
+// Seleção de elemento (retirada do backgorundColor)
+
+// Riscar elemento (line-through solid rgb(0, 0, 0)) ao clicar duas vezes
+
+// Resetar tudo ao clicar no botão 'Apagar'
+
+// Apagar itens riscados através do botão 'Prontos'
+
+window.onload = () => {
+  getTask();
+}
