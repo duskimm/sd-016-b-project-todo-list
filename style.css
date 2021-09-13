@@ -5,10 +5,10 @@ header {
 }
 
 main {
-    border: solid black 1px;
+  border: solid black 1px;
 }
 
 input {
-height: 20px;
-width: 200px;
+  height: 20px;
+  width: 200px;
 }
