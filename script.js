@@ -21,8 +21,8 @@ header.append(headPara);
 
 // // 3 - Adicione um input com o id="texto-tarefa" onde a pessoa usuária poderá digitar o nome do item que deseja adicionar à lista
 
-// const input01 = document.createElement('input');
-// document.body.append(input01);
+const input01 = document.createElement('input');
+document.body.append(input01);
 
 
 
