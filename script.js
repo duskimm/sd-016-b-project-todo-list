@@ -13,8 +13,12 @@ function addTask() {
 const addTaskButton = document.querySelector('#criar-tarefa');
 addTaskButton.addEventListener('click', addTask);
 
+function getSelectedTask() {
+  return document.querySelector('.selecionada');
+}
+
 function selectTask(event) {
-  const selectedTask = document.querySelector('.selecionada');
+  const selectedTask = getSelectedTask();
   if (selectedTask !== null) {
     selectedTask.classList.remove('selecionada');
   }
@@ -91,8 +95,42 @@ function initiateList() {
 
 window.onload = initiateList;
 
+function switchPosition(task1, task2) {
+  const firstTask = task1;
+  const secondTask = task2;
+  const tempTask = {
+    text: firstTask.innerText,
+    classes: firstTask.className,
+  };
+
+  firstTask.innerText = secondTask.innerText;
+  firstTask.className = secondTask.className;
+  secondTask.innerText = tempTask.text;
+  secondTask.className = tempTask.classes;
+}
+
+function moveTaskUp() {
+  const selectedTask = getSelectedTask();
+  if (selectedTask !== null && selectedTask.previousElementSibling !== null) {
+    switchPosition(selectedTask, selectedTask.previousElementSibling);
+  }
+}
+
+function moveTaskDown() {
+  const selectedTask = getSelectedTask();
+  if (selectedTask !== null && selectedTask.nextElementSibling !== null) {
+    switchPosition(selectedTask, selectedTask.nextElementSibling);
+  }
+}
+
+const moveUpButton = document.querySelector('#mover-cima');
+moveUpButton.addEventListener('click', moveTaskUp);
+
+const moveDownButton = document.querySelector('#mover-baixo');
+moveDownButton.addEventListener('click', moveTaskDown);
+
 function removeSelectedTask() {
-  const selectedTask = document.querySelector('.selecionada');
+  const selectedTask = getSelectedTask();
   if (selectedTask !== null) {
     selectedTask.remove();
   }
