@@ -1,0 +1,11 @@
+#criar-tarefa {
+  background: #0066A2;
+  color: white;
+  border-style: outset;
+  border-color: #0066A2;
+  border-radius: 5%;
+  height: 30px;
+  width: 100px;
+  font: bold 15px arial, sans-serif;
+  text-shadow:none;
+}
