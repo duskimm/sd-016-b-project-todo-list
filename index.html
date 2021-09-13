@@ -10,10 +10,23 @@
 
     <body>
         <header>Minha Lista de Tarefas</header>
+
         <h4 id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</h4>
+
         <input type="text" id="texto-tarefa" placeholder="Tarefa">
+
         <ol id="lista-tarefas"></ol>
-        <button id="criar-tarefa">Criar Tarefa</button>
+
+        <button id="criar-tarefa" onclick="onClickCreateTask()">Criar Tarefa</button>
+
+        <button id="apaga-tudo" onclick="onClickClearAll()">Apagar tudo</button>
+
+        <button id="remover-finalizados" onclick="onClickClearFinished()">Remover finalizados</button>
+        <button id="remover-selecionado" onclick="onClickClearSelected()">Remover selecionado</button>
+
+        <button id="salvar-tarefas" onclick="onClickSave()">Salvar farefas</button>
+        <button id="mover-cima" onclick="onClickMoveTop()">Mover para cima</button>
+        <button id="mover-baixo" onclick="onClickMoveBottom()">Mover para baixo</button>
 
         <script src="script.js"></script>
     </body>
