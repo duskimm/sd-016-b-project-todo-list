@@ -7,11 +7,39 @@ let capturarParagrafo = document.querySelector('p');
 capturarParagrafo.id = 'funcionamento';
 capturarParagrafo.innerHTML = 'Clique duas vezes em um item para marcá-lo como completo';
 
-let capturarInput = document.querySelector('input');
-capturarInput.id = 'texto-tarefa';
+let capturarSectionOne = document.querySelector('#input-list-button');
 
-let capturarOl = document.querySelector('ol');
-capturarOl.id = 'lista-tarefas';
+let criarInput = document.createElement('input');
+criarInput.type = 'text';
+criarInput.id = 'texto-tarefa';
+capturarSectionOne.appendChild(criarInput);
+
+let criarListaOrdenada = document.createElement('ol');
+criarListaOrdenada.id = 'lista-tarefas';
+capturarSectionOne.appendChild(criarListaOrdenada);
+
+let criarBotaoInput = document.createElement('button');
+criarBotaoInput.id = 'criar-tarefa';
+criarBotaoInput.innerHTML = 'Adicionar';
+capturarSectionOne.appendChild(criarBotaoInput);
+
+let capturarInput = document.querySelector('#texto-tarefa');
+let capturarBotaoAdicionar = document.querySelector('#criar-tarefa');
+let capturarListaOrdenada = document.querySelector('#lista-tarefas');
+capturarBotaoAdicionar.addEventListener('click', function(){
+    if (capturarInput.value.length > 0) {
+        let criarNovaLinha = document.createElement('li');
+        criarNovaLinha.innerHTML = capturarInput.value;
+        capturarListaOrdenada.appendChild(criarNovaLinha);
+        capturarInput.value = '';
+    } else {
+        alert('Nenhum elemento foi adicionado!!!');        
+    }
+});
+
+
+
+
 
 
 
