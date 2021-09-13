@@ -1,0 +1,15 @@
+li {
+    display: block;
+    width: 30%;
+    height: 24px;
+    border: solid rgb(0, 0, 0);
+    border-bottom-width: 0,5px;   
+}
+
+.bg {
+    background-color: rgb(128, 128, 128);
+}
+
+.completed {
+    text-decoration:  line-through solid rgb(0, 0, 0);
+}
