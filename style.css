@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgba(167, 167, 167, 0.397);
+}
+
+#header-container {
+  background-color: rgba(56, 50, 50, 0.897);
+  color: #dfdfdf;
+  height: 10vh;
+  width: 100%;
+  padding: 20px;
+}
