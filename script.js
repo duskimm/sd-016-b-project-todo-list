@@ -21,10 +21,16 @@ function selectTask(evt) {
   });
 }
 
+function toggleCompletedTask(evt) {
+  const taskSelected = evt.target;
+  taskSelected.classList.toggle('completed');
+}
+
 function createTask() {
   const newTask = document.createElement('li');
   newTask.innerText = getTaskText();
   newTask.addEventListener('click', selectTask);
+  newTask.addEventListener('dblclick', toggleCompletedTask);
   appendTask(newTask, '#lista-tarefas');
 }
 
