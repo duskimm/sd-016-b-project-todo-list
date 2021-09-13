@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.main__content {
+  width: 84rem;
+  margin: 10rem auto;
+}
+
+.title__principal {
+  font-size: 4.7rem;
+}
