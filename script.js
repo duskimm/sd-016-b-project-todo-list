@@ -16,7 +16,7 @@ function selectTask(evt) {
   const parent = taskSelected.parentElement;
   Array.from(parent.children).forEach((task) => {
     if (taskSelected === task) {
-      task.classList.toggle('selected');
+      task.classList.add('selected');
     } else {
       task.classList.remove('selected');
     }
