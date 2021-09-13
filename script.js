@@ -1,7 +1,6 @@
 const inputArea = document.getElementById('input-area');
 const listaArea = document.getElementById('lista-area');
-
-// const buttonsArea = document.getElementById('buttons-area');
+const buttonsArea = document.getElementById('buttons-area');
 
 // Cria input.
 function createInputTarefa() {
@@ -44,11 +43,20 @@ buttonAddItem.addEventListener('click', () => {
 
 // Evento para mudar o background color do item.
 olList.addEventListener('click', (event) => {
+  const alvo = event.target;
   for (let index = 0; index < olList.children.length; index += 1) {
     olList.children[index].style.backgroundColor = '';
   }
-  const alvo = event.target;
   alvo.style.backgroundColor = 'grey';
+//  if (alvo.style.backgroundColor !== 'grey') {
+//   for (let index = 0; index < olList.children.length; index += 1) {
+//      olList.children[index].style.backgroundColor = '';
+//    }
+//    alvo.style.backgroundColor = 'grey';
+//  } else {
+//    alvo.style.backgroundColor = '';
+//    console.log('adicionando bg');
+//  }
 });
 
 // Clicar duas vezes risca o item.
@@ -59,4 +67,19 @@ olList.addEventListener('dblclick', (event) => {
   } else {
     alvo.classList.add('completed');
   }
+});
+
+// Adiciona um botão para apagar tudo.
+function createButtonClearList() {
+  const button = document.createElement('button');
+  button.id = 'apaga-tudo';
+  button.innerText = 'Limpar lista';
+  buttonsArea.appendChild(button);
+}
+createButtonClearList();
+
+// Evento que utiliza o botão para apagar a lista.
+const buttonClear = document.getElementById('apaga-tudo');
+buttonClear.addEventListener('click', () => {
+  olList.innerHTML = '';
 });
