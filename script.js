@@ -24,6 +24,11 @@ header.append(headPara);
 const input01 = document.createElement('input');
 document.body.append(input01);
 
+//  4 - Adicione uma lista ordenada de tarefas com o id="lista-tarefas"
 
+const ordList = document.createElement('ol');
+ordList.id = 'lista-tarefas';
+document.body.append(ordList);
 
-
+const LIord = document.createElement('li');
+ordList.append(LIord);
