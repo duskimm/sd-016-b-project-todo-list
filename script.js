@@ -20,12 +20,27 @@ function assigningColor() {
   }
 }
 
+function completedTask(ev) {
+  if (ev.target.classList.contains('completed') === true) {
+    ev.target.classList.remove('completed')
+  } else {
+    ev.target.classList.add('completed');
+  }
+}
+
+function assigningClassCompleted() {
+  for (let i = 0; i < getListItem.length; i += 1) {
+    getListItem[i].addEventListener('dblclick', completedTask);
+  }
+}
+
 function createTask() {
   const itemList = document.createElement('li');
   itemList.innerText = getInput.value;
   getList.appendChild(itemList);
   eraseInputInformation();
   assigningColor();
+  assigningClassCompleted();
 }
 
 getAddButton.addEventListener('click', createTask);
