@@ -121,3 +121,17 @@ function moveUp() {
 let moveUpButton = document.getElementById('mover-cima');
 
 moveUpButton.addEventListener('click', moveUp);
+
+// Função que apaga elemento selecionado
+
+function deleteSelected() {
+  let selected = document.querySelector('.selected');
+
+  if (selected !== null) {
+    selected.parentNode.removeChild(selected);
+  }
+}
+
+let deleteTaskButton = document.getElementById('remover-selecionado');
+
+deleteTaskButton.addEventListener('click', deleteSelected);
