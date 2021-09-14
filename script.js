@@ -230,7 +230,7 @@ function allButtons() {
         break
       case('salvar-tarefas'):
         configureUserTask();
-        saverUserTask();
+        controlStorage('taskContent');
         break
       default:
         console.log('default');
@@ -250,13 +250,51 @@ function configureUserTask() {
   });
 }
 
-function saverUserTask() {
+function saveUserTask() {
  localStorage.taskContent = taskContentArray.toString();
  localStorage.taskClasses = taskClassesArray.toString();
+}
+
+function getUserTask() {
+  const userClassesArray =  separateClasses();
+  const userContentArray =  separateContent();
+  for (let i = 0; i < userContentArray.length; i += 1) {
+    const newTaskItem = createElement('li');
+    newTaskItem.className = userClassesArray[i];
+    newTaskItem.innerText = userContentArray[i];
+    tasksArray.push(newTaskItem);
+  }
+}
+
+function separateContent() {
+  const storageContent = localStorage.taskContent;
+
+  return storageContent.split(',');
+}
+
+function separateClasses() {
+  const storageClasses = localStorage.taskClasses;
+
+  return storageClasses.split(',');
+}
+
+function controlStorage(key) {
+  if (key in localStorage) {
+    saveUserTask();
+  } else {
+    setUserTask();
+  }
+}
+
+function controlWhenUseLocalStorage() {
+  if (localStorage.taskContent !== '') {
+    getUserTask();
+    renderTaskItems();
+  }
 }
 
 window.onload = () => {
   getTask();
   allButtons();
-  setUserTask();
+  controlWhenUseLocalStorage();
 };
