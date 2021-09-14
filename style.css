@@ -16,3 +16,7 @@ input {
 ol {
   display: block;
 }
+
+.completed {
+  text-decoration: line-through; 
+}
