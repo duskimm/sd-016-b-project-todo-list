@@ -17,13 +17,15 @@ function selectItem(event) {
 }
 
 function createTask() {
-  const liItem = document.createElement('li');
-  const itemValue = item.value;
-  liItem.innerText = itemValue;
-  liItem.classList.add('list-itens');
-  lista.appendChild(liItem);
-  item.value = '';
-  liItem.addEventListener('click', selectItem);
+  if (item.value !== '') {
+    const liItem = document.createElement('li');
+    const itemValue = item.value;
+    liItem.innerText = itemValue;
+    liItem.classList.add('list-itens');
+    lista.appendChild(liItem);
+    item.value = '';
+    liItem.addEventListener('click', selectItem);
+  }
 }
 
 createButton.addEventListener('click', createTask);
