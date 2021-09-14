@@ -1,3 +1,15 @@
 .completed {
   text-decoration: line-through;
 }
+
+* {
+  font-family: monospace;
+}
+
+#funcionamento {
+  font-size: smaller;
+}
+
+#funcionamento:hover {
+  text-decoration: line-through;
+}

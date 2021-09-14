@@ -87,3 +87,24 @@ function removeSelected() {
 }
 
 document.getElementById('remover-selecionado').addEventListener('click', removeSelected);
+
+// https://youtu.be/Qx8Mo5iPzZk
+function up() {
+  for (let index = 0; index < lista.length; index += 1) {
+    if (lista[index].style.backgroundColor === 'grey' && (index - 1) !== -1) {
+      toDoList.insertBefore(lista[index], lista[index - 1]);
+    }
+  }
+}
+
+document.getElementById('mover-cima').addEventListener('click', up);
+
+function down() {
+  for (let index = lista.length - 1; index >= 0; index -= 1) {
+    if (lista[index].style.backgroundColor === 'grey' && (index + 1) !== lista.length) {
+      toDoList.insertBefore(lista[index + 1], lista[index]);
+    }
+  }
+}
+
+document.getElementById('mover-baixo').addEventListener('click', down);
