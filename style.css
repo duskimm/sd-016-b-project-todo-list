@@ -58,6 +58,10 @@ div p {
   background-color: mediumslateblue;
 }
 
+#salvar-tarefas {
+  background-color: firebrick;
+}
+
 #funcionamento {
   font-style: italic;
   font-size: 15px;
