@@ -3,7 +3,7 @@ const appendList = document.querySelector('#lista-tarefas');
 const getToDoValue = document.querySelector('#texto-tarefa');
 
 function toDoCreation() {
-  let createElementList = document.createElement('li');
+  const createElementList = document.createElement('li');
   createElementList.innerHTML = getToDoValue.value;
   createElementList.classList = 'task';
   appendList.appendChild(createElementList);
@@ -49,6 +49,14 @@ function removeAllEnded() {
 }
 document.querySelector('#remover-finalizados').addEventListener('click', removeAllEnded);
 
-const saveList = localStorage.setItem(appendList.innerHTML);
+function saveToDoList() {
+  document.querySelector('#salvar-tarefas').addEventListener('click', () => {
+    let saveList = appendList.innerHTML;
+    localStorage.setItem('toDoList', saveList);
+  });
+}
+saveToDoList();
 
-document.querySelector('#salvar-tarefas').addEventListener('click', saveList);
+window.onload = function () {
+  document.getElementById('lista-tarefas').innerHTML = localStorage.getItem('toDoList');
+};
