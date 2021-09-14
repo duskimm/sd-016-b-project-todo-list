@@ -40,3 +40,15 @@ function eraseAll() {
   }
 }
 document.querySelector('#apaga-tudo').addEventListener('click', eraseAll);
+
+function removeAllEnded() {
+  const erase = document.querySelectorAll('.completed');
+  for (let index = 0; index < erase.length; index += 1) {
+    erase[index].remove('completed');
+  }
+}
+document.querySelector('#remover-finalizados').addEventListener('click', removeAllEnded);
+
+const saveList = localStorage.setItem(appendList.innerHTML);
+
+document.querySelector('#salvar-tarefas').addEventListener('click', saveList);
