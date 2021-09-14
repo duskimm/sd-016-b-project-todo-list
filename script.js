@@ -15,10 +15,17 @@ botaoCriarTarefa.onclick = function () {
 };
 
 ol.onclick = function (e) {
-  for (let i = 0; i < liItems.length; i += 1) {
-    liItems[i].style.backgroundColor = '';
+  if (e.target.classList.contains('selected')) {
+    e.target.classList.remove('selected');
+    e.target.style.backgroundColor = '';
+  } else {
+    for (let i = 0; i < liItems.length; i += 1) {
+      liItems[i].style.backgroundColor = '';
+      liItems[i].classList.remove('selected');
+    }
+    e.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    e.target.classList.add('selected');
   }
-  e.target.style.backgroundColor = 'rgb(128, 128, 128)';
 };
 
 ol.ondblclick = function (e) {
@@ -70,6 +77,52 @@ function saveTasks() {
   const savedItems = ol.innerHTML;
   localStorage.setItem('lista salva', savedItems);
 }
-
-
 // creditos à alguns codereviews vistos;
+
+const ButtonMoveUp = document.createElement('button');
+ButtonMoveUp.id = 'mover-cima';
+document.body.appendChild(ButtonMoveUp);
+ButtonMoveUp.innerText = 'mover tarefa pra cima';
+
+ButtonMoveUp.onclick = function () {
+  for (let i = 0; i < liItems.length; i += 1) {
+    if (liItems[i].classList.contains('selected')) {
+      if (liItems[i] === ol.firstChild) {
+      } else {
+        ol.insertBefore(liItems[i], liItems[i].previousSibling);
+      }
+    }
+  }
+};
+
+const ButtonMoveDown = document.createElement('button');
+ButtonMoveDown.id = 'mover-baixo';
+document.body.appendChild(ButtonMoveDown);
+ButtonMoveDown.innerText = 'mover tarefa pra baixo';
+
+ButtonMoveDown.onclick = function () {
+  for (let i = liItems.length - 1; i >= 0; i -= 1) {
+    if (liItems[i].classList.contains('selected')) {
+      if (liItems[i] !== ol.lastChild) {
+        ol.insertBefore(liItems[i].nextSibling, liItems[i]);
+      }
+    }
+  }
+};
+
+const buttonUnSelect = document.createElement('button');
+buttonUnSelect.id = 'remover-selecionado';
+buttonUnSelect.innerText = 'Remover selecionado';
+document.body.appendChild(buttonUnSelect);
+
+buttonUnSelect.onclick = function (e) {
+  for (let i = 0; i < liItems.length; i += 1) {
+    if (liItems[i].classList.contains('selected')) {
+      liItems[i].remove();
+    }
+  }
+};
+
+/*
+Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
+*/
