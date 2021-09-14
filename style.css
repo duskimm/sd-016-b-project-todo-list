@@ -5,3 +5,63 @@
 .completed {
   text-decoration: line-through solid black;
 }
+
+.buttons {
+  border-radius: 10px;
+  padding: 4px 8px;
+  color: white;
+}
+
+#texto-tarefa {
+  border-radius: 5px;
+  border-color: rgb(62 , 173 , 238);
+  border: 1px solid;
+}
+
+#texto-tarefa:focus-visible {
+  border: 3px solid;
+  border-color: rgb(62 , 173 , 238);
+  box-shadow: 50px blue;
+  outline: blue;
+  border-radius: 5px;
+}
+
+#funcionamento {
+  color: darkgray;
+  font-size: 18px;
+}
+
+.red {
+  background-color: rgb(128 , 36 , 36);
+  border-color: rgb(128 , 36 , 36);
+}
+
+.orange {
+  background-color: orange;
+  border-color: orange;
+}
+
+.blue {
+  background-color: rgb(4 , 146 , 212);
+  border-color: rgb(4 , 146 , 212);
+}
+
+.green {
+  background-color: rgb(27 , 129 , 27);
+  border-color: rgb(27 , 129 , 27);
+}
+
+.titulo {
+  font-family: Impact, Haettenschweiler, sans-serif;
+  margin-left: 15px;
+}
+
+main {
+  border-radius: 25px;
+  padding: 20px;
+  background-color: rgb(62 , 85 , 56);
+}
+
+body {
+  background-color: rgb(85 , 116 , 134);
+}
