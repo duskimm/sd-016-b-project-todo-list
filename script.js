@@ -64,11 +64,28 @@ let botaoApagar = document.createElement('button');
 botaoApagar.id = 'apaga-tudo';
 botaoApagar.innerText = 'Apagar';
 document.body.appendChild(botaoApagar);
-let botaoo = document.getElementById('apaga-tudo');
-
+let botaoApagaTudo = document.getElementById('apaga-tudo');
 
 function apagarElementos() {
-   let listaa = document.getElementById('lista-tarefas');
-    listaa.innerHTML = '';
+    const list = document.getElementById('lista-tarefas');
+    list.innerHTML = '';
 }
-botaoo.addEventListener('click', apagarElementos);
+botaoApagaTudo.addEventListener('click', apagarElementos);
+
+
+// Exercicio 11: botão apaga itens riscados
+const botaoApagaFinalizados = document.createElement('button');
+botaoApagaFinalizados.id = 'remover-finalizados';
+botaoApagaFinalizados.innerText = 'Apagar itens finalizados';
+document.body.appendChild(botaoApagaFinalizados);
+const apagarFinalizados = document.getElementById('remover-finalizados');
+
+function apagarItensFinalizados() {
+    let itensLista = document.querySelectorAll('li');
+    for(let index = 0; index < itensLista.length; index += 1) {
+        if (itensLista[index].classList.contains('completed')) {
+            itensLista[index].remove();
+        }
+    }
+}
+apagarFinalizados.addEventListener('click', apagarItensFinalizados);
