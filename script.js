@@ -47,7 +47,13 @@ creatinigTasks();
 function paintList() {
   const orderList = document.querySelector('ol');
   orderList.addEventListener('click', (event) => {
-    event.target.classList.toggle('color');
+    const color = document.querySelector('.color');
+    if (color === null) {
+      event.target.classList.toggle('color');
+    } else {
+      color.classList.remove('color');
+      event.target.classList.toggle('color');
+    }
   });
 }
 
