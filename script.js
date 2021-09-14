@@ -38,3 +38,21 @@ function clickTask() {
 }
 
 clickTask();
+
+// Ao ser dado o dblclick, a função avalia se a classe do elemento está vazia, e se estiver seta a classe nela e o item é taxado. Se estiver com classe (no caso da segundo dblclick), a classe e o tachado é removido
+
+function doubleClickTask() {
+  listTask.addEventListener('dblclick', (event) => {
+    if (clickSelected.className === '') {
+      clickSelected = event.target;
+      clickSelected.id = '';
+      clickSelected.className = 'completed';
+    } else if (clickSelected.className === 'completed') {
+      clickSelected = event.target;
+      clickSelected.id = '';
+      clickSelected.className = '';
+    }
+  });
+}
+
+doubleClickTask();
