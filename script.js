@@ -64,3 +64,55 @@ removeCompleted.addEventListener('click', () => {
     itemCompleted[index].remove();
   }
 });
+
+// 12 - Adicione um botão com id="salvar-tarefas" que salve o conteúdo da lista. Se você fechar e reabrir a página, a lista deve continuar no estado em que estava.
+// Evento que adiciona tarefas ao localStorage
+const btnSalvarTarefas = document.getElementById('salvar-tarefas');
+btnSalvarTarefas.addEventListener('click', () => {
+  const li = document.getElementsByClassName('listItem');
+
+  localStorage.removeItem('taskList');
+
+  const objectList = {};
+  for (let index = 0; index < li.length; index += 1) {
+    const item = li[index];
+
+    if (item.classList.contains('completed')) {
+      objectList[item.innerText] = 'completed';
+    } else {
+      objectList[item.innerText] = 'noCompleted';
+    }
+  }
+  localStorage.setItem('taskList', JSON.stringify(objectList));
+});
+
+// Função que cria uma lista a partir de um objeto. Normalmente vindo do localStorage.
+function addListOfObject(objeto) {
+  // Percorro o objeto.
+  Object.keys(objeto).forEach((key) => {
+    const li = document.createElement('li');
+    li.innerText = key; // Pega a chave do objeto.
+    li.classList.add('listItem');
+    if (objeto[key] === 'completed') { // Compara o item (valor) do objeto.
+      li.classList.add('completed');
+    }
+    ol.appendChild(li);
+
+    // Chama a função que cria o evento de um click.
+    eventoLista(li);
+    // Chama a função que cria o evento de double click.
+    itemListCompleted(li);
+  });
+
+  // A função Object.keys acima utilizada foi baseada no código do site stackoverflow LINK: https://pt.stackoverflow.com/questions/173293/como-percorrer-um-objeto-em-javascript feita por BrTkCa em 23.12.2016.
+}
+
+// Pega o objeto taskList do localStorage...
+function lerLocalStorage() {
+  const taskList = JSON.parse(localStorage.getItem('taskList'));
+  if (taskList !== null) {
+    addListOfObject(taskList);
+  }
+}
+
+window.onload = lerLocalStorage;
