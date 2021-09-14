@@ -51,7 +51,7 @@ body {
 }
 
 #apaga-tudo:focus {
-  border: 5px solid rgb(255, 128, 128);
+  border: 5px solid rgb(255 , 128 , 128);
   border-radius: 5px;
 }
 
