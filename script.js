@@ -15,20 +15,21 @@ document.getElementById('criar-tarefa').addEventListener('click', addTask);
 
 // Requisito 7 e 8
 
+
+
 function highlight() {
-  let currentTasks = document.getElementsByTagName('li');
-  for (let i = 0; i < currentTasks.length; i += 1) {
-    if (currentTasks[i] === 'rgb(128, 128, 128)') {
-      currentTasks[i].style.backgroundColor = 'white';
-    }  
-  }
-  this.style.backgroundColor = 'rgb(128, 128, 128)';
-  console.log(this)
+    let currentTasks = document.getElementsByTagName('li');
+   for (let i = 0; i < currentTasks.length; i += 1) {
+    if (currentTasks[i].classList === 'highlighted') {
+        currentTasks[i].classList.remove('highlighted')
+    }
+   }   
+this.classList.add('highlighted');
 }
 
 // Requisito 9
 function lineThrough() {
-  this.classList.add('.completed');
+  this.classList.toggle('completed');
 }
 
 // Requisito 10
