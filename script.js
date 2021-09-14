@@ -8,7 +8,7 @@ botao.addEventListener('click', botaoNovaTarefa);
 function botaoNovaTarefa (){
   let RecuperandoNovaTarefa = novaTarefa.value;
 
-  // criando o Li da lista - Coloquei a casse tarefa - adicionei a nova tarefa
+  // criando o Li da lista - Coloquei a classe tarefa - adicionei a nova tarefa
   CapturandoLI = document.createElement('li');
   CapturandoLI.classList.add('tarefa');
   CapturandoLI.innerText = RecuperandoNovaTarefa;
@@ -17,8 +17,10 @@ function botaoNovaTarefa (){
   CapturandoLI.addEventListener('click', selecionando);
   CapturandoLI.addEventListener('dblclick', completo);
 
+    if (0 < RecuperandoNovaTarefa.length){
   // adicionei o Li criado com a tarefa e a classe
   listaDeTarefas.appendChild(CapturandoLI);
+    }
 
   // apaga o campo de digitação
   novaTarefa.value = '';
@@ -81,7 +83,7 @@ function apagarMarcados (){
   let marcados = document.getElementsByClassName('completed');
   let quantidadeMarcados = marcados.length;
   
-  for (let i = 0; i <= quantidadeMarcados; i += 1){
+  for (let i = 0; i < quantidadeMarcados; i += 1){
     marcados[0].remove();
 
     // Remove aprendido no site:
