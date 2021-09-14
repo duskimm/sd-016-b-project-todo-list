@@ -10,33 +10,38 @@ function inputClean() {
 }
 
 // Cria o evento do botão para buscar a tarefa do input ao clicar com o mouse e insere condição para não ser colocada nenhuma tarefa vazia
-
-createTaskFunction.addEventListener('click', () => {
-  const task = taskText.value;
-  if (task === '') {
-    alert('Não há nenhuma tarefa a ser criada!!');
-  } else {
-    const createTask = document.createElement('li');
-    createTask.innerText = task;
-    listTask.appendChild(createTask);
-    inputClean();
-  }
-});
+function createTaskClick() {
+  createTaskFunction.addEventListener('click', () => {
+    const task = taskText.value;
+    if (task === '') {
+      alert('Não há nenhuma tarefa a ser criada!!');
+    } else {
+      const childTask = document.createElement('li');
+      childTask.innerText = task;
+      listTask.appendChild(childTask);
+      inputClean();
+    }
+  });
+}
+createTaskClick();
 
 // Cria o evento do botão para buscar a tarefa do input ao apertar o enter e insere condição para não ser colocada nenhuma tarefa vazia
 // Referência: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_trigger_button_enter
 
-taskText.addEventListener('keyup', (event) => {
-  const task = taskText.value;
-  if (task === '') {
-    alert('Não há nenhuma tarefa a ser criada!!');
-  } else if (event.keyCode === 13) {
-    const createTask = document.createElement('li');
-    createTask.innerText = task;
-    listTask.appendChild(createTask);
-    inputClean();
-  }
-});
+function createTaskKeyBoard() {
+  taskText.addEventListener('keyup', (event) => {
+    const task = taskText.value;
+    if (task === '') {
+      alert('Não há nenhuma tarefa a ser criada!!');
+    } else if (event.keyCode === 13) {
+      const childTask = document.createElement('li');
+      childTask.innerText = task;
+      listTask.appendChild(childTask);
+      inputClean();
+    }
+  });
+}
+createTaskKeyBoard();
 
 // Após o click analisa se elemento contém ou não o id 'selected' e o exclue se houver. Cria o evento na variável e coloca o id selected no item da lista selecionado
 
@@ -82,9 +87,11 @@ function deleteListItem() {
   // const listTask = document.getElementById('lista-tarefas');
   const deleteBtn = document.querySelector('#apaga-tudo');
   deleteBtn.addEventListener('click', () => {
+    console.log('delete');
     while (listTask.firstChild) {
       listTask.removeChild(listTask.firstChild);
     }
+    localStorage.clear();
   });
 }
 
@@ -93,7 +100,6 @@ deleteListItem();
 // Apaga todos os item marcados como finalizados
 
 function deleteConcludeItem() {
-  // const listTask = document.getElementById('lista-tarefas');
   const deleteBtn = document.querySelector('#remover-finalizados');
   const itemConclude = document.getElementsByClassName('completed');
   deleteBtn.addEventListener('click', () => {
@@ -107,40 +113,6 @@ function deleteConcludeItem() {
 
 deleteConcludeItem();
 
-// Salvar a lista localmente
-
-function salveList() {
-  const salveListBtn = document.querySelector('#salvar-tarefas');
-  salveListBtn.addEventListener('click', () => {
-    const listItemTask = document.querySelectorAll('#lista-tarefas li');
-    console.log('bnt salvar lista');
-    for (let index = 0; index < listItemTask.length; index += 1) {
-      console.log('salvamento teste', index);
-      const itemListSalved = {
-        position: index,
-        task: listItemTask[index].innerText,
-        class: listItemTask[index].className,
-        id: listItemTask[index].id,
-      };
-      localStorage.setItem(index, JSON.stringify(itemListSalved));
-    }
-  });
-}
-
-salveList();
-
-/**
- *
- *
- *
- *
- *
- *
- *
- *
- *
- */
-
 // Ao clicar no botão, é removido o elemento que está selecionado com o id selected.
 
 function removeSelected() {
@@ -150,4 +122,17 @@ function removeSelected() {
   });
 }
 
+function setList() {
+  const salveListBtn = document.querySelector('#salvar-tarefas');
+  salveListBtn.addEventListener('click', () => {
+    const savedItens = listTask.innerHTML;
+    localStorage.setItem('list', savedItens);
+  });
+}
+setList();
+
 removeSelected();
+
+window.onload = () => {
+  document.querySelector('#lista-tarefas').innerHTML = localStorage.getItem('list');
+};
