@@ -23,6 +23,27 @@ function addBackgroundToTask(tasks) {
     });
   });
 }
+
+function completeTask(tasks) {
+  let completed = false;
+
+  tasks.forEach((task) => {
+    task.addEventListener('dblclick', (event) => {
+      const selectedTask = event.target;
+
+      selectedTask.classList.add('completed');
+      selectedTask.classList.remove('uncompleted');
+
+      completed = !completed;
+
+      if (!completed) {
+        selectedTask.classList.remove('completed');
+        selectedTask.classList.add('uncompleted');
+      }
+    });
+  });
+}
+
 function AddTask(buttonElement) {
   buttonElement.addEventListener('click', () => {
     const taskElement = document.createElement('li');
@@ -33,6 +54,7 @@ function AddTask(buttonElement) {
 
     const tasks = document.querySelectorAll('.task-item');
     addBackgroundToTask(tasks);
+    completeTask(tasks);
   });
 }
 

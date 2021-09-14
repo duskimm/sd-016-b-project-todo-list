@@ -45,3 +45,11 @@ body {
   padding: 5px;
   cursor: pointer;
 }
+
+.completed {
+  text-decoration: line-through;
+}
+
+.uncompleted {
+  text-decoration: none;
+}
