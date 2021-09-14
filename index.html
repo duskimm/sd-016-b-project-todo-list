@@ -8,21 +8,23 @@
     <title>To-do List</title>
 </head>
 <body>
-    <header >
-        <h1>Minha Lista de Tarefas</h1>
-    </header>
-    <section>
-        <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-        <input type="text" name="" id="texto-tarefa">
-        <button type="button" id="criar-tarefa">Criar Tarefa</button>
-    </section>
-    <section>
-        <ol id="lista-tarefas"></ol>
-    </section>
-    <section>
-        <button type="button" id="apaga-tudo" >Apagar Tudo</button>
-        <button type="button" id="remover-finalizados">Remover Finalizados</button>
-    </section>
+    <main>
+        <header >
+            <h1>Minha Lista de Tarefas</h1>
+        </header>
+        <section>
+            <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+            <input type="text" id="texto-tarefa">
+            <button type="button" id="criar-tarefa">Adcionar Tarefa</button>
+        </section>
+        <section>
+            <ol id="lista-tarefas"></ol>
+        </section>
+        <section class="configList">
+            <button type="button" id="apaga-tudo" >Limpar Lista</button>
+            <button type="button" id="remover-finalizados">Remover Finalizados</button>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

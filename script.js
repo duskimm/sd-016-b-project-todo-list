@@ -17,8 +17,8 @@ createButton.addEventListener('click', createTodo);
 let liTarget = '';
 
 function selectedLi(event) {
-  for(let index = 0; index < taskLi.length; index += 1 ){
-    taskLi[index].style.backgroundColor = 'white';
+  for (let index = 0; index < taskLi.length; index += 1) {
+    taskLi[index].style.backgroundColor = 'rgb(47, 52, 55)';
   }
   liTarget = event.target;
   liTarget.style.backgroundColor = 'rgb(128, 128, 128)';
@@ -27,7 +27,7 @@ function selectedLi(event) {
 todoList.addEventListener('click', selectedLi);
 
 //tarefa completa
-function completTask(event) {
+function completTask() {
   if (liTarget.className === 'completed') {
     liTarget.classList.remove('completed');
   } else {
@@ -38,27 +38,29 @@ function completTask(event) {
 todoList.addEventListener('dblclick', completTask);
 
 //limpar todas as tasks
-const clearButton = document.getElementById('apaga-tudo');
+const cleanButton = document.getElementById('apaga-tudo');
 
-clearButton.addEventListener('click', function() {
+function cleanAllTasks() {
   for (let index = 0; index < todoList.children.length; index = 0) {
     todoList.removeChild(taskLi[index]);
   }
-});
+}
+
+cleanButton.addEventListener('click', cleanAllTasks);
 
 //limpar tasks finalizadas
 const finishTasks = document.getElementById('remover-finalizados');
-let completList = [];
+const completList = [];
 
-function clearCompleted() {
+function cleanCompleted() {
   for (let index = 0; index < taskLi.length; index += 1) {
     if (taskLi[index].className === 'completed') {
       completList.push(taskLi[index]);
     }
   }
   for (let index = 0; index < completList.length; index += 1) {
-    todoList.removeChild(completList[index])
+    todoList.removeChild(completList[index]);
   }
 }
 
-finishTasks.addEventListener('click', clearCompleted);
+finishTasks.addEventListener('click', cleanCompleted);

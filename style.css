@@ -1,3 +1,37 @@
+body {
+  background-color: rgb(47, 52, 55);
+  font-family: monospace;
+  color: white;
+}
+
+main {
+  display: inline-block;
+  padding: 2%;
+  margin-top: 10%;
+  margin-left: 15%;
+}
+
+#texto-tarefa {
+  font-family: monospace;
+  height: 18px;
+}
+
+button {
+  background-color: rgb(42, 157, 143);
+	border-radius:28px;
+  border: none;
+  font-family: monospace;
+  font-size: 12px;
+  padding: 6px;
+}
+
+button:hover { 
+  background-color: rgb(39, 145, 133);}
+
+.configList {
+  padding-top: 10%;
+}
+
 .completed {
   text-decoration: line-through solid rgb(0, 0, 0);
 }
