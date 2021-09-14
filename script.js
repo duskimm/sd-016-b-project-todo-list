@@ -84,30 +84,22 @@ function carregar() {
 }
 
 //  13 Habilita reordenar
-// linter não gostou dessa função
-// function trocarElemento(a, b) {
-//   const texto = a.innerText;
-//   const classes = a.classList.value;
-//   a.innerText = b.innerText;
-//   a.classList = b.classList;
-//   b.innerText = texto;
-//   b.classList.value = classes;
-// }
+function trocarElemento(ac, bc) {
+  const a = ac; // necessario pelo linter
+  const b = bc; // idem
+  const texto = a.innerText;
+  const classes = a.classList.value;
+  a.innerText = b.innerText;
+  a.classList = b.classList;
+  b.innerText = texto;
+  b.classList.value = classes;
+}
 
 function movePraCima() {
   if (document.querySelector(sel)) {
     const movendo = document.querySelector(sel);
     const anterior = movendo.previousSibling;
-
-    // if (anterior) trocarElemento(movendo, anterior);
-    if (anterior) {
-      const texto = movendo.innerText;
-      const classes = movendo.classList.value;
-      movendo.innerText = anterior.innerText;
-      movendo.classList = anterior.classList;
-      anterior.innerText = texto;
-      anterior.classList.value = classes;
-    }
+    if (anterior) trocarElemento(movendo, anterior);
   }
 }
 
@@ -115,16 +107,7 @@ function movePraBaixo() {
   if (document.querySelector(sel)) {
     const movendo = document.querySelector(sel);
     const proximo = movendo.nextSibling;
-
-    // if (proximo) trocarElemento(movendo, proximo);
-    if (proximo) {
-      const texto = movendo.innerText;
-      const classes = movendo.classList.value;
-      movendo.innerText = proximo.innerText;
-      movendo.classList = proximo.classList;
-      proximo.innerText = texto;
-      proximo.classList.value = classes;
-    }
+    if (proximo) trocarElemento(movendo, proximo);
   }
 }
 
