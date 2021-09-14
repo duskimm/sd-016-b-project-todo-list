@@ -12,11 +12,35 @@
 
 #texto-tarefa { text-align: center;
   font-family: Courier New, Courier, monospace;
-  width: 400px;
-  margin-left: 400px;
+  height: 30px;
+  width: 500px;
+  margin-left: 540px;
   padding: 7px;
   border: solid black;
   border-radius: 10px;
   background-color: rgb(241 , 223 , 252);
   align-self: center;
 }
+
+li {text-align: center;
+  margin: auto;
+  margin-bottom: 5px;
+  height: 30px;
+  width: 600px;
+  border: solid rgb(44 , 40 , 40) 2px;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: Courier New, Courier, monospace;
+}
+
+#criar-tarefa {text-align: center;
+  margin: auto;
+  height: 50px;
+  width: 100px;
+  border: solid rgb(44 , 40 , 40) 2px;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: Courier New, Courier, monospace;
+  background-color: rgb(171 , 117 , 219);
+}
+
