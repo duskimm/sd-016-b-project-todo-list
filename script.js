@@ -16,10 +16,10 @@ document.getElementById('criar-tarefa').addEventListener('click', addTask);
 // Requisito 7 e 8
 
 function highlight() {
-    let currentTasks = document.getElementsByClassName('highlighted');
-     for (let i = 0; i < currentTasks.length; i += 1) {
-         currentTasks[i].classList = null;
-     }
+  let currentTasks = document.getElementsByClassName('highlighted');
+  for (let i = 0; i < currentTasks.length; i += 1) {
+    currentTasks[i].classList.remove('highlighted');
+  }
 
   this.classList.add('highlighted');
 }
