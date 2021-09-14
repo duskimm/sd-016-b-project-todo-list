@@ -41,9 +41,9 @@ const apagaTudo = document.getElementById('apaga-tudo');
 apagaTudo.addEventListener('click', apagarTodasTarefas);
 
 function removerItemsFinalizados() {
-  const listaTarefas = document.getElementById('lista-tarefas');
-  const li = listaTarefas.childNodes;
-  for (let index = 0; index < li.length; i += 1 ) {
+  const li = document.querySelectorAll('li');
+  //const li = listaTarefas.childNodes;
+  for (let index = 0; index < li.length; index += 1) {
     if(li[index].classList.contains('completed')) {
       li[index].remove();
     }

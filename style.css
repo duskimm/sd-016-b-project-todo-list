@@ -1,3 +1,57 @@
+body {
+  /*source: https://jpmachado.art/en/blog/post/making-of-a-2d-animation-for-chilledcow
+  author: Juan Pablo Machado, author's Linkedin: https://www.linkedin.com/in/juan-pablo-machado-233998121/
+  */
+  background-image: url(lo-fiGirl.jpg);
+  color: rgb(255, 218, 218);
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+header {
+  margin: 1% auto;
+  margin-top: 13%;
+  width: 21%; 
+  text-align: center;
+}
+
+main {
+  margin: 1% auto;
+  width: 21%;
+}
+
+input {
+  margin-left: 18%;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+}
+
+button {
+  margin: 1%;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+button:hover {
+  color: rgb(194, 55, 55);
+}
+
 .completed {
   text-decoration: line-through solid black;
+}
+
+footer {
+  margin: 1% auto;
+  margin-left: 44%;
+  width: 21%; 
+  color: rgb(255, 218, 218);
+}
+
+a {
+  color: rgb(255, 218, 218);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+a:hover {
+  color: rgb(194, 55, 55);
 }
