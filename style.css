@@ -19,8 +19,8 @@ main {
 }
 
 #container {
-  background-color: rgb(233, 196, 106);
-  border: 2px solid rgb(38, 70, 83);
+  background-color: rgb(233 , 196 , 106);
+  border: 2px solid rgb(38 , 70 , 83);
   border-radius: 10px;
   margin-right: 20px;
   padding: 30px;
@@ -35,15 +35,15 @@ header {
   margin-bottom: 20px;
 }
 
-#texto-tarefa, button {
-  border: 1px solid rgb(38, 70, 83);
+#texto-tarefa , button {
+  border: 1px solid rgb(38 , 70 , 83);
   border-radius: 5px;
   height: 25px;
   padding: 0 5px;
 }
 
-#criar-tarefa, #salvar-tarefas {
-  background-color: rgb(42, 157, 143);
+.blue {
+  background-color: rgb(42 , 157 , 143);
 }
 
 #texto-tarefa {
@@ -55,11 +55,11 @@ header {
 }
 
 .icon {
-  background-color: rgb(231, 111, 81);
+  background-color: rgb(231 , 111 , 81);
 }
 
-#remover-finalizados, #apaga-tudo {
-  background-color: rgb(244, 162, 97);
+.light-orange {
+  background-color: rgb(244 , 162 , 97);
 }
 
 #salvar-tarefas {
@@ -67,10 +67,11 @@ header {
   margin-top: 20px;
 }
 
-button:hover, #criar-tarefa:hover, #salvar-tarefas:hover, #remover-finalizados:hover, #apaga-tudo:hover {
+button:hover {
   cursor: pointer;
-  background-color: rgb(233, 196, 106);
+  background-color: rgb(233 , 196 , 106);
 }
+
 .selected {
   background-color: gray;
 }
