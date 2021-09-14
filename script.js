@@ -1,14 +1,22 @@
 // cmds
 
 function selectTask(event) {
-  if (event.target.classList.contains('completed')) {
-    event.target.classList.remove('completed');
+  const selecao = document.querySelectorAll('li');
+  for (let lis = 0; lis < selecao.length; lis += 1) {
+    const clear = selecao[lis];
+    if (clear.classList.contains('selected')) {
+      clear.classList.remove('selected');
+    }
   }
-  event.target.classList.add('completed');
+  event.target.classList.add('selected');
 }
 
-function taskComplet() {
-  console.log('Click dublo marca como completo!');
+function taskComplet(event) {
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
+  }
 }
 
 function newTesc() {
