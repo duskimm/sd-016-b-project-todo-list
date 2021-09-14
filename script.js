@@ -1,7 +1,6 @@
 window.onload = function() {
 
 }
-
     const lista = document.querySelector('#lista-tarefas');
     const botaoCria = document.querySelector('#criar-tarefa');
     const botaoApaga = document.querySelector('#apaga-tudo');
@@ -10,8 +9,6 @@ window.onload = function() {
     const botaoAcima = document.querySelector('#mover-cima');
     const botaoAbaixo = document.querySelector('#mover-baixo');
     const botaoRmSelecionado = document.querySelector('#remover-selecionado');
-
-    
 
     function addTask() {
         const conteudo = document.querySelector('#texto-tarefa').value;
@@ -71,9 +68,18 @@ window.onload = function() {
     function upTask() {
         var tasks = document.querySelectorAll('.task')
         const selected = document.querySelector('.selected')
+        const completed = document.querySelector('.completed')
         let array = []
         for(let i = 0; i < tasks.length; i += 1) {
+            if (tasks[i] == selected ){
+                if (tasks[i] == completed ){
+                    array.push('z' + tasks[i].innerHTML + 'x' );
+                    } else {
+                        array.push('z' + tasks[i].innerHTML);
+                    }
+            } else {
             array.push(tasks[i].innerHTML);
+            }
         }
         for (let i = 0; i < tasks.length; i += 1) {
             if( selected === tasks[i] && selected != tasks[0]) {
@@ -81,15 +87,25 @@ window.onload = function() {
             array.splice(i,0, sobra[0])
             rendTask(array);
             }
+
         }
     }
 
     function downTask() {
         var tasks = document.querySelectorAll('.task')
         const selected = document.querySelector('.selected')
+        const completed = document.querySelector('.completed')
         let array = []
         for(let i = 0; i < tasks.length; i += 1) {
+            if (tasks[i] == selected ){
+                if (tasks[i] == completed ){
+                    array.push('z' + tasks[i].innerHTML + 'x' );
+                    } else {
+                        array.push('z' + tasks[i].innerHTML);
+                    }
+            } else {
             array.push(tasks[i].innerHTML);
+            }
         }
         for (let i = 0; i < tasks.length; i += 1) {
             if( selected === tasks[i] && selected != tasks[tasks.length-1]) {
@@ -100,18 +116,36 @@ window.onload = function() {
         }
     }
 
-
     function rendTask(array) {
-        let tasks = document.querySelectorAll('.task')
-        for ( let i = 0; i < tasks.length; i += 1) {
+        var tasks = document.querySelectorAll('.task')
+        const selected = document.querySelector('.selected')
+        for ( var i = 0; i < tasks.length; i += 1) {
             tasks[i].remove()
-            let nova = document.createElement('li');
-            nova.classList.add('task');
-            nova.innerText = array[i];
+            var nova = document.createElement('li');
+            verifySelectedCompleted(array, i, nova, tasks);
             lista.appendChild(nova);
             nova.addEventListener('click', paintTask)
             nova.addEventListener('dblclick', completTask)
         }
+    }
+
+    function verifySelectedCompleted(array, i, nova, tasks) {
+        let last = array[i].charAt(array[i].length -1)
+        if(array[i].charAt(0) === 'z' && last != 'x' ) {
+            nova.classList.add('task');
+            nova.classList.add('selected');
+            nova.innerHTML = array[i].substring(1);
+        } else if(array[i].charAt(0) === 'z' && last == 'x' ) {
+            nova.classList.add('task');
+            nova.classList.add('selected');
+            nova.classList.add('completed');
+            nova.innerHTML = array[i].substring(1, array[i].length -1);
+        } else {
+            nova.classList.add('task');
+            tasks[i].classList.remove('selected')
+            nova.innerHTML = array[i];
+            }
+            return nova
     }
 
     function rmSelected() {
@@ -127,9 +161,6 @@ window.onload = function() {
     //     task.classList.add('task');
     //     lista.appendChild(task);
     // }} carregaSalvos();
-    
-
-
     function createListenersButtons() {
         botaoCria.addEventListener('click', addTask);
         botaoApaga.addEventListener('click', getClean);
