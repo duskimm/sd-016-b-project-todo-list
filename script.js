@@ -139,13 +139,47 @@ function deleteAllTasks() {
 
 // botões para cima e para baixo, para mover o item selecionado
 
-// function moveUp() {
+function moveUp() {
+  const selected = attSelectTask();
+  const selectedIndex = tasksArray.indexOf(selected);
+  
+  if (tasksArray[selectedIndex - 1]) {
+    const tempStr1 = {
+      value: tasksArray[selectedIndex].innerText,
+      classes: tasksArray[selectedIndex].className,
+    }
+    const tempStr2 = {
+      value: tasksArray[selectedIndex - 1].innerText,
+      classes: tasksArray[selectedIndex - 1].className,
+    }
 
-// }
+    tasksArray[selectedIndex].innerText = tempStr2.value;
+    tasksArray[selectedIndex - 1].innerText = tempStr1.value;
+    tasksArray[selectedIndex].className = tempStr2.classes;
+    tasksArray[selectedIndex - 1].className = tempStr1.classes;
+  }
+}
 
-// function moveDown() {
+function moveDown() {
+  const selected = attSelectTask();
+  const selectedIndex = tasksArray.indexOf(selected);
+  
+  if (tasksArray[selectedIndex + 1]) {
+    const tempStr1 = {
+      value: tasksArray[selectedIndex].innerText,
+      classes: tasksArray[selectedIndex].className,
+    }
+    const tempStr2 = {
+      value: tasksArray[selectedIndex + 1].innerText,
+      classes: tasksArray[selectedIndex + 1].className,
+    }
 
-// }
+    tasksArray[selectedIndex].innerText = tempStr2.value;
+    tasksArray[selectedIndex + 1].innerText = tempStr1.value;
+    tasksArray[selectedIndex].className = tempStr2.classes;
+    tasksArray[selectedIndex + 1].className = tempStr1.classes;
+  }
+}
 
 function attSelectTask() {
   return getOne('.selected');
@@ -162,19 +196,6 @@ function listenListItem() {
   const listItems = getAll('.task-item');
 
   addMultiplesListeners(listItems, 'click', attSelectTask);
-}
-
-function buttonUp() {
-  buttonMoveUp.addEventListener('click', () => {
-    moveUp();
-  });
-}
-
-
-function buttonDown() {
-  buttonMoveDown.addEventListener('click', () => {
-    moveDown();
-  });
 }
 
 function allButtons() {
@@ -200,10 +221,11 @@ function allButtons() {
         deleteSelectedTask();
         break
       case('mover-cima'):
-        buttonUp();
+        moveUp();
         break
       case('mover-baixo'):
-        buttonDown();
+        moveDown();
+        break
       default:
         console.log('default');
     }
