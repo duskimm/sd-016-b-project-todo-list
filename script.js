@@ -44,3 +44,27 @@ function addOrdenedList() {
   main.appendChild(newOrdenedList);
 }
 addOrdenedList();
+
+// REQUISITO 5
+function addCreateButton() {
+  const newButton = document.createElement('button');
+  newButton.id = 'criar-tarefa';
+  newButton.innerText = 'Adicionar Tarefa';
+
+  main.appendChild(newButton);
+}
+addCreateButton();
+
+function newTask() {
+  const createButton = document.getElementById('criar-tarefa');
+  const task = document.getElementById('texto-tarefa');
+  const list = document.getElementById('lista-tarefas');
+
+  createButton.addEventListener('click', (event) => {
+    let newTask = document.createElement('li');
+    newTask.innerText = task.value;
+    list.appendChild(newTask);
+    task.value = '';
+  });
+}
+newTask();
