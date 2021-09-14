@@ -30,18 +30,31 @@ window.onload = function () {
     // Requisito 9
 
     document.addEventListener("dblclick", function(event) {
-        if (event.target.classList.contains("completed")) {
-            event.target.classList.remove("completed");
-        } else {
-            event.target.classList.add("completed");
+        if (event.target.classList.contains("tarefa")) {
+            if (event.target.classList.contains("completed")) {
+                event.target.classList.remove("completed");
+            } else {
+                event.target.classList.add("completed");
+            }
         }
     })
 
     // Requisito 10
 
-    let button = document.getElementById("apaga-tudo");
+    let buttonRemoveAll = document.getElementById("apaga-tudo");
 
-    button.addEventListener("click", function(){
+    buttonRemoveAll.addEventListener("click", function(){
         taskList.innerHTML="";
     })
+
+    // Requisito 11
+
+    let buttonRemoveFinished = document.getElementById("remover-finalizados");
+    
+    buttonRemoveFinished.addEventListener("click", function(){
+        let finishedTasks = document.querySelectorAll(".completed");
+        for (let i = 0; i < finishedTasks.length; i ++) {
+            taskList.removeChild(finishedTasks[i]);
+            }
+        })
 }
