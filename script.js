@@ -58,7 +58,7 @@ function finishedTask() {
   const orderedList = document.querySelector('#lista-tarefas');
   orderedList.addEventListener('dblclick', (event) => {
     const eventTarget = event.target;
-    eventTarget.classList.toggle('completed');
+    eventTarget.className = 'completed';
   });
 }
 
@@ -80,3 +80,20 @@ function createButtonClean() {
 }
 
 createButtonClean();
+
+// Reaquisito 11
+function createButtonFinalized() {
+  const buttonArea = document.querySelector('#button-area');
+  const buttonRemoveFinalized = document.createElement('button');
+  buttonRemoveFinalized.innerText = 'Remover Finalizados';
+  buttonRemoveFinalized.id = 'remover-finalizados';
+  buttonRemoveFinalized.addEventListener('click', () => {
+    const completedItem = document.querySelectorAll('.completed');
+    for (let index = 0; index < completedItem.length; index += 1) {
+      completedItem[index].remove();
+    }
+  });
+  buttonArea.appendChild(buttonRemoveFinalized);
+}
+
+createButtonFinalized();
