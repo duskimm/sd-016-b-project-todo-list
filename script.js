@@ -1,21 +1,9 @@
 // variaveis e constantes globais utilizadas em funcoes:
 const toDoList = document.querySelector('#lista-tarefas'); // ol
 const createNewItemList = document.getElementById('criar-tarefa'); // button
-/* este esta dando erro e eu nao entendo o porq... tive q separar em 2 funcoes
-function eventClickList(newItem) {
-    for (let i = 0; i < document.getElementsByTagName('li').length; i += 1) {
-        const itemGrey = newItem.target;
-      document.getElementsByTagName('li')[i].addEventListener('click', (event) => {
-        for (let i = 0; i < document.getElementsByTagName('li').length; i += 1) {
-          document.getElementsByTagName('li')[i].style.removeProperty('background-color');
-        }
-        itemGrey.style.backgroundColor = 'grey';
-    });
-    }
-}
-eventClickList();
-*/
+
 // NAO ESQUECER: nao esquecer de colocar fontes em cada parte da funcao e item pesquisado! colocar onde cada requisito foi executado
+
 // A funcao abaixo risca o item da lista quando o item da lista é clicado duas vezes:
 function checkItemList(erasy) {
   const itemcheck = erasy.target; // ao 'escutar' um duplo click...
@@ -26,7 +14,7 @@ function checkItemList(erasy) {
   }
 }
 
-// Adiciona o evento de double click nos elementos da lista:
+// funcao que adiciona o evento de double click nos elementos da lista:
 function eventDoubleClickList() {
   for (let i = 0; i < document.querySelectorAll('li').length; i += 1) {
     document.querySelectorAll('li')[i].addEventListener('dblclick', checkItemList);
@@ -62,16 +50,34 @@ function insertElementLI() {
   eventDoubleClickList(); // chama a funcao para ver dois clicks seguidos em um item da li
 }
 createNewItemList.addEventListener('click', insertElementLI); // se clicar no botao executa a funcao inserir elemento
-// algoritmos:
-function clearlist() {
-// pega todas as li.  const listclear = document.getElementsByTagName('li')
-// apaga todas as li filhos de ol.  for por todas as lis listclear[i].removechild(li) pesquisar
-}
 
-function removeFinished() {
+// funcao que limpa a lista de tarefas:
+function clearList() {
+const listClear = document.querySelectorAll('li');
+  for (let i = 0; i < listClear.length ; i += 1) {
+    listClear[i].remove();
+  }
+}
+document.getElementById('apaga-tudo').addEventListener('click', clearList);
+
+// funcao que remove os itens finalizados
+//function removeFinished() {
 //pega as lis com class completed. pegar itens com class .completed queryselectall e add array ...
 //remover lis com class completed.   
-}
+//}
+//document.getElementById('remover-finalizados').addEventListener('click', removeFinished);
 
-document.getElementById('apaga-tudo').addEventListener('click', clearlist);
-document.getElementById('remover-finalizados').addEventListener('click', removeFinished);
+/* este esta dando erro e eu nao entendo o porq... tive q separar em 2 funcoes
+function eventClickList(newItem) {
+    for (let i = 0; i < document.getElementsByTagName('li').length; i += 1) {
+        const itemGrey = newItem.target;
+      document.getElementsByTagName('li')[i].addEventListener('click', (event) => {
+        for (let i = 0; i < document.getElementsByTagName('li').length; i += 1) {
+          document.getElementsByTagName('li')[i].style.removeProperty('background-color');
+        }
+        itemGrey.style.backgroundColor = 'grey';
+    });
+    }
+}
+eventClickList();
+*/
