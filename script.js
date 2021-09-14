@@ -32,7 +32,7 @@ function adicionaTarefa (){
     limpaInput();
 }
 
-//quando uma tarefa for clickada receberá a com cinza
+//quando uma tarefa for clickada receberá a com cinza, e somente uma tarefa pode ser selecionada por vez
 
  let tarefas = document.querySelector("#lista-tarefas")
 
@@ -46,14 +46,40 @@ function adicionaTarefa (){
      event.target.classList.add("selecionada");
  }
 
-//  let tarefas = document.querySelectorAll(".linha-de-tarefas")
-//  for (let i=0; i<tarefas.length; i+=1){
-//      tarefas[i].addEventListener("click", selecionaTarefa)
-//  }
+ //com click duplo a tarefa é riscada, essa açao pode ser desfeita quando recebe novamente click duplo
 
-//  function selecionaTarefa (event){
-//      for (let i=0; i<tarefas.length; i+=1){
-//          tarefas[i].classList.remove('selecionada');
-//          tarefas[i].classList.add('selecionada')
-//      }
-//  }
+ tarefas.addEventListener('dblclick', riscaTarefa)
+
+ function riscaTarefa (event){
+     let linhas = document.querySelectorAll(".linha-de-tarefas");
+     for (let i=0; i<linhas.length; i+=1){
+         event.target.classList.add('completed')
+     }
+
+     if (event.target.className ==='linha-de-tarefas completed'){
+         event.target.classList.remove('completed');
+     }
+}
+
+//adiciona botao que apaga todos os itens da lista
+
+function criaBotaoApagar (){
+ let botaoApagaTudo = document.createElement('button')
+ botaoApagaTudo.innerText = 'apagar lista';
+ botaoApagaTudo.id= 'apaga-tudo'
+ container.appendChild(botaoApagaTudo)
+}
+
+criaBotaoApagar()
+
+let botaoApagaTudo = document.getElementById('apaga-tudo');
+
+botaoApagaTudo.addEventListener('click', apagaLista)
+
+function apagaLista (event){
+    let tarefas = document.querySelector("#lista-tarefas")
+    let linhas = document.querySelectorAll(".linha-de-tarefas");
+    for (let i=0; i< linhas.length; i+=1){
+      tarefas.removeChild(linhas[i]);
+    }
+}
