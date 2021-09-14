@@ -13,5 +13,12 @@ valorButao.addEventListener('click', () => {
 });
 
 listaDeItens.addEventListener('click', (event) => {
+  const classeSelecionada = document.querySelector('.corCinza');
+  if (classeSelecionada !== null) {
+    event.target.classList.toggle('corCinza');
+    classeSelecionada.classList.remove('corCinza');
+    event.target.classList.toggle('corCinza');
+  }
+  
   event.target.classList.toggle('corCinza');
 });
