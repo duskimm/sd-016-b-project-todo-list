@@ -101,6 +101,28 @@
             });
         }
         doubleClick();
+
+        /* 10 - Adicione um botão com id="apaga-tudo" que quando clicado deve apagar todos os itens da lista
+    1) Será verificado que existe um elemento `button` com o id `apaga-tudo`
+    2) Será verificado que, dado que uma lista possui tarefas, um clique no botão a deixa vazia
+*/
+        function buttonDeleteAll() {
+            let parent = document.getElementById('third-section');
+            let button = document.createElement('button');
+            button.id = 'apaga-tudo';
+            button.innerHTML = 'Apagar Tudo';
+            parent.appendChild(button);
+
+            function deleteAll() {
+                let buttonElement = document.getElementById('apaga-tudo');
+                buttonElement.addEventListener('click', function () {
+                    let listaTarefas = document.getElementById('lista-tarefas');
+                    listaTarefas.innerHTML = '';
+                });
+            }
+            deleteAll();
+        }
+        buttonDeleteAll();
     </script>
 </body>
 
