@@ -20,6 +20,7 @@ function adicionaTarefa (){
     let valorDoTexto = tarefa.value;
     let lista = document.getElementById('lista-tarefas');
     let linha = document.createElement('li');
+    linha.className = "linha-de-tarefas"
     linha.innerText = valorDoTexto
     lista.appendChild(linha)
 
@@ -30,3 +31,29 @@ function adicionaTarefa (){
     }
     limpaInput();
 }
+
+//quando uma tarefa for clickada receberá a com cinza
+
+ let tarefas = document.querySelector("#lista-tarefas")
+
+ tarefas.addEventListener("click", selecionaTarefa)
+
+ function selecionaTarefa (event){
+     let linhas = document.querySelectorAll(".linha-de-tarefas")
+     for (let i=0; i < linhas.length; i+=1){
+         linhas[i].classList.remove('selecionada')
+     }
+     event.target.classList.add("selecionada");
+ }
+
+//  let tarefas = document.querySelectorAll(".linha-de-tarefas")
+//  for (let i=0; i<tarefas.length; i+=1){
+//      tarefas[i].addEventListener("click", selecionaTarefa)
+//  }
+
+//  function selecionaTarefa (event){
+//      for (let i=0; i<tarefas.length; i+=1){
+//          tarefas[i].classList.remove('selecionada');
+//          tarefas[i].classList.add('selecionada')
+//      }
+//  }
