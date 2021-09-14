@@ -21,37 +21,33 @@ botaoAddTarefa.addEventListener('click', function(){
 });
 
 // Exercico 7: mudar background quando clica
-// function listaBackground(event){
-//     if(event.target.classList.contains('item-lista')) {
-//         let li = event.target;
-//         li.classList.add('cinza');
-//         li.style.backgroundColor = 'rgb(128, 128, 128)';
-//     } 
-// }
-// document.addEventListener('click', listaBackground);
+function listaBackground(event){
+    if(event.target.classList.contains('item-lista')) {
+        let li = event.target;
+        li.classList.add('cinza');
+        li.style.backgroundColor = 'rgb(128, 128, 128)';
+    } 
+}
+document.addEventListener('click', listaBackground);
 
 
 // Exercicio 8: seleciona só um
     
-let classeCinza = document.querySelector('.cinza');
+// let classeCinza = document.querySelector('.cinza');
 
-function marcaItem(event) {
-    if(classeCinza == null) {
-        event.target.classList.add('cinza');
-    } else {
-        classeCinza.classList.remove('cinza');
-        event.target.classList.add('cinza');
-    }
-}
-lista.addEventListener('click', marcaItem);
+// function marcaItem(event) {
+//     if(classeCinza == null) {
+//         event.target.classList.add('cinza');
+//     } else {
+//         classeCinza.classList.remove('cinza');
+//         event.target.classList.add('cinza');
+//     }
+// }
+// lista.addEventListener('click', marcaItem);
 
 // Exercicio 9: risca tarefa com dois clicks
-
-let riscado = document.getElementsByClassName('completed');
-// let estilo = window.getComputedStyle(riscado, null).getPropertyValue('text-decoration');
-
 function clicks(event) {
-    if(event.target.classList.contains('completed')) {
+    if (event.target.classList.contains('completed')) {
         event.target.classList.remove('completed');
     } else {
         event.target.classList.add('completed');
@@ -59,12 +55,13 @@ function clicks(event) {
 }
 lista.addEventListener('dblclick', clicks);
 
+
 // Exercicio 10: botão apaga todos os itens da lista
-let botaoApagar = document.createElement('button');
+const botaoApagar = document.createElement('button');
 botaoApagar.id = 'apaga-tudo';
 botaoApagar.innerText = 'Apagar';
 document.body.appendChild(botaoApagar);
-let botaoApagaTudo = document.getElementById('apaga-tudo');
+const botaoApagaTudo = document.getElementById('apaga-tudo');
 
 function apagarElementos() {
     const list = document.getElementById('lista-tarefas');
@@ -81,8 +78,8 @@ document.body.appendChild(botaoApagaFinalizados);
 const apagarFinalizados = document.getElementById('remover-finalizados');
 
 function apagarItensFinalizados() {
-    let itensLista = document.querySelectorAll('li');
-    for(let index = 0; index < itensLista.length; index += 1) {
+    const itensLista = document.querySelectorAll('li');
+    for (let index = 0; index < itensLista.length; index += 1) {
         if (itensLista[index].classList.contains('completed')) {
             itensLista[index].remove();
         }
