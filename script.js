@@ -1,18 +1,18 @@
 const body = document.getElementsByTagName('body')[0];
 
 function addMain() {
-  const main = document.createElement('main');
-  main.id = 'main';
-  body.appendChild(main);
+  const newMain = document.createElement('main');
+  newMain.id = 'main';
+  body.appendChild(newMain);
 }
 addMain();
 const main = document.getElementById('main');
 
 // REQUISITO 1
 function addHeader() {
-  const header = document.createElement('header');
-  header.innerHTML = '<h1>Minha Lista de Tarefas</h1>';
-  main.appendChild(header);
+  const newHeader = document.createElement('header');
+  newHeader.innerHTML = '<h1>Minha Lista de Tarefas</h1>';
+  main.appendChild(newHeader);
 }
 addHeader();
 
@@ -25,3 +25,13 @@ function addFuncionamento() {
   main.appendChild(newParagraph);
 }
 addFuncionamento();
+
+// REQUISITO 3
+function addInput() {
+  const newInput = document.createElement('input');
+  newInput.type = 'text';
+  newInput.id = 'texto-tarefa';
+
+  main.appendChild(newInput);
+}
+addInput();
