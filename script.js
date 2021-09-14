@@ -182,3 +182,16 @@ function moveDown() {
   });
 }
 moveDown();
+
+// Requisito 14 botão de deletar o selecionado
+const removeButton = document.getElementById('remover-selecionado');
+
+function removeSelected() {
+  removeButton.addEventListener('click', () => {
+    if (selectedCheck() === true) {
+      const selectedToBeRemoved = document.getElementById('selected');
+      listaOrdenada.removeChild(selectedToBeRemoved);
+    }
+  });
+}
+removeSelected();
