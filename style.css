@@ -12,6 +12,36 @@ body {
   text-align: center;
 }
 
+.add-task-container {
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#texto-tarefa {
+  padding: 5px;
+}
+
+#texto-tarefa:focus {
+  border: 5px solid rgb(0, 153, 255, 0.4);
+  border-radius: 5px;
+  outline: none;
+}
+
+#criar-tarefa {
+  color: #fff;
+  padding: 7px;
+  border: none;
+  border-radius: 2px;
+  background-color: rgb(0, 153, 255);
+}
+
+#criar-tarefa:focus {
+  border: 5px solid rgb(0, 204, 255, 0.5);
+  border-radius: 5px;
+}
+
 .task-item {
   padding: 5px;
+  cursor: pointer;
 }
