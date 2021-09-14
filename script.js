@@ -1,7 +1,8 @@
-function adicionarTarefa () {
+// desafio 5
+let listaTarefas = document.getElementById("lista-tarefas");
+
+function adicionarTarefa() {
   let botaoAdicionarNovaTarefa = document.getElementById("criar-tarefa");
-  let listaTarefas = document.getElementById("lista-tarefas");
-  
   botaoAdicionarNovaTarefa.addEventListener("click", function(){
     let tarefa = document.getElementById ("texto-tarefa");
     let novaTarefa = document.createElement("li");
@@ -11,20 +12,30 @@ function adicionarTarefa () {
     })
 }
 
+// desafio 7
 function colorirTarefa () {
   listaTarefas.addEventListener("click", function(event){
     let colori = event.target;
-    if (target.tagName === "li"){
-      target.style.backgroundcolor = "rgb(128, 128, 128)" 
+    if (colori.tagName === "LI"){
+      colori.style.backgroundColor="rgb(128, 128, 128)" 
     }
   })
 }
 
-function limparLista () {
-
+// desafio 9
+function riscarItem () {
+  listaTarefas.addEventListener("dblclick", function(event) {
+    let liRiscada = document.querySelectorAll("li");
+    if (event.terget.tagname === "LI"){ 
+      event.target.classList.toggle("completed");
+    }
+  })  
 }
 
+function limparLista () {
+}
 
 adicionarTarefa();
-colorirTarefa
+colorirTarefa();
+riscarItem ();
 limparLista ();
