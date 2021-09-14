@@ -48,7 +48,7 @@ function mkNewListItem(inputContent) {
 function mkButton() {
   const createButton = document.createElement('button');
   createButton.id = 'criar-tarefa';
-  createButton.innerHTML = 'criar-tarefa';
+  createButton.innerHTML = 'Criar Tarefa';
   main.insertBefore(createButton, main.children[1]);
   createButton.addEventListener('click', function tkRstInput() {
     mkNewListItem(input.value);
@@ -80,13 +80,26 @@ function mkDo() {
 }
 
 function mkDelAll() {
-  const createButton = document.createElement('button')
-  createButton.id = 'apaga-tudo'
-  main.appendChild(createButton)
+  const createButton = document.createElement('button');
+  createButton.id = 'apaga-tudo';
+  createButton.innerText = 'Limpar Lista';
+  main.appendChild(createButton);
   createButton.addEventListener('click', function delToDoList() {
     ol.innerHTML = '';
-  })
-  console.log(ol.children)
+  });
+}
+
+function mkDelDones() {
+  const createDoneButton = document.createElement('button');
+  createDoneButton.id = 'remover-finalizados';
+  createDoneButton.innerText = 'Limpar Finalizados';
+  main.appendChild(createDoneButton);
+  createDoneButton.addEventListener('click', function delDones() {
+    const getDones = document.querySelectorAll('.completed');
+    for (let i = 0; i < getDones.length; i += 1) {
+      document.querySelector('.completed').remove();
+    }
+  });
 }
 
 window.onload = function start() {
@@ -99,4 +112,5 @@ window.onload = function start() {
   mkEvidence();
   mkDo();
   mkDelAll();
+  mkDelDones();
 };
