@@ -54,21 +54,12 @@ olList.addEventListener('click', (event) => {
   const alvo = event.target;
   for (let index = 0; index < olList.children.length; index += 1) {
     olList.children[index].style.backgroundColor = '';
-    olList.children[index].className = 'list-iten';
+    olList.children[index].classList.remove('selecionado');
     olList.style.backgroundColor = '';
   }
   alvo.style.backgroundColor = 'grey';
   olList.style.backgroundColor = '';
   alvo.classList.add('selecionado');
-//  if (alvo.style.backgroundColor !== 'grey') {
-//   for (let index = 0; index < olList.children.length; index += 1) {
-//      olList.children[index].style.backgroundColor = '';
-//    }
-//    alvo.style.backgroundColor = 'grey';
-//  } else {
-//    alvo.style.backgroundColor = '';
-//    console.log('adicionando bg');
-//  }
 });
 
 // Clicar duas vezes risca o item.
@@ -130,31 +121,42 @@ const buttonSaveList = document.getElementById('salvar-tarefas');
 buttonSaveList.addEventListener('click', salvaTarefas);
 
 // Cria botões para mover as tarefas.
-function createButtonsMove(nameButton, id) {
+function createButtons(nameButton, id) {
   const button = document.createElement('button');
   button.id = id;
   button.innerText = nameButton;
   buttonsArea.appendChild(button);
 }
-
-createButtonsMove('Mover para cima', 'mover-cima');
-createButtonsMove('Mover para baixo', 'mover-baixo');
+createButtons('Mover para cima', 'mover-cima'); // Botão Up
+createButtons('Mover para baixo', 'mover-baixo'); // Botão Down;
 
 // Botão mover tarefa para cima.
 const buttonUp = document.getElementById('mover-cima');
 buttonUp.addEventListener('click', () => {
-  const li = document.querySelectorAll('.list-iten');
   const selecionado = document.querySelector('.selecionado');
-  if (selecionado === li[0]) {
+  const li = document.querySelectorAll('.list-iten');
+  if (selecionado === li[0] || selecionado === null) {
     return;
   }
   olList.insertBefore(selecionado, selecionado.previousElementSibling);
+  // selecionado = 0;
 });
 
 // Botão mover tarefa para baixo.
 const buttonDown = document.getElementById('mover-baixo');
 buttonDown.addEventListener('click', () => {
-  const li = document.querySelectorAll('.list-iten');
   const selecionado = document.querySelector('.selecionado');
-  olList.insertAft
+  const li = document.querySelectorAll('.list-iten');
+  if (selecionado === li[li.length - 1] || selecionado === null) {
+    return;
+  }
+  olList.insertBefore(selecionado.nextElementSibling, selecionado);
+  // selecionado = 0;
+});
+
+createButtons('Remover selecionado', 'remover-selecionado');// Botão remover selecionado.
+const buttonRemoveSelecionado = document.getElementById('remover-selecionado');
+buttonRemoveSelecionado.addEventListener('click', () => {
+  const selecionado = document.querySelector('.selecionado');
+  selecionado.parentElement.removeChild(selecionado);
 });
