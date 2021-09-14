@@ -15,6 +15,15 @@ button.addEventListener('click', () => {
   input.value = '';
 });
 
+input.addEventListener('keypress', (event) => {
+  if (event.keyCode === 13) {
+    const li = document.createElement('li');
+    li.innerText = input.value;
+    ol.appendChild(li);
+    input.value = '';
+  }
+});
+
 ol.addEventListener('click', (event) => {
   const evento = event.target;
   for (let index = 0; index < listTask.length; index += 1) {

@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head> 
 <body>
-<header>
-    <h1>Minha Lista de Tarefas</h1>
-</header>
-<section>
-    <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-</section>
-<section id='section-buttons1'>
-    <input id="texto-tarefa" type="text">
-    <button id="criar-tarefa">Adicionar</button>
-<section id='section-buttons2'>
-    <button id="mover-cima">🡹</button>
-    <button id="mover-baixo">🡻</button>
-    <button id="apaga-tudo">Limpar 🗑</button>
-    <button id="remover-finalizados">OK ✅</button>
-    <button id='salvar-tarefas'>Salvar 💾</button>
-    <button id="remover-selecionado">❌</button>
-</section>
-<section>
-    <ol id="lista-tarefas">
-
-    </ol>
-</section>
+  <main class="style-main">  
+    <header class="style-header">
+      <h1>Minha Lista de Tarefas</h1>
+    </header>
+    <section>
+      <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+    </section>
+    <section id='section-buttons1'>
+      <input id='texto-tarefa' type='text'>
+      <button id='criar-tarefa'>Adicionar</button>
+    </section>
+    <section>
+      <ol id='lista-tarefas'></ol>
+    </section>
+    <section id='section-buttons2'>
+      <button id='mover-cima'>🡹</button>
+      <button id='mover-baixo'>🡻</button>
+      <button id='apaga-tudo'>Limpar lista 🗑</button>
+      <button id='remover-finalizados'>Limpar Completos ✅</button>
+      <button id='salvar-tarefas'>Salvar 💾</button>
+      <button id='remover-selecionado'>❌</button>
+    </section>
+  </main>  
 <script src="script.js"></script>
 </body>
 </html>

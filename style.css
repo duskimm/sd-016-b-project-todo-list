@@ -1,9 +1,122 @@
+body {
+  background-color: green;
+  margin: 0;
+}
+
+.style-main {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 80%;
+  height: 50%;
+}
+
+.style-header {
+  margin-left: 10px;
+  font-size: 22px;
+}
+
 .completed {
   text-decoration: line-through solid black;
+}
+
+#funcionamento {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+#texto-tarefa {
+  margin-left: 10px;
+  width: auto;
+  height: 25px;
+}
+
+#criar-tarefa {
+  background-color: green;
+  border: solid green;
+  border-radius: 50px;
+  color: white;
+  font-size: 15px;
+  margin-left: 10px;
+  width: auto;
+  height: 25px;
+}
+
+#apaga-tudo {
+  background-color: aqua;
+  border: 1px solid aqua;
+  border-radius: 50px;
+  color: black;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  width: auto;
+  height: 30px;
+}
+
+#remover-finalizados {
+  background-color: gold;
+  border: solid gold;
+  border-radius: 50px;
+  color: black;
+  font-size: 15px;
+  margin-left: 10px;
+  width: auto;
+  height: 30px;
+  margin-right: 10px;
+}
+
+#mover-cima {
+  background-color: brown;
+  border: solid brown;
+  border-radius: 10px;
+  color: black;
+  font-size: 15px;
+  margin-left: 10px;
+  width: 60px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+#mover-baixo {
+  background-color: brown;
+  border: solid brown;
+  border-radius: 10px;
+  color: black;
+  font-size: 15px;
+  margin-left: 10px;
+  width: 60px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+#salvar-tarefas {
+  background-color: gold;
+  border: solid gold;
+  border-radius: 50px;
+  color: black;
+  font-size: 15px;
+  margin-left: 10px;
+  width: auto;
+  height: 30px;
+  margin-right: 10px;
+}
+
+#remover-selecionado {
+  background-color: rgb(155 , 27 , 27);
+  border: solid rgb(156 , 25 , 25);
+  border-radius: 50px;
+  color: black;
+  font-size: 15px;
+  margin-left: 10px;
+  width: auto;
+  height: 30px;
+  margin-right: 10px;
 }
 
 #section-buttons2 {
   display: block;
   position: relative;
-  top: 300px;
 }
