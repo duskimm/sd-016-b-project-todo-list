@@ -1,6 +1,6 @@
 // 3 - Adicione um input com o id="texto-tarefa" onde a pessoa usuária poderá digitar o nome do item que deseja adicionar à lista
 const bodyElement = document.body;
-function inputed() {
+function inputed(){
   const createInput = document.createElement('input');
   createInput.id = 'texto-tarefa';
   bodyElement.appendChild(createInput);
@@ -25,7 +25,7 @@ const inputTag = document.querySelector('#texto-tarefa');
   
 createButton.addEventListener('click', function(){
   if (inputTag.value.length > 0){
-    let newLiItem = document.createElement('li');
+    const newLiItem = document.createElement('li');
     
     newLiItem.innerText = inputTag.value;
     createListOl.appendChild(newLiItem);
@@ -34,5 +34,24 @@ createButton.addEventListener('click', function(){
 });
 
 // 7 - Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128)
-
+// pega as lis da lista ordenada 
+createListOl.addEventListener('click', function(){
+  for (let index = 0; index < createListOl.children.length; index += 1){
+    createListOl.children[index].style.backgroundColor = 'rgb(128, 128, 128)';
+  }
+});
+// 8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo
+createListOl.addEventListener('click', function(){
+  for (let index = 0; index < createListOl.children.length; index += 1){
+    createListOl.children[index].style.backgroundColor = 'rgb(128, 128, 128)';
+  
+  }
+  
+});
+createListOl.addEventListener('click', function(){
+  for (let index = 0; index < createListOl.children.length; index += 1){
+    createListOl.children[index].style.backgroundColor = 'white';
+  
+  }
+  
 
