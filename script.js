@@ -12,14 +12,22 @@ function toDoCreation() {
 toDoSend.addEventListener('click', toDoCreation);
 
 function backgroundToDoList() {
-  const taskColor = document.querySelectorAll('li');
+  // for (const color of taskColor) {
+    //   color.addEventListener('click', (event) => {
+      //     let fullColor = color.style.backgroundColor;
+      //     if (fullColor !== 'rgb(194, 194, 194)') {
+        //       fullColor.style.backgroundColor = 'rgb(194, 194, 194)';
+        //     }
+        //     event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+        //   });
 
-  for (let color of taskColor) {
-    color.style.backgroundColor = 'rgb(194, 194, 194)';
-    } 
-    appendList.addEventListener('click', (e) => {
+  appendList.addEventListener('click', (e) => {
+    const taskColor = document.querySelectorAll('li');
+          console.log(taskColor);
+    for (let index = 0; index < taskColor.length; index += 1) {
+      taskColor[index].style.backgroundColor = 'rgb(194, 194, 194)';
+    }
     e.target.style.backgroundColor = 'rgb(128, 128, 128)';
   });
 }
-
 backgroundToDoList();
