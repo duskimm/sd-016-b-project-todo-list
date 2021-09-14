@@ -5,3 +5,31 @@
 .completed {
   text-decoration : line-through solid black;
 }
+
+#cabecalho {
+  text-align: center;
+  color: yellow;
+  font-size: 50px;
+}
+
+#funcionamento {
+  text-align: center;
+  color: black;
+  font-size: 30px;
+}
+
+#texto-tarefa {
+  margin-left: 550px;
+}
+
+body {
+  background-image: url('todo-list.jpeg');
+}
+
+#apaga-tudo {
+  margin-left: 350px;
+}
+
+#lista-tarefas {
+  margin-left: 110px;
+}
