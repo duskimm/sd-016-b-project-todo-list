@@ -1,5 +1,6 @@
 let submit = document.getElementById('criar-tarefa');
 let textField = document.getElementById('texto-tarefa');
+let listElements = document.getElementsByTagName('li');
 let valueInput = '';
 
     textField.addEventListener('blur',function(){
@@ -27,7 +28,17 @@ let valueInput = '';
 
             
         }
-                
+
+        for (let index = 0; index < listElements.length; index++) {
+            
+            listElements[index].addEventListener('click',function(event){
+
+                listElements[index].style.backgroundColor = 'rgb(128, 128, 128)';
+        })
+    }       
     })
 
- 
+
+      
+        
+     
