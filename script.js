@@ -41,14 +41,14 @@ function addOrdenedList() {
 }
 addOrdenedList();
 
-function addCreateButton() {
+function addCreateBtn() {
   const newButton = document.createElement('button');
   newButton.id = 'criar-tarefa';
   newButton.innerText = 'Adicionar Tarefa';
 
   main.appendChild(newButton);
 }
-addCreateButton();
+addCreateBtn();
 
 function newTask() {
   const createButton = document.getElementById('criar-tarefa');
@@ -83,3 +83,17 @@ function newTask() {
   });
 }
 newTask();
+
+function newClearBtn() {
+  const clearBtn = document.createElement('button');
+  clearBtn.id = 'apaga-tudo';
+  clearBtn.innerText = 'Apagar Tarefas';
+
+  main.appendChild(clearBtn);
+
+  clearBtn.addEventListener('click', () => {
+    const list = document.getElementById('lista-tarefas');
+    list.innerHTML = '';
+  });
+}
+newClearBtn();
