@@ -19,6 +19,16 @@ function corCinza(event) {
   }
 }
 
+function lineThrough(event) {
+  const tarefa = event.target.classList;
+  if (tarefa.contains('completed')) {
+    tarefa.remove('completed');
+  } else {
+    tarefa.add('completed');
+  }
+}
 
+listaDeTarefas.addEventListener('dblclick', lineThrough);
 listaDeTarefas.addEventListener('click', corCinza);
 criarTarefa.addEventListener('click', criadorDeTarefas);
+
