@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 function creationInput() {
   const inputArea = document.querySelector('#input-area');
   const input = document.createElement('input');
@@ -36,7 +37,6 @@ function creatinigTasks() {
     const text = input.value;
     const list = document.createElement('li');
     list.innerText = text;
-    list.className = 'selected';
     orderedList.appendChild(list);
     input.value = '';
   });
@@ -47,7 +47,7 @@ creatinigTasks();
 function paintList() {
   const orderList = document.querySelector('ol');
   orderList.addEventListener('click', (event) => {
-    event.target.className = 'color';
+    event.target.classList.toggle('color');
   });
 }
 
@@ -57,8 +57,7 @@ paintList();
 function finishedTask() {
   const orderedList = document.querySelector('#lista-tarefas');
   orderedList.addEventListener('dblclick', (event) => {
-    const eventTarget = event.target;
-    eventTarget.className = 'completed';
+    event.target.classList.toggle('completed');
   });
 }
 
