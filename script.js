@@ -59,3 +59,18 @@ function removeCompleted() {
 }
 
 document.getElementById('remover-finalizados').addEventListener('click', removeCompleted);
+
+function save() {
+  localStorage.setItem('toDoList', toDoList.innerHTML);
+  click();
+  doubleclick();
+}
+
+function loadPage() {
+  toDoList.innerHTML = localStorage.getItem('toDoList');
+  click();
+  doubleclick();
+}
+window.onload = loadPage;
+
+document.getElementById('salvar-tarefas').addEventListener('click', save);
