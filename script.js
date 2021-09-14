@@ -9,7 +9,7 @@ function inputClean() {
   taskText.value = '';
 }
 
-// Cria o evento do botão para buscar a tarefa do input ao clicar com o mouse
+// Cria o evento do botão para buscar a tarefa do input ao clicar com o mouse e insere condição para não ser colocada nenhuma tarefa vazia
 
 createTaskFunction.addEventListener('click', () => {
   const task = taskText.value;
@@ -23,7 +23,7 @@ createTaskFunction.addEventListener('click', () => {
   }
 });
 
-// Cria o evento do botão para buscar a tarefa do input ao apertar o enter
+// Cria o evento do botão para buscar a tarefa do input ao apertar o enter e insere condição para não ser colocada nenhuma tarefa vazia
 // Referência: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_trigger_button_enter
 
 taskText.addEventListener('keyup', (event) => {
@@ -73,6 +73,18 @@ function doubleClickTask() {
 
 doubleClickTask();
 
-function deleteListItem(params) {
-  
+// Apaga a lista completa
+// referência: https://www.javascripttutorial.net/javascript-dom/javascript-removechild/
+
+function deleteListItem() {
+  const listFather = document.getElementById('lista-tarefas');
+  const deleteBtn = document.querySelector('#apaga-tudo');
+  deleteBtn.addEventListener('click', () => {
+    console.log('apaguei');
+    while (listFather.firstChild) {
+      listFather.removeChild(listFather.firstChild);
+    }
+  });
 }
+
+deleteListItem();
