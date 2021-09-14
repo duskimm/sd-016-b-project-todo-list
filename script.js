@@ -33,9 +33,12 @@ function removeLastSelected() {
 
 function selectedTask() {
   listaOrdenada.addEventListener('click', (event) => {
-    removeLastSelected();
-    const alvo = event.target;
-    alvo.id = 'selected';
+    // if (event.target)
+    if (event.target.tagName === 'LI') {
+      removeLastSelected();
+      const alvo = event.target;
+      alvo.id = 'selected';
+    }
   });
 }
 selectedTask();
@@ -44,10 +47,12 @@ selectedTask();
 function completedTask() {
   listaOrdenada.addEventListener('dblclick', (event) => {
     const alvoCompleto = event.target;
-    if (alvoCompleto.className === 'completed') {
-      alvoCompleto.removeAttribute('class');
-    } else {
-      alvoCompleto.className = 'completed';
+    if (alvoCompleto.tagName === 'LI') {
+      if (alvoCompleto.className === 'completed') {
+        alvoCompleto.removeAttribute('class');
+      } else {
+        alvoCompleto.className = 'completed';
+      }
     }
   });
 }
@@ -114,3 +119,66 @@ function openPreviousTask() {
   }
 }
 openPreviousTask();
+
+// Requisito 13 - Botões mover para cima e baixo
+const upButton = document.getElementById('mover-cima');
+const downButton = document.getElementById('mover-baixo');
+
+function moveUpAction(previousElement, selectedElement) {
+  if (previousElement.innerText !== undefined) {
+    const previousElementA = previousElement;
+    const selectedElementA = selectedElement;
+    const textBackup = previousElement.innerText;
+    const classBackup = previousElement.className;
+    previousElementA.innerText = selectedElement.innerText;
+    previousElementA.className = selectedElement.className;
+    previousElementA.id = 'selected';
+    selectedElementA.innerText = textBackup;
+    selectedElementA.className = classBackup;
+    selectedElementA.removeAttribute('id');
+  }
+}
+
+function selectedCheck() {
+  if (listaOrdenada.outerHTML.includes('selected')) {
+    return true;
+  }
+  return false;
+}
+
+function moveUp() {
+  upButton.addEventListener('click', () => {
+    if (selectedCheck() === true) {
+      const selectedElement = document.getElementById('selected');
+      const previousElement = selectedElement.previousSibling;
+      moveUpAction(previousElement, selectedElement);
+    }
+  });
+}
+moveUp();
+
+function moveDownAction(nextElement, selectedElement) {
+  if (nextElement !== null) {
+    const nextElementA = nextElement;
+    const selectedElementA = selectedElement;
+    const textBackup = nextElement.innerText;
+    const classBackup = nextElement.className;
+    nextElementA.innerText = selectedElement.innerText;
+    nextElementA.className = selectedElement.className;
+    nextElementA.id = 'selected';
+    selectedElementA.innerText = textBackup;
+    selectedElementA.className = classBackup;
+    selectedElementA.removeAttribute('id');
+  }
+}
+
+function moveDown() {
+  downButton.addEventListener('click', () => {
+    if (selectedCheck() === true) {
+      const selectedElement = document.getElementById('selected');
+      const nextElement = selectedElement.nextSibling;
+      moveDownAction(nextElement, selectedElement);
+    }
+  });
+}
+moveDown();
