@@ -20,11 +20,12 @@ function creationTaskList() {
 creationTaskList();
 
 function addButton() {
-  const buttonArea = document.querySelector('#button-area');
+  const buttonInput = document.querySelector('#input-area');
   const button = document.createElement('button');
   button.id = 'criar-tarefa';
-  button.innerText = 'Criar Tarefa';
-  buttonArea.appendChild(button);
+  button.style.margin = '5px';
+  button.innerText = '+';
+  buttonInput.appendChild(button);
 }
 
 addButton();
@@ -75,6 +76,7 @@ function createButtonClean() {
   const buttonClean = document.createElement('button');
   buttonClean.innerText = 'Limpar';
   buttonClean.id = 'apaga-tudo';
+  buttonClean.style.margin = '5px';
   buttonClean.addEventListener('click', () => {
     const list = document.querySelectorAll('li');
     for (let index = 0; index < list.length; index += 1) {
@@ -90,7 +92,7 @@ createButtonClean();
 function createButtonFinalized() {
   const buttonArea = document.querySelector('#button-area');
   const buttonRemoveFinalized = document.createElement('button');
-  buttonRemoveFinalized.innerText = 'Remover Finalizados';
+  buttonRemoveFinalized.innerText = 'Remover Itens completos';
   buttonRemoveFinalized.id = 'remover-finalizados';
   buttonRemoveFinalized.addEventListener('click', () => {
     const completedItem = document.querySelectorAll('.completed');
