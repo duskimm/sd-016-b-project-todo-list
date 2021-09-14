@@ -34,7 +34,7 @@
             createInputTodo();
             // 4- Adicione uma lista ordenada de tarefas com o id="lista-tarefas"
             function createOl() {
-                let parent = document.getElementById('first-section');
+                let parent = document.getElementById('second-section');
                 let ol = document.createElement('ol');
                 ol.id = 'lista-tarefas';
                 parent.appendChild(ol);
@@ -146,6 +146,33 @@
             deleteFinishedTasks();
         }
         buttonDeleteFinishedTasks();
+        /*12 - Adicione um botão com id="salvar-tarefas" que salve o conteúdo da lista. Se você fechar e reabrir a página, a lista deve continuar no estado em que estava
+    1) Será verificado que existe um elemento `button` com o id `salvar-tarefas`
+    2) Será verificado que, quando a lista tem vários elementos, alguns dos quais marcados como finalizados, um recarregamento da página mantém a lista exatamente como está.
+*/    
+        function buttonSaveTasks() {
+            let parent = document.getElementById('third-section');
+            let button = document.createElement('button');
+            button.id = 'salvar-tarefas';
+            button.innerHTML = 'Salvar Tarefas';
+            parent.appendChild(button);
+
+            function saveTasks() {
+                let buttonElement = document.getElementById('salvar-tarefas');
+                buttonElement.addEventListener('click', function () {
+                    let toDoList = document.getElementById('lista-tarefas');
+                    localStorage.setItem('tarefas', toDoList.innerHTML);
+                });
+            }
+            saveTasks();
+        }
+        buttonSaveTasks();
+        // Adicione um function para carregar-tarefas lista salvo anteriormente.
+        function loadTasks() {
+            let toDoList = document.getElementById('lista-tarefas');
+            toDoList.innerHTML = localStorage.getItem('tarefas');
+        }
+        loadTasks();
     </script>
 </body>
 
