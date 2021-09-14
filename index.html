@@ -5,28 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-do List</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body>
+  <main>
   <header> 
     <h1>Minha Lista de Tarefas</h1>
     <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
     <div>
       <input id="texto-tarefa" type="text">
+      <button id="criar-tarefa" class="blue">Criar Tarefa</button>
+    </header>
       <ol id="Lista-tarefas">
      
       </ol>
     </div>
     <div>
-      <button id="criar-tarefa">Criar Tarefa</button>
-      <button id="apaga-tudo">Apagar Tudo!</button>
-      <button id="remover-finalizados">Remover tarefas concluidas</button>
-      <button id="salvar-tarefas" >Salvar Lista</button>
-      <button id="mover-cima" >Mover para cima</button>
-      <button id="mover-baixo" >Mover para baixo</button>
-      <button id="remover-selecionado" >Remover Selecionado</button>
+      <div>
+        <button id="remover-selecionado" class="icon remove" ><img src="remove.png" alt=""></button>
+        <button id="mover-cima" class="icon"><img src="arrowUP.png" alt=""></button>
+        <button id="mover-baixo" class="icon" ><img src="arrowDown.png"/></button>
+      </div>
+      <button id="remover-finalizados" class="blue">Limpar Completos</button>
+      <button id="apaga-tudo" class="red">Limpar lista</button>
+      <button id="salvar-tarefas" class="green">Salvar Lista</button>
     </div>
-  </header>
-
+  </main>
+  
   <script src="script.js"></script>
 </body>
 </html>
