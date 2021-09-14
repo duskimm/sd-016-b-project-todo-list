@@ -1,17 +1,18 @@
 const toDoList = document.querySelector('#lista-tarefas');
+const lista = document.getElementsByTagName('li');
 
 // https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/removeProperty
 function markText(event) {
   const paintGrey = event.target;
-  for (let index = 0; index < document.getElementsByTagName('li').length; index += 1) {
-    document.getElementsByTagName('li')[index].style.removeProperty('background-color');
+  for (let index = 0; index < lista.length; index += 1) {
+    lista[index].style.removeProperty('background-color');
   }
   paintGrey.style.backgroundColor = 'grey';
 }
 
 function click() {
-  for (let index = 0; index < document.getElementsByTagName('li').length; index += 1) {
-    document.getElementsByTagName('li')[index].addEventListener('click', markText);
+  for (let index = 0; index < lista.length; index += 1) {
+    lista[index].addEventListener('click', markText);
   }
 }
 
@@ -25,7 +26,7 @@ function tachada(event) {
 }
 
 function doubleclick() {
-  for (let index = 0; index < document.getElementsByTagName('li').length; index += 1) {
+  for (let index = 0; index < lista.length; index += 1) {
     document.querySelectorAll('li')[index].addEventListener('dblclick', tachada);
   }
 }
@@ -60,12 +61,14 @@ function removeCompleted() {
 
 document.getElementById('remover-finalizados').addEventListener('click', removeCompleted);
 
+// https://developer.mozilla.org/pt-BR/docs/Web/API/Storage/setItem
 function save() {
   localStorage.setItem('toDoList', toDoList.innerHTML);
   click();
   doubleclick();
 }
 
+// https://developer.mozilla.org/pt-BR/docs/Web/API/Storage/getItem
 function loadPage() {
   toDoList.innerHTML = localStorage.getItem('toDoList');
   click();
@@ -74,3 +77,13 @@ function loadPage() {
 window.onload = loadPage;
 
 document.getElementById('salvar-tarefas').addEventListener('click', save);
+
+function removeSelected() {
+  for (let index = lista.length - 1; index >= 0; index -= 1) {
+    if (lista[index].style.backgroundColor === 'grey') {
+      lista[index].remove();
+    }
+  }
+}
+
+document.getElementById('remover-selecionado').addEventListener('click', removeSelected);
