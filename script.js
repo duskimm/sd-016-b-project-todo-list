@@ -74,9 +74,11 @@ function addTarefaRec(t, c) {
 }
 
 function carregar() {
-  const o = JSON.parse(localStorage.getItem('tarefas'));
-  const t = Object.keys(o);
-  for (let i = 0; i < t.length; i += 1) addTarefaRec(t[i], o[t[i]]);
+  if (localStorage.getItem('tarefas')) {
+    const o = JSON.parse(localStorage.getItem('tarefas'));
+    const t = Object.keys(o);
+    for (let i = 0; i < t.length; i += 1) addTarefaRec(t[i], o[t[i]]);
+  }
 }
 
 //  Configurar a página
