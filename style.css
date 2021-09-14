@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.task-item {
+  padding: 5px;
+}
