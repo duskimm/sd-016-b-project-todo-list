@@ -1,7 +1,93 @@
 body {
-  background-color: white;
+  background-color: #FFFCF2;
+  color: #403d39;
+  font-family: 'Space Mono', monospace;
 }
 
 .completed {
   text-decoration: line-through solid black;
+}
+
+#texto-tarefa {
+  margin-top: 10px;
+  height: 25px;
+  border-radius: 7px;
+  margin-left: 30px;
+  width: 275px;
+  font-family: 'Space Mono', monospace;
+}
+
+#lista-area {
+  display: block;
+}
+
+.list-iten {
+  width: 320px;
+
+}
+
+.selecionado {
+  background-color: #ccc5b9;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0px #403d39;
+  padding: 0px 10px;
+  width: 320px;
+}
+
+#lista-area {
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #ccc5b9;
+  border-radius: 10px;
+  width: 400px;
+  margin-left: 30px;
+  box-shadow: 3px 3px 0px #eb5e28;
+}
+
+ol {
+  margin-left: 50px;
+  display: inline-block;
+  width: 400px;
+  padding: 0px 100px 20px 0px;
+}
+
+.lista-tarefas {
+  margin-left: 20px;
+}
+
+#buttons-side-area {
+  display: inline-block;
+  margin-top: 10px;
+  width: 25px;
+  height: 25px;
+}
+
+#buttons-area {
+  margin-top: 10px;
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
+.side-buttons {
+  display: block;
+  margin-top: 5px;
+  width: 30px;
+}
+
+button {
+  margin: 5px;
+  background-color: #ccc5b9;
+  border-radius: 5px;
+  box-shadow: 3px 3px 0px #eb5e28;
+  padding: 5px 10px;
+  border: 0;
+  margin-right: 40px;
+}
+
+#container {
+  background-color: #403d39;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px #ccc5b9;
+  padding: 10px 0px;
+  width: 600px;
 }

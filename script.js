@@ -1,7 +1,19 @@
+// Cria botões.
+function createButtons(nameButton, id, pai) {
+  const button = document.createElement('button');
+  button.id = id;
+  button.innerText = nameButton;
+  pai.appendChild(button);
+}
+// Containers.
 const inputArea = document.getElementById('input-area');
 const listaArea = document.getElementById('lista-area');
 const buttonsArea = document.getElementById('buttons-area');
-
+const buttonsSideArea = document.getElementById('buttons-side-area');
+// Botões posicionados.
+createButtons('↑', 'mover-cima', buttonsSideArea);
+createButtons('↓', 'mover-baixo', buttonsSideArea);
+createButtons('✘', 'remover-selecionado', buttonsSideArea);
 // Cria input.
 function createInputTarefa() {
   const input = document.createElement('input');
@@ -57,7 +69,6 @@ olList.addEventListener('click', (event) => {
     olList.children[index].classList.remove('selecionado');
     olList.style.backgroundColor = '';
   }
-  alvo.style.backgroundColor = 'grey';
   olList.style.backgroundColor = '';
   alvo.classList.add('selecionado');
 });
@@ -66,20 +77,16 @@ olList.addEventListener('click', (event) => {
 olList.addEventListener('dblclick', (event) => {
   const alvo = event.target;
   if (alvo.classList.contains('completed')) {
-    alvo.className = '';
+    alvo.classList.remove('completed');
   } else {
     alvo.classList.add('completed');
+    alvo.style.backgroundColor = 'grey';
   }
 });
 
+
 // Adiciona um botão para apagar tudo.
-function createButtonClearList() {
-  const buttonClearList = document.createElement('button');
-  buttonClearList.id = 'apaga-tudo';
-  buttonClearList.innerText = 'Limpar lista';
-  buttonsArea.appendChild(buttonClearList);
-}
-createButtonClearList();
+createButtons('Limpar Lista', 'apaga-tudo', buttonsArea);
 
 // Evento que utiliza o botão para apagar a lista.
 const buttonClear = document.getElementById('apaga-tudo');
@@ -89,13 +96,7 @@ buttonClear.addEventListener('click', () => {
 });
 
 // Cria botão que remove os finalizados
-function createButtonRemoveFinalizado() {
-  const buttonRemove = document.createElement('button');
-  buttonRemove.id = 'remover-finalizados';
-  buttonRemove.innerHTML = 'Limpar completos';
-  buttonsArea.appendChild(buttonRemove);
-}
-createButtonRemoveFinalizado();
+createButtons('Limpar Completos','remover-finalizados', buttonsArea);
 
 // Remove as tarefas completadas.
 const buttonRemoveCompleted = document.getElementById('remover-finalizados');
@@ -108,30 +109,16 @@ buttonRemoveCompleted.addEventListener('click', () => {
 });
 
 // Adiciona um botão que salva as tarefas no localState.
-function createButtonSaveList() {
-  const buttonSaveList = document.createElement('button');
-  buttonSaveList.id = 'salvar-tarefas';
-  buttonSaveList.innerText = 'Salvar lista';
-  buttonsArea.appendChild(buttonSaveList);
-}
-createButtonSaveList();
+createButtons('Salvar Lista', 'salvar-tarefas', buttonsArea);
 
 // Evento para salvar os itens.
 const buttonSaveList = document.getElementById('salvar-tarefas');
 buttonSaveList.addEventListener('click', salvaTarefas);
 
-// Cria botões para mover as tarefas.
-function createButtons(nameButton, id) {
-  const button = document.createElement('button');
-  button.id = id;
-  button.innerText = nameButton;
-  buttonsArea.appendChild(button);
-}
-createButtons('Mover para cima', 'mover-cima'); // Botão Up
-createButtons('Mover para baixo', 'mover-baixo'); // Botão Down;
-
+// Botão Up
 // Botão mover tarefa para cima.
 const buttonUp = document.getElementById('mover-cima');
+buttonUp.classList.add('side-buttons');
 buttonUp.addEventListener('click', () => {
   const selecionado = document.querySelector('.selecionado');
   const li = document.querySelectorAll('.list-iten');
@@ -139,11 +126,12 @@ buttonUp.addEventListener('click', () => {
     return;
   }
   olList.insertBefore(selecionado, selecionado.previousElementSibling);
-  // selecionado = 0;
 });
 
+// Botão Down;
 // Botão mover tarefa para baixo.
 const buttonDown = document.getElementById('mover-baixo');
+buttonDown.classList.add('side-buttons');
 buttonDown.addEventListener('click', () => {
   const selecionado = document.querySelector('.selecionado');
   const li = document.querySelectorAll('.list-iten');
@@ -151,11 +139,11 @@ buttonDown.addEventListener('click', () => {
     return;
   }
   olList.insertBefore(selecionado.nextElementSibling, selecionado);
-  // selecionado = 0;
 });
 
-createButtons('Remover selecionado', 'remover-selecionado');// Botão remover selecionado.
+// Botão remover selecionado.
 const buttonRemoveSelecionado = document.getElementById('remover-selecionado');
+buttonRemoveSelecionado.classList.add('side-buttons')
 buttonRemoveSelecionado.addEventListener('click', () => {
   const selecionado = document.querySelector('.selecionado');
   selecionado.parentElement.removeChild(selecionado);
