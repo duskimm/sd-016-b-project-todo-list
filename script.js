@@ -76,3 +76,22 @@ const encontraOl = document.querySelectorAll('ol');
 }
 }
 riscaEtiraORisco ();
+
+// 10 - Adicione um botão com id="apaga-tudo" que quando clicado deve apagar todos os itens da lista
+// O que será verificado:
+// Será verificado que existe um elemento button com o id apaga-tudo
+// Será verificado que, dado que uma lista possui tarefas, um clique no botão a deixa vazia
+const createButtonDelete = document.createElement('button');
+createButtonDelete.id = 'apaga-tudo';
+// deixando o botão legivel
+createButtonDelete.innerText = 'Apaga tudo';
+bodyElement.appendChild(createButtonDelete);
+
+function apagaLista(){
+const elementsLi = document.querySelectorAll('li');
+for (let index = 0; index < elementsLi.length; index +=1){
+elementsLi[index].remove();
+}
+}
+const localizaButton = document.querySelector('#apaga-tudo');
+localizaButton.addEventListener('click', apagaLista);
