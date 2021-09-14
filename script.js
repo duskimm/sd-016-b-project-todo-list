@@ -15,10 +15,10 @@ botaoCriarTarefa.onclick = function () {
 };
 
 ol.onclick = function (e) {
-  if (e.target.classList.contains('selected')) {
+  /* if (e.target.classList.contains('selected')) {
     e.target.classList.remove('selected');
     e.target.style.backgroundColor = '';
-  } else {
+  } else */{ 
     for (let i = 0; i < liItems.length; i += 1) {
       liItems[i].style.backgroundColor = '';
       liItems[i].classList.remove('selected');
@@ -87,9 +87,9 @@ ButtonMoveUp.innerText = 'mover tarefa pra cima';
 ButtonMoveUp.onclick = function () {
   for (let i = 0; i < liItems.length; i += 1) {
     if (liItems[i].classList.contains('selected')) {
-      if (liItems[i] === ol.firstChild) {
-      } else {
+      if (liItems[i] !== ol.firstChild) {
         ol.insertBefore(liItems[i], liItems[i].previousSibling);
+      } else {
       }
     }
   }
@@ -122,7 +122,3 @@ buttonUnSelect.onclick = function (e) {
     }
   }
 };
-
-/*
-Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
-*/
