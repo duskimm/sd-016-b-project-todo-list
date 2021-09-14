@@ -1,6 +1,6 @@
 // 3 - Adicione um input com o id="texto-tarefa" onde a pessoa usuária poderá digitar o nome do item que deseja adicionar à lista
 const bodyElement = document.body;
-function inputed(){
+function inputed() {
   const createInput = document.createElement('input');
   createInput.id = 'texto-tarefa';
   bodyElement.appendChild(createInput);
@@ -22,11 +22,11 @@ createButton.id = 'criar-tarefa';
 createButton.innerText = 'criar tarefas';
 bodyElement.appendChild(createButton);
 const inputTag = document.querySelector('#texto-tarefa');
-  
-createButton.addEventListener('click', function(){
-  if (inputTag.value.length > 0){
+
+createButton.addEventListener('click', function () {
+  if (inputTag.value.length > 0) {
     const newLiItem = document.createElement('li');
-    
+
     newLiItem.innerText = inputTag.value;
     newLiItem.className = 'percorre-lista';
     createListOl.appendChild(newLiItem);
@@ -36,29 +36,43 @@ createButton.addEventListener('click', function(){
 
 // 7 e 8 Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128)
 // pega as lis da lista ordenada.// Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo 
-function adicionaCor(){
-const localizaOl = document.querySelectorAll('ol');
-for (let index = 0; index < localizaOl.length; index+=1){
-localizaOl[index].addEventListener('click', function(event){
-// o click passa primeiro por essa função que verifica se a classe existe e remove, removendo também a cor (de primeira não entra nessa condição, então entra no event.target que adiciona a cor e a classe. No segundo click em outro item da lista ele passa na condição do if, apagando a classe e removendo a cor que tinha sido adc no item anteriormente colorido. E assim continua.)
-  tiraCoreClasse();
-event.target.style.backgroundColor = 'rgb(128, 128, 128)';
-event.target.classList.add('selected');
-})
-}
+function adicionaCor() {
+  const localizaOl = document.querySelectorAll('ol');
+  for (let index = 0; index < localizaOl.length; index += 1) {
+    localizaOl[index].addEventListener('click', function (event) {
+      // o click passa primeiro por essa função que verifica se a classe existe e remove, removendo também a cor (de primeira não entra nessa condição, então entra no event.target que adiciona a cor e a classe. No segundo click em outro item da lista ele passa na condição do if, apagando a classe e removendo a cor que tinha sido adc no item anteriormente colorido. E assim continua.)
+      tiraCoreClasse();
+      event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+      event.target.classList.add('selected');
+    })
+  }
 }
 adicionaCor();
 
-function tiraCoreClasse(){
+function tiraCoreClasse() {
   const classList = document.querySelectorAll('.percorre-lista');
-  for (let index = 0; index < classList.length; index+=1) {
-  //contains verifica se contem a className do parametro que foi passado
-  if (classList[index].classList.contains('selected')){
-    classList[index].classList.remove('selected')
-    classList[index].style.backgroundColor = '';
+  for (let index = 0; index < classList.length; index += 1) {
+    //contains verifica se contem a className do parametro que foi passado
+    if (classList[index].classList.contains('selected')) {
+      classList[index].classList.remove('selected')
+      classList[index].style.backgroundColor = '';
+    }
   }
 }
+// 9- Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
+// Pontos importantes sobre este requisito:
+// * Crie uma classe CSS com o nome "completed" e defina a propriedade "text-decoration" com o valor "line-through".
+// * Utilize a classe CSS "completed" para adicionar o efeito de letra tachada (riscada) às tarefas finalizadas.
+  function riscaEtiraORisco(){
+const encontraOl = document.querySelectorAll('ol');
+  for (let index = 0; index < encontraOl.length; index += 1) {
+  encontraOl[index].addEventListener('dblclick', function(event){
+    //contains verifica se contem a className do parametro que foi passado. Nesse caso se tiver a classe completed, ela é removida//essa classe contem no css a costumização de riscar.
+    if (event.target.classList.contains('completed')) {
+      event.target.classList.remove('completed')
+    } else {
+    event.target.classList.add('completed');
+}});
 }
-
-
-
+}
+riscaEtiraORisco ();
