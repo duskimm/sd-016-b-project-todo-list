@@ -22,7 +22,13 @@ getAddButton.addEventListener('click', function() {
 
 getTaskList.addEventListener('click',function(e){
   let click = e.target;
-  click.style.backgroundColor = 'rgb(128,128,128)'
+  const li = document.querySelectorAll('li')
+  
+  for(let i = 0; i < li.length; i += 1){
+    li[i].style.backgroundColor = 'white'
+  }
+  click.style.backgroundColor = 'rgb(128, 128, 128)'
+
 })
 
 
