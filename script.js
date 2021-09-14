@@ -13,12 +13,21 @@ valorButao.addEventListener('click', () => {
 });
 
 listaDeItens.addEventListener('click', (event) => {
-  const classeSelecionada = document.querySelector('.corCinza');
-  if (classeSelecionada !== null) {
+  const corCinza = document.querySelector('.corCinza');
+  if (corCinza !== null) {
     event.target.classList.toggle('corCinza');
-    classeSelecionada.classList.remove('corCinza');
+    corCinza.classList.remove('corCinza');
     event.target.classList.toggle('corCinza');
   }
-  
   event.target.classList.toggle('corCinza');
+});
+
+listaDeItens.addEventListener('dblclick', (event) => {
+  const riscado = document.querySelector('.completed');
+  if (riscado !== null) {
+    event.target.classList.toggle('completed');
+    riscado.classList.remove('completed');
+    event.target.classList.toggle('completed');
+  }
+  event.target.classList.toggle('completed');
 });
