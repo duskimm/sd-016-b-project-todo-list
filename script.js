@@ -41,6 +41,7 @@ function mkList() {
 function mkNewListItem(inputContent) {
   const createLI = document.createElement('li');
   createLI.innerHTML = inputContent;
+  createLI.classList = 'toDo';
   ol.appendChild(createLI);
 }
 
@@ -63,8 +64,18 @@ function mkEvidence() {
       oldSelected.classList.remove('selected');
       oldSelected.style.backgroundColor = 'white';
     }
-    selected.classList = 'selected';
+    selected.classList.add('selected');
     selected.style.backgroundColor = 'grey';
+  });
+}
+
+function mkDo() {
+  ol.addEventListener('dblclick', function markUp(e) {
+    const completed = e.target.classList;
+    console.log(completed);
+    if (completed.contains('toDo')) {
+      completed.toggle('completed');
+    }
   });
 }
 
@@ -76,4 +87,5 @@ window.onload = function start() {
   mkList();
   mkButton();
   mkEvidence();
+  mkDo();
 };
