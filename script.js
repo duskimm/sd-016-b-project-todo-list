@@ -74,15 +74,31 @@ document.querySelector('#salvar-tarefas').addEventListener('click', () => {
 	}
 });
 
+// Evento de clicar no botao UP
+document.querySelector('#mover-cima').addEventListener('click', () => {
+  const selectedElement = document.querySelector('.selected');
+	if (selectedElement !== null) {
+		if (selectedElement.previousElementSibling) {
+			selectedElement.parentNode.insertBefore(selectedElement, selectedElement.previousElementSibling);
+		}
+	}
+});
+
+// Evento de clicar no botao DOWN
+document.querySelector('#mover-baixo').addEventListener('click', () => {
+  const selectedElement = document.querySelector('.selected');
+	if (selectedElement !== null) {
+		if (selectedElement.nextElementSibling) {
+			selectedElement.parentNode.insertBefore(selectedElement.nextElementSibling, selectedElement);
+		}
+	}
+});
+
 // Evento quando clica uma vez em um elemento da todoList
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('todo')) {
-		if (event.target.classList.contains('selected')) {
-			removeSelected(document.querySelector('.selected'));
-		} else {
-			removeSelected(document.querySelector('.selected'));
-			event.target.classList.add('selected');
-		}
+		removeSelected(document.querySelector('.selected'));
+		event.target.classList.add('selected');
   }
 });
 
@@ -105,6 +121,7 @@ window.onload = () => {
 	let liClassElements = localStorage.todoClassList;
 	if (liElements !== undefined) {
 		liElements = liElements.split('/');
+		console.log(liElements);
 		liClassElements = liClassElements.split('/');
 		for (index = 0; index < liElements.length - 1; index += 1) {
 			olElement.append(newChild('li', liElements[index], liClassElements[index], ''));
