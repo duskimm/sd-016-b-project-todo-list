@@ -14,8 +14,9 @@ const textoTarefa = document.getElementById('texto-tarefa');
 // ao final da lista e o texto do input deve ser limpo
 
 function addTarefa(){
-    let ondeTextoFica = document.createElement('ol');
-    let incluirTexto = document.addEventListener('click',textoTarefa.value);
-    ondeTextoFica.appendChild(incluirTexto)
-    
+    // CRIA A LI DENTRO DO #LISTA-TAREFAS
+     //FAZ O LI FICAR COMO FILHO DA OL
+     // o texto da LI recebe o valor do INPUT
 }
+ // O EVENTO PRECISA SER NO BOTAO
+ 
