@@ -92,20 +92,25 @@ const getCima = document.querySelector('#mover-cima');
 
 getCima.addEventListener('click', function() {
   let getSelecionado = document.querySelector('.selecionado');
-  let next = getSelecionado.previousElementSibling;
-  let atual = getSelecionado;
-  if (atual !== getItemList[0]){
-      getOrderlist.insertBefore(atual, next); // insere o elemento next antes do atual
+  if (getSelecionado !== null){
+    let next = getSelecionado.previousElementSibling;
+    let atual = getSelecionado;
+    if (atual !== getItemList[0]){
+        getOrderlist.insertBefore(atual, next); // insere o elemento next antes do atual
+    }
   }
 });
 const getBaixo = document.querySelector('#mover-baixo');
 
 getBaixo.addEventListener('click', function() {
   let getSelecionado = document.querySelector('.selecionado');
+  if (getSelecionado !== null){
   let next = getSelecionado.nextElementSibling;
   let atual = getSelecionado;
-  if (atual !== getOrderlist[getOrderlist.length -1]){
+  let ultimoFilho = getOrderlist.lastElementChild;
+  if (atual !== ultimoFilho){
     getOrderlist.insertBefore(next, atual); 
+  }
   }
 });
 
