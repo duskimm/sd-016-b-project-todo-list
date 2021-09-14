@@ -51,13 +51,13 @@ function textInput() {
   inputOl.appendChild(buttonClick);
 }
 
+const getListOl = document.getElementById('lista-tarefas');
 const getButtonText = document.getElementById('criar-tarefa');
 getButtonText.addEventListener('click', textInput);
 
 // 7.
 function SetColorItem() {
   const getItemLi = document.getElementsByTagName('li');
-  const getListOl = document.getElementById('lista-tarefas');
   getListOl.addEventListener('click', function(event) {
   for (let index = 0; index < getItemLi.length; index += 1) {
   getItemLi[index].style.backgroundColor = 'rgb(255,255,255)';
@@ -68,3 +68,11 @@ event.target.style.backgroundColor = 'rgb(128,128,128)';
 SetColorItem();
 
 // 8.
+
+getListOl.addEventListener('dblclick', function(event) {
+  if(event.target.className != 'completed'){
+    event.target.classList.add('completed');
+  } else {
+    event.target.classList.remove('completed');
+  }
+});
