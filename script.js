@@ -55,6 +55,8 @@ const user = {
 };
 
 const tasksArray = [];
+const taskContentArray = [];
+const taskClassesArray = [];
 
 const taskInput = getOne('#texto-tarefa'),
       taskList = getOne('#lista-tarefas'),
@@ -226,13 +228,35 @@ function allButtons() {
       case('mover-baixo'):
         moveDown();
         break
+      case('salvar-tarefas'):
+        configureUserTask();
+        saverUserTask();
+        break
       default:
         console.log('default');
     }
   });
 }
 
+function setUserTask() {
+  localStorage.setItem('taskContent', '');
+  localStorage.setItem('taskClasses', '');
+}
+
+function configureUserTask() {
+  tasksArray.forEach((task) => {
+    taskContentArray.push(task.innerText);
+    taskClassesArray.push(task.className);
+  });
+}
+
+function saverUserTask() {
+ localStorage.taskContent = taskContentArray.toString();
+ localStorage.taskClasses = taskClassesArray.toString();
+}
+
 window.onload = () => {
   getTask();
   allButtons();
+  setUserTask();
 };
