@@ -1,52 +1,29 @@
-function creationHeader() {
-  const body = document.querySelector('body');
-  const header = document.createElement('header');
-  body.appendChild(header);
-  const h1 = document.createElement('h1');
-  h1.innerText = 'Minha Lista de Tarefas.';
-  h1.style.textAlign = 'center';
-  header.appendChild(h1);
-}
-
-creationHeader();
-
-function creationParagraph() {
-  const body = document.getElementsByTagName('body')[0];
-  const paragraph = document.createElement('p');
-  paragraph.id = 'funcionamento';
-  paragraph.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
-  paragraph.style.textAlign = 'center';
-  body.appendChild(paragraph);
-}
-
-creationParagraph();
-
 function creationInput() {
-  const body = document.querySelector('body');
+  const inputArea = document.querySelector('#input-area');
   const input = document.createElement('input');
   input.id = 'texto-tarefa';
   input.placeholder = 'Adicionar tarefa';
   input.style.textAlign = '';
-  body.appendChild(input);
+  inputArea.appendChild(input);
 }
 
 creationInput();
 
 function creationTaskList() {
-  const body = document.querySelector('body');
+  const listArea = document.querySelector('#list-area');
   const taskList = document.createElement('ol');
   taskList.id = 'lista-tarefas';
-  body.appendChild(taskList);
+  listArea.appendChild(taskList);
 }
 
 creationTaskList();
 
 function addButton() {
-  const body = document.querySelector('body');
+  const buttonArea = document.querySelector('#button-area');
   const button = document.createElement('button');
   button.id = 'criar-tarefa';
   button.innerText = 'Criar Tarefa';
-  body.appendChild(button);
+  buttonArea.appendChild(button);
 }
 
 addButton();
@@ -59,6 +36,7 @@ function creatinigTasks() {
     const text = input.value;
     const list = document.createElement('li');
     list.innerText = text;
+    list.className = 'selected';
     orderedList.appendChild(list);
     input.value = '';
   });
@@ -66,16 +44,28 @@ function creatinigTasks() {
 
 creatinigTasks();
 
-function clickList() {
+function paintList() {
   const orderList = document.querySelector('ol');
   orderList.addEventListener('click', (event) => {
-    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    event.target.remove();
+    event.target.className = 'color';
   });
 }
 
-clickList();
+paintList();
 
-//Requisito 10
+// Requisito 9
+function finishedTask() {
+  const orderedList = document.querySelector('#lista-tarefas');
+  orderedList.addEventListener('dblclick', (event) => {
+    const eventTarget = event.target;
+    eventTarget.classList.toggle('completed');
+  });
+}
+
+finishedTask();
+
+// Requisito 10
 function createButtonClean() {
   const buttonArea = document.querySelector('#button-area');
   const buttonClean = document.createElement('button');

@@ -1,4 +1,23 @@
 body {
-  background-color: 
-  ;
+  background-color: aquamarine;
+}
+
+main {
+  background-color: white;
+  border-radius: 10px;
+  width: 900px;
+  margin: auto;
+  padding: 15px 30px 30px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.color {
+  background-color: rgb(128, 128, 128);
 }
