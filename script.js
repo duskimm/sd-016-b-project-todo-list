@@ -86,7 +86,7 @@ function apagarMarcados (){
   for (let i = 0; i < quantidadeMarcados; i += 1){
     marcados[0].remove();
 
-    // Remove aprendido no site:
+    // Remove aprendido / baseado no site:
     // https://pt.stackoverflow.com/questions/4605/remover-elemento-da-p%C3%A1gina-com-javascript
   }
 }
