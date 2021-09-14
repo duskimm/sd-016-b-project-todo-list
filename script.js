@@ -77,7 +77,7 @@ function getTask() {
 function createTaskItem() {
   const newTaskItem = createElement('li');
   addClass(newTaskItem, 'task-item');
-  newTaskItem.innerText = user.msg;
+  newTaskItem.innerHTML = user.msg;
   tasksArray.push(newTaskItem);
 }
 
@@ -183,6 +183,7 @@ function allButtons() {
   addMultiplesListeners(buttons, 'click', (event) => {
     switch(event.target.id) {
       case('criar-tarefa'):
+        taskInput.value = '';
         createTaskItem();
         renderTaskItems();
         selectAllTasks();
@@ -210,5 +211,6 @@ function allButtons() {
 }
 
 window.onload = () => {
+  getTask();
   allButtons();
 };
