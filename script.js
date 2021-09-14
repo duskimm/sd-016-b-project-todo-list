@@ -14,9 +14,8 @@ botao.addEventListener('click', function (){
   elementList.innerText = text;
   inputT.value = '';
 })
-
-let listaOrdenado = document.querySelector('#lista-tarefas');
-listaOrdenado.addEventListener('click', function (event){
+// Requisito 8
+listOrdenada.addEventListener('click', function (event){
   let itemList = document.querySelectorAll('li')
   for (let i = 0; i < itemList.length; i += 1) {
     itemList[i].style.backgroundColor = '';
@@ -25,6 +24,13 @@ listaOrdenado.addEventListener('click', function (event){
   event.target.style.backgroundColor = 'rgb(128, 128, 128)';
   event.target.classList.add('selected');
 })
+// Requisito 9
 
+listOrdenada.addEventListener('dblclick', addCompleted);
 
-
+function addCompleted(event) {
+  let listaLi = document.querySelectorAll('li')
+  if (event.target.tagName === 'LI') {
+    event.target.classList.toggle('completed');
+  }
+}
