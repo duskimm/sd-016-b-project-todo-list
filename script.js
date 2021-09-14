@@ -37,6 +37,11 @@ capturarBotaoAdicionar.addEventListener('click', function(){
     }
 });
 
+capturarListaOrdenada.addEventListener('click', function(event){
+    event.target.style.backgroundColor =  'rgb(128, 128, 128)';   
+});
+
+
 
 
 
