@@ -69,6 +69,11 @@ button , input {
   text-decoration: line-through solid black;
 }
 
+.button-container {
+  border-top: 1px solid rgb(224 , 224 , 224);
+  padding-top: 10px;
+}
+
 .button-container button {
   border: 0;
   border-radius: 8px;
