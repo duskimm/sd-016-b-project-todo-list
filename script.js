@@ -11,8 +11,7 @@ adicionaTarefa.addEventListener('click', () => {
   tarefa.value = '';
 });
 
-// Adiciona a cor cinza ao clicar no item da lista
-
+// Adiciona a cor cinza ao clicar no item da lista, e marca se está riscado ou não
 function trocaCinza(event) {
   let todasTarefas = document.querySelectorAll('.itensDaLista');
   for (let index = 0; index < todasTarefas.length; index += 1) {
@@ -21,4 +20,10 @@ function trocaCinza(event) {
   event.target.classList.add('cinza');
 }
 
+// instruções da função toggle retiradas do site https://www.w3schools.com/howto/howto_js_toggle_class.asp
+function riscaTarefa(event) {
+  event.target.classList.toggle('completed');
+}
+
 lista.addEventListener('click', trocaCinza);
+lista.addEventListener('dblclick', riscaTarefa);
