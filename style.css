@@ -10,3 +10,7 @@
 #lista-tarefas {
   margin: 0;
 }
+
+.completed {
+  text-decoration: line-through  solid  black;
+}
