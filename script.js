@@ -25,6 +25,7 @@ function creationInput() {
   const body = document.querySelector('body');
   const input = document.createElement('input');
   input.id = 'texto-tarefa';
+  input.placeholder = 'Adicionar tarefa';
   input.style.textAlign = '';
   body.appendChild(input);
 }
@@ -73,3 +74,20 @@ function clickList() {
 }
 
 clickList();
+
+//Requisito 10
+function createButtonClean() {
+  const buttonArea = document.querySelector('#button-area');
+  const buttonClean = document.createElement('button');
+  buttonClean.innerText = 'Limpar';
+  buttonClean.id = 'apaga-tudo';
+  buttonClean.addEventListener('click', () => {
+    const list = document.querySelectorAll('li');
+    for (let index = 0; index < list.length; index += 1) {
+      list[index].remove();
+    }
+  });
+  buttonArea.appendChild(buttonClean);
+}
+
+createButtonClean();
