@@ -99,6 +99,7 @@ function deleteDoneTasks() {
       task.remove();
     }
   });
+  saveUserTask();
 }
 
 function resetSelection() {
@@ -121,8 +122,10 @@ function changeDone(event) {
 function controlSelection(event) {
   if (event.type === 'dblclick') {
     changeDone(event);
+    saveUserTask();
   } else if (event.type === 'click') {
     changeSelection(event);
+    saveUserTask();
   }
 }
 
@@ -137,6 +140,7 @@ function deleteAllTasks() {
     removeOfHtml(taskList, tasksArray[i]);
   }
   tasksArray.splice(0, tasksArray.length);
+  saveUserTask();
 }
 
 // botões para cima e para baixo, para mover o item selecionado
@@ -159,6 +163,8 @@ function moveUp() {
     tasksArray[selectedIndex - 1].innerText = tempStr1.value;
     tasksArray[selectedIndex].className = tempStr2.classes;
     tasksArray[selectedIndex - 1].className = tempStr1.classes;
+
+    saveUserTask();
   }
 }
 
@@ -180,6 +186,8 @@ function moveDown() {
     tasksArray[selectedIndex + 1].innerText = tempStr1.value;
     tasksArray[selectedIndex].className = tempStr2.classes;
     tasksArray[selectedIndex + 1].className = tempStr1.classes;
+
+    saveUserTask();
   }
 }
 
@@ -192,6 +200,7 @@ function deleteSelectedTask() {
   let del = tasksArray.indexOf(selected);
   tasksArray.splice(del, del + 1);
   selected.remove();
+  saveUserTask();
 }
 
 function listenListItem() {
@@ -290,6 +299,7 @@ function controlWhenUseLocalStorage() {
   if (localStorage.taskContent !== '') {
     getUserTask();
     renderTaskItems();
+    selectAllTasks();
   }
 }
 
