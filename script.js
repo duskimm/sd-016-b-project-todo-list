@@ -5,6 +5,7 @@ const ol = document.querySelector('#lista-tarefas');
 
 window.onload = () => {
   createElementLi();
+  selectItem();
 };
 
 function createElementLi() {
@@ -20,12 +21,16 @@ function createElementLi() {
 function selectItem() {
   ol.addEventListener('click', (event) => {
     const tarefa = document.querySelectorAll('.tarefa');
-    for (let i = 0; i < tarefa.length; i += 1) {
-      if (tarefa[i].id === 'selected' || tarefa[i].id === ''){
-        event.target.setAttribute('id', 'selected');
-      }}
-    }
+      for(const element of tarefa) {
+        if(element.classList.contains('selected')) {
+          element.classList.remove('selected')
+        } else {
+          if(element === event.target) {
+            element.classList.add('selected')
+          }
+        }
+      }
+      }
   )
 }
 
-selectItem()
