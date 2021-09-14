@@ -5,6 +5,7 @@ const listTask = document.getElementsByTagName('li');
 const buttonClear = document.getElementById('apaga-tudo');
 const buttonRemove = document.getElementById('remover-finalizados');
 const buttonSalved = document.getElementById('salvar-tarefas');
+const removeSelected = document.getElementById('remover-selecionado');
 button.addEventListener('click', () => {
   const li = document.createElement('li');
   li.innerText = input.value;
@@ -51,3 +52,12 @@ buttonSalved.addEventListener('click', () => {
 window.onload = function saved() {
   ol.innerHTML = localStorage.getItem('tarefas');
 };
+
+removeSelected.addEventListener('click', () => {
+  const removeLi = document.querySelectorAll('li');
+  for (let index = 0; index < removeLi.length; index += 1) {
+    if (removeLi[index].style.backgroundColor === 'rgb(128, 128, 128)') {
+      removeLi[index].remove();
+    }
+  }
+});
