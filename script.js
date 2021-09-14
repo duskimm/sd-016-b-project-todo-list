@@ -94,6 +94,7 @@ function newClearBtn() {
   clearBtn.addEventListener('click', () => {
     const list = document.getElementById('lista-tarefas');
     list.innerHTML = '';
+    sessionStorage.clear();
   });
 }
 newClearBtn();
@@ -115,3 +116,27 @@ function newCompletedBtn() {
   });
 }
 newCompletedBtn();
+
+function newSaveBtn() {
+  const newBtn = document.createElement('button');
+  newBtn.id = 'salvar-tarefas';
+  newBtn.innerText = 'Salvar Tarefas';
+
+  main.appendChild(newBtn);
+
+  newBtn.addEventListener('click', () => {
+    const tasks = document.getElementById('lista-tarefas');
+    let tasksToSave = tasks.innerHTML;
+    sessionStorage.setItem('tasks', JSON.stringify(tasksToSave));
+  });
+}
+newSaveBtn();
+
+window.onload = savedTasks;
+function savedTasks() {
+  if (sessionStorage.getItem('tasks')) {
+    let loadTasks = JSON.parse(sessionStorage.getItem('tasks'));
+    const tasksList = document.getElementById('lista-tarefas');
+    tasksList.innerHTML = loadTasks;
+  }
+}
