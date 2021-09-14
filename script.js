@@ -6,6 +6,7 @@ createTaskButton.addEventListener('click', () => {
   const taskText = document.querySelector('#texto-tarefa');
   const newTask = document.createElement('li');
   newTask.innerText = taskText.value;
+  newTask.className = 'task';
   toDoList.appendChild(newTask);
   taskText.value = '';
 });
@@ -15,6 +16,8 @@ toDoList.addEventListener('click', (event) => {
   const grayLi = document.querySelector('.gray');
   if (grayLi == null) {
     event.target.classList.add('gray');
+  } else if (grayLi === event.target) {
+    event.target.classList.toggle('gray');
   } else {
     grayLi.classList.remove('gray');
     event.target.classList.toggle('gray');
@@ -27,7 +30,7 @@ toDoList.addEventListener('dblclick', (event) => {
 });
 
 // Requisito 10
-let eraseAllButton = document.querySelector('#apaga-tudo');
+const eraseAllButton = document.querySelector('#apaga-tudo');
 
 eraseAllButton.addEventListener('click', () => {
   toDoList.innerHTML = '';
@@ -42,3 +45,32 @@ removeFinishedButton.addEventListener('click', () => {
     toDoList.removeChild(completed[i]);
   }
 });
+
+// BÔNUS
+// Requisito 12
+const saveTasksButton = document.querySelector('#salvar-tarefas');
+
+saveTasksButton.addEventListener('click', () => {
+  const li = document.querySelectorAll('.task');
+  const tasks = [];
+  const classTasks = [];
+  for (let i = 0; i < li.length; i += 1) {
+    tasks.push(li[i].innerText);
+    classTasks.push(li[i].className);
+  }
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  localStorage.setItem('classTasks', JSON.stringify(classTasks));
+});
+
+window.onload = () => {
+  const retrieveTasks = JSON.parse(localStorage.getItem('tasks'));
+  const retrieveClassTasks = JSON.parse(localStorage.getItem('classTasks'));
+  if (retrieveTasks !== null) {
+    for (let i = 0; i < retrieveTasks.length; i += 1) {
+      const newTask = document.createElement('li');
+      newTask.innerText = retrieveTasks[i];
+      newTask.className = retrieveClassTasks[i];
+      toDoList.appendChild(newTask);
+    }
+  }
+};
