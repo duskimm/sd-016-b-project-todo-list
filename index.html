@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
-<body>
-    <header>Minha Lista de Tarefas</header>
-    <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-    <input type="text" id="texto-tarefa">
-    <ol id="lista-tarefas"></ol>
-    <button id="criar-tarefa">Adicionar</button>
-    <button id="apaga-tudo">Limpar lista</button>
-    <button id="remover-finalizados">Limpar completos</button>
-    <button id="salvar-tarefas">Salvar</button>
-    <button id="remover-selecionado">Remover</button>
-    <button id="mover-cima">Mover acima</button>
-    <button id="mover-baixo">Mover abaixo</button>
-</body>
+  </head>
+  <body>
+    <main class="main-container">
+      <header class="title">Minha Lista de Tarefas</header>
+      <p id="funcionamento" class="help">
+        Clique duas vezes em um item para marcá-lo como completo
+      </p>
+
+      <ol id="lista-tarefas"></ol>
+      <input type="text" id="texto-tarefa" />
+      <button id="criar-tarefa">Adicionar</button>
+
+      <div class="buttons-container">
+        <button id="mover-cima" class="move-button">
+          <img
+            src="https://icongr.am/fontawesome/arrow-up.svg?size=16&color=282a36"
+          />
+        </button>
+        <button id="mover-baixo" class="move-button">
+          <img
+            src="https://icongr.am/fontawesome/arrow-down.svg?size=16&color=282a36"
+          />
+        </button>
+        <button id="remover-selecionado">Remover</button>
+        <button id="remover-finalizados">Limpar completos</button>
+        <button id="apaga-tudo">Limpar lista</button>
+        <button id="salvar-tarefas">Salvar</button>
+      </div>
+    </main>
+  </body>
 </html>
