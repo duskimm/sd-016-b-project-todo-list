@@ -29,8 +29,24 @@ listOrdenada.addEventListener('click', function (event){
 listOrdenada.addEventListener('dblclick', addCompleted);
 
 function addCompleted(event) {
-  let listaLi = document.querySelectorAll('li')
   if (event.target.tagName === 'LI') {
     event.target.classList.toggle('completed');
   }
 }
+
+// Requisito 10
+// ajuda do grupo de estudos com Mariana
+let limpaList = document.querySelector('#apaga-tudo');
+limpaList.addEventListener('click', function () {
+  listOrdenada.innerHTML = '';
+})
+
+// Requisito 11
+// ajuda do grupo de estudos com Mariana e Airton
+let removeFinalizado = document.querySelector('#remover-finalizados');
+removeFinalizado.addEventListener('click', function () {
+  let pegaClass = document.querySelectorAll('.completed');
+  for (let index = 0; index < pegaClass.length; index += 1) {
+    listOrdenada.removeChild(pegaClass[index]);
+  }
+})
