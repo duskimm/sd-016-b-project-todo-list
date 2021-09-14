@@ -13,27 +13,32 @@ function adicionarTarefa() {
 }
 
 // desafio 7
-function colorirTarefa () {
-  listaTarefas.addEventListener("click", function(event){
+function colorirTarefa() {
+ listaTarefas.addEventListener("click", function(event){
     let colori = event.target;
-    if (colori.tagName === "LI"){
-      colori.style.backgroundColor="rgb(128, 128, 128)" 
+    let lista = document.querySelector(".tarefa-colorida");
+    if (lista !== null){
+     lista.classList.remove("tarefa-colorida");
     }
+     colori.classList.add("tarefa-colorida"); 
   })
-}
+} 
 
 // desafio 9
-function riscarItem () {
+function riscarItem() {
   listaTarefas.addEventListener("dblclick", function(event) {
-    let liRiscada = document.querySelectorAll("li");
-    if (event.terget.tagname === "LI"){ 
-      event.target.classList.toggle("completed");
+    let liRiscada = event.target;
+    if (liRiscada.tagName === "LI"){ 
+      liRiscada.classList.toggle("completed");
     }
   })  
 }
 
-function limparLista () {
-}
+function limparLista() {
+  let botaoApagarTudo = document.getElementById("apaga-tudo");
+  botaoApagarTudo.addEventListener=("click", function(){
+    
+ 
 
 adicionarTarefa();
 colorirTarefa();

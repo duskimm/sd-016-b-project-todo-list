@@ -10,3 +10,7 @@
 .completed {
     text-decoration: line-through;
 }
+
+.tarefa-colorida {
+    background-color: rgb(128, 128, 128);
+}
