@@ -11,11 +11,23 @@ let valueInput = '';
 
         let li = document.createElement('li');
         let taskList = document.getElementById('lista-tarefas');
+        let taskListLength = taskList.children.length;
         taskList.appendChild(li);
         li.innerText = valueInput;
+        textField.value = ''; 
 
-        textField.value = '';
-        
+        if (taskList.children != 0 ){
+             let great = taskListLength;
+            for (let index = 0; index < taskListLength; index++) {
+                               
+                taskList.children[great]= taskList.children[index];
+                great--;
+              
+            }
+
+            
+        }
+                
     })
 
  
