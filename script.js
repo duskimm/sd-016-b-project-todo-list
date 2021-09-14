@@ -13,7 +13,7 @@ createTaskButton.addEventListener('click', () => {
 
 // Requisito 7 e 8
 toDoList.addEventListener('click', (event) => {
-  const grayLi = document.querySelector('.gray');
+  let grayLi = document.querySelector('.gray');
   if (grayLi == null) {
     event.target.classList.add('gray');
   } else if (grayLi === event.target) {
@@ -74,3 +74,60 @@ window.onload = () => {
     }
   }
 };
+
+//Requisito 13
+let moveUpButton = document.querySelector('#mover-cima');
+
+moveUpButton.addEventListener('click', () => {
+  let grayLi = document.querySelector('.gray');
+  if (grayLi !== null) {
+   
+    let previousTask = grayLi.previousElementSibling;
+    if (previousTask !== null) {
+      
+      const transition1 = grayLi.innerText;
+      const transition2 = previousTask.innerText;
+      
+      grayLi.innerText = transition2;
+      previousTask.innerText = transition1;
+      
+      const transition3 = grayLi.className;
+      const transition4 = previousTask.className;
+      
+      grayLi.className = transition4;
+      previousTask.className = transition3;
+    }
+  }
+})
+/////
+let moveDownButton = document.querySelector('#mover-baixo');
+
+moveDownButton.addEventListener('click', () => {
+  let grayLi = document.querySelector('.gray');
+  if (grayLi !== null) {
+  
+    let previousTask = grayLi.nextElementSibling;
+    if (previousTask !== null) {
+      
+      const transition1 = grayLi.innerText;
+      const transition2 = previousTask.innerText;
+      
+      grayLi.innerText = transition2;
+      previousTask.innerText = transition1;
+      
+      const transition3 = grayLi.className;
+      const transition4 = previousTask.className;
+      
+      grayLi.className = transition4;
+      previousTask.className = transition3;
+    }
+  }
+});
+
+// Requisito 14
+let removeSelected = document.querySelector('#remover-selecionado');
+
+removeSelected.addEventListener('click', () => {
+  let grayLi = document.querySelector('.gray');
+  toDoList.removeChild(grayLi);
+});
