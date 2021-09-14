@@ -1,10 +1,16 @@
 window.onload = function() {
-    console.log('kkk');
+
 }
+
     const lista = document.querySelector('#lista-tarefas');
     const botaoCria = document.querySelector('#criar-tarefa');
     const botaoApaga = document.querySelector('#apaga-tudo');
-    const botaoRemove = document.querySelector('#remover-finalizados');
+    const botaoRmFinalizados = document.querySelector('#remover-finalizados');
+    const botaoSalva = document.querySelector('#salvar-tarefas');
+    const botaoAcima = document.querySelector('#mover-cima');
+    const botaoAbaixo = document.querySelector('#mover-baixo');
+    const botaoRmSelecionado = document.querySelector('#remover-selecionado');
+
     
 
     function addTask() {
@@ -45,16 +51,95 @@ window.onload = function() {
             }
         }
     }
+
     function completTask() {
         const task2 = event.target;
         task2.classList.toggle('completed')
-        console.log(task2);
     }
+
     
+    function saveTasks() {
+        const tasks = document.querySelectorAll('.task')
+        let array = [];
+        for(let i = 0; i < tasks.length; i += 1) {
+        array.push(tasks[i].innerHTML);
+        localStorage.setItem('tarefas', JSON.stringify(array));
+        }
+
+    }
+
+    function upTask() {
+        var tasks = document.querySelectorAll('.task')
+        const selected = document.querySelector('.selected')
+        let array = []
+        for(let i = 0; i < tasks.length; i += 1) {
+            array.push(tasks[i].innerHTML);
+        }
+        for (let i = 0; i < tasks.length; i += 1) {
+            if( selected === tasks[i] && selected != tasks[0]) {
+            var sobra = array.splice(i-1 , 1);
+            array.splice(i,0, sobra[0])
+            rendTask(array);
+            }
+        }
+    }
+
+    function downTask() {
+        var tasks = document.querySelectorAll('.task')
+        const selected = document.querySelector('.selected')
+        let array = []
+        for(let i = 0; i < tasks.length; i += 1) {
+            array.push(tasks[i].innerHTML);
+        }
+        for (let i = 0; i < tasks.length; i += 1) {
+            if( selected === tasks[i] && selected != tasks[tasks.length-1]) {
+            var sobra = array.splice(i+1 , 1);
+            array.splice(i,0, sobra[0])
+            rendTask(array);
+            }
+        }
+    }
+
+
+    function rendTask(array) {
+        let tasks = document.querySelectorAll('.task')
+        for ( let i = 0; i < tasks.length; i += 1) {
+            tasks[i].remove()
+            let nova = document.createElement('li');
+            nova.classList.add('task');
+            nova.innerText = array[i];
+            lista.appendChild(nova);
+            nova.addEventListener('click', paintTask)
+            nova.addEventListener('dblclick', completTask)
+        }
+    }
+
+    function rmSelected() {
+        const tasks = document.querySelectorAll('.task.selected')[0]
+        tasks.remove();
+    }
+// ANALISAR O CASO DE CARREGAR AS TAREFAS SALVAS, POIS ESTÁ FALHANDO TODO O NPM TESTE QUANDO HABILITA O CARREGAMENTO ONLOAD.
+    // function carregaSalvos() {
+    // let conteudo = JSON.parse(localStorage.getItem('tarefas'));
+    // for( let i = 0; i < conteudo.length; i += 1) {
+    //     const task = document.createElement('li');
+    //     task.innerHTML = conteudo[i];
+    //     task.classList.add('task');
+    //     lista.appendChild(task);
+    // }} carregaSalvos();
+    
+
+
     function createListenersButtons() {
         botaoCria.addEventListener('click', addTask);
         botaoApaga.addEventListener('click', getClean);
-        botaoRemove.addEventListener('click', rmCompleted);
+        botaoRmFinalizados.addEventListener('click', rmCompleted);
+        botaoSalva.addEventListener('click', saveTasks);
+        botaoAbaixo.addEventListener('click', downTask);
+        botaoAcima.addEventListener('click', upTask);
+        botaoRmSelecionado.addEventListener('click', rmSelected);
+
     } createListenersButtons();
+
 
 
