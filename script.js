@@ -16,13 +16,14 @@ document.getElementById('criar-tarefa').addEventListener('click', addTask);
 // Requisito 7 e 8
 
 function highlight() {
-  const currentTasks = document.getElementsByTagName('li')
+  let currentTasks = document.getElementsByTagName('li');
   for (let i = 0; i < currentTasks.length; i += 1) {
-    if (currentTasks[i] == 'rgb(128, 128, 128)') {
+    if (currentTasks[i] === 'rgb(128, 128, 128)') {
       currentTasks[i].style.backgroundColor = 'white';
     }  
   }
   this.style.backgroundColor = 'rgb(128, 128, 128)';
+  console.log(this)
 }
 
 // Requisito 9
@@ -32,7 +33,7 @@ function lineThrough() {
 
 // Requisito 10
 function clearList() {
-  let currentList = document.querySelectorAll('li')
+  let currentList = document.querySelectorAll('li');
   for (let i in currentList) {
       currentList[i].remove()
   }
