@@ -5,15 +5,15 @@
 }
 
 body {
-  background-color: rgb(42, 157, 143);
+  background-color: rgb(42 , 157 , 143);
   min-height: 100vh;
 }
 
 main {
   align-items: center;
-  color: rgb(16, 48, 61);
+  color: rgb(16 , 48 , 61);
   display: flex;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: Source Sans Pro, sans-serif;
   justify-content: center;
   min-height: 94vh;
 }
@@ -76,7 +76,7 @@ button:hover, #criar-tarefa:hover, #salvar-tarefas:hover, #remover-finalizados:h
 }
 
 .completed {
-  text-decoration: line-through solid rgb(0, 0, 0);
+  text-decoration: line-through solid black;
 }
 
 footer {
