@@ -5,8 +5,6 @@ const getListItem = document.getElementsByTagName('li');
 const getCleanButton = document.getElementById('apaga-tudo');
 const getCompletedTask = document.getElementsByClassName('completed');
 const getCleanCompletedTaskButton = document.getElementById('remover-finalizados');
-const tasksInAArray = [];
-const classTaskInAArray = [];
 const getSaveButtom = document.getElementById('salvar-tarefas');
 const getDelSelectButtom = document.getElementById('remover-selecionado');
 const getSelectedItem = document.getElementsByClassName('selected');
@@ -119,6 +117,8 @@ function removeSelectedTask() {
 getDelSelectButtom.addEventListener('click', removeSelectedTask);
 
 function saveContent() {
+  const tasksInAArray = [];
+  const classTaskInAArray = [];
   for (let i = 0; i < getListItem.length; i += 1) {
     tasksInAArray.push(getListItem[i].innerText);
     classTaskInAArray.push(getListItem[i].className);
