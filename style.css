@@ -41,6 +41,19 @@ body {
   border-radius: 5px;
 }
 
+#apaga-tudo {
+  color: white;
+  padding: 7px;
+  border: none;
+  border-radius: 2px;
+  background-color: rgb(255 , 51 , 0);
+}
+
+#apaga-tudo:focus {
+  border: 5px solid rgb(255, 128, 128);
+  border-radius: 5px;
+}
+
 .task-item {
   padding: 5px;
   cursor: pointer;
