@@ -3,11 +3,12 @@ const textoTarefa = document.getElementById('texto-tarefa');
 const btnCriaTarefa = document.getElementById('criar-tarefa');
 const btnApagaTudo = document.getElementById('apaga-tudo');
 const btnRemoverFinalizados = document.getElementById('remover-finalizados');
+const btnRemoverSelecionado = document.getElementById('remover-selecionado');
 
 const pegaListaTarefas = localStorage.getItem('tarefas');
 const tarefas = pegaListaTarefas === null ? [] : pegaListaTarefas.split(',');
 
-const corLinhaPadrao = 'rgb(255, 255, 255)';
+let count = 0;
 
 function capturaTextoTarefa() {
   console.log(textoTarefa.value);
@@ -28,7 +29,7 @@ function listaTarefas(tasks) {
     for (let index = 0; index < tasks.length; index += 1) {
       const novaLinha = document.createElement('li');
       novaLinha.classList.add('line');
-      novaLinha.style.backgroundColor = corLinhaPadrao;
+      // novaLinha.style.backgroundColor = corLinhaPadrao;
       novaLinha.innerText = tasks[index];
       listaOrdenada.append(novaLinha);
     }
@@ -38,12 +39,27 @@ listaTarefas(tarefas);
 
 const linhas = document.querySelectorAll('.line');
 
+function verificaQuantasLinhasSelecionadas() {
+
+  for (let index = 0; index < linhas.length; index += 1) {
+    if (linhas[index].classList.contains('selected')) {
+      count = 1;
+    }
+  }
+  return count;
+}
+
 function selecionaLinha(event) {
-  const selecionado = event.target.style;
-  if (selecionado.backgroundColor === corLinhaPadrao) {
-    selecionado.backgroundColor = 'rgb(128,128,128)';
+  const selecionado = event.target.classList;
+  count = verificaQuantasLinhasSelecionadas();
+  console.log(count);
+  if (selecionado.contains('selected')) {
+    selecionado.remove('selected');
+    count -= 1;
   } else {
-    selecionado.backgroundColor = corLinhaPadrao;
+    if (count < 1) {
+      selecionado.add('selected');
+    }
   }
 }
 
@@ -79,3 +95,17 @@ function removerTarefasFinalizadas() {
   localStorage.setItem('tarefas', novaLista);
 }
 btnRemoverFinalizados.addEventListener('click', removerTarefasFinalizadas);
+
+function deletaSelecionado() {
+  let newArray = [];
+  for (let index = 0; index < linhas.length; index += 1) {
+    if (linhas[index].classList.contains('selected')) {
+      count = 0;
+      linhas[index].remove();
+    } else {
+      newArray.push(linhas[index].innerText);
+    }
+  }
+  localStorage.setItem('tarefas', newArray);
+}
+btnRemoverSelecionado.addEventListener('click', deletaSelecionado);
