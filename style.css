@@ -23,21 +23,21 @@ body {
 }
 
 #texto-tarefa:focus {
-  border: 5px solid rgb(0, 153, 255, 0.4);
+  border: 5px solid rgb(0 , 153 , 255 , 0.4);
   border-radius: 5px;
   outline: none;
 }
 
 #criar-tarefa {
-  color: #fff;
+  color: white;
   padding: 7px;
   border: none;
   border-radius: 2px;
-  background-color: rgb(0, 153, 255);
+  background-color: rgb(0 , 153 , 255);
 }
 
 #criar-tarefa:focus {
-  border: 5px solid rgb(0, 204, 255, 0.5);
+  border: 5px solid rgb(0 , 204 , 255 , 0.5);
   border-radius: 5px;
 }
 
