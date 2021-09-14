@@ -9,10 +9,9 @@ function inputClean() {
   taskText.value = '';
 }
 
-// Cria o evento do botão de pegar a tarefa do input
+// Cria o evento do botão para buscar a tarefa do input ao clicar com o mouse
 
 createTaskFunction.addEventListener('click', () => {
-  console.log('click botão nova tarefa');
   const createTask = document.createElement('li');
   const task = taskText.value;
   createTask.innerText = task;
@@ -20,6 +19,21 @@ createTaskFunction.addEventListener('click', () => {
   listTask.appendChild(createTask);
 
   inputClean();
+});
+
+// Cria o evento do botão para buscar a tarefa do input ao apertar o enter
+// Referência: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_trigger_button_enter
+
+taskText.addEventListener('keyup', (event) => {
+  console.log('enter nova tarefa');
+  if (event.keyCode === 13) {
+    const createTask = document.createElement('li');
+    const task = taskText.value;
+    createTask.innerText = task;
+
+    listTask.appendChild(createTask);
+    inputClean();
+  }
 });
 
 // Após o click analisa se elemento contém ou não o id 'selected' e o exclue se houver. Cria o evento na variável e coloca o id selected no item da lista selecionado
