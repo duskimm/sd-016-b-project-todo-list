@@ -72,3 +72,19 @@ apagaTudo.addEventListener('click', apagar);
 function apagar (){
   selecionandoOl.innerHTML = "";
 }
+
+// Limpar tarefas marcadas
+let removerFinalizados = document.getElementById('remover-finalizados');
+removerFinalizados.addEventListener('click', apagarMarcados);
+
+function apagarMarcados (){
+  let marcados = document.getElementsByClassName('completed');
+  let quantidadeMarcados = marcados.length;
+  
+  for (let i = 0; i <= quantidadeMarcados; i += 1){
+    marcados[0].remove();
+
+    // Remove aprendido no site:
+    // https://pt.stackoverflow.com/questions/4605/remover-elemento-da-p%C3%A1gina-com-javascript
+  }
+}
