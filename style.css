@@ -9,31 +9,34 @@ html {
 }
 
 body {
-  background-color: #50608f;
-  font-family: 'Bebas Neue', cursive;
+  background-color: #695ef9;
+  font-family: sans-serif;
   font-size: 1.8rem;
 }
 
 .main__content {
   width: 84rem;
   margin: 9rem auto 9rem auto;
-  background-color: #7986ac;
+  background-color: #c2bfaf;
   height: 58.7rem;
   border-radius: 1.5rem;
 }
 
 .title__principal {
   font-size: 4.7rem;
-  color: #061339;
+  color: #837aff;
   padding-top: 2rem;
   padding-left: 3.8rem;
   letter-spacing: 1rem;
+  font-family: 'Bebas Neue', cursive;
 }
 
 .parHeader {
   font-size: 1.8rem;
   padding-left: 3.8rem;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  color: #ad971f;
 }
 
 #texto-tarefa {
@@ -57,4 +60,9 @@ body {
 }
 #lista-tarefas li {
   padding-top: 1rem;
+  color: #3931ad;
+}
+
+.completed {
+  text-decoration: line-through solid rgb(0, 0, 0);
 }
