@@ -33,25 +33,17 @@ botaoAddTarefa.addEventListener('click', function(){
 
 // Exercicio 8: seleciona só um
     
-function selecionaItem(event) {
-    let classCinza = document.querySelector('cinza');
-    
-    // let fundo = window.getComputedStyle(classCinza, null).getPropertyValue('background-color');
-    
-    if(classCinza === null) {
+let classeCinza = document.querySelector('.cinza');
+
+function marcaItem(event) {
+    if(classeCinza == null) {
         event.target.classList.add('cinza');
-        // event.target.style.backgroundColor = 'red';
-        
     } else {
-        classCinza.classList.remove('cinza');
-        
+        classeCinza.classList.remove('cinza');
         event.target.classList.add('cinza');
-        // event.target.style.backgroundColor = 'red';
     }
-
 }
-lista.addEventListener('click', selecionaItem);
-
+lista.addEventListener('click', marcaItem);
 
 // Exercicio 9: risca tarefa com dois clicks
 
@@ -66,3 +58,17 @@ function clicks(event) {
     }
 }
 lista.addEventListener('dblclick', clicks);
+
+// Exercicio 10: botão apaga todos os itens da lista
+let botaoApagar = document.createElement('button');
+botaoApagar.id = 'apaga-tudo';
+botaoApagar.innerText = 'Apagar';
+document.body.appendChild(botaoApagar);
+let botaoo = document.getElementById('apaga-tudo');
+
+
+function apagarElementos() {
+   let listaa = document.getElementById('lista-tarefas');
+    listaa.innerHTML = '';
+}
+botaoo.addEventListener('click', apagarElementos);
