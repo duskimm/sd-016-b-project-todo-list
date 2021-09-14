@@ -53,13 +53,11 @@ function adicionaTarefa (){
  function riscaTarefa (event){
      let linhas = document.querySelectorAll(".linha-de-tarefas");
      for (let i=0; i<linhas.length; i+=1){
-         event.target.classList.add('completed')
+         event.target.classList.toggle('completed')
      }
-
-     if (event.target.className ==='linha-de-tarefas completed'){
-         event.target.classList.remove('completed');
-     }
+         //event.target.classList.toggle('completed');
 }
+
 
 //adiciona botao que apaga todos os itens da lista
 
@@ -83,3 +81,7 @@ function apagaLista (event){
       tarefas.removeChild(linhas[i]);
     }
 }
+
+//adiciona botao que remove finzalizados 
+
+
