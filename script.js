@@ -1,6 +1,7 @@
 const input = document.querySelector('#texto-tarefa');
 const listaDeTarefas = document.querySelector('#lista-tarefas');
 const criarTarefa = document.querySelector('#criar-tarefa');
+const apagaTarefa = document.querySelector('#apaga-tudo');
 
 function criadorDeTarefas() {
   const listaDeTarefasItem = document.createElement('li');
@@ -28,7 +29,11 @@ function lineThrough(event) {
   }
 }
 
-listaDeTarefas.addEventListener('dblclick', lineThrough);
-listaDeTarefas.addEventListener('click', corCinza);
-criarTarefa.addEventListener('click', criadorDeTarefas);
+function apagarTarefas() {
+  listaDeTarefas.innerHTML = ''
+}
 
+criarTarefa.addEventListener('click', criadorDeTarefas);
+listaDeTarefas.addEventListener('click', corCinza);
+listaDeTarefas.addEventListener('dblclick', lineThrough);
+apagaTarefa.addEventListener('click', apagarTarefas);
