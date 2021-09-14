@@ -48,3 +48,20 @@ clearButton.addEventListener('click', function() {
   }
   console.log('ta rodando');
 });
+
+//limpar tasks finalizadas
+const finishTasks = document.getElementById('remover-finalizados');
+let completList = [];
+
+function clearCompleted() {
+  for (let index = 0; index < taskLi.length; index += 1) {
+    if (taskLi[index].className === 'completed') {
+      completList.push(taskLi[index]);
+    }
+  }
+  for (let index = 0; index < completList.length; index += 1) {
+    todoList.removeChild(completList[index])
+  }
+}
+
+finishTasks.addEventListener('click', clearCompleted);
