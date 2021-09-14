@@ -23,17 +23,17 @@
         let arrayToDo = [];
         function createElementFirstSection() {
             // 3 - Adicione um input com o id="texto-tarefa" onde a pessoa usuária poderá digitar o nome do item que deseja adicionar à lista.
-            function createInputTodo(){
+            function createInputTodo() {
                 let parent = document.getElementById('first-section');
-            let inputTodo = document.createElement('input');
-            inputTodo.id = 'texto-tarefa';
-            inputTodo.type = 'text';
-            inputTodo.placeholder = 'Digite o nome da tarefa';
-            parent.appendChild(inputTodo);
+                let inputTodo = document.createElement('input');
+                inputTodo.id = 'texto-tarefa';
+                inputTodo.type = 'text';
+                inputTodo.placeholder = 'Digite o nome da tarefa';
+                parent.appendChild(inputTodo);
             }
             createInputTodo();
             // 4- Adicione uma lista ordenada de tarefas com o id="lista-tarefas"
-            function createOl(){
+            function createOl() {
                 let parent = document.getElementById('first-section');
                 let ol = document.createElement('ol');
                 ol.id = 'lista-tarefas';
@@ -41,7 +41,7 @@
             }
             createOl();
             // 5 - Adicione um botão com id="criar-tarefa" e, ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo
-            function buttonCreateTodo(){
+            function buttonCreateTodo() {
                 let parent = document.getElementById('first-section');
                 let button = document.createElement('button');
                 button.id = 'criar-tarefa';
@@ -54,11 +54,11 @@
         /*
         5 - Adicione um botão com id="criar-tarefa" e, ao clicar nesse botão, um novo item deverá ser criado ao final da lista e o texto do input deve ser limpo
         6 - Ordene os itens da lista de tarefas por ordem de criação
-        */                                                                
-        function captureCreateTodoList(){
+        */
+        function captureCreateTodoList() {
             let inputElement = document.getElementById('texto-tarefa');
             let buttonElement = document.getElementById('criar-tarefa');
-            buttonElement.addEventListener('click', function(){
+            buttonElement.addEventListener('click', function () {
                 let text = inputElement.value;
                 let li = document.createElement('li');
                 li.innerHTML = text;
@@ -69,16 +69,32 @@
         }
         captureCreateTodoList();
         //7 - Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128)
-        function clickChangeColor(){
+        //8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo
+        function clickChangeColor() {
             let listaTarefas = document.getElementById('lista-tarefas');
-            listaTarefas.addEventListener('click', function(event){
+            listaTarefas.addEventListener('click', function (event) {
+                let tempElement = document.getElementsByTagName('li');
+                for(let ind of tempElement){
+                    ind.style = 'background-color:';
+                }
                 let target = event.target;
-                if(target.tagName === 'LI'){
+                if (target.tagName === 'LI') {
                     target.style.backgroundColor = 'rgb(128,128,128)';
                 }
             });
         }
         clickChangeColor();
+        //9 - Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
+        function doubleClick() {
+            let listaTarefas = document.getElementById('lista-tarefas');
+            listaTarefas.addEventListener('dblclick', function (event) {
+                let target = event.target;
+                if (target.tagName === 'LI') {
+                    target.style.textDecoration === 'line-through' ? target.style.textDecoration = 'none' : target.style.textDecoration = 'line-through';
+                }
+            });
+        }
+        doubleClick();
     </script>
 </body>
 
