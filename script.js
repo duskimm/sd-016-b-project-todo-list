@@ -99,7 +99,7 @@ function deleteDoneTasks() {
       task.remove();
     }
   });
-  saveUserTask();
+  getAllTasksInString();
 }
 
 function resetSelection() {
@@ -122,10 +122,10 @@ function changeDone(event) {
 function controlSelection(event) {
   if (event.type === 'dblclick') {
     changeDone(event);
-    saveUserTask();
+    getAllTasksInString();
   } else if (event.type === 'click') {
     changeSelection(event);
-    saveUserTask();
+    getAllTasksInString();
   }
 }
 
@@ -140,7 +140,7 @@ function deleteAllTasks() {
     removeOfHtml(taskList, tasksArray[i]);
   }
   tasksArray.splice(0, tasksArray.length);
-  saveUserTask();
+  getAllTasksInString();
 }
 
 // botões para cima e para baixo, para mover o item selecionado
@@ -164,7 +164,7 @@ function moveUp() {
     tasksArray[selectedIndex].className = tempStr2.classes;
     tasksArray[selectedIndex - 1].className = tempStr1.classes;
 
-    saveUserTask();
+    getAllTasksInString();
   }
 }
 
@@ -187,7 +187,7 @@ function moveDown() {
     tasksArray[selectedIndex].className = tempStr2.classes;
     tasksArray[selectedIndex + 1].className = tempStr1.classes;
 
-    saveUserTask();
+    getAllTasksInString();
   }
 }
 
@@ -200,7 +200,7 @@ function deleteSelectedTask() {
   let del = tasksArray.indexOf(selected);
   tasksArray.splice(del, del + 1);
   selected.remove();
-  saveUserTask();
+  getAllTasksInString();
 }
 
 function listenListItem() {
@@ -238,7 +238,7 @@ function allButtons() {
         moveDown();
         break
       case('salvar-tarefas'):
-        configureUserTask();
+        getAllTasksInString();
         controlStorage('taskContent');
         break
       default:
@@ -247,44 +247,37 @@ function allButtons() {
   });
 }
 
-function setUserTask() {
-  localStorage.setItem('taskContent', '');
-  localStorage.setItem('taskClasses', '');
-}
+function updateTaksArray() {
+  const all = getAll('.task-item');
 
-function configureUserTask() {
-  tasksArray.forEach((task) => {
-    taskContentArray.push(task.innerText);
-    taskClassesArray.push(task.className);
+  all.forEach((element) => {
+    tasksArray.push(element);
   });
 }
 
+function getUserTasks() {
+  const htmlArray = localStorage.getItem('tasks').split(',');
+
+  htmlArray.forEach((element) => {
+    taskList.innerHTML += element;
+  });
+  updateTaksArray();
+}
+
+function getAllTasksInString() {
+  const tempArr = [];
+  tasksArray.forEach((task) => {
+    tempArr.push(task.outerHTML);
+  });
+  return tempArr;
+}
+
+function setUserTask() {
+  localStorage.setItem('tasks', getAllTasksInString());
+}
+
 function saveUserTask() {
- localStorage.taskContent = taskContentArray.toString();
- localStorage.taskClasses = taskClassesArray.toString();
-}
-
-function getUserTask() {
-  const userClassesArray =  separateClasses();
-  const userContentArray =  separateContent();
-  for (let i = 0; i < userContentArray.length; i += 1) {
-    const newTaskItem = createElement('li');
-    newTaskItem.className = userClassesArray[i];
-    newTaskItem.innerText = userContentArray[i];
-    tasksArray.push(newTaskItem);
-  }
-}
-
-function separateContent() {
-  const storageContent = localStorage.taskContent;
-
-  return storageContent.split(',');
-}
-
-function separateClasses() {
-  const storageClasses = localStorage.taskClasses;
-
-  return storageClasses.split(',');
+  localStorage.tasks = getAllTasksInString();
 }
 
 function controlStorage(key) {
@@ -296,9 +289,8 @@ function controlStorage(key) {
 }
 
 function controlWhenUseLocalStorage() {
-  if (localStorage.taskContent !== '') {
-    getUserTask();
-    renderTaskItems();
+  if (localStorage.tasks) {
+    getUserTasks();
     selectAllTasks();
   }
 }
