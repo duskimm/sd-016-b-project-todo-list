@@ -7,24 +7,34 @@
     <title>To do list</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/fa866efc1f.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <header><h1>Minha Lista de Tarefas</h1> </header>
-    <main>
-        <article>
-            <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
-            <input type="text" id="texto-tarefa" placeholder="Digite a sua tarefa">
-            <button id="criar-tarefa">Criar tarefa</button>
-            <button id="remover-selecionado">Apagar tarefa</button>
-            <button id="remover-finalizados">Apagar finalizadas</button>
-            <button id="apaga-tudo">Apagar tudo</button>
-            <button id="salvar-tarefas">Salvar tarefas</button>
-            <ol id="lista-tarefas"></ol>
-            <button id="mover-cima">Cima</button>
-            <button id="mover-baixo">Baixo</button>
-        </article>
-    </main>
+        <main id="container">
+            <header><h1>Minha Lista de Tarefas</h1> </header>
+            <article>
+                <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+                <input type="text" id="texto-tarefa" placeholder="Digite a sua tarefa">
+                <button id="criar-tarefa">Adicionar</button>
+                <ol id="lista-tarefas"></ol>
+                <button id="remover-selecionado" class="far fa-trash-alt icon"></button>
+                <button id="mover-cima" class="fas fa-arrow-up icon"></button>
+                <button id="mover-baixo" class="fas fa-arrow-down icon"></button>
+                <button id="remover-finalizados">Excluir completas</button>
+                <button id="apaga-tudo">Excluir tudo</button>
+                <button id="salvar-tarefas">Salvar tarefas</button>
+            </article>
+        </main>
+
+    <footer>Desenvolvido por <em><a href="https://julianesilvac75.github.io/">Juliane Cardoso</a> </em> &#128155;</footer>
     
     <script src="script.js"></script>
 </body>

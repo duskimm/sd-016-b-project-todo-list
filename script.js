@@ -31,7 +31,6 @@ document.addEventListener('click', selectListItem);
 // Função que marca a tarefa como completa
 
 function completedTask(event) {
-
   if (event.target.classList.contains('list-item')) {
     if (event.target.classList.contains('completed')) {
       event.target.classList.remove('completed');
@@ -55,7 +54,7 @@ function deleteCompletedTasks() {
   const elements = document.getElementsByClassName('completed');
 
   while (elements.length > 0) {
-    elements[0].parentNode.removeChild(elements[0])
+    elements[0].parentNode.removeChild(elements[0]);
   }
 
   // Créditos: Veikko Karsikko no Stack Overflow (https://stackoverflow.com/questions/4777077/removing-elements-by-class-name/14066534#14066534?newreg=a0387cf778c645cca68cdc5b3b37c0de)
