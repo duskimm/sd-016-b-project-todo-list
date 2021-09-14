@@ -16,6 +16,7 @@ createInputTarefa();
 function createListOrdenada() {
   const olList = document.createElement('ol');
   olList.id = 'lista-tarefas';
+  olList.innerHTML = localStorage.getItem('tarefas-salvas');
   listaArea.appendChild(olList);
 }
 createListOrdenada();
@@ -37,11 +38,16 @@ buttonAddItem.addEventListener('click', () => {
   const inputValue = document.querySelector('#texto-tarefa').value;
   if (inputValue !== '') {
     const li = document.createElement('li');
+    li.classList.add('list-iten');
     li.innerText = inputValue;
     olList.appendChild(li);
     input.value = '';
   }
 });
+
+function salvaTarefas() {
+  localStorage.setItem('tarefas-salvas', olList.innerHTML);
+}
 
 // Evento para mudar o background color do item.
 olList.addEventListener('click', (event) => {
@@ -84,6 +90,7 @@ createButtonClearList();
 const buttonClear = document.getElementById('apaga-tudo');
 buttonClear.addEventListener('click', () => {
   olList.innerHTML = '';
+  salvaTarefas();
 });
 
 // Cria botão que remove os finalizados
@@ -102,4 +109,19 @@ buttonRemoveCompleted.addEventListener('click', () => {
   for (let index = 0; index < selectedItens.length; index += 1) {
     olList.removeChild(selectedItens[index]);
   }
+  salvaTarefas();
 });
+
+// Adiciona um botão que salva as tarefas no localState.
+function createButtonSaveList() {
+  const buttonSaveList = document.createElement('button');
+  buttonSaveList.id = 'salvar-tarefas';
+  buttonSaveList.innerText = 'Salvar lista';
+  buttonsArea.appendChild(buttonSaveList);
+}
+createButtonSaveList();
+
+// Evento para salvar os itens.
+
+const buttonSaveList = document.getElementById('salvar-tarefas');
+buttonSaveList.addEventListener('click', salvaTarefas);
