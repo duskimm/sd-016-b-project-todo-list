@@ -1,12 +1,13 @@
 function adicionarTarefa () {
   let botaoAdicionarNovaTarefa = document.getElementById("criar-tarefa");
   let listaTarefas = document.getElementById("lista-tarefas");
-  let novaTarefa = document.createElement("li");
-  let tarefa = document.getElementById ("texto-tarefa").value;
-    botaoAdicionarNovaTarefa.addEventListener("click", function(){
+  
+  botaoAdicionarNovaTarefa.addEventListener("click", function(){
+    let tarefa = document.getElementById ("texto-tarefa");
+    let novaTarefa = document.createElement("li");
       listaTarefas.appendChild(novaTarefa);
-      novaTarefa.innerText = tarefa;
-      document.getElementById ("texto-tarefa").value = null;
+      novaTarefa.innerText = tarefa.value;
+      tarefa.value = "";   
     })
 }
 
