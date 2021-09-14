@@ -17,7 +17,6 @@ function newChild(type, text, classs, id) {
 function removeSelected(selectedTodo) {
   if (selectedTodo !== null) {
     selectedTodo.classList.remove('selected');
-		return true;
   }
 }
 
@@ -94,6 +93,14 @@ document.querySelector('#mover-baixo').addEventListener('click', () => {
 	}
 });
 
+// Evento de clicar no botao Remove selected
+document.querySelector('#remover-selecionado').addEventListener('click', () => {
+	const selectedList = document.querySelector('.selected');
+	if (selectedList !== null) {
+		document.querySelector('.selected').remove();
+	}
+});
+
 // Evento quando clica uma vez em um elemento da todoList
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('todo')) {
@@ -121,7 +128,6 @@ window.onload = () => {
 	let liClassElements = localStorage.todoClassList;
 	if (liElements !== undefined) {
 		liElements = liElements.split('/');
-		console.log(liElements);
 		liClassElements = liClassElements.split('/');
 		for (index = 0; index < liElements.length - 1; index += 1) {
 			olElement.append(newChild('li', liElements[index], liClassElements[index], ''));
