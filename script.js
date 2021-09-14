@@ -15,16 +15,13 @@ document.getElementById('criar-tarefa').addEventListener('click', addTask);
 
 // Requisito 7 e 8
 
-
-
 function highlight() {
-    let currentTasks = document.getElementsByTagName('li');
-   for (let i = 0; i < currentTasks.length; i += 1) {
-    if (currentTasks[i].classList === 'highlighted') {
-        currentTasks[i].classList.remove()
-    }
-   }   
-this.classList.add('highlighted');
+    let currentTasks = document.getElementsByClassName('highlighted');
+     for (let i = 0; i < currentTasks.length; i += 1) {
+         currentTasks[i].classList = null;
+     }
+
+  this.classList.add('highlighted');
 }
 
 // Requisito 9
@@ -37,8 +34,8 @@ let clearBtn = document.getElementById('apaga-tudo');
 function clearList() {
   let currentList = document.querySelectorAll('li');
   for (let i = 0; i < currentList.length; i++) {
-      currentList[i].remove();
-      
+     currentList[i].remove();
+  
   }
 }
 
@@ -47,7 +44,7 @@ clearBtn.addEventListener('click', clearList);
 // Requisito 11
 
 function removeCompleted() {
-    let completedTasks = document.querySelectorAll('.completed')
+    let completedTasks = document.querySelectorAll('.completed');
     for (let i = 0; i < completedTasks.length; i++) {
         completedTasks[i].remove()
     }
