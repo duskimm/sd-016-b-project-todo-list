@@ -1,11 +1,12 @@
-let adicionaTarefa = document.getElementById('criar-tarefa'); // Botão de criar tarefa
-let tarefa = document.getElementById('texto-tarefa'); // Conteúdo no campo de adicionar tarefa
-let lista = document.getElementById('lista-tarefas'); // lista de tarefas
-let apagaTudo = document.getElementById('apaga-tudo'); // Botão de apagar todas as tarefas
+const adicionaTarefa = document.getElementById('criar-tarefa'); // Botão de criar tarefa
+const tarefa = document.getElementById('texto-tarefa'); // Conteúdo no campo de adicionar tarefa
+const lista = document.getElementById('lista-tarefas'); // lista de tarefas
+const apagaTudo = document.getElementById('apaga-tudo'); // Botão de apagar todas as tarefas
+const removeFinalizados = document.getElementById('remover-finalizados');
 
 // Botão adicionando tarefas na lista
 adicionaTarefa.addEventListener('click', () => {
-  let novoItem = document.createElement('li');
+  const novoItem = document.createElement('li');
   novoItem.innerText = tarefa.value;
   novoItem.className += 'itensDaLista';
   lista.appendChild(novoItem);
@@ -14,7 +15,7 @@ adicionaTarefa.addEventListener('click', () => {
 
 // Adiciona a cor cinza ao clicar no item da lista, e marca se está riscado ou não
 function trocaCinza(event) {
-  let todasTarefas = document.querySelectorAll('.itensDaLista');
+  const todasTarefas = document.querySelectorAll('.itensDaLista');
   for (let index = 0; index < todasTarefas.length; index += 1) {
     todasTarefas[index].classList.remove('cinza');
   }
@@ -35,3 +36,15 @@ apagaTudo.addEventListener('click', () => {
     lista.removeChild(lista.firstChild);
   }
 });
+
+// Botão que apaga apenas os finalizados
+function removerRiscados() {
+  const todasTarefas = document.querySelectorAll('.itensDaLista');
+  for (let index = 0; index < todasTarefas.length; index += 1) {
+    if (todasTarefas[index].classList.contains('completed')) {
+      lista.removeChild(todasTarefas[index]);
+    }
+  }
+}
+
+removeFinalizados.addEventListener('click', removerRiscados);
