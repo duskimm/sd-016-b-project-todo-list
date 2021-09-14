@@ -5,6 +5,9 @@ function createButtons(nameButton, id, pai) {
   button.innerText = nameButton;
   pai.appendChild(button);
 }
+
+
+
 // Containers.
 const inputArea = document.getElementById('input-area');
 const listaArea = document.getElementById('lista-area');
@@ -146,5 +149,7 @@ const buttonRemoveSelecionado = document.getElementById('remover-selecionado');
 buttonRemoveSelecionado.classList.add('side-buttons')
 buttonRemoveSelecionado.addEventListener('click', () => {
   const selecionado = document.querySelector('.selecionado');
-  selecionado.parentElement.removeChild(selecionado);
+  if (selecionado != null) {
+    selecionado.parentElement.removeChild(selecionado);
+  }
 });
