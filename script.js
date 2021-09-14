@@ -14,7 +14,7 @@ window.onload = function () {
         inputText.value = "";
     })
 
-    // Requisito 6
+    // Requisito 6, 7 e 8
 
     let listItens = document.getElementsByClassName("tarefa");
 
@@ -24,6 +24,16 @@ window.onload = function () {
                 listItens[i].classList.remove("selected");
             }
             event.target.classList.add("selected");
+        }
+    })
+
+    // Requisito 9
+
+    document.addEventListener("dblclick", function(event) {
+        if (event.target.classList.contains("completed")) {
+            event.target.classList.remove("completed");
+        } else {
+            event.target.classList.add("completed");
         }
     })
 }
