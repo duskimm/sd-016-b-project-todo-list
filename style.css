@@ -5,5 +5,10 @@ body {
 main {
   background-color: white;
   border-radius: 25px;
-  padding: 10px 30px 20px 30px;
+  margin: 60px;
+  padding: 10px 30px 20px;
+}
+
+.selected {
+  background-color: rgb(128, 128, 128);
 }

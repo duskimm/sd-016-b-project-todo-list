@@ -61,12 +61,15 @@ function newTask() {
     list.appendChild(newTask);
     task.value = '';
 
-    newTask.addEventListener('click', () => {
-      let newColor = 'rgb(128, 128, 128)';
-      if (newTask.style.backgroundColor === newColor) {
-        newTask.style.backgroundColor = 'white';
-      } else {
-        newTask.style.backgroundColor = newColor;
+    newTask.addEventListener('click', (event) => {
+      for (const element of list.children) {
+        if (element.classList.contains('selected')) {
+          element.classList.remove('selected');
+        } else {
+          if (element === event.target) {
+            element.classList.add('selected');
+          }
+        }
       }
     });
   });
