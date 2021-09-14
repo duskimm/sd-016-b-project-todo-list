@@ -47,3 +47,10 @@ body {
   margin-left: 10px;
   margin-bottom: 20px;
 }
+
+#remover-finalizados {
+  background-color: turquoise;
+  border-radius: 50px;
+  color:white;
+  margin-left: 10px;
+}
