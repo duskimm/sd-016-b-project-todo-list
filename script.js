@@ -35,3 +35,12 @@ function addInput() {
   main.appendChild(newInput);
 }
 addInput();
+
+// REQUISITO 4
+function addOrdenedList() {
+  const newOrdenedList = document.createElement('ol');
+  newOrdenedList.id = 'lista-tarefas';
+
+  main.appendChild(newOrdenedList);
+}
+addOrdenedList();
