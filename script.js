@@ -51,12 +51,42 @@ function addTarefa() {
   }
 }
 
+//  12 Habilita salvar tarefas
+function salvarTarefas() {
+  const lista = document.getElementsByClassName('tarefa');
+  const l = {};
+  for (let i = 0; i < lista.length; i += 1) {
+    l[lista[i].innerText] = lista[i].classList.value;
+  }
+
+  // for (let i of lista) l[i.innerText] = i.classList.value; //lint não permitiu
+  localStorage.setItem('tarefas', JSON.stringify(l));
+}
+
+function addTarefaRec(t, c) {
+  const li = document.createElement('li');
+  li.innerText = t;
+  const c0 = c.split(' ');
+  for (let i = 0; i < c0.length; i += 1) li.classList.add(c0[i]);
+  li.onclick = selecionar;
+  li.ondblclick = riscar;
+  document.querySelector('#lista-tarefas').appendChild(li);
+}
+
+function carregar() {
+  const o = JSON.parse(localStorage.getItem('tarefas'));
+  const t = Object.keys(o);
+  for (let i = 0; i < t.length; i += 1) addTarefaRec(t[i], o[t[i]]);
+}
+
 //  Configurar a página
 function configurar() {
   document.querySelector('#criar-tarefa').addEventListener('click', addTarefa);
   document.querySelector('#apaga-tudo').addEventListener('click', limparLista);
   document.querySelector('#remover-finalizados').addEventListener('click', limparCompletos);
+  document.querySelector('#salvar-tarefas').addEventListener('click', salvarTarefas);
   document.querySelector('#remover-selecionado').addEventListener('click', removeSelecionado);
+  carregar();
 }
 
 window.onload = configurar;
