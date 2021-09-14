@@ -95,3 +95,13 @@ elementsLi[index].remove();
 }
 const localizaButton = document.querySelector('#apaga-tudo');
 localizaButton.addEventListener('click', apagaLista);
+
+// 11 - Adicione um botão com id="remover-finalizados" que quando clicado remove somente os elementos finalizados da sua lista
+const localizaNewButton = document.getElementById('remover-finalizados');
+function apagaFinalizados(){
+ const elementoFinalizado = document.querySelectorAll('.completed');
+ for(index=0; index < elementoFinalizado.length; index +=1){
+   elementoFinalizado[index].remove();
+}
+}
+localizaNewButton.addEventListener('click', apagaFinalizados);
