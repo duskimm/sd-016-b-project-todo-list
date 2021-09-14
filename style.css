@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+ background-color: #f7f9fa;
+}
+
+h1, #texto-tarefa{ /* h1, Input */
+ margin-top: 30px;
+ margin-left: 50px;
+}
+
+#texto-tarefa {
+  width: 300px;
+}
+
+#funcionamento{ /* Paragraph */
+    margin-top: 5px;
+    margin-left: 50px;
+}
+
+#criar-tarefa { /* Button */
+    background-color: blueviolet;
+    border: none;
+    border-radius: 20px;
+    color: aliceblue;
+    width: 100px;
+    height: 25px;
+    margin-left: 5px;
+   
+   
+    
+}
+
