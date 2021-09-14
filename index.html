@@ -74,7 +74,7 @@
             let listaTarefas = document.getElementById('lista-tarefas');
             listaTarefas.addEventListener('click', function (event) {
                 let tempElement = document.getElementsByTagName('li');
-                for(let ind of tempElement){
+                for (let ind of tempElement) {
                     ind.style = 'background-color:';
                 }
                 let target = event.target;
@@ -84,13 +84,19 @@
             });
         }
         clickChangeColor();
-        //9 - Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
+        /*
+         9 - Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
+    ✓ Será verificado que, antes da ação ser disparada, o elemento adicionado à lista não tem nem a classe `completed` nem o estilo `line-through solid rgb(0, 0, 0)`
+    1) Será verificado que a ação pedida é disparada mediante duplo clique no elemento da lista e que os elementos da lista completos tem em si a classe `completed` e a propriedade `text-decoration` com o valor `line-through solid rgb(0, 0, 0)`
+    2) Será verificado que, com um segundo duplo clique, um elemento completo deixa de sê-lo
+ */
         function doubleClick() {
             let listaTarefas = document.getElementById('lista-tarefas');
             listaTarefas.addEventListener('dblclick', function (event) {
                 let target = event.target;
                 if (target.tagName === 'LI') {
-                    target.style.textDecoration === 'line-through' ? target.style.textDecoration = 'none' : target.style.textDecoration = 'line-through';
+                    target.classList.value === "completed" ? target.classList.remove('completed') : target.classList.add('completed');
+                    console.log(target);
                 }
             });
         }
