@@ -13,12 +13,16 @@
       <h1>Minha Lista de Tarefas</h1>
       <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
     </header>
-    <div>
+    <div class="creating-task">
       <input id="texto-tarefa" type="text" placeholder="Digite uma tarefa">
       <button id="criar-tarefa">Adicionar</button>
     </div>
-    <div>
+    <div class="list">
       <ol id="lista-tarefas"></ol>
+    </div>
+    <div class="clean-buttons">
+      <button id="remover-finalizados">Remover tarefas finalizadas</button>
+      <button id="apaga-tudo">Limpar lista</button>
     </div>
   </main>
   <script src="script.js" defer></script>
