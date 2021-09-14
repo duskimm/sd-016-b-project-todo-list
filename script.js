@@ -8,8 +8,6 @@ const btnRemoverSelecionado = document.getElementById('remover-selecionado');
 const pegaListaTarefas = localStorage.getItem('tarefas');
 const tarefas = pegaListaTarefas === null ? [] : pegaListaTarefas.split(',');
 
-let count = 0;
-
 function capturaTextoTarefa() {
   console.log(textoTarefa.value);
   const tarefa = textoTarefa.value;
@@ -39,27 +37,21 @@ listaTarefas(tarefas);
 
 const linhas = document.querySelectorAll('.line');
 
-function verificaQuantasLinhasSelecionadas() {
-
+function limpaSelecionadas() {
   for (let index = 0; index < linhas.length; index += 1) {
     if (linhas[index].classList.contains('selected')) {
-      count = 1;
+      linhas[index].classList.remove('selected');
     }
   }
-  return count;
 }
 
 function selecionaLinha(event) {
   const selecionado = event.target.classList;
-  count = verificaQuantasLinhasSelecionadas();
-  console.log(count);
+  limpaSelecionadas();
   if (selecionado.contains('selected')) {
     selecionado.remove('selected');
-    count -= 1;
   } else {
-    if (count < 1) {
-      selecionado.add('selected');
-    }
+    selecionado.add('selected');
   }
 }
 
@@ -97,10 +89,9 @@ function removerTarefasFinalizadas() {
 btnRemoverFinalizados.addEventListener('click', removerTarefasFinalizadas);
 
 function deletaSelecionado() {
-  let newArray = [];
+  const newArray = [];
   for (let index = 0; index < linhas.length; index += 1) {
     if (linhas[index].classList.contains('selected')) {
-      count = 0;
       linhas[index].remove();
     } else {
       newArray.push(linhas[index].innerText);
