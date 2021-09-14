@@ -2,6 +2,7 @@ const input = document.querySelector('#texto-tarefa');
 const listaDeTarefas = document.querySelector('#lista-tarefas');
 const criarTarefa = document.querySelector('#criar-tarefa');
 const apagaTarefa = document.querySelector('#apaga-tudo');
+const removeFinalizados = document.querySelector('#remover-finalizados')
 
 function criadorDeTarefas() {
   const listaDeTarefasItem = document.createElement('li');
@@ -33,7 +34,16 @@ function apagarTarefas() {
   listaDeTarefas.innerHTML = ''
 }
 
+function removerFinalizados(){
+  const finalizado = document.querySelectorAll('.completed')
+  for (let index = 0; index < finalizado.length; index += 1) {
+     finalizado[index].remove();
+  }
+}
+
+
 criarTarefa.addEventListener('click', criadorDeTarefas);
 listaDeTarefas.addEventListener('click', corCinza);
 listaDeTarefas.addEventListener('dblclick', lineThrough);
 apagaTarefa.addEventListener('click', apagarTarefas);
+removeFinalizados.addEventListener('click', removerFinalizados);
