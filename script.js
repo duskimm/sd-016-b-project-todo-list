@@ -16,7 +16,7 @@ function checkItemList(erasy) {
 
 // funcao que adiciona o evento de double click nos elementos da lista:
 function eventDoubleClickList() {
-  for (let i = 0; i < document.querySelectorAll('li').length; i += 1) {
+  for (let i = 0; i < document.querySelectorAll('li').length; i += 1) {  
     document.querySelectorAll('li')[i].addEventListener('dblclick', checkItemList);
   }
 }
@@ -37,7 +37,7 @@ function eventClickList() {
   }
 }
 
-// funcao que insere o elemento il na ol atraves do input pelo usuario:
+// funcao que insere o elemento li na ol atraves do input pelo usuario:
 function insertElementLI() {
   const newItem = document.getElementById('texto-tarefa').value; // valor do input
   const createItem = document.createElement('li'); // criando elemento li
@@ -53,19 +53,21 @@ createNewItemList.addEventListener('click', insertElementLI); // se clicar no bo
 
 // funcao que limpa a lista de tarefas:
 function clearList() {
-const listClear = document.querySelectorAll('li');
-  for (let i = 0; i < listClear.length ; i += 1) {
-    listClear[i].remove();
+  const listClear = document.querySelectorAll('li'); // seleciona todas li
+  for (let i = 0; i < listClear.length; i += 1) { // loop para pegar cada li[i]
+    listClear[i].remove(); // remover li[i]
   }
 }
-document.getElementById('apaga-tudo').addEventListener('click', clearList);
+document.getElementById('apaga-tudo').addEventListener('click', clearList); // se clicar no botao limpa toda lista de tarefas
 
-// funcao que remove os itens finalizados
-//function removeFinished() {
-//pega as lis com class completed. pegar itens com class .completed queryselectall e add array ...
-//remover lis com class completed.   
-//}
-//document.getElementById('remover-finalizados').addEventListener('click', removeFinished);
+// funcao que remove os itens finalizados:
+function removeFinished() {
+  const removeListFinished = document.querySelectorAll('.completed'); // seleciona as li que tem class .completed
+  for (let i = 0; i < removeListFinished.length; i += 1) { // loop para pegar cada li[i] com a class completed
+    removeListFinished[i].remove(); // remover li[i] com class completed
+  }
+}
+document.getElementById('remover-finalizados').addEventListener('click', removeFinished); // se clicar no botao remove os itens com check (riscados)
 
 /* este esta dando erro e eu nao entendo o porq... tive q separar em 2 funcoes
 function eventClickList(newItem) {
