@@ -9,4 +9,16 @@ function criadorDeTarefas() {
   listaDeTarefas.appendChild(listaDeTarefasItem);
 }
 
+function corCinza(event) {
+  const selected = document.querySelector('.selected');
+  if (!selected) {
+    event.target.classList.add('selected');
+  } else {
+    selected.classList.remove('selected');
+    event.target.classList.add('selected');
+  }
+}
+
+
+listaDeTarefas.addEventListener('click', corCinza);
 criarTarefa.addEventListener('click', criadorDeTarefas);
