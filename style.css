@@ -5,4 +5,45 @@
 
 body {
   font-family: sans-serif;
+  background-color: rgb(20 , 33 , 61);
+}
+
+.container {
+  background-color: rgb(229 , 229 , 229);
+  border-radius: 25px;
+  max-width: 1280px;
+  margin: 40px auto;
+  padding: 25px 30px;
+}
+
+#funcionamento {
+  margin-top: 10px;
+  font-style: italic;
+  color: rgb(107 , 112 , 92);
+}
+
+.containerInput {
+  margin-top: 20px;
+}
+
+#texto-tarefa {
+  font-size: 20px;
+  padding: 4px 6px;
+}
+
+#criar-tarefa {
+  background-color: rgb(252 , 163 , 17);
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 20px;
+  margin-left: 15px;
+  padding: 6px 20px;
+}
+
+ol {
+  padding: 20px 45px;
+  font-size: 28px;
 }
