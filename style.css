@@ -1,7 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: max-content;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  margin: auto;
+}
+
+#funcionamento {
+  font-size: 15px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.title-container h1 {
+  font-size: 35px;
+  margin-top: 10px;
+}
+
 .taskSelected {
   background-color: gray;
 }
 
 .completed {
   text-decoration: line-through;
+}
+
+#texto-tarefa {
+  padding: 10px;
+  width: 14.7vw;
+}
+
+.task-list-container {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.input-task-container {
+  margin-top: 15px;
+}
+
+.task-list {
+  text-align: center;
+  width: max-content;
+  margin: auto;
+  min-height: max-content;
+}
+
+button {
+  padding: 5px;
+  margin-left: 5px;
 }

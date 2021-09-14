@@ -17,18 +17,22 @@
     </p>
   </header>
   <section class="task-list">
-    <div>
+    <div class = "input-task-container">
+      <input id="texto-tarefa" type="text" placeholder="Qual tarefa gostaria de adicionar?">
+      <button id="criar-tarefa">Criar tarefa</button>
+    </div>
+    <div class="task-list-container">
       <ol id="lista-tarefas">
       </ol>
     </div>
-    <input id="texto-tarefa" type="text" placeholder="Qual tarefa gostaria de adicionar?">
-    <button id="criar-tarefa">Criar tarefa</button>
-    <button id="apaga-tudo">Apagar Tudo</button>
-    <button id="remover-finalizados">Remover Finalizados</button>
-    <button id="salvar-tarefas">Salvar Tarefas</button>
-    <button id="mover-cima">Cima</button>
-    <button id="mover-baixo">Baixo</button>
-    <button id="remover-selecionado">Remover selecionado</button>
+    <div class= "buttons-container">
+      <button id="apaga-tudo">Apagar Tudo</button>
+      <button id="remover-finalizados">Remover Finalizados</button>
+      <button id="salvar-tarefas">Salvar Tarefas</button>
+      <button id="mover-cima">Cima</button>
+      <button id="mover-baixo">Baixo</button>
+      <button id="remover-selecionado">Remover selecionado</button>
+    </div>
   </section>
 </main>
   <script src="./script.js"></script>
