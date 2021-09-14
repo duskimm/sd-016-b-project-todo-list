@@ -14,10 +14,11 @@ addButton.addEventListener('click', () => {
 });
 
 addListOl.addEventListener('click', (event) => {
+  const evento = event.target;
   for (let index = 0; index < addBackground.length; index += 1) {
     addBackground[index].style.backgroundColor = 'white';
   }
-  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  evento.style.backgroundColor = 'rgb(128, 128, 128)';
 });
 
 addListOl.addEventListener('dblclick', (event) => {
