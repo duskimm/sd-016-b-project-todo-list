@@ -67,12 +67,31 @@ event.target.style.backgroundColor = 'rgb(128,128,128)';
 }
 SetColorItem();
 
-// 8.
+// 9.
 
 getListOl.addEventListener('dblclick', function(event) {
   if(event.target.className != 'completed'){
-    event.target.classList.add('completed');
-  } else {
-    event.target.classList.remove('completed');
+    event.target.classList.add('completed'); }
+  else {
+  event.target.classList.remove('completed');
   }
 });
+
+// 10.
+
+function createButtonEraser() {
+  const buttonEraser = document.createElement('button');
+  buttonEraser.id = 'apaga-tudo';
+  buttonEraser.innerHTML = 'Apagar';
+  document.body.appendChild(buttonEraser);
+}
+createButtonEraser();
+
+const getButtonErase = document.getElementById('apaga-tudo');
+const getListLi = document.getElementById('lista-tarefas');
+
+function buttonEraser() {
+  getListLi.innerHTML = '';
+}
+
+getButtonErase.addEventListener('click', buttonEraser);
