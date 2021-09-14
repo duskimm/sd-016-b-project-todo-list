@@ -2,13 +2,23 @@ let adicionaTarefa = document.getElementById('criar-tarefa'); // Botão de criar
 let tarefa = document.getElementById('texto-tarefa'); // Conteúdo no campo de adicionar tarefa
 let lista = document.getElementById('lista-tarefas'); // lista de tarefas
 
+// Botão adicionando tarefas na lista
 adicionaTarefa.addEventListener('click', () => {
   let novoItem = document.createElement('li');
   novoItem.innerText = tarefa.value;
+  novoItem.className += 'itensDaLista';
   lista.appendChild(novoItem);
   tarefa.value = '';
 });
 
-/* ao clicar no botão, deve ser criado uma nova linha na ol (addEventListener + createElement)
-   depois, pega o texto que está na tarefa e adiciona na linha criada
-*/
+// Adiciona a cor cinza ao clicar no item da lista
+
+function trocaCinza(event) {
+  let todasTarefas = document.querySelectorAll('.itensDaLista');
+  for (let index = 0; index < todasTarefas.length; index += 1) {
+    todasTarefas[index].classList.remove('cinza');
+  }
+  event.target.classList.add('cinza');
+}
+
+lista.addEventListener('click', trocaCinza);

@@ -1,3 +1,7 @@
 header {
   font: 40px Arial sans-serif;
 }
+
+.cinza {
+  background-color: rgb(128, 128, 128);
+}
