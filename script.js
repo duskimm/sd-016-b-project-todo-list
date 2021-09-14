@@ -1,4 +1,5 @@
 const btnTask = document.getElementById('criar-tarefa');
+const btnRemove = document.getElementById('apaga-tudo');
 
 function removeClass(list) {
   list.forEach((item) => {
@@ -41,4 +42,13 @@ btnTask.addEventListener('click', () => {
   document.getElementById('texto-tarefa').value = '';
   itemTask();
   captureTasks();
+});
+
+btnRemove.addEventListener('click', () => {
+  const list = document.getElementById('lista-tarefas');
+  // https://developer.mozilla.org/pt-BR/docs/Web/API/Node/removeChild
+  // referência retirada do site da MDN Web Docs para remover todos os elementos filhos
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  }
 });
