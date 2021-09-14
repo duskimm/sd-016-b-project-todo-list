@@ -14,13 +14,23 @@ const textoTarefa = document.getElementById('texto-tarefa');
 // ao final da lista e o texto do input deve ser limpo
 
 function addTarefa() {
-  let criaLi = document.createElement('li'); // CRIA A LI DENTRO DO #LISTA-TAREFAS
-  listaDeTarefas.appendChild(criaLi); //FAZ O LI FICAR COMO FILHO DA OL
-  criaLi.innerText = textoTarefa.value // o texto da LI recebe o valor do INPUT
-  textoTarefa.value = ""; // reseta o valor do input
+    let criaLi = document.createElement('li'); // CRIA A LI DENTRO DO #LISTA-TAREFAS
+    listaDeTarefas.appendChild(criaLi); //FAZ O LI FICAR COMO FILHO DA OL
+    criaLi.className = 'listagem';
+    criaLi.innerText = textoTarefa.value // o texto da LI recebe o valor do INPUT
+    textoTarefa.value = ""; // reseta o valor do input
+    
 }
 btnTarefa.addEventListener('click', addTarefa) // O EVENTO PRECISA SER NO BOTAO
 
 //7 
-// 
-rgb(128,128,128)
+// alterar a cor de fundo para cinza ao click na lista de item rgb(128,128,128)
+
+function alteraCorfundo(event) {
+    let classeListagem = document.querySelectorAll('.listagem');
+    for (let index = 0; index < classeListagem.length; index+= 1) {
+        classeListagem[index].style.background = 'white';
+    }
+    event.target.style.background = 'gray';
+}
+listaDeTarefas.addEventListener('click',alteraCorfundo)
