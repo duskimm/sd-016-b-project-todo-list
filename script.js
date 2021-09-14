@@ -21,7 +21,7 @@ function highlight() {
     let currentTasks = document.getElementsByTagName('li');
    for (let i = 0; i < currentTasks.length; i += 1) {
     if (currentTasks[i].classList === 'highlighted') {
-        currentTasks[i].classList.remove('highlighted')
+        currentTasks[i].classList.remove()
     }
    }   
 this.classList.add('highlighted');
@@ -40,6 +40,16 @@ function clearList() {
   }
 }
 document.getElementById('apaga-tudo').addEventListener('click', clearList);
+
+// Requisito 11
+
+function removeCompleted() {
+    let completedTasks = document.querySelectorAll('.completed')
+    for (let i = 0; i < completedTasks.length; i++) {
+        completedTasks[i].remove()
+    }
+}
+document.getElementById('remover-finalizados').addEventListener('click', removeCompleted)
 
 // Requisito 12
 
