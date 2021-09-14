@@ -79,6 +79,8 @@ body {
 
 .selected {
   background-color: gray;
+  border-radius: 5px;
+  padding: 2px;
 }
 
 .completed {
