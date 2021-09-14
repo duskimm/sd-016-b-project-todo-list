@@ -1,6 +1,7 @@
 * {
   margin: 0 auto;
-  padding: 0;
+  padding: 0.15em;
+  width: max-content;
   text-align: center;
 }
 
@@ -10,6 +11,55 @@
 
 .completed {
   text-decoration: line-through solid black;
+}
+
+header {
+  font-weight: 900;
+  font-family: sans-serif;
+  font-size: xx-large;
+  font-style: oblique;
+  text-shadow: white 2px 2px 2px;
+}
+
+p {
+  color: rgb(141 , 38 , 0);
+  text-shadow: white 1px 1px 1px;
+  font-style: italic;
+}
+
+ol {
+  margin: 2em auto;
+  height: 20em;
+  overflow-y: scroll;
+  background-color: khaki;
+  width: auto;
+  box-shadow: gray 1em 1em 1em;
+}
+
+li {
+  font-size: larger;
+  font-family: cursive;
+  margin: 0 2em;
+  padding-top: 0.75em;
+  text-align: justify;
+  border-bottom: cornflowerblue 1px solid;
+  width: auto;
+  cursor: crosshair;
+}
+
+body {
+  background-color: rgb(171 , 171 , 223);
+  background-blend-mode: lighten;
+  background-image: url('https://moxieandmettle.co.uk/wp-content/uploads/2019/05/remeber-1051x675.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+footer {
+  margin-top: 3em;
+  float: right;
+  font-family: monospace;
 }
 
 /* Deixe uma linha no fim pra agradar o linter */
