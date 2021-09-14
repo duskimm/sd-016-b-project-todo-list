@@ -173,6 +173,25 @@
             toDoList.innerHTML = localStorage.getItem('tarefas');
         }
         loadTasks();
+        //14 - Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado
+        function buttonRemoveSelected() {
+            let parent = document.getElementById('third-section');
+            let button = document.createElement('button');
+            button.id = 'remover-selecionado';
+            button.innerHTML = 'Remover Selecionado';
+            parent.appendChild(button);
+
+            function removeSelected() {
+                let buttonElement = document.getElementById('remover-selecionado');
+                buttonElement.addEventListener('click', function () {
+                    let toDoList = document.getElementById('lista-tarefas');
+                    for(let ind of toDoList.children) {
+                        ind.style.backgroundColor ? toDoList.removeChild(ind) : '';                    }
+                });
+            }
+            removeSelected();
+        }
+        buttonRemoveSelected();
     </script>
 </body>
 
