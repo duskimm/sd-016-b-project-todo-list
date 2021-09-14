@@ -65,47 +65,43 @@ document.querySelector('#remover-finalizados').addEventListener('click', () => {
 // Evento de clicar no botao SAVE TAKS
 document.querySelector('#salvar-tarefas').addEventListener('click', () => {
   const olList = document.getElementsByClassName('todo');
-	localStorage.todoList = '';
-	localStorage.todoClassList = '';
-	for (index = 0; index < olList.length; index += 1) {
-		localStorage.todoList += `${olList[index].innerText}/`;
-		localStorage.todoClassList += `${olList[index].classList}/`;
-	}
+  localStorage.todoList = '';
+  localStorage.todoClassList = '';
+  for (let index = 0; index < olList.length; index += 1) {
+    localStorage.todoList += `${olList[index].innerText}/`;
+    localStorage.todoClassList += `${olList[index].classList}/`;
+  }
 });
 
 // Evento de clicar no botao UP
 document.querySelector('#mover-cima').addEventListener('click', () => {
-  const selectedElement = document.querySelector('.selected');
-	if (selectedElement !== null) {
-		if (selectedElement.previousElementSibling) {
-			selectedElement.parentNode.insertBefore(selectedElement, selectedElement.previousElementSibling);
-		}
-	}
+  const selectElmt = document.querySelector('.selected');
+  if ((selectElmt !== null) && (selectElmt.nextElementSibling)) {
+    selectElmt.parentNode.insertBefore(selectElmt, selectElmt.previousElementSibling);
+  }
 });
 
 // Evento de clicar no botao DOWN
 document.querySelector('#mover-baixo').addEventListener('click', () => {
   const selectedElement = document.querySelector('.selected');
-	if (selectedElement !== null) {
-		if (selectedElement.nextElementSibling) {
-			selectedElement.parentNode.insertBefore(selectedElement.nextElementSibling, selectedElement);
-		}
-	}
+  if ((selectedElement !== null) && (selectedElement.nextElementSibling)) {
+    selectedElement.parentNode.insertBefore(selectedElement.nextElementSibling, selectedElement);
+  }
 });
 
 // Evento de clicar no botao Remove selected
 document.querySelector('#remover-selecionado').addEventListener('click', () => {
-	const selectedList = document.querySelector('.selected');
-	if (selectedList !== null) {
-		document.querySelector('.selected').remove();
-	}
+  const selectedList = document.querySelector('.selected');
+  if (selectedList !== null) {
+    document.querySelector('.selected').remove();
+  }
 });
 
 // Evento quando clica uma vez em um elemento da todoList
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('todo')) {
-		removeSelected(document.querySelector('.selected'));
-		event.target.classList.add('selected');
+    removeSelected(document.querySelector('.selected'));
+    event.target.classList.add('selected');
   }
 });
 
@@ -123,14 +119,14 @@ document.addEventListener('dblclick', (event) => {
 
 // evento que acontece quando a pagina termina de carregar
 window.onload = () => {
-	const olElement = document.querySelector(olId);
-	let liElements = localStorage.todoList;
-	let liClassElements = localStorage.todoClassList;
-	if (liElements !== undefined) {
-		liElements = liElements.split('/');
-		liClassElements = liClassElements.split('/');
-		for (index = 0; index < liElements.length - 1; index += 1) {
-			olElement.append(newChild('li', liElements[index], liClassElements[index], ''));
-		}
-	}
+  const olElement = document.querySelector(olId);
+  let liElements = localStorage.todoList;
+  let liClassElements = localStorage.todoClassList;
+  if (liElements !== undefined) {
+    liElements = liElements.split('/');
+    liClassElements = liClassElements.split('/');
+    for (let index = 0; index < liElements.length - 1; index += 1) {
+      olElement.append(newChild('li', liElements[index], liClassElements[index], ''));
+    }
+  }
 };
