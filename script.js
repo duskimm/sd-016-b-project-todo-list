@@ -79,6 +79,16 @@ function mkDo() {
   });
 }
 
+function mkDelAll() {
+  const createButton = document.createElement('button')
+  createButton.id = 'apaga-tudo'
+  main.appendChild(createButton)
+  createButton.addEventListener('click', function delToDoList() {
+    ol.innerHTML = '';
+  })
+  console.log(ol.children)
+}
+
 window.onload = function start() {
   mkHeader();
   mkMain();
@@ -88,4 +98,5 @@ window.onload = function start() {
   mkButton();
   mkEvidence();
   mkDo();
+  mkDelAll();
 };
