@@ -51,10 +51,24 @@ addElementToDOM(main, taskList);
 
 let tasks = [];
 
+function changeSelectedTask(selectedTask, newTask) {
+  const backgroundColor = 'gray-background';
+  if (selectedTask !== newTask) {
+    selectedTask.classList.remove(backgroundColor);
+    newTask.classList.add(backgroundColor);
+  }
+}
+
 function changeTaskBackgroundColor() {
   for (let index = 0; index < tasks.length; index += 1) {
     tasks[index].addEventListener('click', (event) => {
-      setClass(event.target, 'gray-background');
+      const selectedTask = document.querySelector('.gray-background');
+      // Quando nenhuma tarefa foi selecionada ainda, o conteúdo de selectedTask é null, então eu apenas atribuo a classe gray-background ao elemento que disparou esse evento. Caso contrário, eu retiro gray-background da tarefa atual selecionada e atribuo ela ao elemento que disparou o evento.
+      if (selectedTask !== null) {
+        changeSelectedTask(selectedTask, event.target);
+      } else {
+        event.target.classList.add('gray-background');
+      }
     });
   }
 }
