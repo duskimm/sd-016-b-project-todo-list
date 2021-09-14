@@ -12,6 +12,10 @@ body {
   background-color: gray;
 }
 
+.completed {
+  text-decoration: line-through;
+}
+
 #funcionamento {
   margin-top: 10px;
 }
