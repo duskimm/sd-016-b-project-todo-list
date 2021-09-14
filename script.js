@@ -4,7 +4,8 @@ const getOrderlist = document.getElementById('lista-tarefas');
 const getItemList = document.getElementsByClassName('itemList');
 const getDeleteButton = document.getElementById('apaga-tudo');
 const getCompletedButton = document.getElementById('remover-finalizados');
-// Adicinar valores a lista 
+let salvarLocalStorage = [];
+let getChildNodes = getOrderlist.childNodes;
 getButton.addEventListener('click', function () {
   const criali = document.createElement('li');
   criali.innerHTML = getInput.value;
@@ -14,11 +15,19 @@ getButton.addEventListener('click', function () {
 });
 
 getOrderlist.addEventListener('click', function(event) {
+  removeSelecionado();
   for (let i = 0; i < getItemList.length; i += 1) {
     getItemList[i].style.backgroundColor = 'white';
   };
   event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+  event.target.classList.toggle('selecionado');
 });
+
+function removeSelecionado() {
+  for (let i = 0; i < getItemList.length; i += 1){
+    getItemList[i].classList.remove('selecionado');
+  }
+}
 
 getOrderlist.addEventListener('dblclick', function(event) {
   // evento.style.textDecoration = 'line-through solid rgb(0, 0, 0)'
@@ -41,5 +50,69 @@ getCompletedButton.addEventListener('click', function (){
       getComplete[i].remove();
     }
   }
-retirar();
+  retirar();
+});
+// 12
+const saveButton = document.querySelector('#salvar-tarefas');
+if (localStorage.length >= 1){
+  startPage();
+  }
+saveButton.addEventListener('click', function () {
+  savelocal();
+});
+
+function startPage (){
+  let iniciar = JSON.parse(localStorage.getItem('list'));
+  for (let i = 0; i < iniciar.length; i += 1) {
+    let criali = document.createElement('li');
+    criali.innerHTML = iniciar[i].name;
+    criali.className = iniciar[i].class;
+    getOrderlist.appendChild(criali);
+  }
+}
+
+function savelocal(){
+  let nodechild = getOrderlist.childNodes;
+  let save = [];
+  for (let i = 0; i < nodechild.length; i +=1){
+    let criaobj = {};
+    criaobj.name = nodechild[i].innerHTML;
+    criaobj.class = nodechild[i].className;
+    save.push(criaobj);
+  }
+  salvarLocalStorage = save;
+  localStorage.setItem('list', JSON.stringify(salvarLocalStorage));
+}
+// add no localStorage 1- transformar array em string depois em  objeto 2- salvar no local storage - 3 retirar do local storage - 4 converter string em objeto, converter objeto em array - add na list ;
+
+
+// 13
+// retirado o uso da função Array.prototype.slice.call do site https://stackoverflow.com/questions/11761881/javascript-dom-find-element-index-in-container
+const getCima = document.querySelector('#mover-cima');
+
+getCima.addEventListener('click', function() {
+  let getSelecionado = document.querySelector('.selecionado');
+  let next = getSelecionado.previousElementSibling;
+  let atual = getSelecionado;
+  if (atual !== getItemList[0]){
+      getOrderlist.insertBefore(atual, next); // insere o elemento next antes do atual
+  }
+});
+const getBaixo = document.querySelector('#mover-baixo');
+
+getBaixo.addEventListener('click', function() {
+  let getSelecionado = document.querySelector('.selecionado');
+  let next = getSelecionado.nextElementSibling;
+  let atual = getSelecionado;
+  if (atual !== getOrderlist[getOrderlist.length -1]){
+    getOrderlist.insertBefore(next, atual); 
+  }
+});
+
+const getRemSelected = document.querySelector('#remover-selecionado');
+
+// 14
+getRemSelected.addEventListener('click', function () {
+  let getSelecionado = document.querySelector('.selecionado');
+  getSelecionado.remove();
 });
