@@ -24,12 +24,15 @@ function changeBG(event) {
 
 listaTarefas.addEventListener('dblclick', riskitem);
 
-function riskitem (event) {
-  event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+function riskitem(event) {
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+    event.target.style.textDecoration = '';
+  } else {
+    event.target.classList.add('completed');
+    const risked = document.querySelectorAll('.completed');
+    for (let i = 0; i < risked.length; i += 1) {
+      risked[i].style.textDecoration = 'line-through solid rgb(0, 0, 0)';
+    }
+  }
 }
-
-/*
-* Crie uma classe CSS com o nome "completed" e defina a propriedade "text-decoration" com o valor "line-through".
-
-* Utilize a classe CSS "completed" para adicionar o efeito de letra tachada (riscada) às tarefas finalizadas.
- */
