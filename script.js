@@ -2,10 +2,14 @@ const orderedList = document.getElementById('lista-tarefas');
 const inputTasks = document.getElementById('texto-tarefa');
 const taskButton = document.getElementById('criar-tarefa');
 const itens = document.getElementsByClassName('itens');
+const getSelected = document.getElementsByClassName('selected');
+const getCompleted = document.getElementsByClassName('completed');
 const clearButton = document.getElementById('apaga-tudo');
 const clearDoneButton = document.getElementById('remover-finalizados');
 const clearSelectedButton = document.getElementById('remover-selecionado');
 const saveButton = document.getElementById('salvar-tarefas');
+const moveUpButton = document.getElementById('mover-cima');
+const moveDownButton = document.getElementById('mover-baixo');
 
 orderedList.innerHTML = localStorage.getItem('itens');
 
@@ -41,7 +45,6 @@ function clearTasks() {
 clearButton.addEventListener('click', clearTasks);
 
 function clearDone() {
-  const getCompleted = document.getElementsByClassName('completed');
   while (getCompleted.length > 0) {
     getCompleted[0].parentNode.removeChild(getCompleted[0]);
   }
@@ -52,7 +55,6 @@ https://qastack.com.br/programming/4777077/removing-elements-by-class-name */
 clearDoneButton.addEventListener('click', clearDone);
 
 function clearSelected() {
-  const getSelected = document.getElementsByClassName('selected');
   getSelected[0].parentNode.removeChild(getSelected[0]);
 }
 
@@ -70,6 +72,32 @@ function addTasks() {
 }
 
 taskButton.addEventListener('click', addTasks);
+
+function moveUp() {
+  if (getSelected[0] !== undefined && getSelected[0].previousSibling !== null) {
+    const previousElement = getSelected[0].previousSibling.innerHTML;
+    const previousClass = getSelected[0].previousSibling.className;
+    getSelected[0].previousSibling.innerHTML = getSelected[0].innerHTML;
+    getSelected[0].innerHTML = previousElement;
+    getSelected[0].previousSibling.className = getSelected[0].className;
+    getSelected[1].className = previousClass;
+  }
+}
+
+moveUpButton.addEventListener('click', moveUp);
+
+function moveDown() {
+  if (getSelected[0] !== undefined && getSelected[0].nextSibling !== null) {
+    const previousElement = getSelected[0].nextSibling.innerHTML;
+    const previousClass = getSelected[0].nextSibling.className;
+    getSelected[0].nextSibling.innerHTML = getSelected[0].innerHTML;
+    getSelected[0].innerHTML = previousElement;
+    getSelected[0].nextSibling.className = getSelected[0].className;
+    getSelected[0].className = previousClass;
+  }
+}
+
+moveDownButton.addEventListener('click', moveDown);
 
 function saveTasks() {
   const itensToSave = document.getElementById('lista-tarefas').innerHTML;
