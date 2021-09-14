@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -20,6 +20,7 @@ body {
 
 #texto-tarefa {
   padding: 5px;
+  margin: 5px;
 }
 
 #texto-tarefa:focus {

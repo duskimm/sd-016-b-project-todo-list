@@ -1,7 +1,8 @@
 const taskInput = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const addTaskBtn = document.getElementById('criar-tarefa');
-const clearTaskBtn = document.querySelector('#apaga-tudo');
+const clearAllTasksBtn = document.querySelector('#apaga-tudo');
+const clearCompletedTaskBtn = document.querySelector('#remover-finalizados');
 
 function resetSelected() {
   const AllTaks = document.querySelectorAll('.task-item');
@@ -45,9 +46,20 @@ function completeTask(tasks) {
   });
 }
 
-function clearTasks() {
-  clearTaskBtn.addEventListener('click', () => {
+function clearAllTasks() {
+  clearAllTasksBtn.addEventListener('click', () => {
     taskList.innerHTML = '';
+  });
+}
+
+function clearCompletedTasks() {
+  clearCompletedTaskBtn.addEventListener('click', () => {
+    const completedTask = document.querySelectorAll('.completed');
+
+    // Ref: Airton Lopes Help me :)
+    completedTask.forEach((task) => {
+      task.remove();
+    });
   });
 }
 
@@ -62,7 +74,8 @@ function AddTask(buttonElement) {
     const tasks = document.querySelectorAll('.task-item');
     addBackgroundToTask(tasks);
     completeTask(tasks);
-    clearTasks();
+    clearAllTasks();
+    clearCompletedTasks();
   });
 }
 
