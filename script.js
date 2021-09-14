@@ -51,11 +51,7 @@ function adicionaTarefa (){
  tarefas.addEventListener('dblclick', riscaTarefa)
 
  function riscaTarefa (event){
-     let linhas = document.querySelectorAll(".linha-de-tarefas");
-     for (let i=0; i<linhas.length; i+=1){
          event.target.classList.toggle('completed')
-     }
-         //event.target.classList.toggle('completed');
 }
 
 
@@ -71,10 +67,9 @@ function criaBotaoApagar (){
 criaBotaoApagar()
 
 let botaoApagaTudo = document.getElementById('apaga-tudo');
-
 botaoApagaTudo.addEventListener('click', apagaLista)
 
-function apagaLista (event){
+function apagaLista(event){
     let tarefas = document.querySelector("#lista-tarefas")
     let linhas = document.querySelectorAll(".linha-de-tarefas");
     for (let i=0; i< linhas.length; i+=1){
@@ -83,5 +78,26 @@ function apagaLista (event){
 }
 
 //adiciona botao que remove finzalizados 
+
+function criaBotaoApagarFinalizados (){
+let botaoApagaFinalizados = document.createElement('button');
+botaoApagaFinalizados.innerText = "apaga tarefas finalizadas"
+botaoApagaFinalizados.id= "remover-finalizados"
+container.appendChild(botaoApagaFinalizados)
+}
+criaBotaoApagarFinalizados();
+
+let botaoApagaFinalizados = document.getElementById('remover-finalizados')
+botaoApagaFinalizados.addEventListener("click",apagarCompletas)
+
+function apagarCompletas(){
+    let tarefas = document.querySelector("#lista-tarefas")
+    let finzalizados = document.querySelectorAll(".completed");
+    for (let i=0; i< finzalizados.length; i+=1){
+      tarefas.removeChild(finzalizados[i]);
+    }
+}
+
+//botao que salva a lista, e ao abrir a pagina novamente a lista estará lá
 
 
