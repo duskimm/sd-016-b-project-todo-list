@@ -73,10 +73,11 @@ document.querySelector('#salvar-tarefas').addEventListener('click', () => {
   }
 });
 
+// Conteudo adquirido na pagina https://stackoverflow.com/questions/34913953/move-an-element-one-place-up-or-down-in-the-dom-tree-with-javascript
 // Evento de clicar no botao UP
 document.querySelector('#mover-cima').addEventListener('click', () => {
   const selectElmt = document.querySelector('.selected');
-  if ((selectElmt !== null) && (selectElmt.nextElementSibling)) {
+  if ((selectElmt !== null) && (selectElmt.previousElementSibling)) {
     selectElmt.parentNode.insertBefore(selectElmt, selectElmt.previousElementSibling);
   }
 });
