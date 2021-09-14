@@ -13,14 +13,12 @@ createTaskButton.addEventListener('click', () => {
 
 // Requisito 7 e 8
 toDoList.addEventListener('click', (event) => {
-  let grayLi = document.querySelector('.gray');
+  const grayLi = document.querySelector('.gray');
   if (grayLi == null) {
     event.target.classList.add('gray');
-  } else if (grayLi === event.target) {
-    event.target.classList.toggle('gray');
   } else {
     grayLi.classList.remove('gray');
-    event.target.classList.toggle('gray');
+    event.target.classList.add('gray');
   }
 });
 
@@ -75,49 +73,39 @@ window.onload = () => {
   }
 };
 
-//Requisito 13
-let moveUpButton = document.querySelector('#mover-cima');
+// Requisito 13
+const moveUpButton = document.querySelector('#mover-cima');
 
 moveUpButton.addEventListener('click', () => {
-  let grayLi = document.querySelector('.gray');
+  const grayLi = document.querySelector('.gray');
   if (grayLi !== null) {
-   
-    let previousTask = grayLi.previousElementSibling;
+    const previousTask = grayLi.previousElementSibling;
     if (previousTask !== null) {
-      
       const transition1 = grayLi.innerText;
       const transition2 = previousTask.innerText;
-      
       grayLi.innerText = transition2;
       previousTask.innerText = transition1;
-      
       const transition3 = grayLi.className;
       const transition4 = previousTask.className;
-      
       grayLi.className = transition4;
       previousTask.className = transition3;
     }
   }
-})
-/////
-let moveDownButton = document.querySelector('#mover-baixo');
+});
+
+const moveDownButton = document.querySelector('#mover-baixo');
 
 moveDownButton.addEventListener('click', () => {
-  let grayLi = document.querySelector('.gray');
+  const grayLi = document.querySelector('.gray');
   if (grayLi !== null) {
-  
-    let previousTask = grayLi.nextElementSibling;
+    const previousTask = grayLi.nextElementSibling;
     if (previousTask !== null) {
-      
       const transition1 = grayLi.innerText;
       const transition2 = previousTask.innerText;
-      
       grayLi.innerText = transition2;
       previousTask.innerText = transition1;
-      
       const transition3 = grayLi.className;
       const transition4 = previousTask.className;
-      
       grayLi.className = transition4;
       previousTask.className = transition3;
     }
@@ -125,9 +113,9 @@ moveDownButton.addEventListener('click', () => {
 });
 
 // Requisito 14
-let removeSelected = document.querySelector('#remover-selecionado');
+const removeSelected = document.querySelector('#remover-selecionado');
 
 removeSelected.addEventListener('click', () => {
-  let grayLi = document.querySelector('.gray');
+  const grayLi = document.querySelector('.gray');
   toDoList.removeChild(grayLi);
 });
