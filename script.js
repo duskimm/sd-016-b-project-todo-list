@@ -164,7 +164,7 @@ function moveDown() {
   const selected = attSelectTask();
   const selectedIndex = tasksArray.indexOf(selected);
   
-  if (tasksArray[selectedIndex + 1]) {
+  if (tasksArray[selectedIndex + 1] && selected) {
     const tempStr1 = {
       value: tasksArray[selectedIndex].innerText,
       classes: tasksArray[selectedIndex].className,
