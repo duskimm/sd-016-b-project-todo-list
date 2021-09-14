@@ -33,7 +33,16 @@ let valueInput = '';
             
             listElements[index].addEventListener('click',function(event){
 
-                listElements[index].style.backgroundColor = 'rgb(128, 128, 128)';
+                let position = Array.from(listElements).indexOf(event.target);
+
+                event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+
+                for (let index = 0; index <  listElements.length; index++) {
+                    
+                    if (listElements[index] != listElements[position]){
+                        listElements[index].style.backgroundColor = '';     
+                    }
+                }
         })
     }       
     })
