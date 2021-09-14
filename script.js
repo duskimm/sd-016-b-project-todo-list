@@ -62,7 +62,7 @@ function removeCompletedTasks() {
   const selectedItem = document.getElementsByClassName('completed');
 
   for (let i = 0; i < selectedItem.length; i += 0) {
-    let item = selectedItem[i];
+    const item = selectedItem[i];
     list.removeChild(item);
   }
 }

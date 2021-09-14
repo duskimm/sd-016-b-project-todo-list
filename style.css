@@ -1,7 +1,99 @@
+html {
+  height: 100vh;
+}
+
+body {
+  background: linear-gradient(
+    to bottom , rgb(172 , 220 , 255) 20% , rgb(228 , 165 , 255) 100%);
+  font-family: Poppins, sans-serif;
+  color: rgb(64 , 61 , 57);
+}
+
+main {
+  background-color: white;
+  border-radius: 10px;
+  height: auto;
+  margin: 150px auto;
+  max-width: 600px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
 .selected {
   background-color: gray;
 }
 
 .completed {
-  text-decoration: line-through;
+  text-decoration: line-through solid black;
+}
+
+.clean-buttons {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+h1 {
+  height: 40px;
+  margin-bottom: 5px;
+  padding-top: 20px;
+}
+
+#funcionamento {
+  margin-top: 5px;
+}
+
+#criar-tarefa {
+  font-weight: 400;
+  background-color: rgb(245 , 243 , 244);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0 , 0 , 0 , 0.432);
+  cursor: pointer;
+  padding: 5px;
+  outline: none;
+}
+
+#remover-finalizados {
+  font-weight: 400;
+  background-color: rgb(245 , 243 , 244);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0 , 0 , 0 , 0.432);
+  cursor: pointer;
+  margin: 10px;
+  padding: 5px;
+  outline: none;
+}
+
+#apaga-tudo {
+  font-weight: 400;
+  background-color: rgb(245 , 243 , 244);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0 , 0 , 0 , 0.432);
+  cursor: pointer;
+  margin: 10px;
+  padding: 5px;
+  outline: none;
+}
+
+#texto-tarefa {
+  border: 1.5px solid black;
+  border-radius: 5px;
+  padding: 4px;
+  width: 250px;
+}
+
+#lista-tarefas {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 300px;
+}
+
+ol li {
+  text-align: left;
+  margin-bottom: auto;
+  margin-left: auto;
+  cursor: default;
 }
