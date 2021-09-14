@@ -3,6 +3,8 @@ const input = document.getElementById('texto-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const task = document.getElementsByClassName('tarefa');
 const cleanAll = document.getElementById('apaga-tudo');
+const removeFinishedTask = document.getElementById('remover-finalizados');
+const saveTaskButton = document.getElementById('salvar-tarefas');
 
 function deselectAllTasks() {
   for (let index = 0; index < task.length; index += 1) {
@@ -52,7 +54,55 @@ function cleanTasks() {
   });
 }
 
+function removeFinished() {
+  const FinishedTaskList = document.getElementsByClassName('completed');
+  removeFinishedTask.addEventListener('click', () => {
+    for (let index = FinishedTaskList.length - 1; index >= 0; index -= 1) {
+      taskList.removeChild(FinishedTaskList[index]);
+    }
+  });
+}
+
+function saveTaskList() {
+  saveTaskButton.addEventListener('click', () => {
+    if (taskList.children.length === 0) {
+      localStorage.clear();
+    }
+    for (let index = 0; index < task.length; index += 1) {
+      localStorage.setItem(`task${index}`, task[index].innerHTML);
+      localStorage.setItem(`class${index}`, task[index].classList.value);
+    }
+  });
+}
+function checkTaskClasses(stylePath, tag) {
+  const style = localStorage.getItem(stylePath);
+  if (style.includes('tarefa') === true) {
+    tag.classList.add('tarefa');
+  }
+  if (style.includes('completed') === true) {
+    tag.classList.add('completed');
+  }
+  if (style.includes('selected') === true) {
+    tag.classList.add('selected');
+  }
+}
+
+function loadTaskList() {
+  for (let index = 0; index < localStorage.length / 2; index += 1) {
+    const tag = document.createElement('li');
+    const text = localStorage.getItem(`task${index}`);
+    tag.innerText = text;
+    checkTaskClasses(`class${index}`, tag);
+    taskList.appendChild(tag);
+    checkTask(tag);
+    selectTask();
+  }
+}
+
 window.onload = () => {
+  loadTaskList();
   addTask();
   cleanTasks();
+  removeFinished();
+  saveTaskList();
 };
