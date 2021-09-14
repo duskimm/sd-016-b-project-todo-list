@@ -1,12 +1,13 @@
-.list-itens{
+.list-itens {
   color: black;
 }
 
-.selected{
-  background-color: rgb(128, 128, 128)
+.selected {
+  background-color: grey;
 
 
 }
-.completed{
+
+.completed {
   text-decoration: line-through;
 }
