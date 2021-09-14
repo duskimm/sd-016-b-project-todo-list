@@ -1,4 +1,5 @@
 window.onload = function() {
+    carregaSalvos()
 
 }
     const lista = document.querySelector('#lista-tarefas');
@@ -9,6 +10,16 @@ window.onload = function() {
     const botaoAcima = document.querySelector('#mover-cima');
     const botaoAbaixo = document.querySelector('#mover-baixo');
     const botaoRmSelecionado = document.querySelector('#remover-selecionado');
+
+// ANALISAR O CASO DE CARREGAR AS TAREFAS SALVAS, POIS ESTÁ FALHANDO TODO O NPM TESTE QUANDO HABILITA O CARREGAMENTO ONLOAD.
+
+
+
+
+
+
+
+
 
     function addTask() {
         const conteudo = document.querySelector('#texto-tarefa').value;
@@ -56,23 +67,32 @@ window.onload = function() {
 
     
     function saveTasks() {
-        const tasks = document.querySelectorAll('.task')
+        var tasks = document.querySelectorAll('.task')
+        const selected = document.querySelector('.selected')
+        const completed = document.querySelectorAll('.completed')
         let array = [];
         for(let i = 0; i < tasks.length; i += 1) {
-        array.push(tasks[i].innerHTML);
-        localStorage.setItem('tarefas', JSON.stringify(array));
+            if (tasks[i] == selected ){
+                if (tasks[i] == completed[0] ){
+                    array.push('z' + tasks[i].innerHTML + 'x' );
+                    } else {
+                        array.push('z' + tasks[i].innerHTML);
+                    }
+                } else {
+                    array.push(tasks[i].innerHTML);
         }
-
+        localStorage.setItem('tarefas', JSON.stringify(array));
     }
+}
 
     function upTask() {
         var tasks = document.querySelectorAll('.task')
         const selected = document.querySelector('.selected')
-        const completed = document.querySelector('.completed')
+        const completed = document.querySelectorAll('.completed')
         let array = []
         for(let i = 0; i < tasks.length; i += 1) {
             if (tasks[i] == selected ){
-                if (tasks[i] == completed ){
+                if (tasks[i] == completed[0] ){
                     array.push('z' + tasks[i].innerHTML + 'x' );
                     } else {
                         array.push('z' + tasks[i].innerHTML);
@@ -94,11 +114,11 @@ window.onload = function() {
     function downTask() {
         var tasks = document.querySelectorAll('.task')
         const selected = document.querySelector('.selected')
-        const completed = document.querySelector('.completed')
+        const completed = document.querySelectorAll('.completed')
         let array = []
         for(let i = 0; i < tasks.length; i += 1) {
             if (tasks[i] == selected ){
-                if (tasks[i] == completed ){
+                if (tasks[i] == completed[0] ){
                     array.push('z' + tasks[i].innerHTML + 'x' );
                     } else {
                         array.push('z' + tasks[i].innerHTML);
@@ -152,15 +172,7 @@ window.onload = function() {
         const tasks = document.querySelectorAll('.task.selected')[0]
         tasks.remove();
     }
-// ANALISAR O CASO DE CARREGAR AS TAREFAS SALVAS, POIS ESTÁ FALHANDO TODO O NPM TESTE QUANDO HABILITA O CARREGAMENTO ONLOAD.
-    // function carregaSalvos() {
-    // let conteudo = JSON.parse(localStorage.getItem('tarefas'));
-    // for( let i = 0; i < conteudo.length; i += 1) {
-    //     const task = document.createElement('li');
-    //     task.innerHTML = conteudo[i];
-    //     task.classList.add('task');
-    //     lista.appendChild(task);
-    // }} carregaSalvos();
+
     function createListenersButtons() {
         botaoCria.addEventListener('click', addTask);
         botaoApaga.addEventListener('click', getClean);
@@ -171,6 +183,23 @@ window.onload = function() {
         botaoRmSelecionado.addEventListener('click', rmSelected);
 
     } createListenersButtons();
+
+    function carregaSalvos() {
+        if (localStorage.getItem('tarefas') === null) {
+            localStorage.setItem('tarefas', JSON.stringify([]));
+          } else {
+        const conteudo = JSON.parse(localStorage.getItem('tarefas'));
+
+        for( let i = 0; i < conteudo.length; i += 1) {
+            const task = document.createElement('li');
+            task.innerHTML = conteudo[i];
+            task.classList.add('task');
+            lista.appendChild(task);
+            
+        }
+        rendTask(conteudo);
+    }
+}    
 
 
 
