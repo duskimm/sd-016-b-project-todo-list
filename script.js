@@ -1,6 +1,7 @@
 let adicionaTarefa = document.getElementById('criar-tarefa'); // Botão de criar tarefa
 let tarefa = document.getElementById('texto-tarefa'); // Conteúdo no campo de adicionar tarefa
 let lista = document.getElementById('lista-tarefas'); // lista de tarefas
+let apagaTudo = document.getElementById('apaga-tudo'); // Botão de apagar todas as tarefas
 
 // Botão adicionando tarefas na lista
 adicionaTarefa.addEventListener('click', () => {
@@ -20,10 +21,17 @@ function trocaCinza(event) {
   event.target.classList.add('cinza');
 }
 
-// instruções da função toggle retiradas do site https://www.w3schools.com/howto/howto_js_toggle_class.asp
+// instruções da função toggle retiradas do site https://www.w3schools.com/howto/howto_js_toggle_class.asp e do vídeo https://www.youtube.com/watch?v=IKzlUvYSZO4
 function riscaTarefa(event) {
   event.target.classList.toggle('completed');
 }
 
 lista.addEventListener('click', trocaCinza);
 lista.addEventListener('dblclick', riscaTarefa);
+
+// Botão apagando todas as tarefas
+apagaTudo.addEventListener('click', () => {
+  while (lista.firstChild) {
+    lista.removeChild(lista.firstChild);
+  }
+});
