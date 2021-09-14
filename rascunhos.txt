@@ -1,0 +1,13 @@
+// Requisito 7 e 8
+let taskArr = document.getElementsByTagName('li');
+
+function highlight(EventTarget) {
+  for (let i = 0; i < taskArr.length; i += 1) {
+    if (taskArr[i] = EventTarget) {
+      taskArr[i].style.backgroundColor = 'rgb(128, 128, 128)';
+    }
+  }
+  
+}
+
+this.style.backgroundColor = 'rgb(128, 128, 128)';
