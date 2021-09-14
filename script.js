@@ -12,18 +12,8 @@ function toDoCreation() {
 toDoSend.addEventListener('click', toDoCreation);
 
 function backgroundToDoList() {
-  // for (const color of taskColor) {
-    //   color.addEventListener('click', (event) => {
-      //     let fullColor = color.style.backgroundColor;
-      //     if (fullColor !== 'rgb(194, 194, 194)') {
-        //       fullColor.style.backgroundColor = 'rgb(194, 194, 194)';
-        //     }
-        //     event.target.style.backgroundColor = 'rgb(128, 128, 128)';
-        //   });
-
   appendList.addEventListener('click', (e) => {
     const taskColor = document.querySelectorAll('li');
-          console.log(taskColor);
     for (let index = 0; index < taskColor.length; index += 1) {
       taskColor[index].style.backgroundColor = 'rgb(194, 194, 194)';
     }
@@ -31,3 +21,22 @@ function backgroundToDoList() {
   });
 }
 backgroundToDoList();
+
+function toDoListDone() {
+  appendList.addEventListener('dblclick', (e) => {
+    if (e.target.classList.contains('completed')) {
+      e.target.classList.remove('completed');
+    } else {
+      e.target.classList.add('completed');
+    }
+  });
+}
+toDoListDone();
+
+function eraseAll() {
+  const erase = document.querySelectorAll('li');
+  for (let index = 0; index < erase.length; index += 1) {
+    erase[index].remove('task');
+  }
+}
+document.querySelector('#apaga-tudo').addEventListener('click', eraseAll);
