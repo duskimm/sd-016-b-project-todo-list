@@ -76,14 +76,14 @@ doubleClickTask();
 // Apaga a lista completa
 // referência: https://www.javascripttutorial.net/javascript-dom/javascript-removechild/
 
-const listFather = document.getElementById('lista-tarefas');
+// const listTask = document.getElementById('lista-tarefas');
 
 function deleteListItem() {
-  // const listFather = document.getElementById('lista-tarefas');
+  // const listTask = document.getElementById('lista-tarefas');
   const deleteBtn = document.querySelector('#apaga-tudo');
   deleteBtn.addEventListener('click', () => {
-    while (listFather.firstChild) {
-      listFather.removeChild(listFather.firstChild);
+    while (listTask.firstChild) {
+      listTask.removeChild(listTask.firstChild);
     }
   });
 }
@@ -93,19 +93,41 @@ deleteListItem();
 // Apaga todos os item marcados como finalizados
 
 function deleteConcludeItem() {
-  // const listFather = document.getElementById('lista-tarefas');
+  // const listTask = document.getElementById('lista-tarefas');
   const deleteBtn = document.querySelector('#remover-finalizados');
   const itemConclude = document.getElementsByClassName('completed');
   deleteBtn.addEventListener('click', () => {
     while (itemConclude.length > 0) {
       let count = 0;
-      listFather.removeChild(itemConclude[count]);
+      listTask.removeChild(itemConclude[count]);
       count += 1;
     }
   });
 }
 
 deleteConcludeItem();
+
+// Salvar a lista localmente
+
+function salveList() {
+  const salveListBtn = document.querySelector('#salvar-tarefas');
+  salveListBtn.addEventListener('click', () => {
+    const listItemTask = document.querySelectorAll('#lista-tarefas li');
+    console.log('bnt salvar lista');
+    for (let index = 0; index < listItemTask.length; index += 1) {
+      console.log('salvamento teste', index);
+      const itemListSalved = {
+        position: index,
+        task: listItemTask[index].innerText,
+        class: listItemTask[index].className,
+        id: listItemTask[index].id,
+      };
+      localStorage.setItem(index, JSON.stringify(itemListSalved));
+    }
+  });
+}
+
+salveList();
 
 /**
  *
@@ -119,20 +141,12 @@ deleteConcludeItem();
  *
  */
 
-// 14 - botão remover selecionado
+// Ao clicar no botão, é removido o elemento que está selecionado com o id selected.
 
 function removeSelected() {
   const btnRemoverSelecionado = document.querySelector('#remover-selecionado');
-  // const selectedItem = document.querySelector('#selected');
-  // const listFather = document.getElementById('lista-tarefas');
-  listTask.addEventListener('click', (event) => {
-    btnRemoverSelecionado.addEventListener('click', () => {
-      // console.log('evento btn rmv selecionado');
-      clickSelected = event.target;
-      if (clickSelected.id === 'selected') {
-        listFather.removeChild(document.querySelector('#selected'));
-      }
-    });
+  btnRemoverSelecionado.addEventListener('click', () => {
+    listTask.removeChild(document.querySelector('#selected'));
   });
 }
 
