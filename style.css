@@ -17,7 +17,7 @@ body {
 .main__content {
   width: 84rem;
   margin: 9rem auto 9rem auto;
-  background-color: #c2bfaf;
+  background-color: #e6e4db;
   height: 58.7rem;
   border-radius: 1.5rem;
 }
@@ -60,9 +60,22 @@ body {
 }
 #lista-tarefas li {
   padding-top: 1rem;
+
   color: #3931ad;
 }
 
+#lista-tarefas li:hover {
+  cursor: pointer;
+}
+
+#lista-tarefas:last-child {
+  padding-bottom: 1rem;
+}
+
+#apaga-tudo {
+  font-size: 1.8rem;
+  padding: 0 1rem;
+}
 .completed {
   text-decoration: line-through solid rgb(0, 0, 0);
 }

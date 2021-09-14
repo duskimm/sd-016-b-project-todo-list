@@ -22,7 +22,7 @@ function bgGray(event) {
   const bgGraySelector = document.getElementsByClassName('bgCinza');
   if (eventTarget !== listaTarefa) {
     if (bgGraySelector.length > 0) {
-      bgGraySelector[0].style.backgroundColor = '#c2bfaf';
+      bgGraySelector[0].style.backgroundColor = '#e6e4db';
       bgGraySelector[0].classList.remove('bgCinza');
       eventTarget.classList.add('bgCinza');
       bgGraySelector[0].style.backgroundColor = 'rgb(128, 128, 128';
@@ -33,10 +33,15 @@ function bgGray(event) {
   }
 }
 
+function resetAll() {
+  listaTarefa.innerText = '';
+}
+
 const btnCriarTarefa = document.querySelector('#criar-tarefa');
 btnCriarTarefa.addEventListener('click', criarTarefa);
-
+const btnReset = document.querySelector('#apaga-tudo');
 listaTarefa.addEventListener('click', bgGray);
 const olLi2 = document.querySelector('.div_lista-tarefas');
 olLi2.addEventListener('dblclick', completedClass);
+btnReset.addEventListener('click', resetAll);
 // se estiver selecionado, deselecione
