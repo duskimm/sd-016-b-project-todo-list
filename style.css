@@ -1,9 +1,9 @@
 body {
-  background-color: rgb(211, 233, 236);
+  background-color: rgb(211 , 233 , 236);
 }
 
 .selected {
-  background-color: rgb(128, 128, 128)
+  background-color: gray;
 }
 
 .completed {
