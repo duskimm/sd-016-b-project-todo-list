@@ -137,3 +137,12 @@ btnDescer.addEventListener('click', () => {
     ol.insertBefore(itemSelected, itemSelected.nextElementSibling.nextElementSibling);
   }
 });
+
+// 14 - Adicione um botão com id="remover-selecionado" que, quando clicado, remove o item selecionado.
+const btnRemoveSelected = document.getElementById('remover-selecionado');
+btnRemoveSelected.addEventListener('click', () => {
+  const itemSelected = document.querySelector('.selected');
+  if (itemSelected !== null) {
+    itemSelected.remove();
+  }
+});
