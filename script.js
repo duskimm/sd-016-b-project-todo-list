@@ -14,6 +14,14 @@ function addNewTask() {
 
 document.getElementById('criar-tarefa').addEventListener('click', addNewTask);
 
+function enterTask(event) {
+  if (event.key === 'Enter') {
+    addNewTask();
+  }
+}
+
+inputTask.addEventListener('keyup', enterTask);
+
 // Função que seleciona a tarefa
 function selectListItem(event) {
   const listItens = document.getElementsByClassName('list-item');
