@@ -6,14 +6,12 @@ function createButtons(nameButton, id, pai) {
   pai.appendChild(button);
 }
 
-
-
 // Containers.
 const inputArea = document.getElementById('input-area');
 const listaArea = document.getElementById('lista-area');
 const buttonsArea = document.getElementById('buttons-area');
 const buttonsSideArea = document.getElementById('buttons-side-area');
-// Botões posicionados.
+// Botões laterais
 createButtons('↑', 'mover-cima', buttonsSideArea);
 createButtons('↓', 'mover-baixo', buttonsSideArea);
 createButtons('✘', 'remover-selecionado', buttonsSideArea);
@@ -71,8 +69,10 @@ olList.addEventListener('click', (event) => {
     olList.children[index].style.backgroundColor = '';
     olList.children[index].classList.remove('selecionado');
     olList.style.backgroundColor = '';
+    olList.classList.remove('selecionado');
   }
   olList.style.backgroundColor = '';
+  olList.classList.remove('selecionado');
   alvo.classList.add('selecionado');
 });
 
@@ -99,7 +99,7 @@ buttonClear.addEventListener('click', () => {
 });
 
 // Cria botão que remove os finalizados
-createButtons('Limpar Completos','remover-finalizados', buttonsArea);
+createButtons('Limpar Completos', 'remover-finalizados', buttonsArea);
 
 // Remove as tarefas completadas.
 const buttonRemoveCompleted = document.getElementById('remover-finalizados');

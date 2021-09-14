@@ -1,7 +1,7 @@
 body {
-  background-color: #FFFCF2;
-  color: #403d39;
-  font-family: 'Space Mono', monospace;
+  background-color: rgb(255 , 252 , 242);
+  color: rgb(64 , 61 , 57);
+  font-family: Space Mono, monospace;
   text-align: center;
 }
 
@@ -15,11 +15,7 @@ body {
   border-radius: 7px;
   margin-left: 30px;
   width: 275px;
-  font-family: 'Space Mono', monospace;
-}
-
-#lista-area {
-  display: block;
+  font-family: Space Mono, monospace;
 }
 
 .list-iten {
@@ -28,28 +24,29 @@ body {
 }
 
 .selecionado {
-  background-color: #ccc5b9;
+  background-color: grey;
   border-radius: 5px;
-  box-shadow: 3px 3px 0px #403d39;
-  padding: 0px 10px;
+  box-shadow: 3px 3px rgb(64 , 61 , 57);
+  padding: 1px 10px;
   width: 320px;
+  color: white;
 }
 
 #lista-area {
   margin-top: 10px;
   display: inline-block;
-  background-color: #ccc5b9;
+  background-color: rgb(204 , 197 , 185);
   border-radius: 10px;
   width: 400px;
   margin-left: 30px;
-  box-shadow: 3px 3px 0px #eb5e28;
+  box-shadow: 3px 3px rgb(235 , 94 , 40);
 }
 
 ol {
   margin-left: 50px;
   display: inline-block;
   width: 400px;
-  padding: 0px 100px 20px 0px;
+  padding: 1px 100px 20px 1px;
 }
 
 .lista-tarefas {
@@ -77,35 +74,32 @@ ol {
 
 button {
   margin: 5px;
-  background-color: #ccc5b9;
+  background-color: rgb(204 , 197 , 185);
   border-radius: 5px;
-  box-shadow: 3px 3px 0px #eb5e28;
+  box-shadow: 3px 3px rgb(235 , 94 , 40);
   padding: 5px 10px;
-  border: 0;
   margin-right: 40px;
-  color: #403d39;
+  color: rgb(64 , 61 , 57);
 }
 
 #container {
-  background-color: #403d39;
+  background-color: rgb(64 , 61 , 57);
   border-radius: 10px;
-  box-shadow: 3px 3px 0px #ccc5b9;
-  padding: 10px 0px;
+  box-shadow: 3px 3px rgb(204 , 197 , 185);
+  padding: 10px 1px;
   width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
 button:hover {
-  background-color: #eb5e28;
-  box-shadow: 3px 3px 0px #ccc5b9;
+  background-color: rgb(235 , 94 , 40);
+  box-shadow: 3px 3px rgb(204 , 197 , 185);
   color: white;
-  font-weight: bold;
 }
 
 button:active {
-  background-color: #ccc5b9;
-  box-shadow: 3px 3px 0px #eb5e28;
+  background-color: rgb(204 , 197 , 185);
+  box-shadow: 3px 3px rgb(235 , 94 , 40);
   color: white;
-  font-weight: bold;
 }
