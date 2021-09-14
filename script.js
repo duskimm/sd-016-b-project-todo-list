@@ -36,4 +36,12 @@ window.onload = function () {
             event.target.classList.add("completed");
         }
     })
+
+    // Requisito 10
+
+    let button = document.getElementById("apaga-tudo");
+
+    button.addEventListener("click", function(){
+        taskList.innerHTML="";
+    })
 }
