@@ -37,10 +37,6 @@ button {
   font-size: 1.4rem;
 }
 
-section .input * {
-  display: inline-block;
-}
-
 input {
   width: 35.5rem;
 }

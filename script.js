@@ -62,24 +62,14 @@ function movingDown() {
   }
 }
 
-function buttonUp() {
-  for (let j = 1; j < getListItem.length; j += 1) {
-    getMovUpButtom.addEventListener('click', movingUp);
-  }
-}
+getMovUpButtom.addEventListener('click', movingUp);
 
-function buttonDown() {
-  for (let j = 0; j < getListItem.length - 1; j += 1) {
-    getMovDownButtom.addEventListener('click', movingDown);
-  }
-}
+getMovDownButtom.addEventListener('click', movingDown);
 
 function assigningColor() {
   for (let i = 0; i < getListItem.length; i += 1) {
     getListItem[i].addEventListener('click', changeColorOfSelectedTask);
   }
-  buttonUp();
-  buttonDown();
 }
 
 function completedTask(ev) {
