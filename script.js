@@ -1,8 +1,10 @@
+const sel = '.selecionado';
+
 //  7-8 Habilita seleção
 function selecionar(e) {
   const s = 'selecionado'; // resolve o linter
-  if (document.querySelector(`.${s}`)) {
-    document.querySelector(`.${s}`).classList.remove(s);
+  if (document.querySelector(sel)) {
+    document.querySelector(sel).classList.remove(s);
   }
   e.target.classList.add(s);
 }
@@ -32,8 +34,8 @@ function limparCompletos() {
 
 //  14 Habilita remover selecionado
 function removeSelecionado() {
-  while (document.querySelector('.selecionado')) {
-    document.querySelector('.selecionado').remove();
+  while (document.querySelector(sel)) {
+    document.querySelector(sel).remove();
   }
 }
 
@@ -81,12 +83,59 @@ function carregar() {
   }
 }
 
+//  13 Habilita reordenar
+// linter não gostou dessa função
+// function trocarElemento(a, b) {
+//   const texto = a.innerText;
+//   const classes = a.classList.value;
+//   a.innerText = b.innerText;
+//   a.classList = b.classList;
+//   b.innerText = texto;
+//   b.classList.value = classes;
+// }
+
+function movePraCima() {
+  if (document.querySelector(sel)) {
+    const movendo = document.querySelector(sel);
+    const anterior = movendo.previousSibling;
+
+    // if (anterior) trocarElemento(movendo, anterior);
+    if (anterior) {
+      const texto = movendo.innerText;
+      const classes = movendo.classList.value;
+      movendo.innerText = anterior.innerText;
+      movendo.classList = anterior.classList;
+      anterior.innerText = texto;
+      anterior.classList.value = classes;
+    }
+  }
+}
+
+function movePraBaixo() {
+  if (document.querySelector(sel)) {
+    const movendo = document.querySelector(sel);
+    const proximo = movendo.nextSibling;
+
+    // if (proximo) trocarElemento(movendo, proximo);
+    if (proximo) {
+      const texto = movendo.innerText;
+      const classes = movendo.classList.value;
+      movendo.innerText = proximo.innerText;
+      movendo.classList = proximo.classList;
+      proximo.innerText = texto;
+      proximo.classList.value = classes;
+    }
+  }
+}
+
 //  Configurar a página
 function configurar() {
   document.querySelector('#criar-tarefa').addEventListener('click', addTarefa);
   document.querySelector('#apaga-tudo').addEventListener('click', limparLista);
   document.querySelector('#remover-finalizados').addEventListener('click', limparCompletos);
   document.querySelector('#salvar-tarefas').addEventListener('click', salvarTarefas);
+  document.querySelector('#mover-cima').addEventListener('click', movePraCima);
+  document.querySelector('#mover-baixo').addEventListener('click', movePraBaixo);
   document.querySelector('#remover-selecionado').addEventListener('click', removeSelecionado);
   carregar();
 }
