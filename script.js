@@ -1,12 +1,12 @@
-const doubleClickText = document.createElement('p');
-doubleClickText.setAttribute('id', 'funcionamento');
-doubleClickText.innerHTML = 'Clique duas vezes em um item para marcá-lo como completo';
-document.body.appendChild(doubleClickText);
+const botao = document.getElementById('criar-tarefa');
+const input = document.getElementById('texto-tarefa');
+const listaDeTarefas = document.getElementById('lista-tarefas');
 
-const adicionaALista = document.createElement('input');
-adicionaALista.setAttribute('id', 'texto-tarefa');
-document.body.appendChild(adicionaALista);
-
-const listaDeTarefas = document.createElement('ol');
-listaDeTarefas.setAttribute('id', 'lista-tarefas');
-document.body.appendChild(listaDeTarefas);
+function novaTarefa(tarefa) {
+   if(tarefa.target === botao && input.value !== ''){
+       const criaTarefa = document.createElement('li');
+       listaDeTarefas.appendChild(criaTarefa).innerHTML = input.value;
+       input.value = '';
+   } 
+}
+document.addEventListener('click', novaTarefa);
