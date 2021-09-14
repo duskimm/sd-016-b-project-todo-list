@@ -36,3 +36,14 @@ function riskitem(event) {
     }
   }
 }
+
+const botaoApagaTudo = document.createElement('button');
+botaoApagaTudo.innerHTML = 'Apagar tudo';
+botaoApagaTudo.id = 'apaga-tudo';
+document.body.appendChild(botaoApagaTudo);
+
+botaoApagaTudo.onclick = function () {
+  for (let index = 0; index < itemTarefa.length; index += 0) {
+    itemTarefa[index].remove();
+  }
+};
