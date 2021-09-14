@@ -12,25 +12,27 @@ function inputClean() {
 // Cria o evento do botão para buscar a tarefa do input ao clicar com o mouse
 
 createTaskFunction.addEventListener('click', () => {
-  const createTask = document.createElement('li');
   const task = taskText.value;
-  createTask.innerText = task;
-
-  listTask.appendChild(createTask);
-
-  inputClean();
+  if (task === '') {
+    alert('Não há nenhuma tarefa a ser criada!!');
+  } else {
+    const createTask = document.createElement('li');
+    createTask.innerText = task;
+    listTask.appendChild(createTask);
+    inputClean();
+  }
 });
 
 // Cria o evento do botão para buscar a tarefa do input ao apertar o enter
 // Referência: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_trigger_button_enter
 
 taskText.addEventListener('keyup', (event) => {
-  console.log('enter nova tarefa');
-  if (event.keyCode === 13) {
+  const task = taskText.value;
+  if (task === '') {
+    alert('Não há nenhuma tarefa a ser criada!!');
+  } else if (event.keyCode === 13) {
     const createTask = document.createElement('li');
-    const task = taskText.value;
     createTask.innerText = task;
-
     listTask.appendChild(createTask);
     inputClean();
   }
@@ -70,3 +72,7 @@ function doubleClickTask() {
 }
 
 doubleClickTask();
+
+function deleteListItem(params) {
+  
+}
