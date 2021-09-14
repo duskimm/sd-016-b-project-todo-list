@@ -2,9 +2,11 @@ const addButton = document.getElementById('criar-tarefa');
 const addListOl = document.getElementById('lista-tarefas');
 const addInput = document.getElementById('texto-tarefa');
 const addBackground = document.getElementsByTagName('li');
+const deleteList = document.getElementById('apaga-tudo');
 
 addButton.addEventListener('click', function() {
   const createLi = document.createElement('li');
+  createLi.className = 'itens';
   createLi.innerText = addInput.value;
   addListOl.appendChild(createLi);
   addInput.value = "";
@@ -24,3 +26,11 @@ addListOl.addEventListener('dblclick', function(event) {
     event.target.classList.add('completed');
   }
 });
+
+deleteList.addEventListener('click', function() {
+  const itens = document.querySelectorAll('.itens'); //addListOl.innerHTML = '';
+  for (let index = 0; index < itens.length; index += 1) {
+    addListOl.removeChild(itens[index]);
+  }
+});
+

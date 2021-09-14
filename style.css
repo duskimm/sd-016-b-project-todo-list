@@ -1,3 +1,7 @@
 .completed {
   text-decoration: line-through;
 }
+
+#apaga-tudo {
+  margin-top: 10px;
+}
