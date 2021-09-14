@@ -22,7 +22,6 @@ function selectedLi(event) {
   }
   liTarget = event.target;
   liTarget.style.backgroundColor = 'rgb(128, 128, 128)';
-  console.log(taskLi);
 }
 
 todoList.addEventListener('click', selectedLi);
@@ -33,7 +32,6 @@ function completTask(event) {
     liTarget.classList.remove('completed');
   } else {
     liTarget.classList.add('completed');
-    console.log(taskLi);
   }
 }
 
@@ -46,7 +44,6 @@ clearButton.addEventListener('click', function() {
   for (let index = 0; index < todoList.children.length; index = 0) {
     todoList.removeChild(taskLi[index]);
   }
-  console.log('ta rodando');
 });
 
 //limpar tasks finalizadas
