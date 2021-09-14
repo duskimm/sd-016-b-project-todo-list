@@ -1,15 +1,14 @@
-//usado em selectItem
-firsTime = true;
 //usado em itemButton e tarefaCreator
 let listIl = document.querySelector('#lista-tarefas');
 
 //seleciona individualmente cada item
 function selectItem(event) {
-  if(firsTime == false){
+  if(document.getElementsByClassName('selected').length == 0){
+    event.target.classList.add('selected');
+  }else {
     document.querySelector('.selected').classList.remove('selected');
+    event.target.classList.add('selected');
   }
-  firsTime = false
-  event.target.classList.add('selected');
 }
 
 //função para riscar ou remover o risco do item selecionado
@@ -58,9 +57,18 @@ function clearAll() {
 
 //remove o item marcado
 function removeThis() {
-  
+  console.log('entrei');
+  let selectLista = document.querySelector('#lista-tarefas');
+  for(let index = 0; index < selectLista.children.length; index +=1){
+    console.log('entrei no for');
+    if(selectLista.children[index].classList[1] == 'completed' || selectLista.children[index].classList[0] == 'completed'){
+      console.log('entrei no if');
+      console.log(index);
+      selectLista.removeChild(selectLista.childNodes[index]);
+      index -= 1;
+    }
+  }
 }
-
 window.onload = function() {
   //cria os botoes especificos
   function CreatAllButton () {
@@ -74,5 +82,5 @@ window.onload = function() {
     let buttonRemove = document.querySelector('#remover-finalizados');
     buttonRemove.addEventListener('click', removeThis);
   }
-CreatAllButton();
+  CreatAllButton();
 }
