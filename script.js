@@ -80,7 +80,6 @@ function deleteListItem() {
   const listFather = document.getElementById('lista-tarefas');
   const deleteBtn = document.querySelector('#apaga-tudo');
   deleteBtn.addEventListener('click', () => {
-    console.log('apaguei');
     while (listFather.firstChild) {
       listFather.removeChild(listFather.firstChild);
     }
@@ -88,3 +87,20 @@ function deleteListItem() {
 }
 
 deleteListItem();
+
+// Apaga todos os item marcados como finalizados
+
+function deleteConcludeItem() {
+  const listFather = document.getElementById('lista-tarefas');
+  const deleteBtn = document.querySelector('#remover-finalizados');
+  const itemConclude = document.getElementsByClassName('completed');
+  deleteBtn.addEventListener('click', () => {
+    while (itemConclude.length > 0) {
+      let count = 0;
+      listFather.removeChild(itemConclude[count]);
+      count += 1;
+    }
+  });
+}
+
+deleteConcludeItem();
