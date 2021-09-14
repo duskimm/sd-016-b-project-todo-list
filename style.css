@@ -4,14 +4,21 @@
 
 #criar-tarefa {
   background: #0066a2;
-  color: white;
-  border-style: outset;
   border-color: #0066a2;
-  border-radius: 5%;
+  color: white;
+  cursor: pointer;
   height: 30px;
   width: 100px;
   font: 15px bold arial, sans-serif;
   text-shadow: none;
+  border-radius: 34px;
+  cursor: pointer;
+  padding: 4px 16px;
+  margin-left: 5px ;
+}
+
+.completed{
+  text-decoration: line-through;
 }
 
 .container {
@@ -25,6 +32,7 @@ margin-top: 30px;
 
 h5 {
   margin-top: 10px;
+  color: rgb(66, 65, 65);
 }
 
 header {
