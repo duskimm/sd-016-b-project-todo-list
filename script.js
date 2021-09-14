@@ -8,7 +8,6 @@ function addMain() {
 addMain();
 const main = document.getElementById('main');
 
-// REQUISITO 1
 function addHeader() {
   const newHeader = document.createElement('header');
   newHeader.innerHTML = '<h1>Minha Lista de Tarefas</h1>';
@@ -16,7 +15,6 @@ function addHeader() {
 }
 addHeader();
 
-// REQUISITO 2
 function addFuncionamento() {
   const newParagraph = document.createElement('p');
   newParagraph.id = 'funcionamento';
@@ -26,7 +24,6 @@ function addFuncionamento() {
 }
 addFuncionamento();
 
-// REQUISITO 3
 function addInput() {
   const newInput = document.createElement('input');
   newInput.type = 'text';
@@ -36,7 +33,6 @@ function addInput() {
 }
 addInput();
 
-// REQUISITO 4
 function addOrdenedList() {
   const newOrdenedList = document.createElement('ol');
   newOrdenedList.id = 'lista-tarefas';
@@ -45,7 +41,6 @@ function addOrdenedList() {
 }
 addOrdenedList();
 
-// REQUISITO 5
 function addCreateButton() {
   const newButton = document.createElement('button');
   newButton.id = 'criar-tarefa';
@@ -60,11 +55,20 @@ function newTask() {
   const task = document.getElementById('texto-tarefa');
   const list = document.getElementById('lista-tarefas');
 
-  createButton.addEventListener('click', (event) => {
-    let newTask = document.createElement('li');
+  createButton.addEventListener('click', () => {
+    const newTask = document.createElement('li');
     newTask.innerText = task.value;
     list.appendChild(newTask);
     task.value = '';
+
+    newTask.addEventListener('click', () => {
+      let newColor = 'rgb(128, 128, 128)';
+      if (newTask.style.backgroundColor === newColor) {
+        newTask.style.backgroundColor = 'white';
+      } else {
+        newTask.style.backgroundColor = newColor;
+      }
+    });
   });
 }
 newTask();

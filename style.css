@@ -1,4 +1,9 @@
+body {
+  background-color: green;
+}
 
-* {
-
+main {
+  background-color: white;
+  border-radius: 25px;
+  padding: 10px 30px 20px 30px;
 }
