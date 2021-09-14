@@ -16,17 +16,41 @@ function paragrafo() {
 paragrafo()
 
 function input() {
-  let p = document.querySelector('p')
+  let body = document.querySelector('body')
   let input = document.createElement('input')
   input.id = 'texto-tarefa'
-  p.appendChild(input)
+  body.appendChild(input)
 }
 input()
 
 function listaDeTarefas() {
-  let input = document.querySelector('input')
+  let body = document.querySelector('body')
   let listaDeTarefas = document.createElement('ol')
   listaDeTarefas.id = 'lista-tarefas'
-  input.appendChild(listaDeTarefas)
+  body.appendChild(listaDeTarefas)
 }
 listaDeTarefas() 
+
+function button() {
+  let body = document.querySelector('body')
+  let buttom = document.createElement('button')
+  buttom.id = 'criar-tarefa'
+  body.appendChild(buttom)
+  
+}
+button()
+
+
+
+  
+document.getElementById('criar-tarefa').addEventListener("click", function() {
+  let ol = document.getElementById('lista-tarefas')
+  let input = document.getElementById("texto-tarefa").value;
+  
+  let li = document.createElement('li')
+  li.innerText = input
+  ol.appendChild(li) 
+  document.getElementById("texto-tarefa").value = '';
+  console.log(li)
+})
+
