@@ -50,3 +50,12 @@ removeFinalizado.addEventListener('click', function () {
     listOrdenada.removeChild(pegaClass[index]);
   }
 })
+
+// Requisito 14
+let removeSelecionado = document.querySelector('#remover-selecionado');
+removeSelecionado.addEventListener('click', function (){
+  let pegaSelecionado = document.querySelectorAll('.selected')
+  for (let index = 0; index < pegaSelecionado.length; index += 1) {
+    listOrdenada.removeChild(pegaSelecionado[index]);
+  }
+})
