@@ -28,6 +28,10 @@ function plugHtml(fatherElement, sonElement) {
   fatherElement.appendChild(sonElement);
 }
 
+function removeOfHtml(fatherElement, sonElement) {
+  fatherElement.removeChild(sonElement);
+}
+
 function addMultiplesListeners(arr, eventName, listener) {
   arr.forEach((element) => {
     element.addEventListener(eventName, listener, false);
@@ -52,13 +56,15 @@ const user = {
 
 const tasksArray = [];
 
-const taskInput = getOne('#texto-tarefa');
-const taskList = getOne('#lista-tarefas');
-const buttonAdd = getOne('#criar-tarefa');
-const buttonReset = getOne('#apaga-tudo');
-const buttonDone = getOne('#remover-finalizados');
-const buttonRemoveSelected = getOne('#remover-selecionado');
-const buttonSave = getOne('#salvar-tarefa');
+const taskInput = getOne('#texto-tarefa'),
+      taskList = getOne('#lista-tarefas'),
+      buttonAdd = getOne('#criar-tarefa'),
+      buttonReset = getOne('#apaga-tudo'),
+      buttonDone = getOne('#remover-finalizados'),
+      buttonRemoveSelected = getOne('#remover-selecionado'),
+      buttonSave = getOne('#salvar-tarefa'),
+      buttonMoveUp = getOne('#mover-cima'),
+      buttonMoveDown = getOne('#mover-baixo');
 
 // functions for the project
 
@@ -72,44 +78,29 @@ function createTaskItem() {
   const newTaskItem = createElement('li');
   addClass(newTaskItem, 'task-item');
   newTaskItem.innerText = user.msg;
-  plugHtml(taskList, newTaskItem);
   tasksArray.push(newTaskItem);
 }
 
-function unpackingTasks(str) {
-  return str.split('=');
-}
-
-function addUserClass(element, tasksArr) {
-  const tasks = tasksArr.split(' ');
-  for (let clas of tasks) {
-    addClass(element, clas);
-  }
-}
-
-function recoverUserTaskItem() {
-  localStorage.tasks.split(',').forEach((task) => {
-    const userTaskItem = createElement('li');
-    addUserClass(userTaskItem, unpackingTasks(task)[1]);
-    userTaskItem.innerText = unpackingTasks(task)[2];
-    plugHtml(taskList, userTaskItem);
-
-    console.log(unpackingTasks(task));
+function renderTaskItems() {
+  tasksArray.forEach((task) => {
+    plugHtml(taskList, task);
   });
 }
 
 function deleteDoneTasks() {
   const doneTasks = getAll('.completed');
 
-  buttonDone.addEventListener('click', () => {
-    doneTasks.forEach((task) => {
+  doneTasks.forEach((task) => {
+    for (let i in tasksArray) {
+      let del = tasksArray.indexOf(task);
+      tasksArray.splice(del, del + 1);
       task.remove();
-    });
+    }
   });
 }
 
 function resetSelection() {
-  const listItems = getAll('li');
+  const listItems = getAll('.task-item');
 
   listItems.forEach((item) => {
     removeClass(item, 'selected');
@@ -117,16 +108,12 @@ function resetSelection() {
 }
 
 function changeSelection(event) {
-  const taskItem = event.target;
-
   resetSelection();
-  addClass(taskItem, 'selected');
+  addClass(event.target, 'selected');
 }
 
 function changeDone(event) {
-  const taskItem = event.target;
-  toggleClass(taskItem, 'completed');
-  deleteDoneTasks();
+  toggleClass(event.target, 'completed');
 }
 
 function controlSelection(event) {
@@ -144,119 +131,84 @@ function selectAllTasks() {
 }
 
 function deleteAllTasks() {
-  const taskItems = getAll('li');
-
-  buttonReset.addEventListener('click', () => {
-    taskItems.forEach((item) => {
-      item.remove();
-    });
-  });
-}
-
-function resetInput() {
-  taskInput.value = '';
-}
-
-function addTaskToList() {
-  buttonAdd.addEventListener('click', () => {
-    createTaskItem();
-  });
+  for (let i in tasksArray) {
+    removeOfHtml(taskList, tasksArray[i]);
+  }
+  tasksArray.splice(0, tasksArray.length);
 }
 
 // botões para cima e para baixo, para mover o item selecionado
 
+// function moveUp() {
+
+// }
+
+// function moveDown() {
+
+// }
+
+function attSelectTask() {
+  return getOne('.selected');
+}
+
 function deleteSelectedTask() {
-  const selected = getOne('.selected');
-
-  buttonRemoveSelected.addEventListener('click', () => {
-    selected.remove();
-  });
+  const selected = attSelectTask();
+  let del = tasksArray.indexOf(selected);
+  tasksArray.splice(del, del + 1);
+  selected.remove();
 }
-
-function controlTemp() {
-  deleteSelectedTask();
-  storeUserData();
-}
-
-// botão salvar tarefas (localStorage)
 
 function listenListItem() {
-  const listItems = getAll('li');
+  const listItems = getAll('.task-item');
 
-  addMultiplesListeners(listItems, 'click', controlTemp);
+  addMultiplesListeners(listItems, 'click', attSelectTask);
 }
 
-function getTasks() {
-  const filteredTasks = [];
-
-  tasksArray.forEach((task) => {
-    filteredTasks.push(`li=${task.className}=${task.innerText}`);
+function buttonUp() {
+  buttonMoveUp.addEventListener('click', () => {
+    moveUp();
   });
-
-  controlUserData('tasks', filteredTasks);
 }
 
-function encodeTask(str) {
-  str.replaceAll(' ', '.');
-  return str;
+
+function buttonDown() {
+  buttonMoveDown.addEventListener('click', () => {
+    moveDown();
+  });
 }
 
-function decodeTask(str) {
-  str.replaceAll('=', ' ');
-}
-
-function controlUserData(key, data) {
-  if (key in localStorage) {
-    getUserData(key, data);
-  } else {
-    setUserData(key, data);
-  }
-}
-
-function setUserData(key, data) {
-  if (typeof key === 'string' && typeof data === 'string') {
-    localStorage.setItem(key, data)
-  } else {
-    JSON.stringify(key);
-    JSON.stringify(data);
-    localStorage.setItem(key, data)
-  }
-}
-
-function getUserData(key, data) {
-  localStorage[key] = data;
-}
-
-function storeUserData() {
-  getTasks();
-}
-
-function restoreUserSection() {
-  recoverUserTaskItem();
-}
-
-function attFunctions() {
+function allButtons() {
   const buttons = getAll('button');
 
-  addMultiplesListeners(buttons, 'click', () => {
-    selectAllTasks();
-    deleteAllTasks();
-    deleteDoneTasks();
-    resetInput();
-    listenListItem();
-    storeUserData();
+  addMultiplesListeners(buttons, 'click', (event) => {
+    switch(event.target.id) {
+      case('criar-tarefa'):
+        createTaskItem();
+        renderTaskItems();
+        selectAllTasks();
+        listenListItem();
+        break
+      case('apaga-tudo'):
+        deleteAllTasks();
+        renderTaskItems();
+        break
+      case('remover-finalizados'):
+        deleteDoneTasks();
+        break
+      case('remover-selecionado'):
+        deleteSelectedTask();
+        break
+      case('mover-cima'):
+        buttonUp();
+        break
+      case('mover-baixo'):
+        buttonDown();
+      default:
+        console.log('default');
+    }
   });
-}
-
-function userControl() {
-  if (localStorage.tasks) {
-    restoreUserSection();
-  }
 }
 
 window.onload = () => {
-  getTask();
-  addTaskToList();
-  attFunctions();
-  userControl();
+  allButtons();
 };
