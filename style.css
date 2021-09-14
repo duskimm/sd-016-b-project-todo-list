@@ -2,55 +2,55 @@ body {
   background-color: #2fc18c;
   margin: 0;
 }
-
 .style-main {
   background-color: white;
   border: 1px solid white;
   border-radius: 20px;
   margin-left: 20px;
   margin-top: 20px;
-  width: 50%;
+  width: 80%;
   height: 50%;
 }
-
 .style-header {
   margin-left: 10px;
+  font-size: 22px;
 }
-
 .completed {
   text-decoration: line-through;
 }
-
-#apaga-tudo {
-  margin-top: 10px;
-}
-
 #funcionamento {
   margin-left: 10px;
+  font-size: 20px;
 }
-
 #texto-tarefa {
   margin-left: 10px;
+  width: auto;
+  height: 25px;
 }
-
 #criar-tarefa {
-  background-color: #006dfb;
+  background-color: #2fc18c;
   border-radius: 50px;
   color: white;
+  font-size: 15px;
   margin-left: 10px;
+  width: auto;
+  height: 25px;
 }
-
 #apaga-tudo {
-  background-color: #41197f;
   border-radius: 50px;
-  color: white;
+  color: black;
+  font-size: 15px;
+  margin-top: 10px;
   margin-left: 10px;
   margin-bottom: 20px;
+  width: auto;
+  height: 25px;
 }
-
 #remover-finalizados {
-  background-color: turquoise;
   border-radius: 50px;
-  color:white;
+  color:black;
+  font-size: 15px;
   margin-left: 10px;
+  width: auto;
+  height: 25px;
 }
