@@ -1,0 +1,19 @@
+#localInput {
+    display: flex;
+}
+
+#texto-tarefa {
+    display: inline-block;
+}
+
+#criar-tarefa {
+    display: inline-block;
+}
+
+.selecionado {
+    background: rgb(128, 128, 128);
+}
+
+.completed {
+    text-decoration: line-through solid rgb(0, 0, 0);
+}
