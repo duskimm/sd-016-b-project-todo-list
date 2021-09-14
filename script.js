@@ -1,11 +1,13 @@
 const input = document.querySelector('#texto-tarefa');
 const button = document.querySelector('#criar-tarefa');
 const ol = document.querySelector('#lista-tarefas');
+const li = document.querySelectorAll('.tarefa')
 
 
 window.onload = () => {
   createElementLi();
   selectItem();
+  completedItem();
 };
 
 function createElementLi() {
@@ -34,3 +36,13 @@ function selectItem() {
   )
 }
 
+function completedItem() {
+  ol.addEventListener('dblclick', (event) => {
+        if (event.target.classList.contains('completed')) {
+          event.target.classList.remove('completed');
+        } else {
+          event.target.classList.add('completed');
+        }
+    }
+  )
+}
