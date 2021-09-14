@@ -116,3 +116,24 @@ function lerLocalStorage() {
 }
 
 window.onload = lerLocalStorage;
+
+// 13 - Adicione dois botões, um com id="mover-cima" e outro com id="mover-baixo", que permitam mover o item selecionado para cima ou para baixo na lista de tarefas.
+const btnSubir = document.getElementById('mover-cima');
+const btnDescer = document.getElementById('mover-baixo');
+
+// Evento de subir tarefa
+btnSubir.addEventListener('click', () => {
+  const itemSelected = document.querySelector('.selected');
+  if ((itemSelected) && (itemSelected !== ol.firstElementChild)) {
+    ol.insertBefore(itemSelected, itemSelected.previousElementSibling);
+  }
+});
+
+// Evento de descer tarefa
+btnDescer.addEventListener('click', () => {
+  const itemSelected = document.querySelector('.selected');
+  if ((itemSelected) && (itemSelected !== ol.lastElementChild)) {
+    // Aqui abaixo como a função insere antes tive que avançar para o próximo irmão duas vezes.
+    ol.insertBefore(itemSelected, itemSelected.nextElementSibling.nextElementSibling);
+  }
+});
