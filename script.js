@@ -2,6 +2,7 @@ const divBody = document.querySelector('body');
 const creatHeader = document.createElement('header');
 const creatTitle = document.createElement('h1');
 creatTitle.innerHTML = 'Minha Lista de Tarefas'
+creatHeader.className = 'header'
 divBody.appendChild(creatHeader)
 creatHeader.appendChild(creatTitle)
 
@@ -11,14 +12,17 @@ function paragraph(params) {
   divBody.appendChild(creatSection)
   creatSection.appendChild(creatParagraph)
   creatParagraph.innerHTML = params
-  creatParagraph.id = 'funcionamento'
+  creatSection.id = 'funcionamento'
+  creatHeader.appendChild(creatSection)
+
 }
 paragraph('Clique duas vezes em um item para marcá-lo como completo')
 const creatSectionButtons = document.createElement('section')
 divBody.appendChild(creatSectionButtons)
 
+const creatDivInput = document.createElement('div')
+creatDivInput.className = 'input';
 function inputList() {
-  const creatDivInput = document.createElement('div')
   const creatInput = document.createElement('input')
   creatInput.id = 'texto-tarefa'
   divBody.appendChild(creatDivInput)
@@ -40,12 +44,14 @@ function buttons(id, nome) {
   const creatButtons = document.createElement('button')
   creatSectionButtons.id = "buttons"
   creatButtons.id = id
+  creatButtons.className = 'buttonsST'
   creatButtons.innerHTML = nome
   creatSectionButtons.appendChild(creatButtons)
 
 }
 buttons('criar-tarefa', 'add')
-
+const catchAddButton = document.querySelector('#criar-tarefa')
+creatDivInput.appendChild(catchAddButton)
 function creatItemList() {
   const catchimput = document.querySelector('#texto-tarefa')
   const catchList = document.querySelector('#lista-tarefas')
@@ -91,7 +97,7 @@ function completedLi() {
 }
 completedLi()
 
-buttons('apaga-tudo', 'apagar')
+buttons('apaga-tudo', 'Remover toda lista')
 /* para remover de forma dinamica, usei essa dica https://pt.stackoverflow.com/questions/441373/como-remover-todos-os-elementos-de-uma-div-em-javascript */
 function buttonRemove() {
   const catchOl = document.querySelector('#lista-tarefas')
@@ -124,8 +130,12 @@ buttons('remover-selecionado', 'remover selecionados')
 function removeSelected() {
   const catchButtonRemoveSelected = document.querySelector('#remover-selecionado')
   catchButtonRemoveSelected.addEventListener('click', () => {
-    document.querySelector('.selected').remove();
-
+    if (document.querySelector('.selected') == null) {
+      alert('sem itens selecionados')
+    }
+    else {
+      document.querySelector('.selected').remove();
+    }
   })
 
 }
@@ -137,10 +147,17 @@ function moveUp() {
   let catchButtonUp = document.querySelector('#mover-cima')
   catchButtonUp.addEventListener('click', () => {
     let catchItem = document.querySelector('.selected')
-    if (catchItem.previousElementSibling) {
+
+    if (document.querySelector('.selected') == null) {
+      alert('sem itens selecionados')
+    }
+    else if (catchItem.previousElementSibling && catchItem.previousElementSibling !== null || undefined) {
       catchItem.parentNode.insertBefore(catchItem, catchItem.previousElementSibling)
     }
-   
+    else {
+      alert('esse ja é o primeiro elemento')
+    }
+
   })
 }
 moveUp()
@@ -152,10 +169,22 @@ function moveDown() {
   let catchButtonDown = document.querySelector('#mover-baixo')
   catchButtonDown.addEventListener('click', () => {
     let catchItem = document.querySelector('.selected')
-    if (catchItem.nextElementSibling) {
-      catchItem.parentNode.insertBefore(catchItem.nextElementSibling, catchItem)
+    if (document.querySelector('.selected') == null) {
+      alert('sem itens selecionados')
     }
-   
+    else if (catchItem.nextElementSibling && catchItem.nextElementSibling !== null || undefined) {
+      catchItem.parentNode.insertBefore(catchItem.nextElementSibling, catchItem)
+
+    }
+    else {
+      alert('esse ja é o ultimo elemento')
+    }
+
   })
 }
 moveDown()
+const getButtonUp = document.querySelector('#mover-cima')
+const getButtonDown = document.querySelector('#mover-baixo')
+creatDivInput.appendChild(getButtonUp)
+creatDivInput.appendChild(getButtonDown)
+
