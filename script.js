@@ -37,7 +37,9 @@ function riscarItem() {
 function limparLista() {
   let botaoApagarTudo = document.getElementById("apaga-tudo");
   botaoApagarTudo.addEventListener=("click", function(){
-    
+  document.appendChild.remove(listaTarefas);
+  })
+}
  
 
 adicionarTarefa();
