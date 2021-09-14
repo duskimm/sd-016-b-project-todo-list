@@ -47,6 +47,7 @@ button , input {
 .tarefa {
   border-radius: 4px;
   padding: 8px;
+  overflow-wrap: break-word;
 }
 
 .tarefa:hover {
