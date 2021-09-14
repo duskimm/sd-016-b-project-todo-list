@@ -28,30 +28,37 @@ createButton.addEventListener('click', function(){
     const newLiItem = document.createElement('li');
     
     newLiItem.innerText = inputTag.value;
+    newLiItem.className = 'percorre-lista';
     createListOl.appendChild(newLiItem);
     inputTag.value = '';
   }
 });
 
-// 7 - Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128)
-// pega as lis da lista ordenada 
-createListOl.addEventListener('click', function(){
-  for (let index = 0; index < createListOl.children.length; index += 1){
-    createListOl.children[index].style.backgroundColor = 'rgb(128, 128, 128)';
+// 7 e 8 Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128)
+// pega as lis da lista ordenada.// Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo 
+function adicionaCor(){
+const localizaOl = document.querySelectorAll('ol');
+for (let index = 0; index < localizaOl.length; index+=1){
+localizaOl[index].addEventListener('click', function(event){
+// o click passa primeiro por essa função que verifica se a classe existe e remove, removendo também a cor (de primeira não entra nessa condição, então entra no event.target que adiciona a cor e a classe. No segundo click em outro item da lista ele passa na condição do if, apagando a classe e removendo a cor que tinha sido adc no item anteriormente colorido. E assim continua.)
+  tiraCoreClasse();
+event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+event.target.classList.add('selected');
+})
+}
+}
+adicionaCor();
+
+function tiraCoreClasse(){
+  const classList = document.querySelectorAll('.percorre-lista');
+  for (let index = 0; index < classList.length; index+=1) {
+  //contains verifica se contem a className do parametro que foi passado
+  if (classList[index].classList.contains('selected')){
+    classList[index].classList.remove('selected')
+    classList[index].style.backgroundColor = '';
   }
-});
-// 8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo
-createListOl.addEventListener('click', function(){
-  for (let index = 0; index < createListOl.children.length; index += 1){
-    createListOl.children[index].style.backgroundColor = 'rgb(128, 128, 128)';
-  
-  }
-  
-});
-createListOl.addEventListener('click', function(){
-  for (let index = 0; index < createListOl.children.length; index += 1){
-    createListOl.children[index].style.backgroundColor = 'white';
-  
-  }
-  
+}
+}
+
+
 
