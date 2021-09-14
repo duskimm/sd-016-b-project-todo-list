@@ -37,6 +37,14 @@ function resetAll() {
   listaTarefa.innerText = '';
 }
 
+function removeCompleted() {
+  const selCompletedClass = document.getElementsByClassName('completed');
+  const lastSelComp = selCompletedClass.length - 1;
+  for (let i = lastSelComp; i >= 0; i -= 1) {
+    selCompletedClass[i].remove();
+  }
+}
+
 const btnCriarTarefa = document.querySelector('#criar-tarefa');
 btnCriarTarefa.addEventListener('click', criarTarefa);
 const btnReset = document.querySelector('#apaga-tudo');
@@ -44,4 +52,6 @@ listaTarefa.addEventListener('click', bgGray);
 const olLi2 = document.querySelector('.div_lista-tarefas');
 olLi2.addEventListener('dblclick', completedClass);
 btnReset.addEventListener('click', resetAll);
+const btnRemoveCom = document.querySelector('#remover-finalizados');
+btnRemoveCom.addEventListener('click', removeCompleted);
 // se estiver selecionado, deselecione

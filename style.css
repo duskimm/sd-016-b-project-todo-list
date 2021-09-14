@@ -72,6 +72,11 @@ body {
   padding-bottom: 1rem;
 }
 
+#remover-finalizados {
+  font-size: 1.8rem;
+  padding: 0 1rem;
+}
+
 #apaga-tudo {
   font-size: 1.8rem;
   padding: 0 1rem;
