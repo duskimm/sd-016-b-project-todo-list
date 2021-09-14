@@ -76,8 +76,10 @@ doubleClickTask();
 // Apaga a lista completa
 // referência: https://www.javascripttutorial.net/javascript-dom/javascript-removechild/
 
+const listFather = document.getElementById('lista-tarefas');
+
 function deleteListItem() {
-  const listFather = document.getElementById('lista-tarefas');
+  // const listFather = document.getElementById('lista-tarefas');
   const deleteBtn = document.querySelector('#apaga-tudo');
   deleteBtn.addEventListener('click', () => {
     while (listFather.firstChild) {
@@ -91,7 +93,7 @@ deleteListItem();
 // Apaga todos os item marcados como finalizados
 
 function deleteConcludeItem() {
-  const listFather = document.getElementById('lista-tarefas');
+  // const listFather = document.getElementById('lista-tarefas');
   const deleteBtn = document.querySelector('#remover-finalizados');
   const itemConclude = document.getElementsByClassName('completed');
   deleteBtn.addEventListener('click', () => {
@@ -104,3 +106,34 @@ function deleteConcludeItem() {
 }
 
 deleteConcludeItem();
+
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
+// 14 - botão remover selecionado
+
+function removeSelected() {
+  const btnRemoverSelecionado = document.querySelector('#remover-selecionado');
+  // const selectedItem = document.querySelector('#selected');
+  // const listFather = document.getElementById('lista-tarefas');
+  listTask.addEventListener('click', (event) => {
+    btnRemoverSelecionado.addEventListener('click', () => {
+      // console.log('evento btn rmv selecionado');
+      clickSelected = event.target;
+      if (clickSelected.id === 'selected') {
+        listFather.removeChild(document.querySelector('#selected'));
+      }
+    });
+  });
+}
+
+removeSelected();
