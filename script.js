@@ -33,13 +33,16 @@ function lineThrough() {
 }
 
 // Requisito 10
+let clearBtn = document.getElementById('apaga-tudo');
 function clearList() {
   let currentList = document.querySelectorAll('li');
-  for (let i in currentList) {
-      currentList[i].remove()
+  for (let i = 0; i < currentList.length; i++) {
+      currentList[i].remove();
+      
   }
 }
-document.getElementById('apaga-tudo').addEventListener('click', clearList);
+
+clearBtn.addEventListener('click', clearList);
 
 // Requisito 11
 

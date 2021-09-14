@@ -11,3 +11,13 @@ function highlight(EventTarget) {
 }
 
 this.style.backgroundColor = 'rgb(128, 128, 128)';
+
+
+  let currentTasks = document.getElementsByTagName('li');
+
+  for (let i = 0; i < currentTasks.length; i += 1) {
+    if (currentTasks[i].style.backgroundColor === 'rgb(128, 128, 128)') {
+      currentTasks[i].style.backgroundColor = 'white';
+    }  
+  }
+  this.classList.add('completed');
