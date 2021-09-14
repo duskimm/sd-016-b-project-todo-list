@@ -54,8 +54,12 @@ olList.addEventListener('click', (event) => {
   const alvo = event.target;
   for (let index = 0; index < olList.children.length; index += 1) {
     olList.children[index].style.backgroundColor = '';
+    olList.children[index].className = 'list-iten';
+    olList.style.backgroundColor = '';
   }
   alvo.style.backgroundColor = 'grey';
+  olList.style.backgroundColor = '';
+  alvo.classList.add('selecionado');
 //  if (alvo.style.backgroundColor !== 'grey') {
 //   for (let index = 0; index < olList.children.length; index += 1) {
 //      olList.children[index].style.backgroundColor = '';
@@ -122,6 +126,35 @@ function createButtonSaveList() {
 createButtonSaveList();
 
 // Evento para salvar os itens.
-
 const buttonSaveList = document.getElementById('salvar-tarefas');
 buttonSaveList.addEventListener('click', salvaTarefas);
+
+// Cria botões para mover as tarefas.
+function createButtonsMove(nameButton, id) {
+  const button = document.createElement('button');
+  button.id = id;
+  button.innerText = nameButton;
+  buttonsArea.appendChild(button);
+}
+
+createButtonsMove('Mover para cima', 'mover-cima');
+createButtonsMove('Mover para baixo', 'mover-baixo');
+
+// Botão mover tarefa para cima.
+const buttonUp = document.getElementById('mover-cima');
+buttonUp.addEventListener('click', () => {
+  const li = document.querySelectorAll('.list-iten');
+  const selecionado = document.querySelector('.selecionado');
+  if (selecionado === li[0]) {
+    return;
+  }
+  olList.insertBefore(selecionado, selecionado.previousElementSibling);
+});
+
+// Botão mover tarefa para baixo.
+const buttonDown = document.getElementById('mover-baixo');
+buttonDown.addEventListener('click', () => {
+  const li = document.querySelectorAll('.list-iten');
+  const selecionado = document.querySelector('.selecionado');
+  olList.insertAft
+});
