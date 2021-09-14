@@ -5,6 +5,9 @@ const itens = document.getElementsByClassName('itens');
 const clearButton = document.getElementById('apaga-tudo');
 const clearDoneButton = document.getElementById('remover-finalizados');
 const clearSelectedButton = document.getElementById('remover-selecionado');
+const saveButton = document.getElementById('salvar-tarefas');
+
+orderedList.innerHTML = localStorage.getItem('itens');
 
 function addClassSelected(e) {
   for (let i = 0; i < itens.length; i += 1) {
@@ -45,6 +48,7 @@ function clearDone() {
 }
 /* Recorri a seguinte referência para resolver essa parte:
 https://qastack.com.br/programming/4777077/removing-elements-by-class-name */
+
 clearDoneButton.addEventListener('click', clearDone);
 
 function clearSelected() {
@@ -66,3 +70,10 @@ function addTasks() {
 }
 
 taskButton.addEventListener('click', addTasks);
+
+function saveTasks() {
+  const itensToSave = document.getElementById('lista-tarefas').innerHTML;
+  localStorage.setItem('itens', itensToSave);
+}
+
+saveButton.addEventListener('click', saveTasks);

@@ -60,11 +60,15 @@ body {
 }
 
 #conteudo .completed {
-  text-decoration: line-through solid rgb(0 , 0 , 0);
+  text-decoration: line-through solid black;
 }
 
 #conteudo .itens {
   cursor: pointer;
   padding: 3px 0;
   margin-bottom: 3px;
+}
+
+#paragraph {
+  margin-top: 10px;
 }
