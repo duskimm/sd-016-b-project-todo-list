@@ -20,7 +20,7 @@ addListOl.addEventListener('click', function(event) {
 });
 
 addListOl.addEventListener('dblclick', function(event) {
-  if (event.target.className === 'completed') {
+  if (event.target.classList.contains('completed')) {
     event.target.classList.remove('completed');
   } else {
     event.target.classList.add('completed');
@@ -30,7 +30,8 @@ addListOl.addEventListener('dblclick', function(event) {
 deleteList.addEventListener('click', function() {
   const itens = document.querySelectorAll('.itens'); //addListOl.innerHTML = '';
   for (let index = 0; index < itens.length; index += 1) {
-    addListOl.removeChild(itens[index]);
+    addListOl.removeChild(itens[index]); //itens[index].remove() + for.
   }
 });
+
 

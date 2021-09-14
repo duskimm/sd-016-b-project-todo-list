@@ -1,7 +1,49 @@
+body {
+  background-color: #2fc18c;
+  margin: 0;
+}
+
+.style-main {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 50%;
+  height: 50%;
+}
+
+.style-header {
+  margin-left: 10px;
+}
+
 .completed {
   text-decoration: line-through;
 }
 
 #apaga-tudo {
   margin-top: 10px;
+}
+
+#funcionamento {
+  margin-left: 10px;
+}
+
+#texto-tarefa {
+  margin-left: 10px;
+}
+
+#criar-tarefa {
+  background-color: #006dfb;
+  border-radius: 50px;
+  color: white;
+  margin-left: 10px;
+}
+
+#apaga-tudo {
+  background-color: #41197f;
+  border-radius: 50px;
+  color: white;
+  margin-left: 10px;
+  margin-bottom: 20px;
 }
