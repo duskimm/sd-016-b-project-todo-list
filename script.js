@@ -62,3 +62,16 @@ function insertElementLI() {
   eventDoubleClickList(); // chama a funcao para ver dois clicks seguidos em um item da li
 }
 createNewItemList.addEventListener('click', insertElementLI); // se clicar no botao executa a funcao inserir elemento
+// algoritmos:
+function clearlist() {
+// pega todas as li.  const listclear = document.getElementsByTagName('li')
+// apaga todas as li filhos de ol.  for por todas as lis listclear[i].removechild(li) pesquisar
+}
+
+function removeFinished() {
+//pega as lis com class completed. pegar itens com class .completed queryselectall e add array ...
+//remover lis com class completed.   
+}
+
+document.getElementById('apaga-tudo').addEventListener('click', clearlist);
+document.getElementById('remover-finalizados').addEventListener('click', removeFinished);
