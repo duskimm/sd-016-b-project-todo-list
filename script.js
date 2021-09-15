@@ -59,32 +59,22 @@ function changeSelectedTask(selectedTask, newTask) {
   }
 }
 
-function changeTaskBackgroundColor(tasks) {
-  for (let index = 0; index < tasks.length; index += 1) {
-    tasks[index].addEventListener('click', (event) => {
-      const selectedTask = document.querySelector('.gray-background');
-      // Quando nenhuma tarefa foi selecionada ainda, o conteúdo de selectedTask é null, então eu apenas atribuo a classe gray-background ao elemento que disparou esse evento. Caso contrário, eu retiro gray-background da tarefa atual selecionada e atribuo ela ao elemento que disparou o evento.
-      if (selectedTask !== null) {
-        changeSelectedTask(selectedTask, event.target);
-      } else {
-        event.target.classList.add('gray-background');
-      }
-    });
-  }
+function changeTaskBackgroundColor(task) {
+  task.addEventListener('click', (event) => {
+    const selectedTask = document.querySelector('.gray-background');
+    // Quando nenhuma tarefa foi selecionada ainda, o conteúdo de selectedTask é null, então eu apenas atribuo a classe gray-background ao elemento que disparou esse evento. Caso contrário, eu retiro gray-background da tarefa atual selecionada e atribuo ela ao elemento que disparou o evento.
+    if (selectedTask !== null) {
+      changeSelectedTask(selectedTask, event.target);
+    } else {
+      event.target.classList.add('gray-background');
+    }
+  });
 }
 
-function markAsCompleted(tasks) {
-  for (let index = 0; index < tasks.length; index += 1) {
-    tasks[index].addEventListener('dblclick', (event) => {
-      event.target.classList.toggle('completed');
-    });
-  }
-
-  /* tasks.forEach((element) => {
-    element.addEventListener('dblclick', () => {
-      element.classList.add('completed');
-    });
-  }); */
+function markAsCompleted(task) {
+  task.addEventListener('dblclick', (event) => {
+    event.target.classList.toggle('completed');
+  });
 }
 
 function createTask() {
@@ -94,12 +84,11 @@ function createTask() {
     setInnerText(task, input.value);
     addElementToDOM(taskList, task);
     input.value = '';
+    changeTaskBackgroundColor(task);
+    markAsCompleted(task);
   } else {
     alert('Ops! Você ainda não inseriu a tarefa.');
   }
-  const tasks = document.getElementsByClassName('task');
-  changeTaskBackgroundColor(tasks);
-  markAsCompleted(tasks);
 }
 
 createButton.addEventListener('click', createTask);
