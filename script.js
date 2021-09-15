@@ -137,7 +137,9 @@ function moveDown() {
 function removeSelected() {
   removeSelectedButton.addEventListener('click', () => {
     const selectedTask = document.querySelector('.selected');
-    selectedTask.parentNode.removeChild(selectedTask);
+    if (selectedTask !== null) {
+      selectedTask.parentNode.removeChild(selectedTask);
+    }
     selectTask();
   });
 }
