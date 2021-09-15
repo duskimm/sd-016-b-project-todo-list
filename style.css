@@ -2,3 +2,6 @@
   background: rgb(128, 128, 128);
   width: auto;
 }
+.completed {
+  text-decoration: line-through;
+}
