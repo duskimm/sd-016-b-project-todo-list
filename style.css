@@ -37,9 +37,9 @@ textarea {
 /* TAG */
 
 /* ID */
-#funcionamento {}
+/* #funcionamento {} */
 
-#texto-tarefa {}
+/* #texto-tarefa {} */
 
 #lista-tarefas {
   cursor: pointer;
@@ -54,4 +54,4 @@ textarea {
   cursor: pointer;
 }
 
-.nova-tarefa {}
+/* .nova-tarefa {} */

@@ -3,7 +3,6 @@ const textoTarefa = document.getElementById('texto-tarefa');
 const listaTarefas = document.getElementById('lista-tarefas');
 const limpaTudo = document.getElementById('apaga-tudo');
 
-
 function limparCapmo() {
   textoTarefa.value = '';
 }
@@ -30,8 +29,6 @@ function removerTarefa() {
   }
 }
 
-function limparCorDeFundo() {}
-
 function alterarCorDeFundo() {
   console.log('Yes');
 }
@@ -44,5 +41,13 @@ function apagaTudo() {
 }
 limpaTudo.addEventListener('click', apagaTudo());
 
+function removeFinalizados() {}
 
+function salvaTarefas() {}
+
+function moverParaCima() {}
+
+function moverParaBaixo() {}
+
+function removeSelecionado() {}
 // console.log('Yes');
