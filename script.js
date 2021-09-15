@@ -34,14 +34,23 @@ function riscarItem() {
   })  
 }
 
+//desafio 10
 function limparLista() {
   let botaoApagarTudo = document.getElementById("apaga-tudo");
   botaoApagarTudo.addEventListener=("click", function(){
-  document.appendChild.remove(listaTarefas);
+  listaTarefas.innerHTML = "";
   })
 }
- 
 
+//desafio 11
+function removerTarefasAcabadas (){
+  let botaoTarefasParaApagar = document.getElementById("remover-finalizados");
+  botaoTarefasParaApagar.addEventListener = ("click", function(){
+    document.getElementsByClassName.remove("completed");
+  })
+}
+
+removerTarefasAcabadas ();
 adicionarTarefa();
 colorirTarefa();
 riscarItem ();
