@@ -10,26 +10,34 @@
 </head>
 
 <body>
-    <header class="main-header" id="cabecalho">
-        <h1 class="heading" id="titulo-principal">Minha Lista de Tarefas</h1>
-        <h2 class="subheading" id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</h2>
-    </header>
-
-    <section class="content" id="conteudo">
-        <div class="new-tasks-bar" id="barra-novas-tarefas">
-            <label for="texto-tarefa">Nova tarefa: </label>
-            <input type="text" class="task-text" id="texto-tarefa" name="tarefa" placeholder=" O que eu preciso fazer? ">
-            <button type="button" class="add-task" id="criar-tarefa">Adicionar</button>
-        </div>
-        <div class="all-tasks" id="todas-tarefas">
-            <ol class="to-do-list" id="lista-tarefas">
-            </ol>
-        </div>
-        <div class="change-list-bar" id="barra-alterar-lista">
-            <button type="button" class="remove-all" id="apaga-tudo">Apagar lista</button>
-            <button type="button" class="remove-completed-tasks" id="remover-finalizados">Remover tarefas finalizadas</button>
-        </div>
-    </section>
+    <div class="layout">
+        <header class="main-header" id="cabecalho">
+            <h1 class="heading" id="titulo-principal">Minha Lista de Tarefas</h1>
+            <p class="subheading" id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+        </header>
+        <main>
+            <section class="content" id="conteudo">
+                <div class="new-tasks-bar" id="barra-novas-tarefas">
+                    <label for="texto-tarefa">Nova tarefa: </label>
+                    <input type="text" class="task-text" id="texto-tarefa" name="tarefa"
+                        placeholder=" O que eu preciso fazer? ">
+                    <button type="button" class="add-task" id="criar-tarefa">Adicionar</button>
+                </div>
+                <div class="all-tasks" id="todas-tarefas">
+                    <ol class="to-do-list" id="lista-tarefas">
+                    </ol>
+                </div>
+                <div class="change-list-bar" id="barra-alterar-lista">
+                    <button type="button" class="remove-all" id="apaga-tudo">Apagar lista</button>
+                    <button type="button" class="remove-completed-tasks" id="remover-finalizados">Remover tarefas
+                        finalizadas</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <p>To Do List Project #4</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 
