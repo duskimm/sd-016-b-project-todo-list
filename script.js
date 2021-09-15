@@ -37,7 +37,7 @@ function riscarItem() {
 //desafio 10
 function limparLista() {
   let botaoApagarTudo = document.getElementById("apaga-tudo");
-  botaoApagarTudo.addEventListener=("click", function(){
+  botaoApagarTudo.addEventListener("click", function(){
   listaTarefas.innerHTML = "";
   })
 }
@@ -45,8 +45,9 @@ function limparLista() {
 //desafio 11
 function removerTarefasAcabadas (){
   let botaoTarefasParaApagar = document.getElementById("remover-finalizados");
-  botaoTarefasParaApagar.addEventListener = ("click", function(){
-    document.getElementsByClassName.remove("completed");
+  botaoTarefasParaApagar.addEventListener("click", function(){
+    let tarefasParaApagar = document.getElementsByClassName("completed");
+    tarefasParaApagar.remove
   })
 }
 
