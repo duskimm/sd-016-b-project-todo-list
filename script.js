@@ -76,6 +76,7 @@ function mooveUP() {
     return alert('O Item já está na primeira posição !');
   }
 
+  // creditos a Matheus Nugas pelo algoritmo .
   lista.insertBefore(selectedItem, selectedItem.previousElementSibling);
 }
 
