@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Lista de Tarefas</title>
 </head>
+
 <body>
     <header>
         <h1>Minha Lista de Tarefas</h1>
         <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
     </header>
     <main>
-        <input type="text" value="string" name="tarefa" id="texto-tarefa" placeholder="Tarefa">
+        <input type="text" name="tarefa" id="texto-tarefa" placeholder="Nova Tarefa">
+        <ol id="lista-tarefas"></ol>
+        <button id="criar-tarefa" type="button" onclick="adicionarTarefa()">Criar Tarefa</button>
     </main>
     <footer>
 
     </footer>
+    <script src="script.js"></script>
 </body>
+
 </html>
