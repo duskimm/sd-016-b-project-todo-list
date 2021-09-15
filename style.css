@@ -1,5 +1,7 @@
-body {
-  margin: 0;
+.all-tasks {
+  line-height: 25px;
+  padding: 40px 20px;
+  text-transform: none;
 }
 
 body {
@@ -7,7 +9,28 @@ body {
   font-family: 'Courier New', Courier, monospace;
   font-size: 14px;
   letter-spacing: 2px;
+  margin: 0;
   text-transform: uppercase;
+}
+
+button {
+  align-items: center;
+  appearance: none;
+  background-color: rgb(128, 128, 128);
+  border: none;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 2px;
+  padding: 5px 15px;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: rgb(64, 64, 64);
+  color: rgb(255, 224, 102);
+  transition-duration: 0.5s;
 }
 
 .completed {
@@ -33,7 +56,7 @@ label {
 }
 
 .layout {
-  background-color: rgb(242, 242, 242);
+  background-color: rgb(253, 249, 249);
   border-radius: 25px;
   height: fit-content;
   margin: 60px;
