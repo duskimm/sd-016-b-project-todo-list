@@ -9,6 +9,7 @@ const btnMoveUp = document.querySelector('#mover-cima');
 const btnMoveDown = document.querySelector('#mover-baixo');
 const corPadrao = 'rgb(230, 228, 219)';
 const corCinza = 'rgb(128, 128, 128';
+const btnRemoveTask = document.querySelector('#remover-selecionado');
 
 function criarTarefa() {
   const inputText = document.querySelector('#texto-tarefa').value;
@@ -107,7 +108,6 @@ function moveElemUp() {
   if (bgGraySelector.length === 0) {
     return;
   }
-
   const previousLi = bgGraySelector[0].previousSibling;
   if (previousLi) {
     const actCls = bgGraySelector[0].classList.value;
@@ -140,11 +140,11 @@ function moveElemDown() {
   }
 }
 
-function slctLi(evnto) {
-  const eTarg = evnto.target;
-
-  btnMoveUp.addEventListener('click', moveElemUp);
-  btnMoveDown.addEventListener('click', moveElemDown);
+function deleteTask() {
+  if (bgGraySelector.length === 0) {
+    return;
+  }
+  bgGraySelector[0].remove();
 }
 
 window.onload = setInicial;
@@ -156,3 +156,4 @@ btnRemoveCom.addEventListener('click', removeCompleted);
 btnSaveTasks.addEventListener('click', saveTasks);
 btnMoveUp.addEventListener('click', moveElemUp);
 btnMoveDown.addEventListener('click', moveElemDown);
+btnRemoveTask.addEventListener('click', deleteTask);

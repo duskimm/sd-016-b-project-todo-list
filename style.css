@@ -52,7 +52,7 @@ body {
 #criar-tarefa {
   margin-left: 2rem;
   font-size: 1.8rem;
-  padding: 0 1rem;
+  padding: 5px 1rem;
 }
 
 #lista-tarefas {
@@ -75,8 +75,35 @@ body {
 
 button {
   font-size: 1.8rem;
-  padding: 0 1rem;
+  padding: 5px 1rem;
+  background-color: rgb(154, 148, 240);
+  border-radius: 10px;
+  border: none;
 }
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(82, 72, 228);
+}
+
 .completed {
   text-decoration: line-through solid black;
+}
+
+#remover-selecionado {
+  background-color: rgb(243, 132, 132);
+}
+
+#remover-selecionado:hover {
+  background-color: rgb(253, 63, 63);
+}
+
+#mover-cima,
+#mover-baixo {
+  background-color: rgb(250, 226, 95);
+}
+
+#mover-cima:hover,
+#mover-baixo:hover {
+  background-color: rgb(148, 133, 45);
 }
