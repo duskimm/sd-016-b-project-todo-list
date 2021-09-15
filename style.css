@@ -47,3 +47,13 @@ ol {
   padding: 20px 45px;
   font-size: 28px;
 }
+
+ol li {
+  cursor: default;
+  user-select: none;
+  font-weight: 500;
+}
+
+.completed {
+  text-decoration: line-through solid black;
+}

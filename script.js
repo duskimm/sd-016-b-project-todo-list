@@ -26,6 +26,17 @@ function resetColor() {
   }
 }
 
+// adiciona classe completed ao clicar
+function isCompleted(event) {
+  const classe = event.target.className;
+  const element = event.target;
+  if (classe === 'tasks') {
+    element.className += ' completed';
+  } else {
+    element.className = 'tasks';
+  }
+}
+
 // Ao clicar em um item muda sua cor de fundo
 function changeItemColor() {
   const li = ol.lastChild;
@@ -33,6 +44,7 @@ function changeItemColor() {
     resetColor();
     li.style.backgroundColor = 'rgb(128, 128, 128)';
   });
+  li.addEventListener('dblclick', isCompleted);
 }
 
 // Adicionando itens a lista
