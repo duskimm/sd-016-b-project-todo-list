@@ -1,30 +1,30 @@
 * {
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
 #title {
-  color: rgb(209, 82, 107);
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(209 , 82 , 107);
+  font-family: Arial , sans-serif;
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 5px;
 }
 
 #funcionamento {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(218 , 233 , 247);
+  font-family: Arial , sans-serif;
   font-style: italic;
-  color: rgb(218, 233, 247);
 }
 
 #texto-tarefa {
+  border-radius: 25px;
+  border: none;
   height: 3vh;
   margin: 30px 0;
   padding: 10px;
   width: 25vw;
-  border-radius: 25px;
-  border: none;
 }
 
 ol {
@@ -32,45 +32,45 @@ ol {
 }
 
 body {
-  background-color: rgb(92, 86, 86);
+  background-color: rgb(92 , 86 , 86);
   margin: 40px;
 }
+
 header {
-  border-radius: 25px 25px 0 0 ;
+  border-radius: 25px , 25px , 0 , 0;
   margin-bottom: 0;
   margin-top: 20px;
 }
 
 section {
-  border-radius: 0 0 25px 25px ;
+  border-radius: 0 , 0 , 25px , 25px;
 }
 
 header , section {
-  background-color: rgb(190, 178, 178);
+  background-color: rgb(190 , 178 , 178);
   margin: 0 20px;
   padding: 30px;
   width: 750px;
 }
 
 #criar-tarefa {
-  background-color: rgba(38, 0, 255, 0.8);
+  background-color: rgba(38 , 0 , 255 , 0.8);
 }
 
 #apaga-tudo {
-  background-color: rgba(9, 255, 0, 0.8);
+  background-color: rgba(9 , 255 , 0 , 0.8);
 }
 
 #remover-selecionado {
-  background-color: rgba(247, 3, 3, 0.8);
+  background-color: rgba(247 , 3 , 3 , 0.8);
 }
 
 #salvar-tarefas {
-  background-color: rgba(207, 194, 1, 0.8);
+  background-color: rgba(207 , 194 , 1 , 0.8);
 }
 
-#mover-cima ,
-#mover-baixo {
-  background-color: rgba(255, 166, 0, 0.8);
+#mover-cima , #mover-baixo {
+  background-color: rgba(255 , 166 , 0 , 0.8);
   border-radius: 10px;
   border: none;
   color: rgba(255 , 255 , 255);
@@ -79,10 +79,7 @@ header , section {
   width: 5vw;
 }
 
-#criar-tarefa ,
-#apaga-tudo ,
-#remover-selecionado ,
-#salvar-tarefas {
+#criar-tarefa , #apaga-tudo , #remover-selecionado , #salvar-tarefas {
   border-radius: 25px;
   border: none;
   color: rgba(255 , 255 , 255);
@@ -92,42 +89,41 @@ header , section {
 }
 
 #criar-tarefa:hover {
-  border: 1px solid rgba(38, 0, 255, 0.8);
-  box-shadow: 0 0 5px rgba(38, 0, 255, 0.8);
-  color: rgba(38, 0, 255, 0.8);
+  background-color: rgba(250 , 250 , 250);
+  border: 1px solid rgba(38 , 0 , 255 , 0.8);
+  box-shadow: 0 0 5px rgba(38 , 0 , 255 , 0.8);
+  color: rgba(38 , 0 , 255 , 0.8);
+  transition: 0.8s;
 }
 
 #apaga-tudo:hover {
-  border: 1px solid rgba(9, 255, 0, 0.8);
-  box-shadow: 0 0 5px rgba(9, 255, 0, 0.8);
-  color: rgba(9, 255, 0, 0.8);
+  background-color: rgba(250 , 250 , 250);
+  border: 1px solid rgba(9 , 255 , 0 , 0.8);
+  box-shadow: 0 0 5px rgba(9 , 255 , 0 , 0.8);
+  color: rgba(9 , 255 , 0 , 0.8);
+  transition: 0.8s;
 }
 
 #remover-selecionado:hover {
-  border: 1px solid rgba(247, 3, 3, 0.8);
-  box-shadow: 0 0 5px rgba(247, 3, 3, 0.8);
-  color: rgba(247, 3, 3, 0.8);
+  background-color: rgba(250 , 250 , 250);
+  border: 1px solid rgba(247 , 3 , 3 , 0.8);
+  box-shadow: 0 0 5px rgba(247 , 3 , 3 , 0.8);
+  color: rgba(247 , 3 , 3 , 0.8);
+  transition: 0.8s;
 }
 
 #salvar-tarefas:hover {
-  border: 1px solid rgba(207, 194, 1, 0.8);
-  box-shadow: rgba(207, 194, 1, 0.8);
-  color: rgba(207, 194, 1, 0.8);
-}
-
-#mover-cima:hover ,
-#mover-baixo:hover {
-  border: 1px solid rgba(255, 166, 0, 0.8);
-  box-shadow: rgba(255, 166, 0, 0.8);
-  color: rgba(255, 166, 0, 0.8);
-}
-
-#criar-tarefa:hover ,
-#apaga-tudo:hover ,
-#remover-selecionado:hover ,
-#salvar-tarefas:hover ,
-#mover-cima:hover ,
-#mover-baixo:hover {
   background-color: rgba(250 , 250 , 250);
+  border: 1px solid rgba(207 , 194 , 1 , 0.8);
+  box-shadow: rgba(207 , 194 , 1 , 0.8);
+  color: rgba(207 , 194 , 1 , 0.8);
+  transition: 0.8s;
+}
+
+#mover-cima:hover , #mover-baixo:hover {
+  background-color: rgba(250 , 250 , 250);
+  border: 1px solid rgba(255 , 166 , 0 , 0.8);
+  box-shadow: rgba(255 , 166 , 0 , 0.8);
+  color: rgba(255 , 166 , 0 , 0.8);
   transition: 0.8s;
 }
