@@ -17,6 +17,7 @@ function appendToChild(element, tag, text, className) {
 const criarTarefa = q('#criar-tarefa');
 const ol = q('#lista-tarefas');
 const textoTarefa = q('#texto-tarefa');
+const apagaTudo = q('#apaga-tudo');
 
 // reseta as cores
 function resetColor() {
@@ -53,4 +54,11 @@ criarTarefa.addEventListener('click', () => {
   appendToChild(ol, 'li', valueOf, 'tasks');
   textoTarefa.value = '';
   changeItemColor();
+});
+
+// Lima toda a lista
+apagaTudo.addEventListener('click', () => {
+  while (ol.lastChild) {
+    ol.removeChild(ol.lastChild);
+  }
 });
