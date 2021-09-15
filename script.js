@@ -1,5 +1,14 @@
 const listaTarefa = document.querySelector('#lista-tarefas');
 const bgGraySelector = document.getElementsByClassName('bgCinza');
+const btnCriarTarefa = document.querySelector('#criar-tarefa');
+const btnReset = document.querySelector('#apaga-tudo');
+const olLi2 = document.querySelector('.div_lista-tarefas');
+const btnRemoveCom = document.querySelector('#remover-finalizados');
+const btnSaveTasks = document.querySelector('#salvar-tarefas');
+const btnMoveUp = document.querySelector('#mover-cima');
+const btnMoveDown = document.querySelector('#mover-baixo');
+const corPadrao = 'rgb(230, 228, 219)';
+const corCinza = 'rgb(128, 128, 128';
 
 function criarTarefa() {
   const inputText = document.querySelector('#texto-tarefa').value;
@@ -18,6 +27,24 @@ function completedClass(evento) {
   }
 }
 
+function fundoCinza() {
+  const liSelect = document.getElementsByTagName('li');
+  for (let i = 0; i < liSelect.length; i += 1) {
+    if (liSelect[i].classList.contains('bgCinza')) {
+      liSelect[i].style.backgroundColor = corCinza;
+    } else {
+      liSelect[i].style.backgroundColor = corPadrao;
+    }
+  }
+}
+
+function grayBgTest() {
+  const liSelect = document.getElementsByTagName('li');
+  if (liSelect) {
+    fundoCinza();
+  }
+}
+
 function bgGray(event) {
   const eventTarget = event.target;
   if (eventTarget !== listaTarefa) {
@@ -25,10 +52,10 @@ function bgGray(event) {
       bgGraySelector[0].style.backgroundColor = 'rgb(230, 228, 219)';
       bgGraySelector[0].classList.remove('bgCinza');
       eventTarget.classList.add('bgCinza');
-      bgGraySelector[0].style.backgroundColor = 'rgb(128, 128, 128';
+      grayBgTest();
     } else {
       eventTarget.classList.add('bgCinza');
-      bgGraySelector[0].style.backgroundColor = 'rgb(128, 128, 128';
+      grayBgTest();
     }
   }
 }
@@ -76,15 +103,56 @@ function setInicial() {
   }
 }
 
-const btnCriarTarefa = document.querySelector('#criar-tarefa');
+function moveElemUp() {
+  if (bgGraySelector.length === 0) {
+    return;
+  }
+
+  const previousLi = bgGraySelector[0].previousSibling;
+  if (previousLi) {
+    const actCls = bgGraySelector[0].classList.value;
+    const prevCls = previousLi.classList.value;
+    const actStr = bgGraySelector[0].innerText;
+    const prevStr = previousLi.innerText;
+    bgGraySelector[0].innerText = prevStr;
+    bgGraySelector[0].className = prevCls;
+    previousLi.className = actCls;
+    previousLi.innerText = actStr;
+    grayBgTest();
+  }
+}
+
+function moveElemDown() {
+  if (bgGraySelector.length === 0) {
+    return;
+  }
+  const nextLi = bgGraySelector[0].nextSibling;
+  if (nextLi) {
+    const actCls = bgGraySelector[0].classList.value;
+    const nxtCls = nextLi.classList.value;
+    const actStr = bgGraySelector[0].innerText;
+    const nxtStr = nextLi.innerText;
+    bgGraySelector[0].innerText = nxtStr;
+    bgGraySelector[0].className = nxtCls;
+    nextLi.className = actCls;
+    nextLi.innerText = actStr;
+    grayBgTest();
+  }
+}
+
+function slctLi(evnto) {
+  const eTarg = evnto.target;
+
+  btnMoveUp.addEventListener('click', moveElemUp);
+  btnMoveDown.addEventListener('click', moveElemDown);
+}
+
+window.onload = setInicial;
 btnCriarTarefa.addEventListener('click', criarTarefa);
-const btnReset = document.querySelector('#apaga-tudo');
 listaTarefa.addEventListener('click', bgGray);
-const olLi2 = document.querySelector('.div_lista-tarefas');
 olLi2.addEventListener('dblclick', completedClass);
 btnReset.addEventListener('click', resetAll);
-const btnRemoveCom = document.querySelector('#remover-finalizados');
 btnRemoveCom.addEventListener('click', removeCompleted);
-const btnSaveTasks = document.querySelector('#salvar-tarefas');
 btnSaveTasks.addEventListener('click', saveTasks);
-window.onload = setInicial;
+btnMoveUp.addEventListener('click', moveElemUp);
+btnMoveDown.addEventListener('click', moveElemDown);

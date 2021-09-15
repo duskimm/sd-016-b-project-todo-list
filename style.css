@@ -57,6 +57,7 @@ body {
 
 #lista-tarefas {
   padding-top: 2rem;
+  padding-left: 2rem;
 }
 
 #lista-tarefas li {
@@ -69,24 +70,13 @@ body {
 }
 
 #lista-tarefas:last-child {
-  padding-bottom: 1rem;
+  padding-bottom: 3rem;
 }
 
-#remover-finalizados {
+button {
   font-size: 1.8rem;
   padding: 0 1rem;
 }
-
-#apaga-tudo {
-  font-size: 1.8rem;
-  padding: 0 1rem;
-}
-
-#salvar-tarefas {
-  font-size: 1.8rem;
-  padding: 0 1rem;
-}
-
 .completed {
   text-decoration: line-through solid black;
 }
