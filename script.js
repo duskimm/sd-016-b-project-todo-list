@@ -1,57 +1,61 @@
 // EXercicio 5
 // cria botao
-let criaBotao = document.createElement('button');
+const criaBotao = document.createElement('button');
 criaBotao.type = 'button';
 criaBotao.id = 'criar-tarefa';
 criaBotao.innerHTML = 'Adiconar';
-criaBotao.value = '#texto-tarefa';
 document.body.appendChild(criaBotao);
 
-let botaoAddTarefa = document.getElementById('criar-tarefa');
-let lista = document.getElementById('lista-tarefas');
-let input = document.getElementById('texto-tarefa');
+const botaoAddTarefa = document.getElementById('criar-tarefa');
+const lista = document.getElementById('lista-tarefas');
+const input = document.getElementById('texto-tarefa');
 
 // criando lista
-botaoAddTarefa.addEventListener('click', function(){
+botaoAddTarefa.addEventListener('click', function() {
     let criaItem = document.createElement('li');
     criaItem.className = 'item-lista'
     lista.appendChild(criaItem);
     criaItem.innerText = input.value;
     input.value = ''
+    // localStorage.setItem('li', input-value);
 });
 
 // Exercico 7: mudar background quando clica
-function listaBackground(event){
-    if(event.target.classList.contains('item-lista')) {
-        let li = event.target;
-        li.classList.add('cinza');
-        li.style.backgroundColor = 'rgb(128, 128, 128)';
-    } 
-}
-document.addEventListener('click', listaBackground);
+// function listaBackground(event){
+//     if(event.target.classList.contains('item-lista')) {
+//         let li = event.target;
+//         li.classList.add('cinza');
+       
+//     } 
+// }
+// document.addEventListener('click', listaBackground);
 
 
 // Exercicio 8: seleciona só um
-    
-// let classeCinza = document.querySelector('.cinza');
 
-// function marcaItem(event) {
-//     if(classeCinza == null) {
-//         event.target.classList.add('cinza');
-//     } else {
-//         classeCinza.classList.remove('cinza');
-//         event.target.classList.add('cinza');
-//     }
-// }
-// lista.addEventListener('click', marcaItem);
+function pintaCinza(event) {
+  let classCinza = document.querySelector('.cinza');
+
+  let pintar = event.target;
+  if (classCinza == null) {
+    pintar.classList.add('cinza');
+
+  } else {
+    classCinza.classList.remove('cinza');
+    pintar.classList.add('cinza');   
+  }
+}
+lista.addEventListener('click', pintaCinza);
+
+
 
 // Exercicio 9: risca tarefa com dois clicks
 function clicks(event) {
-    if (event.target.classList.contains('completed')) {
-        event.target.classList.remove('completed');
-    } else {
-        event.target.classList.add('completed');
-    }
+  if (event.target.classList.contains('completed')) {
+    event.target.classList.remove('completed');
+  } else {
+    event.target.classList.add('completed');
+  }
 }
 lista.addEventListener('dblclick', clicks);
 
@@ -64,8 +68,8 @@ document.body.appendChild(botaoApagar);
 const botaoApagaTudo = document.getElementById('apaga-tudo');
 
 function apagarElementos() {
-    const list = document.getElementById('lista-tarefas');
-    list.innerHTML = '';
+  const list = document.getElementById('lista-tarefas');
+  list.innerHTML = '';
 }
 botaoApagaTudo.addEventListener('click', apagarElementos);
 
@@ -78,11 +82,24 @@ document.body.appendChild(botaoApagaFinalizados);
 const apagarFinalizados = document.getElementById('remover-finalizados');
 
 function apagarItensFinalizados() {
-    const itensLista = document.querySelectorAll('li');
-    for (let index = 0; index < itensLista.length; index += 1) {
-        if (itensLista[index].classList.contains('completed')) {
-            itensLista[index].remove();
-        }
+  const itensLista = document.querySelectorAll('li');
+  for (let index = 0; index < itensLista.length; index += 1) {
+    if (itensLista[index].classList.contains('completed')) {
+        itensLista[index].remove();
     }
+  }
 }
 apagarFinalizados.addEventListener('click', apagarItensFinalizados);
+
+
+// EXercicio 12: botão salva tarefas
+// const botaoSalvaTarefa = document.createElement('button');
+// botaoSalvaTarefa.id = 'salva-tarefas';
+// botaoSalvaTarefa.innerText = 'Salvar';
+// document.body.appendChild(botaoSalvaTarefa);
+// const salvaTareda = document.querySelector('#salva-tarefas');
+
+// function salvandoTarefas() {
+//     localStorage.getItem('li');
+// }
+// salvaTareda.addEventListener('click', salvandoTarefas);
