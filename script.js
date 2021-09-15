@@ -66,7 +66,7 @@ function removeSelected() {
 }
 document.querySelector('#remover-selecionado').addEventListener('click', removeSelected);
 
-// Análise, estudo e estrutura decorrente do projeto do Matheus Nugas.
+// Análise, estudo e estrutura do challenge 13 com base no projeto do Matheus Nugas.
 
 function buttonUp() {
   document.querySelector('#mover-cima').addEventListener('click', () => {
