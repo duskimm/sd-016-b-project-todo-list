@@ -18,6 +18,7 @@ const criarTarefa = q('#criar-tarefa');
 const ol = q('#lista-tarefas');
 const textoTarefa = q('#texto-tarefa');
 const apagaTudo = q('#apaga-tudo');
+const apagaTerminados = q('#remover-finalizados');
 
 // reseta as cores
 function resetColor() {
@@ -56,9 +57,19 @@ criarTarefa.addEventListener('click', () => {
   changeItemColor();
 });
 
-// Lima toda a lista
+// Limpa toda a lista
 apagaTudo.addEventListener('click', () => {
   while (ol.lastChild) {
     ol.removeChild(ol.lastChild);
+  }
+});
+
+// Limpa somente terminados
+apagaTerminados.addEventListener('click', () => {
+  const finished = qAll('.completed');
+  if (finished.length !== 0) {
+    for (let i = 0; i < finished.length; i += 1) {
+      finished[i].remove();
+    }
   }
 });
