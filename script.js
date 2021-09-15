@@ -1,14 +1,13 @@
-// cmds
+// my codigs =)
 
 function selectTask(event) {
-  const selecao = document.querySelectorAll('li');
-  for (let lis = 0; lis < selecao.length; lis += 1) {
-    const clear = selecao[lis];
-    if (clear.classList.contains('selected')) {
-      clear.classList.remove('selected');
+  const sell = document.querySelectorAll('li');
+  sell.forEach((iten) => {
+    if (iten.classList.contains('selected')) {
+      iten.classList.remove('selected');
     }
-  }
-  event.target.classList.add('selected');
+  });
+    event.target.classList.add('selected');
 }
 
 function clearSelected() {
@@ -37,6 +36,10 @@ function taskComplet(event) {
 function newTesc() {
   const imputNode = document.querySelector('#texto-tarefa');
   const location = document.querySelector('#lista-tarefas');
+  if (imputNode.value.length < 1) {
+    alert('Por gentileza digite algo no campo nova tarefa');
+    return imputNode.focus();
+  }
   const newTsc = document.createElement('li');
   newTsc.innerText = imputNode.value;
   location.appendChild(newTsc);
