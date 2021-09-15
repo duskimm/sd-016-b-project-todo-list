@@ -43,15 +43,15 @@ altCor();
 
 function doubleClick() {
   const localizaOl = document.querySelectorAll('ol');
-  for(let index = 0; index < localizaOl.length; index += 1){
-  localizaOl[index].addEventListener('dblclick', (event) => {
-    if (event.target.classList.contains('completed')) {
-      event.target.classList.remove('completed');
-    } else {
-      event.target.classList.add('completed');
-    }
-  });
-}
+  for (let index = 0; index < localizaOl.length; index += 1) {
+    localizaOl[index].addEventListener('dblclick', (event) => {
+      if (event.target.classList.contains('completed')) {
+        event.target.classList.remove('completed');
+      } else {
+        event.target.classList.add('completed');
+      }
+    });
+  }
 }
 doubleClick();
 
@@ -109,6 +109,9 @@ deletarSelected.addEventListener('click', removeSelected);
 
 function up() {
   const move = document.querySelector('.selected');
+  if (move === null) {
+    return;
+  }
   if (move.previousElementSibling === null) {
     return;
   }
@@ -121,7 +124,10 @@ moveUp.addEventListener('click', up);
 
 function down() {
   const move2 = document.querySelector('.selected');
-  if (move2.nextElementSibling == null || undefined) {
+  if (move2 === null) {
+    return;
+  }
+  if (move2.nextElementSibling == null) {
     return;
   }
   const list = move2.nextElementSibling;
