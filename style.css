@@ -1,6 +1,6 @@
 .all-tasks {
   line-height: 25px;
-  padding: 40px 20px;
+  padding: 30px 20px;
   text-transform: none;
 }
 
@@ -38,7 +38,7 @@ button:hover {
 }
 
 footer {
-  padding: 30px 60px;
+  padding: 10px 60px;
   text-align: right;
 }
 
@@ -60,7 +60,7 @@ label {
   border-radius: 25px;
   height: fit-content;
   margin: 60px;
-  min-height: 600px;
+  min-height: 450px;
   padding: 60px;
 }
 
