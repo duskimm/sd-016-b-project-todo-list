@@ -78,7 +78,7 @@ function doubleClickTask() {
 
 doubleClickTask();
 
-// Apaga a lista completa
+// Apaga a lista completa, após apagar toda a lista, também remove do localStorage a lista que está salva localmente
 // referência: https://www.javascripttutorial.net/javascript-dom/javascript-removechild/
 
 // const listTask = document.getElementById('lista-tarefas');
@@ -122,6 +122,59 @@ function removeSelected() {
   });
 }
 
+function moveTaskUp() {
+  const moveUp = document.querySelector('#mover-cima');
+
+  moveUp.addEventListener('click', () => {
+    // const click = event.target;
+    console.log('move up');
+    console.log(document.querySelector('#selected').previousElementSibling);
+    // utilizar o previousSibling
+  });
+}
+
+function moveTaskDown() {
+  const moveDown = document.querySelector('#mover-baixo');
+
+  moveDown.addEventListener('click', () => {
+    console.log('move down');
+    let swap1;
+    let swap2;
+
+    if (document.querySelector('#selected').nextElementSibling.innerHTML !== null) {
+      swap1 = document.querySelector('#selected').innerHTML;
+      swap2 = document.querySelector('#selected').nextElementSibling.innerHTML;
+
+    }
+    console.log();
+    // utilizar o nextSibling
+  });
+}
+
+// function moveTaskDown() {
+//   const moveDown = document.querySelector('#mover-baixo');
+//   moveDown.addEventListener('click', () => {
+//     const element1 = document.querySelector('#selected').innerHTML;
+//     const element2 = document.querySelector('#selected').nextElementSibling.innerHTML;
+
+//     element2.parentNode.insertBefore(element2, element1);
+//   });
+// }
+
+function moveTask() {
+  /**
+   * Pegar o item selecionado
+   * trocar de posição pra cima ou pra baixo com o próximo item
+  */
+  moveTaskUp();
+  moveTaskDown();
+}
+
+moveTask();
+
+// Conversei com o colega Matheus Nugas sobre a solução abaixo
+// Ao clicar no botão de salvar a lista, é salvo no localStorage toda a lista criada, com innerHTML.
+
 function setList() {
   const salveListBtn = document.querySelector('#salvar-tarefas');
   salveListBtn.addEventListener('click', () => {
@@ -134,5 +187,5 @@ setList();
 removeSelected();
 
 window.onload = () => {
-  document.querySelector('#lista-tarefas').innerHTML = localStorage.getItem('list');
+  listTask.innerHTML = localStorage.getItem('list');
 };
