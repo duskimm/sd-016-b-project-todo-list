@@ -39,3 +39,7 @@ button {
   margin-top: 20px;
   padding: 4px;
 }
+
+#salvar-tarefas {
+  margin: 0;
+}
