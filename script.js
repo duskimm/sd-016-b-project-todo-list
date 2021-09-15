@@ -126,10 +126,14 @@ btnMoverCima.addEventListener('click', moverCima);
 
 function moverBaixo() {
   const li = listaOrdenada.children;
+  let liSelecionada = '';
   for (let index = 0; index < li.length; index += 1) {
-    if (li[index].nextElementSibling && li[index].classList.contains('selected')) {
-      li[index].parentNode.insertBefore(li[index].nextElementSibling, li[index]);
+    if (li[index].classList.contains('selected')) {
+      liSelecionada = li[index];
     }
+  }
+  if (liSelecionada.nextElementSibling) {
+    liSelecionada.parentNode.insertBefore(liSelecionada.nextElementSibling, liSelecionada);
   }
 }
 btnMoverBaixo.addEventListener('click', moverBaixo);
