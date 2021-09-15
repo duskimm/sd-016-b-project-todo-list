@@ -10,6 +10,17 @@ body {
     text-transform: uppercase;
 }
 
+.main-header .heading {
+    font-size: 36px;
+    margin: 0;
+}
+
+.main-header .subheading {
+    font-size: 18px;
+    font-style: oblique;
+    margin: 10px 0 60px;
+}
+
 footer {
     padding: 30px 60px;
     text-align: right;
@@ -17,14 +28,16 @@ footer {
 
 .layout {
     background-color: rgb(242, 242, 242);
-    margin: 60px;
-    padding: 60px;
     border-radius: 25px;
+    height: fit-content;
+    margin: 60px;
+    min-height: 600px;
+    padding: 60px;
 }
 
 .selected {
-    color: rgb(255, 255, 255);
     background-color: rgb(128, 128, 128);
+    color: rgb(255, 255, 255);
 }
 
 .completed {
