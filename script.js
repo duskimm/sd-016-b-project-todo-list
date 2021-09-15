@@ -47,7 +47,9 @@ function removerTarefasAcabadas (){
   let botaoTarefasParaApagar = document.getElementById("remover-finalizados");
   botaoTarefasParaApagar.addEventListener("click", function(){
     let tarefasParaApagar = document.getElementsByClassName("completed");
-    tarefasParaApagar.remove
+    if (tarefasParaApagar.parentNode) {
+      
+    }
   })
 }
 
