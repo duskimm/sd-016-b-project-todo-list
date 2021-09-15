@@ -51,3 +51,15 @@ footer button {
   border: none;
   background: white;
 }
+
+.pintarDeCinza {
+  background-color: rgb(128, 128, 128);
+}
+
+.todo-item{
+  cursor: pointer;
+}
+
+.completed{
+  text-decoration: line-through solid rgb(0, 0, 0);
+}

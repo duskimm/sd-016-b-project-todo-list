@@ -10,6 +10,8 @@ const deleteButton = document.getElementById('apaga-tudo')
 //EVENT LISTENERS
 todoButton.addEventListener('click', addTodo);
 deleteButton.addEventListener('click', deleteAll);
+// newTodo.addEventListener('dblclick', pintarDeCinza)
+
 
 
 //FUNCTIONS
@@ -25,6 +27,26 @@ function addTodo(event) {
   const newTodo = document.createElement('li');
   newTodo.innerText = todoInput.value;
   newTodo.classList.add('todo-item');
+  // newTodo.classList.add('pintarDeCinza'); //add somente com duplo click
+
+
+  // PInta de cinza o item clicado
+  newTodo.addEventListener('click', pintarDeCinza)
+
+  function pintarDeCinza() {
+    newTodo.classList.add('pintarDeCinza')
+    // if (newTodo.classList === '') newTodo.classList.add('pintarDeCinza');
+    // if (newTodo.classList === 'pintarDeCinza') newTodo.classList === none;
+  }
+
+
+  //Adiciona risco no item clicando duas vezes
+  newTodo.addEventListener('dblclick', itemRiscado)
+
+  function itemRiscado() {
+    newTodo.classList.add('completed')
+  }
+
 
   //Colocando o "newTodo" dentro da div "todoDiv"
   todoList.appendChild(newTodo);
@@ -46,9 +68,7 @@ function deleteAll(e) {
   //Deletando todos os itens
   todoList.innerHTML = ' '; //Selecionar os "li" que estao sendo criados.
   // todo.remove();
-
-
-
-
 }
+
+
 
