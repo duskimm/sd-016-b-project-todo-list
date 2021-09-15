@@ -17,8 +17,10 @@ botaoAddTarefa.addEventListener('click', function() {
     lista.appendChild(criaItem);
     criaItem.innerText = input.value;
     input.value = ''
-    // localStorage.setItem('li', input-value);
+    
 });
+    // let testandoo = document.getElementsByTagName('li');
+    // window.localStorage.setItem('ol', testandoo);
 
 // Exercico 7: mudar background quando clica
 // function listaBackground(event){
@@ -31,7 +33,7 @@ botaoAddTarefa.addEventListener('click', function() {
 // document.addEventListener('click', listaBackground);
 
 
-// Exercicio 8: seleciona só um
+// Exercicio 7 e 8: seleciona só um
 
 function pintaCinza(event) {
   let classCinza = document.querySelector('.cinza');
@@ -93,13 +95,48 @@ apagarFinalizados.addEventListener('click', apagarItensFinalizados);
 
 
 // EXercicio 12: botão salva tarefas
-// const botaoSalvaTarefa = document.createElement('button');
-// botaoSalvaTarefa.id = 'salva-tarefas';
-// botaoSalvaTarefa.innerText = 'Salvar';
-// document.body.appendChild(botaoSalvaTarefa);
-// const salvaTareda = document.querySelector('#salva-tarefas');
+const botaoSalvaTarefa = document.createElement('button');
+botaoSalvaTarefa.id = 'salva-tarefas';
+botaoSalvaTarefa.innerText = 'Salvar';
+document.body.appendChild(botaoSalvaTarefa);
+const salvaTareda = document.querySelector('#salva-tarefas');
 
 // function salvandoTarefas() {
-//     localStorage.getItem('li');
+    
+    
+//     const teste = window.localStorage.getItem('ol', testandoo);
+//     console.log(teste);
 // }
 // salvaTareda.addEventListener('click', salvandoTarefas);
+
+
+// Exercicio 13: botão para cima e botão para baixo;
+    // Botão para cima
+const botaoParaCima = document.createElement('button');
+botaoParaCima.id = 'mover-cima';
+botaoParaCima.innerText = 'Para cima';
+document.body.appendChild(botaoParaCima);
+    // Boatão para baixo
+const botaoParaBaixo = document.createElement('button');
+botaoParaBaixo.id = 'mover-baixo';
+botaoParaBaixo.innerText = 'Para baixo';
+document.body.appendChild(botaoParaBaixo);
+
+
+// Exercicio 14: remove o item selecionado
+let botaoRemoveSelecionado = document.createElement('button');
+botaoRemoveSelecionado.id = 'remover-selecionado';
+botaoRemoveSelecionado.innerText = 'Remove item';
+document.body.appendChild(botaoRemoveSelecionado);
+
+const removeSelecionado = document.getElementById('remover-selecionado');
+
+function removendoSelecionado() {
+    const itensLista = document.querySelectorAll('li');
+    for (let index = 0; index < itensLista.length; index += 1) {
+      if (itensLista[index].classList.contains('cinza')) {
+          itensLista[index].remove();
+      }
+    }
+  }
+removeSelecionado.addEventListener('click', removendoSelecionado);
