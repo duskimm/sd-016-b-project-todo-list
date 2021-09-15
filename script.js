@@ -1,36 +1,16 @@
-window.onload = function () {
-  function header() {
-    const headerTitle = document.getElementById('header-container');
-    const headerH1 = document.createElement('h1');
-    headerH1.innerText = 'Minha Lista de Tarefas';
-    headerH1.id = 'title';
-    headerTitle.appendChild(headerH1);
-  }
-  header();
+const criarTarefas = document.getElementById('criar-tarefa');
+const listaTarefas = document.getElementById('lista-tarefas');
+const textoTarefas = document.getElementById('texto-tarefa');
 
-  function textParagraph() {
-    const headerTitle = document.getElementById('header-container');
-    const paragraph = document.createElement('p');
-    paragraph.innerText = 'Clique duas vezes em um item para marcá-lo como completo';
-    paragraph.id = 'funcionamento';
-    headerTitle.appendChild(paragraph);
+criarTarefas.addEventListener('click', () => {
+  const itemLista = document.createElement('li');
+  const text = textoTarefas.value;
+  itemLista.innerText = text;
+  if (textoTarefas.value === '') {
+    alert('Campo vazio: Adicione uma tarefa!');
+  } else {
+    listaTarefas.appendChild(itemLista);
+    itemLista.classList = 'item';
   }
-  textParagraph();
-
-  function assignmentInput() {
-    const assignment = document.getElementById('header-container');
-    const assignmentText = document.createElement('input');
-    assignmentText.id = 'texto-tarefa';
-    assignment.appendChild(assignmentText);
-  }
-  assignmentInput();
-
-  function orderedList() {
-    const sortList = document.getElementById('header-container');
-    const ordered = document.createElement('ol');
-    ordered.id = 'lista-tarefas';
-    sortList.appendChild(ordered);
-  }
-  orderedList();
-}
-
+  textoTarefas.value = '';
+});

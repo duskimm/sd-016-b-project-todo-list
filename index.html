@@ -5,11 +5,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>To Do List</title>
 </head>
 <body>
   <header id="header-container">
+    <h1 id="title">Minha Lista de Tarefas</h1>
+    <h4 id="funcionamento">
+      Clique duas vezes em um item para marcá-lo como completo
+    </h4>
   </header>
+  <main>
+    <section>
+      <p>
+        <input type="text" id="texto-tarefa" placeholder="Adicione uma tarefa aqui">
+        <button id="criar-tarefa">Adicionar</button>
+      </p>
+      <ol id="lista-tarefas">
+      </ol>
+      <button id="mover-cima">Subir</button>
+      <button id="mover-baixo">Descer</button>
+      <button id="apaga-tudo">Limpar Lista</button>
+      <button id="remover-selecionado">Remover</button>
+      <button id="salvar-tarefas">Salvar tarefas</button>
+    </section>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
