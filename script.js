@@ -104,3 +104,18 @@ clearButton.addEventListener('click', () => {
     taskList.removeChild(taskList.firstChild);
   }
 });
+
+const removeTasksButton = creatElementHTML('button');
+setId(removeTasksButton, 'remover-finalizados');
+setInnerText(removeTasksButton, 'Remover tarefa');
+addElementToDOM(main, removeTasksButton);
+
+removeTasksButton.addEventListener('click', () => {
+  // ref: https://stackoverflow.com/questions/37311003/how-to-remove-an-item-from-htmlcollection
+  const { children } = taskList;
+  for (let index = (children.length - 1); index >= 0; index -= 1) {
+    if (children[index].classList.contains('completed')) {
+      taskList.removeChild(children[index]);
+    }
+  }
+});
