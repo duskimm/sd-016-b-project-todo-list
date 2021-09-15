@@ -13,12 +13,23 @@ function appendToChild(element, tag, text, className) {
   element.appendChild(stuf).classList.add(className);
 }
 
-// Adicionando itens a lista
+// variáveis e constantes
 const criarTarefa = q('#criar-tarefa');
+const ol = q('#lista-tarefas');
+const textoTarefa = q('#texto-tarefa');
+
+// Ao clicar em um item muda sua cor de fundo
+function changeItemColor() {
+  const li = ol.lastChild;
+  li.addEventListener('click', () => {
+    li.style.backgroundColor = 'rgb(128, 128, 128)';
+  });
+}
+
+// Adicionando itens a lista
 criarTarefa.addEventListener('click', () => {
-  const ol = q('#lista-tarefas');
-  const textoTarefa = q('#texto-tarefa');
   const valueOf = textoTarefa.value;
   appendToChild(ol, 'li', valueOf, 'tasks');
   textoTarefa.value = '';
+  changeItemColor();
 });
