@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
@@ -8,13 +8,13 @@ body {
   line-height: 40px;
   padding: 20px;
   font-family: Helvetica, sans-serif;
-  background-color: rgb(194, 194, 194);
+  background-color: rgb( 194, 194 , 194 );
 }
 
 .completed {
-  text-decoration: line-through solid rgb(0, 0, 0);
+  text-decoration: line-through solid black;
 }
 
-#mover-cima, #mover-baixo {
+#mover-cima , #mover-baixo {
   font-size: 30px;
 }

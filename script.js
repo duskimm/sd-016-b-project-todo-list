@@ -70,11 +70,14 @@ document.querySelector('#remover-selecionado').addEventListener('click', removeS
 
 function buttonUp() {
   document.querySelector('#mover-cima').addEventListener('click', () => {
-    let selectedTarget = document.querySelector('.selected');
+    const selectedTarget = document.querySelector('.selected');
+    if (selectedTarget === null || undefined) {
+      return;
+    }
     if (selectedTarget.previousElementSibling === null || undefined) {
       alert('Está no topo da lista');
     } else {
-      let taskGoUp = selectedTarget.previousElementSibling;
+      const taskGoUp = selectedTarget.previousElementSibling;
       appendList.insertBefore(selectedTarget, taskGoUp);
     }
   });
@@ -83,18 +86,21 @@ buttonUp();
 
 function buttonDown() {
   document.querySelector('#mover-baixo').addEventListener('click', () => {
-    let target = document.querySelector('.selected');
+    const target = document.querySelector('.selected');
+    if (target === null || undefined) {
+      return;
+    }
     if (target.nextElementSibling === null || target.nextElementSibling === undefined) {
       alert('Está no fim da lista');
     } else {
-      let taskGoDown = target.nextElementSibling;
-      let taskGoNext = taskGoDown.nextElementSibling;
+      const taskGoDown = target.nextElementSibling;
+      const taskGoNext = taskGoDown.nextElementSibling;
       appendList.insertBefore(target, taskGoNext);
     }
   });
 }
 buttonDown();
 
-window.onload = function () {
+window.onload = function functioLoad() {
   document.getElementById('lista-tarefas').innerHTML = localStorage.getItem('toDoList');
 };
