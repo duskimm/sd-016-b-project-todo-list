@@ -58,3 +58,22 @@ botaoRemoverSelecionados.addEventListener('click', function (){
   let finalizados = document.querySelectorAll('.completed');
   finalizados.forEach(el => el.remove());
 });
+
+// requisito 12
+// código escrito com base no código do Pedro
+function salvarLista () {
+  window.localStorage.clear();
+  let itemToSave = [];
+  let classToSave = [];
+  let todos = document.querySelectorAll('#lista-tarefas li');
+  for (let index = 0; index < todos.length; index += 1) {
+    console.log(todos[index]);
+    classToSave.push(todos[index].className);
+    itemToSave.push(todos[index].innerHTML);
+  }
+  window.localStorage.setItem("TaskStore", JSON.stringify(itemToSave));
+  window.localStorage.setItem("TaskClassStore", JSON.stringify(classToSave));
+}
+
+let botaoSalvar = document.querySelector("#salvar-tarefas");
+botaoSalvar.addEventListener('click', salvarLista);
