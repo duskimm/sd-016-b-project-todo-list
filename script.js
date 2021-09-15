@@ -17,6 +17,7 @@ function backgroundToDoList() {
     for (let index = 0; index < taskColor.length; index += 1) {
       taskColor[index].style.backgroundColor = 'rgb(194, 194, 194)';
     }
+    e.target.classList.add('selected');
     e.target.style.backgroundColor = 'rgb(128, 128, 128)';
   });
 }
@@ -51,11 +52,19 @@ document.querySelector('#remover-finalizados').addEventListener('click', removeA
 
 function saveToDoList() {
   document.querySelector('#salvar-tarefas').addEventListener('click', () => {
-    let saveList = appendList.innerHTML;
+    const saveList = appendList.innerHTML;
     localStorage.setItem('toDoList', saveList);
   });
 }
 saveToDoList();
+
+function removeSelected() {
+  const removeOnlyOne = document.querySelectorAll('.selected');
+  for (let index = 0; index < removeOnlyOne.length; index += 1) {
+    removeOnlyOne[index].remove('selected');
+  }
+}
+document.querySelector('#remover-selecionado').addEventListener('click', removeSelected);
 
 window.onload = function () {
   document.getElementById('lista-tarefas').innerHTML = localStorage.getItem('toDoList');
