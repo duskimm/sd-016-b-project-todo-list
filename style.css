@@ -1,7 +1,16 @@
-.lista {
+body {
+  text-align: center;
+}
+
+.list {
   background-color: white;
+  list-style: lower-roman;
+  background-color: transparent;
 }
 
 .completed {
   text-decoration: line-through;
+}
+button{
+  margin:3px;
 }
