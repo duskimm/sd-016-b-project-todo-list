@@ -41,9 +41,17 @@ textarea {
 
 #texto-tarefa {}
 
-#lista-tarefas {}
+#lista-tarefas {
+  cursor: pointer;
+}
 
-#criar-tarefa {}
+#criar-tarefa {
+  cursor: pointer;
+}
 
 /* CLASS */
-.item-lista-tarefas {}
+.item-lista-tarefas {
+  cursor: pointer;
+}
+
+.nova-tarefa {}

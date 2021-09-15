@@ -16,8 +16,9 @@
     </header>
     <main>
         <input type="text" name="tarefa" id="texto-tarefa" placeholder="Nova Tarefa">
-        <ol id="lista-tarefas"></ol>
+        <ol id="lista-tarefas" onclick="alterarCorDeFundo(this)"></ol>
         <button id="criar-tarefa" type="button" onclick="adicionarTarefa()">Criar Tarefa</button>
+        <button id="apaga-tudo" type="button" onclick="apagaTudo()">Limpar</button>
     </main>
     <footer>
 
