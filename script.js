@@ -5,7 +5,6 @@ const getToDoValue = document.querySelector('#texto-tarefa');
 function toDoCreation() {
   const createElementList = document.createElement('li');
   createElementList.innerHTML = getToDoValue.value;
-  createElementList.classList = 'task';
   appendList.appendChild(createElementList);
   getToDoValue.value = '';
 }
@@ -15,6 +14,7 @@ function backgroundToDoList() {
   appendList.addEventListener('click', (e) => {
     const taskColor = document.querySelectorAll('li');
     for (let index = 0; index < taskColor.length; index += 1) {
+      taskColor[index].classList.remove('selected');
       taskColor[index].style.backgroundColor = 'rgb(194, 194, 194)';
     }
     e.target.classList.add('selected');
@@ -37,7 +37,7 @@ toDoListDone();
 function eraseAll() {
   const erase = document.querySelectorAll('li');
   for (let index = 0; index < erase.length; index += 1) {
-    erase[index].remove('task');
+    erase[index].remove();
   }
 }
 document.querySelector('#apaga-tudo').addEventListener('click', eraseAll);
@@ -65,6 +65,35 @@ function removeSelected() {
   }
 }
 document.querySelector('#remover-selecionado').addEventListener('click', removeSelected);
+
+// Análise, estudo e estrutura decorrente do projeto do Matheus Nugas.
+
+function buttonUp() {
+  document.querySelector('#mover-cima').addEventListener('click', () => {
+    let selectedTarget = document.querySelector('.selected');
+    if (selectedTarget.previousElementSibling === null || undefined) {
+      alert('Está no topo da lista');
+    } else {
+      let taskGoUp = selectedTarget.previousElementSibling;
+      appendList.insertBefore(selectedTarget, taskGoUp);
+    }
+  });
+}
+buttonUp();
+
+function buttonDown() {
+  document.querySelector('#mover-baixo').addEventListener('click', () => {
+    let target = document.querySelector('.selected');
+    if (target.nextElementSibling === null || target.nextElementSibling === undefined) {
+      alert('Está no fim da lista');
+    } else {
+      let taskGoDown = target.nextElementSibling;
+      let taskGoNext = taskGoDown.nextElementSibling;
+      appendList.insertBefore(target, taskGoNext);
+    }
+  });
+}
+buttonDown();
 
 window.onload = function () {
   document.getElementById('lista-tarefas').innerHTML = localStorage.getItem('toDoList');
