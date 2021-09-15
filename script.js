@@ -49,11 +49,10 @@ const taskList = creatElementHTML('ol');
 setId(taskList, 'lista-tarefas');
 addElementToDOM(main, taskList);
 
-// let tasks = [];
-
 function changeSelectedTask(selectedTask, newTask) {
   const backgroundColor = 'gray-background';
   if (selectedTask !== newTask) {
+    // ref: https://www.w3schools.com/jsref/prop_element_classlist.asp - pesquisei sobre os métodos 'add' e 'remove'
     selectedTask.classList.remove(backgroundColor);
     newTask.classList.add(backgroundColor);
   }
@@ -66,6 +65,7 @@ function changeTaskBackgroundColor(task) {
     if (selectedTask !== null) {
       changeSelectedTask(selectedTask, event.target);
     } else {
+      // ref: https://www.w3schools.com/jsref/prop_element_classlist.asp - pesquisei sobre o método 'add'
       event.target.classList.add('gray-background');
     }
   });
@@ -73,6 +73,7 @@ function changeTaskBackgroundColor(task) {
 
 function markAsCompleted(task) {
   task.addEventListener('dblclick', (event) => {
+    // ref: https://www.w3schools.com/jsref/prop_element_classlist.asp - pesquisei sobre o método 'toggle'
     event.target.classList.toggle('completed');
   });
 }
@@ -99,7 +100,7 @@ setInnerText(clearButton, 'Apagar lista');
 addElementToDOM(main, clearButton);
 
 clearButton.addEventListener('click', () => {
-  // ref: https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/
+  // ref: https://www.javascripttutorial.net/dom/manipulating/remove-all-child-nodes/ - pesquisei sobre como remover todos os filhos de um nó
   while (taskList.firstChild) {
     taskList.removeChild(taskList.firstChild);
   }
@@ -111,9 +112,10 @@ setInnerText(removeTasksButton, 'Remover tarefa');
 addElementToDOM(main, removeTasksButton);
 
 removeTasksButton.addEventListener('click', () => {
-  // ref: https://stackoverflow.com/questions/37311003/how-to-remove-an-item-from-htmlcollection
+  // ref: https://stackoverflow.com/questions/37311003/how-to-remove-an-item-from-htmlcollection - pesquisei sobre como remover todos os elementos com uma característica específica de uma HTML Collection
   const { children } = taskList;
   for (let index = (children.length - 1); index >= 0; index -= 1) {
+    // ref: https://www.w3schools.com/jsref/prop_element_classlist.asp - pesquisei sobre o método 'contains'
     if (children[index].classList.contains('completed')) {
       taskList.removeChild(children[index]);
     }
