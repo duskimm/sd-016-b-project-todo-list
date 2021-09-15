@@ -7,7 +7,7 @@ function selectTask(event) {
       iten.classList.remove('selected');
     }
   });
-    event.target.classList.add('selected');
+  event.target.classList.add('selected');
 }
 
 function clearSelected() {
@@ -31,6 +31,14 @@ function taskComplet(event) {
   } else {
     event.target.classList.add('completed');
   }
+}
+
+function observers() {
+  const bloco = document.querySelectorAll('li');
+  bloco.forEach((add) => {
+    add.addEventListener('click', selectTask);
+    add.addEventListener('dblclick', taskComplet);
+  });
 }
 
 function newTesc() {
@@ -58,15 +66,15 @@ function inputTest() {
 
 function salvar() {
   const nodeDB = document.querySelector('ol');
-  const localDB = nodeDB;
+  const localDB = nodeDB.innerHTML;
   localStorage.setItem('listDB', localDB);
-  console.log(nodeDB);
 }
 
 function loadDB() {
-  const localDB = localStorage.getItem(loadDB);
+  const localDB = localStorage.getItem('listDB');
   const node = document.querySelector('ol');
   node.innerHTML = localDB;
+  observers();
 }
 
 const btnCriar = document.querySelector('#criar-tarefa');
