@@ -8,5 +8,6 @@ function addTasks (){
     const newListItem = document.createElement('li');
     list.appendChild(newListItem);
     newListItem.innerText = text.value;
+    text.value = '';
 }
 addTaskButton.addEventListener('click', addTasks);
