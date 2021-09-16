@@ -1,11 +1,10 @@
 // my codigs =)
-
 function salvar() {
   const nodeDB = document.querySelector('ol');
   const localDB = nodeDB.innerHTML;
   localStorage.setItem('listDB', localDB);
 }
-
+// selecionar tarefa
 function selectTask(event) {
   const sell = document.querySelectorAll('li');
   sell.forEach((iten) => {
@@ -15,7 +14,6 @@ function selectTask(event) {
   });
   event.target.classList.add('selected'); salvar();
 }
-
 // marcar concluido
 function taskComplet(event) {
   if (event.target.classList.contains('completed')) {
@@ -25,7 +23,7 @@ function taskComplet(event) {
   }
   salvar();
 }
-
+// adicionar observers para os itens da lista
 function observers() {
   const bloco = document.querySelectorAll('li');
   bloco.forEach((add) => {
@@ -33,7 +31,14 @@ function observers() {
     add.addEventListener('dblclick', taskComplet);
   });
 }
-
+// puxar base existente
+function loadDB() {
+  const localDB = localStorage.getItem('listDB');
+  const node = document.querySelector('ol');
+  node.innerHTML = localDB;
+  observers();
+}
+// triar nova tarefa
 function newTesc() {
   const imputNode = document.querySelector('#texto-tarefa');
   const location = document.querySelector('#lista-tarefas');
@@ -50,13 +55,6 @@ function newTesc() {
   salvar();
 }
 
-function loadDB() {
-  const localDB = localStorage.getItem('listDB');
-  const node = document.querySelector('ol');
-  node.innerHTML = localDB;
-  observers();
-}
-
 const btnCriar = document.querySelector('#criar-tarefa');
 btnCriar.addEventListener('click', () => {
   const test = document.querySelector('#texto-tarefa');
@@ -65,28 +63,36 @@ btnCriar.addEventListener('click', () => {
   }
   newTesc();
 });
-
+// botoes para apagar todas as tarefas
 const btnClrAll = document.querySelector('#apaga-tudo');
 btnClrAll.addEventListener('click', () => {
   const allLi = document.querySelector('ol');
   allLi.innerHTML = ''; salvar();
 });
-
+// apagar so selecionados
 const btnClrSelected = document.querySelector('#remover-selecionado');
 btnClrSelected.addEventListener('click', () => {
   const grup = document.querySelectorAll('li');
   grup.forEach((alvo) => { if (alvo.classList.contains('selected')) alvo.remove(); });
   salvar();
 });
-
+// apagar concluidos
 const btnClrDone = document.querySelector('#remover-finalizados');
 btnClrDone.addEventListener('click', () => {
   const list = document.querySelectorAll('li');
   list.forEach((done) => { if (done.classList.contains('completed')) done.remove(); });
   salvar();
 });
-
+// salva tarefas
 const btnSalve = document.querySelector('#salvar-tarefas');
 btnSalve.addEventListener('click', salvar);
-
+// mover itens
+function movUp(event) {
+  const nodPai = document.querySelector('ol');
+  nodPai.previousElementSibling(event);
+}
+// mover itens da lista
+// const btnUp = document.querySelector('mover-cima');
+// btnUp.addEventListener('click', movUp);
+// iniciar com base caso ja tenha
 window.onload = () => loadDB();
