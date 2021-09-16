@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const btnCreateTask = document.getElementById('criar-tarefa');
 const taskList = document.getElementById('lista-tarefas');
 const btnClearAll = document.getElementById('apaga-tudo');
@@ -21,6 +22,7 @@ btnCreateTask.addEventListener('click', () => {
 
 taskList.addEventListener('click', (event) => {
   const listItem = document.getElementsByTagName('li');
+  // eslint-disable-next-line sonarjs/no-duplicate-string
   event.target.style.backgroundColor = 'rgb(128,128,128)';
   event.target.id = 'isSelected';
   for (let i = 0; i < listItem.length; i += 1) {

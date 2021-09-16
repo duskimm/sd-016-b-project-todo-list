@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-container {
+box {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  background-color: rgb(44, 62, 80);
-  color: #f1c40f;
-  font-family: 'Roboto', sans-serif;
+  background-color: rgb(44 62 80);
+  color: rgb(241, 196, 14);
+  font-family: Roboto, sans-serif;
 }
 
 li {
-  color: rgb(241, 196, 15);
+  color: rgb(241 196 15);
   font-size: 20px;
   text-decoration: none;
 }
@@ -26,7 +26,7 @@ button {
   border-radius: 25%;
   background-color: transparent;
   border: 1px solid white;
-  color: #f1c40f;
+  color: rgb(241 196 15);
   font-size: 15px;
   margin: 10px;
   padding: 5px;
@@ -34,7 +34,7 @@ button {
 
 input {
   border: 1px solid white;
-  color: rgb(24, 36, 207);
+  color: rgb(24 36 207);
   font-family: monospace, sans-serif;
   font-size: 15px;
   padding: 5px;
