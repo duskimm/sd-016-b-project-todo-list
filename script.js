@@ -1,14 +1,19 @@
+/* Adicionando cor nos itens da lista */
+function addColor(event) {
+  if (document.querySelector('.colorindo') !== null) {
+    const elemento = document.querySelector('.colorindo');
+    elemento.classList.remove('colorindo');
+  }
+  const aux = event.target;
+  aux.classList.add('colorindo');
+}
+
 /* Adicionando item a lista */
 function addItemList() {
   const listOrdem = document.getElementById('lista-tarefas');
   const texto = document.getElementById('texto-tarefa');
   const newItem = document.createElement('li');
-  /* Adicionando cor nos itens da lista */
-  newItem.addEventListener('click', (event) => {
-    const aux = event;
-    aux.target.style.backgroundColor = 'rgb(128, 128, 128)';
-    console.log(event.target);
-  });
+  newItem.addEventListener('click', addColor);
   listOrdem.appendChild(newItem);
   newItem.innerText = texto.value;
   texto.value = '';
