@@ -1,3 +1,8 @@
+body {
+  background-color: black;
+  color: white;
+}
+
 #selected {
   background-color: gray;
 }
@@ -7,9 +12,12 @@
 }
 
 .buttons {
-  border: 1px solid gray;
   border-radius: 2px;
   padding: 2px;
   text-align: center;
-  width: 40%;
+  width: 50%;
+}
+
+.buttons fieldset {
+  border-radius: 5px;
 }
