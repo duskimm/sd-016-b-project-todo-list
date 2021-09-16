@@ -17,20 +17,32 @@ h1, #texto-tarefa{ /* h1, Input */
 }
 
 #funcionamento{ /* Paragraph */
-    margin-top: 5px;
-    margin-left: 50px;
+  margin-top: 5px;
+  margin-left: 50px;
 }
 
 #criar-tarefa { /* Button */
-    background-color: blueviolet;
-    border: none;
-    border-radius: 20px;
-    color: aliceblue;
-    width: 100px;
-    height: 25px;
-    margin-left: 5px;
-   
-   
-    
+  background-color: blueviolet;
+  border: none;
+  border-radius: 20px;
+  color: aliceblue;
+  width: 100px;
+  height: 25px;
 }
 
+#lista-tarefas {
+  margin-left: 60px;
+  margin-top: 30px;
+}
+    
+#lista-tarefas li {
+ margin-top: 7px;
+}
+
+.selected {
+    background-color: rgb(128, 128, 128);
+}
+
+.completed {
+    text-decoration: line-through solid rgb(0, 0, 0);
+}
