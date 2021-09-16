@@ -5,11 +5,13 @@ const limpaTudo = document.getElementById('apaga-tudo');
 const removeFinalizado = document.getElementById('remover-finalizados');
 const removeSelecionado = document.getElementById('remover-selecionado');
 const salvaTarefas = document.getElementById('salvar-tarefas');
+const moveCima = document.getElementById('mover-cima');
+const moveBaixo = document.getElementById('mover-baixo');
 
 function removerCor() {
   const element = document.querySelectorAll('.item-lista-tarefas');
   for (let ind = 0; ind < element.length; ind += 1) {
-    element[ind].style.backgroundColor = 'white';
+    element[ind].style.backgroundColor = 'transparent';
     element[ind].classList.remove('selected');
   }
 }
@@ -53,13 +55,6 @@ function adicionarTarefa() {
 }
 criarTarefa.addEventListener('click', adicionarTarefa);
 
-function removerTarefa() {
-  if (listaTarefas.lastChild !== null) {
-    const ultimoItem = listaTarefas.lastChild;
-    listaTarefas.removeChild(ultimoItem);
-  }
-}
-
 function apagaTudo() {
   while (listaTarefas.firstChild) {
     listaTarefas.removeChild(listaTarefas.firstChild);
@@ -91,3 +86,25 @@ function salvarTarefas() {
 }
 
 salvaTarefas.addEventListener('click', salvarTarefas);
+
+function moverCima() {
+  const selecionado = document.querySelector('.selected');
+  if (selecionado !== null) {
+    const anteriorItem = selecionado.previousElementSibling;
+    if (anteriorItem !== null) {
+      listaTarefas.insertBefore(selecionado, anteriorItem);
+    }
+  }
+}
+moveCima.addEventListener('click', moverCima);
+
+function moverBaixo() {
+  const selecionado = document.querySelector('.selected');
+  if (selecionado !== null) {
+    const proximoItem = selecionado.nextElementSibling;
+    if (proximoItem !== null) {
+      listaTarefas.insertBefore(proximoItem, selecionado);
+    }
+  }
+}
+moveBaixo.addEventListener('click', moverBaixo);
