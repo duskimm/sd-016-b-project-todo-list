@@ -53,6 +53,7 @@ function addList() {
 
     let liNode = document.createElement('li');
     liNode.classList.add('selected')
+    liNode.classList.add('completed')
     let txtNode = document.createTextNode(txtVal);
 
     liNode.appendChild(txtNode);
@@ -87,9 +88,23 @@ function selectingItem(event) {
 clickSelecting.addEventListener('click', selectingItem);
 
 
+// 9 - Clicar duas vezes em um item, faz com que ele seja riscado, indicando que foi completo. Deve ser possível desfazer essa ação clicando novamente duas vezes no item
+//Pontos importantes sobre este requisito:
+// * Crie uma classe CSS com o nome "completed" e defina a propriedade "text-decoration" com o valor "line-through".
+// * Utilize a classe CSS "completed" para adicionar o efeito de letra tachada (riscada) às tarefas finalizadas.
 
+let clickLine = document.getElementById('lista-tarefas')
 
+function markLine(event) {
+  let lista2 = document.getElementsByClassName('completed')
+  
+  for( let index = 0; index < lista2.length; index += 1){
+    lista2[index].style.textDecoration = 'none';
+  }
+  event.target.style.textDecoration = 'line-through';
+}
 
+clickSelecting.addEventListener('dblclick', markLine );
 
 
 
