@@ -4,29 +4,48 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo list | Leandro Silva | Trybe | T16-B</title>
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
 </head>
 <body>
-  <header>
-    <h1>Minha Lista de Tarefas</h1>
-    <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+  <header id="header-container">
+    <div id="title-container">
+      <h1 id="title">Minha Lista de Tarefas</h1>
+    </div>
+    <div id="nav-container">
+      <nav id="nav">
+        <!-- <a class="link" href="#namassa">Mão na massa</a> |  -->
+        <a class="link" href="https://leandrochs.github.io/" target="_blank">Portifólio</a> | 
+        <a class="link" href="https://www.betrybe.com/" target="_blank">Site Trybe</a>
+      </nav>
+    </div>
   </header>
-  <div>
-    <input id="texto-tarefa" type="text" placeholder="digite as tarefas">
-    <button id="criar-tarefa">Criar tarefa</button>
-  </div>
-  <div>
-    <ol id="lista-tarefas"></ol>
-  </div>
-  <div>
-    <button id="apaga-tudo" type="reset">Apaga tudo</button>
-    <button id="remover-finalizados">Remover finalizados</button>
-    <button id="salvar-tarefas">Salvar tarefas</button>
-    <button id="mover-cima">☝☝</button>
-    <button id="mover-baixo">👇👇</button>
-    <button id="remover-selecionado">Remover selecionado</button>
-  </div>
-  <script src="script.js"></script>
+  <main id="main-container">
+    <div id="input-container">
+    <p id="funcionamento"><em>Clique duas vezes em um item para marcá-lo como completo</em></p>
+      <input id="texto-tarefa" type="text" placeholder="digite as tarefas">
+      <button id="criar-tarefa">Criar tarefa</button>
+    </div>
+    <div>
+      <ol id="lista-tarefas"></ol>
+    </div>
+    <div id="control-container">
+      <button class="controls" id="apaga-tudo" type="reset">Apaga tudo</button>
+      <button class="controls" id="remover-finalizados">Remover finalizados</button>
+      <button class="controls" id="remover-selecionado">Remover selecionado</button>
+      <button class="controls" id="salvar-tarefas">Salvar tarefas</button>
+      <button class="controls" id="mover-cima">☝☝</button>
+      <button class="controls" id="mover-baixo">👇👇</button>
+    </div>
+    <script src="script.js"></script>
+  </main>
+  <footer id="footer">
+    <div id="phrase">
+      <a href="https://www.betrybe.com/" target="_blank">Jeito tryber de ser 🚀</a>
+    </div>
+    <div id="signature">
+      Feito por <i>Leandro Chagas da Silva</i> como requisito para aprovação no projeto 4 Todo List do curso de desenvolvimento web da <i>Trybe</i> | Turma 16 | Setembro de 2021.
+    </div>
+  </footer>
 </body>
 </html>
