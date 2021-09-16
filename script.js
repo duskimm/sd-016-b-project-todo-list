@@ -1,5 +1,11 @@
 // my codigs =)
 
+function salvar() {
+  const nodeDB = document.querySelector('ol');
+  const localDB = nodeDB.innerHTML;
+  localStorage.setItem('listDB', localDB);
+}
+
 function selectTask(event) {
   const sell = document.querySelectorAll('li');
   sell.forEach((iten) => {
@@ -7,30 +13,17 @@ function selectTask(event) {
       iten.classList.remove('selected');
     }
   });
-  event.target.classList.add('selected');
+  event.target.classList.add('selected'); salvar();
 }
 
-function clearSelected() {
-  const grup = document.querySelectorAll('li');
-  grup.forEach((alvo) => { if (alvo.classList.contains('selected')) alvo.remove(); });
-}
-
-function clearAll() {
-  const allLi = document.querySelector('ol');
-  allLi.innerHTML = '';
-}
-
-function clearDones() {
-  const list = document.querySelectorAll('li');
-  list.forEach((done) => { if (done.classList.contains('completed')) done.remove(); });
-}
-
+// marcar concluido
 function taskComplet(event) {
   if (event.target.classList.contains('completed')) {
     event.target.classList.remove('completed');
   } else {
     event.target.classList.add('completed');
   }
+  salvar();
 }
 
 function observers() {
@@ -53,21 +46,8 @@ function newTesc() {
   location.appendChild(newTsc);
   newTsc.addEventListener('click', selectTask);
   newTsc.addEventListener('dblclick', taskComplet);
-  imputNode.value = '';
-}
-
-function inputTest() {
-  const test = document.querySelector('#texto-tarefa');
-  if (test === 'undefined') {
-    return alert('Insira uma tarefa por gentileza!');
-  }
-  newTesc();
-}
-
-function salvar() {
-  const nodeDB = document.querySelector('ol');
-  const localDB = nodeDB.innerHTML;
-  localStorage.setItem('listDB', localDB);
+  imputNode.value = ''; imputNode.focus();
+  salvar();
 }
 
 function loadDB() {
@@ -78,16 +58,33 @@ function loadDB() {
 }
 
 const btnCriar = document.querySelector('#criar-tarefa');
-btnCriar.addEventListener('click', inputTest);
+btnCriar.addEventListener('click', () => {
+  const test = document.querySelector('#texto-tarefa');
+  if (test === 'undefined') {
+    return alert('Insira uma tarefa por gentileza!');
+  }
+  newTesc();
+});
 
 const btnClrAll = document.querySelector('#apaga-tudo');
-btnClrAll.addEventListener('click', clearAll);
+btnClrAll.addEventListener('click', () => {
+  const allLi = document.querySelector('ol');
+  allLi.innerHTML = ''; salvar();
+});
 
 const btnClrSelected = document.querySelector('#remover-selecionado');
-btnClrSelected.addEventListener('click', clearSelected);
+btnClrSelected.addEventListener('click', () => {
+  const grup = document.querySelectorAll('li');
+  grup.forEach((alvo) => { if (alvo.classList.contains('selected')) alvo.remove(); });
+  salvar();
+});
 
 const btnClrDone = document.querySelector('#remover-finalizados');
-btnClrDone.addEventListener('click', clearDones);
+btnClrDone.addEventListener('click', () => {
+  const list = document.querySelectorAll('li');
+  list.forEach((done) => { if (done.classList.contains('completed')) done.remove(); });
+  salvar();
+});
 
 const btnSalve = document.querySelector('#salvar-tarefas');
 btnSalve.addEventListener('click', salvar);

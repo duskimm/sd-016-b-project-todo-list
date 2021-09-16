@@ -1,5 +1,16 @@
 body {
-  background-color: rgb(211 , 233 , 236);
+  background-color: whitesmoke;
+}
+
+input {
+  background-color: white;
+  border: solid 1px rgb( 78 , 234 , 255);
+  border-radius: 3px;
+  border-collapse: rgb( 0 , 0 , 0 , 0.5 );
+}
+
+.navi {
+  background-color: rgb(124 , 92 , 255 , 1);
 }
 
 .selected {
@@ -9,3 +20,4 @@ body {
 .completed {
   text-decoration: line-through solid black;
 }
+
