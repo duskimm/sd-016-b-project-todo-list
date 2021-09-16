@@ -19,6 +19,7 @@ botaoAddTarefa.addEventListener('click', function() {
     input.value = ''
     
 });
+  
     // let testandoo = document.getElementsByTagName('li');
     // window.localStorage.setItem('ol', testandoo);
 
@@ -94,20 +95,29 @@ function apagarItensFinalizados() {
 apagarFinalizados.addEventListener('click', apagarItensFinalizados);
 
 
+
+
 // EXercicio 12: botão salva tarefas
 const botaoSalvaTarefa = document.createElement('button');
-botaoSalvaTarefa.id = 'salva-tarefas';
+botaoSalvaTarefa.id = 'salvar-tarefas';
 botaoSalvaTarefa.innerText = 'Salvar';
 document.body.appendChild(botaoSalvaTarefa);
-const salvaTareda = document.querySelector('#salva-tarefas');
+let salvaTarefa = document.querySelector('#salvar-tarefas');
 
-// function salvandoTarefas() {
-    
-    
-//     const teste = window.localStorage.getItem('ol', testandoo);
-//     console.log(teste);
-// }
-// salvaTareda.addEventListener('click', salvandoTarefas);
+// const listaFinal = document.querySelector('ol').innerHTML;
+// window.localStorage.setItem('ol', listaFinal);
+ 
+// Função que salva valor
+function salvandoTarefas() {
+  
+  localStorage.setItem('lista', JSON.stringify(lista.innerHTML));
+  
+ 
+}
+salvaTarefa.addEventListener('click', salvandoTarefas);
+
+
+
 
 
 // Exercicio 13: botão para cima e botão para baixo;
@@ -116,11 +126,34 @@ const botaoParaCima = document.createElement('button');
 botaoParaCima.id = 'mover-cima';
 botaoParaCima.innerText = 'Para cima';
 document.body.appendChild(botaoParaCima);
-    // Boatão para baixo
+const paraCima = document.querySelector('#mover-cima');
+
+function moveParaCima() {
+  let itensLista = document.querySelectorAll('li');
+  for (let index = 0; index < itensLista.length; index += 1) {
+    if (itensLista[index].classList.contains('cinza') && itensLista[index].previousElementSibling) {
+      itensLista[index].parentNode.insertBefore(itensLista[index], itensLista[index].previousElementSibling);
+    }
+  }
+}
+paraCima.addEventListener('click', moveParaCima);
+
+// Boatão para baixo
 const botaoParaBaixo = document.createElement('button');
 botaoParaBaixo.id = 'mover-baixo';
 botaoParaBaixo.innerText = 'Para baixo';
 document.body.appendChild(botaoParaBaixo);
+const paraBaixo = document.querySelector('#mover-baixo');
+
+function moveParaBaixo() {
+  let itensLista = document.querySelectorAll('li');
+  for (let index = 0; index < itensLista.length; index += 1) {
+    if (itensLista[index].classList.contains('cinza') && itensLista[index].nextElementSibling) {
+      itensLista[index].parentNode.insertBefore(itensLista[index].nextElementSibling, itensLista[index]);
+    }
+  }
+}
+paraBaixo.addEventListener('click', moveParaBaixo);
 
 
 // Exercicio 14: remove o item selecionado
@@ -132,11 +165,11 @@ document.body.appendChild(botaoRemoveSelecionado);
 const removeSelecionado = document.getElementById('remover-selecionado');
 
 function removendoSelecionado() {
-    const itensLista = document.querySelectorAll('li');
-    for (let index = 0; index < itensLista.length; index += 1) {
-      if (itensLista[index].classList.contains('cinza')) {
-          itensLista[index].remove();
-      }
+  const itensLista = document.querySelectorAll('li');
+  for (let index = 0; index < itensLista.length; index += 1) {
+    if (itensLista[index].classList.contains('cinza')) {
+      itensLista[index].remove();
     }
   }
+}
 removeSelecionado.addEventListener('click', removendoSelecionado);
