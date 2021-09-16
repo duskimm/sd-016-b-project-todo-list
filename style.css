@@ -1,4 +1,10 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+.item-list {
+  background-color: rgb(128, 128, 128);
+}
+.container {
+  display: flex;
 }
