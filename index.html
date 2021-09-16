@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="javascript/script.js"></script>
+  <title>To do List</title>
+</head>
+<body>
+  <section id="wrapper" class="wrapper abs-center">
+    <header>
+      <h1 style="position: relative"><span class="icon"></span>Minha Lista de Tarefas</h1>
+      <p id="funcionamento">Clique duas vezes em um item para marcá-lo como completo</p>
+    </header>
+    <hr>
+    <main>
+      <section id="p-input">
+        <input id="texto-tarefa" type="text" name="task" placeholder="Digite alguma tarefa" onfocus="this.placeholder=''" onblur="this.placeholder='Digite alguma tarefa'">
+        <input id="criar-tarefa" type="submit" name="submit-task" value="Adicionar">
+      </section>
+      <section id="p-list">
+        <div class="list center">
+          <ol id="lista-tarefas">
+            <li>teste</li>
+          </ol>
+        </div>
+      </section>
+      <section id="p-buttons">
+        <div class="buttons">
+          <input type="submit" name="remove-task" value="🗙">
+          <input type="submit" name="up-task" value="⬆">
+          <input type="submit" name="down-task" value="⬇">
+          <input type="submit" name="clearend-task" value="Limpar completos">
+          <input type="submit" name="clearlist-task" value="Limpar lista">
+          <input type="submit" name="savelist-task" value="Salvar lista">
+        </div>
+      </section>
+    </main>
+    <hr>
+    <footer>
+      <p>Sonhar com códigos é acordar em uma matrix</p>
+    </footer>
+  </section>
+</body>
+</html>
