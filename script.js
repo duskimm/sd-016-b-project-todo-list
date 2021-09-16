@@ -41,49 +41,85 @@ document.body.append(ordList);
 // 6 - Ordene os itens da lista de tarefas por ordem de criação
 
 const button01 = document.createElement('button');
-button01.setAttribute('onclick', 'addLi()');
 button01.id = 'criar-tarefa';
-button01.innerText = 'Cria Tarefa';
+button01.innerText = 'Criar Tarefa';
 document.body.append(button01);
 
-function addLi() {
-
+function addList() {
   let txtVal = document.getElementById('texto-tarefa').value;
-
-  if( txtVal.length > 0) {
-
-    let listNode = document.getElementById('lista-tarefas');
-    let liNode = document.createElement('li');
-    let itemList = document.createElement('a');
-    let txtNode = document.createTextNode(txtVal);
+  let listNode = document.getElementById('lista-tarefas');
   
-    itemList.appendChild(txtNode);
+  if(txtVal.length > 0) {
+
+    let liNode = document.createElement('li');
+    liNode.classList.add('selected')
+    let txtNode = document.createTextNode(txtVal);
+
+    liNode.appendChild(txtNode);
     listNode.appendChild(liNode);
-    liNode.append(itemList);
-    
+
     this.onclick = document.getElementById('texto-tarefa').value = ''; // APAGANDO
+
+  } else {
+
+    alert('Digite algo no campo vazio.');
   }
 }
+button01.addEventListener('click', addList)
 
 
 // 7 - Clicar em um item da lista deve alterar a cor de fundo do item para cinza rgb(128,128,128)
+// 8 - Não deve ser possível selecionar mais de um elemento da lista ao mesmo tempo
 
-// course 5.3 part 2
+// Obrigado Ellen
 
-const firstLi = document.getElementById('lista-tarefas');
+let clickSelecting = document.getElementById('lista-tarefas')
 
 function selectingItem(event) {
+  let lista = document.getElementsByClassName('selected')
+  
+  for( let index = 0; index < lista.length; index += 1){
+    lista[index].style.backgroundColor = "transparent"
+  }
   event.target.style.backgroundColor = 'rgb(128,128,128)';
 }
 
-firstLi.addEventListener('click', selectingItem);
+clickSelecting.addEventListener('click', selectingItem);
 
 
 
 
-// function unselectingItem(event) {
 
-//   event.target.style = 'none';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// if(liNode[index] === setNewColor){
+//   event.target.style.backgroundColor = 'rgb(128,128,128)';
+// } else {
+//   event.target.style.backgroundColor = 'transparent';
 // }
-// firstLi.addEventListener('click', unselectingItem);
-

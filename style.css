@@ -30,3 +30,11 @@ button {
 a {
   /* background-color: blueviolet; */
 }
+
+/* .selected {
+  background-color: rgb(128,128,128);
+} */
+
+.completed {
+  text-decoration: line-through;
+}
