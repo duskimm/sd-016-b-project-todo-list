@@ -40,17 +40,35 @@ function button() {
 }
 button()
 
-
-
-  
 document.getElementById('criar-tarefa').addEventListener("click", function() {
   let ol = document.getElementById('lista-tarefas')
   let input = document.getElementById("texto-tarefa").value;
   
   let li = document.createElement('li')
   li.innerText = input
-  ol.appendChild(li) 
+  li.id = 'lista'
+  ol.appendChild(li)
+  
+ 
   document.getElementById("texto-tarefa").value = '';
-  console.log(li)
+ 
+
+  let xyz = document.getElementById('lista-tarefas');
+ 
+  for (let i = 0; i < xyz.children.length; i += 1) {
+
+    li.addEventListener('click', function() {
+      li.style.backgroundColor = 'gray'
+      
+      
+    } )
+    
+  }
+  
 })
 
+
+
+
+
+ 
