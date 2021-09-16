@@ -1,4 +1,5 @@
 * {
+  font-family: Arial , sans-serif;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -37,17 +38,18 @@ body {
 }
 
 header {
-  border-radius: 25px , 25px , 0 , 0;
+  background-color: black;
+  border-radius: 25px 25px 0 0;
   margin-bottom: 0;
   margin-top: 20px;
 }
 
 section {
-  border-radius: 0 , 0 , 25px , 25px;
+  background-color: rgb(48 , 138 , 108);
+  border-radius: 0 0 25px 25px;
 }
 
 header , section {
-  background-color: rgb(190 , 178 , 178);
   margin: 0 20px;
   padding: 30px;
   width: 750px;
@@ -61,7 +63,7 @@ header , section {
   background-color: rgba(9 , 255 , 0 , 0.8);
 }
 
-#remover-selecionado {
+#remover-finalizados {
   background-color: rgba(247 , 3 , 3 , 0.8);
 }
 
@@ -79,7 +81,7 @@ header , section {
   width: 5vw;
 }
 
-#criar-tarefa , #apaga-tudo , #remover-selecionado , #salvar-tarefas {
+#criar-tarefa , #apaga-tudo , #remover-finalizados , #salvar-tarefas {
   border-radius: 25px;
   border: none;
   color: rgba(255 , 255 , 255);
@@ -104,7 +106,7 @@ header , section {
   transition: 0.8s;
 }
 
-#remover-selecionado:hover {
+#remover-finalizados:hover {
   background-color: rgba(250 , 250 , 250);
   border: 1px solid rgba(247 , 3 , 3 , 0.8);
   box-shadow: 0 0 5px rgba(247 , 3 , 3 , 0.8);
@@ -126,4 +128,12 @@ header , section {
   box-shadow: rgba(255 , 166 , 0 , 0.8);
   color: rgba(255 , 166 , 0 , 0.8);
   transition: 0.8s;
+}
+
+.select {
+  background-color: grey;
+}
+
+.completed {
+  text-decoration: line-through;
 }
