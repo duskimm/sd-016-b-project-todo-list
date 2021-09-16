@@ -46,3 +46,12 @@ h1, #texto-tarefa{ /* h1, Input */
 .completed {
     text-decoration: line-through solid rgb(0, 0, 0);
 }
+
+#apaga-tudo {
+    background-color: rgb(226, 43, 43);
+    border: none;
+    border-radius: 20px;
+    color: aliceblue;
+    width: 100px;
+    height: 25px;
+}
