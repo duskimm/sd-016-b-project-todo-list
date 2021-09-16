@@ -3,6 +3,8 @@ const h1 = document.createElement('h1');
 const p = document.createElement('p');
 const input = document.createElement('input');
 const form = document.createElement('form');
+const ol = document.createElement('ol');
+
 
 document.body.appendChild(cabecalho);
 cabecalho.appendChild(h1);
@@ -14,3 +16,5 @@ document.body.appendChild(form);
 form.appendChild(input);
 input.id = 'texto-tarefa';
 input.placeholder = 'Digite aqui sua tarefa';
+form.appendChild(ol);
+ol.id = 'lista-tarefas';
