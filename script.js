@@ -43,7 +43,7 @@ function createTaskKeyBoard() {
 }
 createTaskKeyBoard();
 
-// Após o click analisa se elemento contém ou não o id 'selected' e o exclue se houver. Cria o evento na variável e coloca o id selected no item da lista selecionado
+// Após o click analisa se elemento contém ou não o id 'selected' e exclui o id se houver. Cria o evento na lista e coloca o id selected no item selecionado
 
 function clickTask() {
   listTask.addEventListener('click', (event) => {
@@ -60,7 +60,7 @@ function clickTask() {
 
 clickTask();
 
-// Ao ser dado o dblclick, a função avalia se a classe do elemento está vazia, e se estiver seta a classe nela e o item é taxado. Se estiver com classe (no caso da segundo dblclick), a classe e o tachado é removido
+// Ao ser dado o dblclick, a função avalia se a classe do elemento está vazia, e se estiver seta a classe nela e o item é taxado. Se estiver com classe (no caso da segundo dblclick), a classe e o tachado são removidos
 
 function doubleClickTask() {
   listTask.addEventListener('dblclick', (event) => {
@@ -87,7 +87,6 @@ function deleteListItem() {
   // const listTask = document.getElementById('lista-tarefas');
   const deleteBtn = document.querySelector('#apaga-tudo');
   deleteBtn.addEventListener('click', () => {
-    console.log('delete');
     while (listTask.firstChild) {
       listTask.removeChild(listTask.firstChild);
     }
@@ -122,52 +121,45 @@ function removeSelected() {
   });
 }
 
-function moveTaskUp() {
-  const moveUp = document.querySelector('#mover-cima');
+// Move a tarefa seleciona para cima
 
-  moveUp.addEventListener('click', () => {
-    // const click = event.target;
-    console.log('move up');
-    console.log(document.querySelector('#selected').previousElementSibling);
-    // utilizar o previousSibling
-  });
+function moveTaskUp() {
+  const swap1 = document.querySelector('#selected');
+  const swap2 = document.querySelector('#selected').previousElementSibling;
+
+  if (swap2 === null) {
+    return '';
+  }
+  listTask.insertBefore(swap1, swap2);
 }
+
+// Move a tarefa seleciona para baixo
 
 function moveTaskDown() {
-  const moveDown = document.querySelector('#mover-baixo');
+  const swap1 = document.querySelector('#selected');
+  const swap2 = document.querySelector('#selected').nextElementSibling;
 
-  moveDown.addEventListener('click', () => {
-    console.log('move down');
-    let swap1;
-    let swap2;
-
-    if (document.querySelector('#selected').nextElementSibling.innerHTML !== null) {
-      swap1 = document.querySelector('#selected').innerHTML;
-      swap2 = document.querySelector('#selected').nextElementSibling.innerHTML;
-
-    }
-    console.log();
-    // utilizar o nextSibling
-  });
+  if (swap2 === null) {
+    return '';
+  }
+  listTask.insertBefore(swap2, swap1);
 }
 
-// function moveTaskDown() {
-//   const moveDown = document.querySelector('#mover-baixo');
-//   moveDown.addEventListener('click', () => {
-//     const element1 = document.querySelector('#selected').innerHTML;
-//     const element2 = document.querySelector('#selected').nextElementSibling.innerHTML;
-
-//     element2.parentNode.insertBefore(element2, element1);
-//   });
-// }
-
 function moveTask() {
-  /**
-   * Pegar o item selecionado
-   * trocar de posição pra cima ou pra baixo com o próximo item
-  */
-  moveTaskUp();
-  moveTaskDown();
+  const moveUp = document.querySelector('#mover-cima');
+  const moveDown = document.querySelector('#mover-baixo');
+  // const teste = document.querySelector('#selected');
+
+  moveUp.addEventListener('click', () => {
+    if (document.querySelector('li') && document.querySelector('#selected')) {
+      moveTaskUp();
+    }
+  });
+  moveDown.addEventListener('click', () => {
+    if (document.querySelector('li') && document.querySelector('#selected')) {
+      moveTaskDown();
+    }
+  });
 }
 
 moveTask();
@@ -180,6 +172,7 @@ function setList() {
   salveListBtn.addEventListener('click', () => {
     const savedItens = listTask.innerHTML;
     localStorage.setItem('list', savedItens);
+    alert('Lista salva!!');
   });
 }
 setList();

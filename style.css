@@ -5,3 +5,11 @@
 .completed {
   text-decoration: line-through;
 }
+
+.buttons {
+  border: 1px solid gray;
+  border-radius: 2px;
+  padding: 2px;
+  text-align: center;
+  width: 40%;
+}
