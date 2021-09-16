@@ -44,7 +44,7 @@ header p {
 
 .icon {
   content:' ';
-  background: url('/images/task-list.png') center no-repeat;
+  background: url('/images/task.png') center no-repeat;
   background-size: 50px;
 
   height: 40px;
