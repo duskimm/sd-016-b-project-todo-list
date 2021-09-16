@@ -36,7 +36,7 @@ textarea {
 
 /* TAG */
 body {
-    align-items: center;
+  align-items: center;
   background: linear-gradient(180deg, rgba(0, 43, 21, 1) 2%, rgba(0, 139, 11, 1) 35%, rgba(255, 255, 255, 1) 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -75,9 +75,10 @@ img {
   margin: 1px;
 }
 
-label{
-    margin-top: 10px;
+label {
+  margin-top: 10px;
 }
+
 /* ID */
 
 * {
@@ -93,7 +94,8 @@ label{
   margin: 10px;
 }
 
-#funcionamento, label {
+#funcionamento,
+label {
   background-color: none;
   font-family: 'Architects Daughter', cursive;
   font-size: 14pt;
