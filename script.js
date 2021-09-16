@@ -2,13 +2,10 @@ const createTaskFunction = document.querySelector('#criar-tarefa');
 const listTask = document.querySelector('#lista-tarefas');
 const taskText = document.querySelector('#texto-tarefa');
 let clickSelected = '';
-
 // Limpa o input após ser preenchido
-
 function inputClean() {
   taskText.value = '';
 }
-
 // Cria o evento do botão para buscar a tarefa do input ao clicar com o mouse e insere condição para não ser colocada nenhuma tarefa vazia
 function createTaskClick() {
   createTaskFunction.addEventListener('click', () => {
@@ -24,10 +21,8 @@ function createTaskClick() {
   });
 }
 createTaskClick();
-
 // Cria o evento do botão para buscar a tarefa do input ao apertar o enter e insere condição para não ser colocada nenhuma tarefa vazia
 // Referência: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_trigger_button_enter
-
 function createTaskKeyBoard() {
   taskText.addEventListener('keyup', (event) => {
     const task = taskText.value;
@@ -75,14 +70,10 @@ function doubleClickTask() {
     }
   });
 }
-
 doubleClickTask();
-
 // Apaga a lista completa, após apagar toda a lista, também remove do localStorage a lista que está salva localmente
 // referência: https://www.javascripttutorial.net/javascript-dom/javascript-removechild/
-
 // const listTask = document.getElementById('lista-tarefas');
-
 function deleteListItem() {
   // const listTask = document.getElementById('lista-tarefas');
   const deleteBtn = document.querySelector('#apaga-tudo');
@@ -93,11 +84,8 @@ function deleteListItem() {
     localStorage.clear();
   });
 }
-
 deleteListItem();
-
 // Apaga todos os item marcados como finalizados
-
 function deleteConcludeItem() {
   const deleteBtn = document.querySelector('#remover-finalizados');
   const itemConclude = document.getElementsByClassName('completed');
@@ -109,11 +97,8 @@ function deleteConcludeItem() {
     }
   });
 }
-
 deleteConcludeItem();
-
 // Ao clicar no botão, é removido o elemento que está selecionado com o id selected.
-
 function removeSelected() {
   const btnRemoverSelecionado = document.querySelector('#remover-selecionado');
   btnRemoverSelecionado.addEventListener('click', () => {
@@ -163,10 +148,8 @@ function moveTask() {
 }
 
 moveTask();
-
 // Conversei com o colega Matheus Nugas sobre a solução abaixo
 // Ao clicar no botão de salvar a lista, é salvo no localStorage toda a lista criada, com innerHTML.
-
 function setList() {
   const salveListBtn = document.querySelector('#salvar-tarefas');
   salveListBtn.addEventListener('click', () => {
@@ -176,9 +159,7 @@ function setList() {
   });
 }
 setList();
-
 removeSelected();
-
 window.onload = () => {
   listTask.innerHTML = localStorage.getItem('list');
 };
