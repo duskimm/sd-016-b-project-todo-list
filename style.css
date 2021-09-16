@@ -1,5 +1,5 @@
 /* RESET CSS */
-/* 
+
 html,
 body,
 div,
@@ -31,27 +31,157 @@ textarea {
   text-decoration: none;
   line-height: 1;
 }
-*/
+
 /* VARIAVEL */
 
 /* TAG */
+body {
+    align-items: center;
+  background: linear-gradient(180deg, rgba(0, 43, 21, 1) 2%, rgba(0, 139, 11, 1) 35%, rgba(255, 255, 255, 1) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+}
 
+header {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: outset;
+  border-radius: 15px;
+  display: bl;
+  margin: 20px;
+  padding: 20px;
+  width: 800px;
+}
+
+main {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: outset;
+  border-radius: 15px;
+  margin: 20px;
+  width: 800px;
+  min-height: 600px;
+}
+
+footer {
+  align-items: center;
+}
+
+img {
+  height: 25px;
+  width: 25px;
+  margin: 1px;
+}
+
+label{
+    margin-top: 10px;
+}
 /* ID */
-/* #funcionamento {} */
 
-/* #texto-tarefa {} */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-#lista-tarefas {
+#title {
+  font-family: 'Architects Daughter', cursive;
+  text-decoration: none;
+  font-size: 22pt;
+  margin: 10px;
+}
+
+#funcionamento, label {
+  background-color: none;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 14pt;
+}
+
+#texto-tarefa {
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+#criar-tarefa,
+#apaga-tudo,
+#remover-finalizados,
+#remover-selecionado,
+#salvar-tarefas,
+#mover-cima,
+#mover-baixo {
+  align-items: center;
+  border: outset;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 75px;
+  padding: 5px;
+  font-weight: bold;
+  margin: 2px;
+  transition: all 0.5s;
+  width: 100px;
+}
+
+#criar-tarefa:hover,
+#apaga-tudo:hover,
+#remover-finalizados:hover,
+#remover-selecionado:hover,
+#salvar-tarefas:hover,
+#mover-cima:hover,
+#mover-baixo:hover {
+  -webkit-filter: drop-shadow(5px 2.5px 2.5px rgb(44, 44, 44));
+}
+
+#mover-baixo {
   cursor: pointer;
 }
 
-#criar-tarefa {
+#lista-tarefas {
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  margin: 25px auto;
+  text-align: start;
+}
+
+#button {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 10px auto;
+  margin-top: 30%;
+  width: 750px;
+}
+
+#input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px auto;
+  width: 650px;
 }
 
 /* CLASS */
 .item-lista-tarefas {
+  border-radius: 2.5px;
+  background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 14pt;
+  margin: 1px;
+  min-width: 250px;
+  padding: 5px;
 }
 
 .item-selecionado {
@@ -61,5 +191,3 @@ textarea {
 .completed {
   text-decoration: line-through solid black;
 }
-
-/* .nova-tarefa {} */
