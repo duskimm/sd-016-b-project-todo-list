@@ -6,6 +6,8 @@
 
 body { background-color: rgb(45, 192, 70); font-family: 'Roboto Mono', monospace; }
 hr { margin: 1.5% auto; width: 40%; height: 1px; background-color:rgb(182, 182, 182); }
+li[selected] { color:rgb(45, 192, 70); font-size: 12pt !important; }
+
 
 /* Libraries */
 .center { margin: 0 auto; }

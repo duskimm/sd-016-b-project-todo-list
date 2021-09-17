@@ -59,4 +59,17 @@ window.onload = () =>  {
       }
     }
   });
+
+  /**
+   * Remove o elemento selecionado da lista;
+   */
+  document.getElementById('remove-task').addEventListener('click', () => {
+    const elements = document.getElementById('lista-tarefas').childNodes;
+    for (let element of elements) {
+        if (element.tagName === "LI" && element.hasAttribute('selected')) {
+          element.remove();
+          alert('removed');
+        }
+    }
+  });
 }
