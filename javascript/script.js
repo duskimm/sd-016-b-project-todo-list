@@ -18,16 +18,29 @@ function getValue(element) {
 function setList(value) {
   const element = document.getElementById('lista-tarefas');
   const li = document.createElement('li');
-  li.innerHTML = value;
+
+  if (typeof value === 'object') {
+    if (value.att == 'selected') {
+      li.setAttribute(value.att, '');
+      li.style.background = 'rgb(128, 128, 128)';
+    } else if (value.att == 'completed') {
+      li.classList.add(value.att);
+    }
+    li.innerHTML = value.value;
+  } else {
+    li.innerHTML = value;
+  }
+  
   element.appendChild(li);
 }
 
 /**
  * Executa funções assim que o DOM for carregado;
  */
-window.onload = () =>  {
+window.onload = () => {
   if (localStorage.hasOwnProperty('list-task')) {
     elis = JSON.parse(localStorage.getItem('list-task'));
+
     for (let value of elis) {
       setList(value);
     }
@@ -87,7 +100,7 @@ window.onload = () =>  {
   /**
    * Remove o elemento selecionado da lista;
    */
-  document.getElementById('remove-task').addEventListener('click', () => {
+  document.getElementById('remover-selecionado').addEventListener('click', () => {
     /* Pega todos os elementos da lista; */
     const elements = document.getElementById('lista-tarefas').childNodes;
     for (let element of elements) {
@@ -122,7 +135,14 @@ window.onload = () =>  {
       elis = [];
       for (let element of main.childNodes) {
         if (element.nodeName == 'LI' && element.tagName === 'LI') {
-          elis.push(element.innerHTML);
+          if (element.hasAttribute('selected')) {
+
+            elis.push({ value : element.innerHTML, att : 'selected' });
+          } else if (element.classList.contains('completed')) {
+            elis.push({ value : element.innerHTML, att : 'completed' });
+          } else {
+            elis.push(element.innerHTML);
+          }
         }
       }
       localStorage.setItem('list-task', JSON.stringify(elis));
