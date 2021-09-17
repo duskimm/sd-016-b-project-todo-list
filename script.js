@@ -11,27 +11,13 @@ const lista = document.getElementById('lista-tarefas');
 const input = document.getElementById('texto-tarefa');
 
 // criando lista
-botaoAddTarefa.addEventListener('click', function() {
+botaoAddTarefa.addEventListener('click', function () {
     let criaItem = document.createElement('li');
     criaItem.className = 'item-lista'
     lista.appendChild(criaItem);
     criaItem.innerText = input.value;
     input.value = ''
-    
 });
-  
-    // let testandoo = document.getElementsByTagName('li');
-    // window.localStorage.setItem('ol', testandoo);
-
-// Exercico 7: mudar background quando clica
-// function listaBackground(event){
-//     if(event.target.classList.contains('item-lista')) {
-//         let li = event.target;
-//         li.classList.add('cinza');
-       
-//     } 
-// }
-// document.addEventListener('click', listaBackground);
 
 
 // Exercicio 7 e 8: seleciona só um
@@ -49,7 +35,6 @@ function pintaCinza(event) {
   }
 }
 lista.addEventListener('click', pintaCinza);
-
 
 
 // Exercicio 9: risca tarefa com dois clicks
@@ -95,29 +80,23 @@ function apagarItensFinalizados() {
 apagarFinalizados.addEventListener('click', apagarItensFinalizados);
 
 
-
-
 // EXercicio 12: botão salva tarefas
 const botaoSalvaTarefa = document.createElement('button');
 botaoSalvaTarefa.id = 'salvar-tarefas';
 botaoSalvaTarefa.innerText = 'Salvar';
 document.body.appendChild(botaoSalvaTarefa);
-let salvaTarefa = document.querySelector('#salvar-tarefas');
+const salvaTarefa = document.querySelector('#salvar-tarefas');
 
-// const listaFinal = document.querySelector('ol').innerHTML;
-// window.localStorage.setItem('ol', listaFinal);
- 
 // Função que salva valor
-function salvandoTarefas() {
-  
-  localStorage.setItem('lista', JSON.stringify(lista.innerHTML));
-  
- 
-}
-salvaTarefa.addEventListener('click', salvandoTarefas);
+window.onload = function() {
+  const teste = localStorage.getItem('lista');
+  lista.innerHTML = teste;
 
-
-
+  function salvandoTarefas() {
+    localStorage.setItem('lista', lista.innerHTML);
+  }
+  salvaTarefa.addEventListener('click', salvandoTarefas);
+};
 
 
 // Exercicio 13: botão para cima e botão para baixo;
@@ -157,7 +136,7 @@ paraBaixo.addEventListener('click', moveParaBaixo);
 
 
 // Exercicio 14: remove o item selecionado
-let botaoRemoveSelecionado = document.createElement('button');
+const botaoRemoveSelecionado = document.createElement('button');
 botaoRemoveSelecionado.id = 'remover-selecionado';
 botaoRemoveSelecionado.innerText = 'Remove item';
 document.body.appendChild(botaoRemoveSelecionado);
