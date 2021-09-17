@@ -62,12 +62,20 @@ capturarListaOrdenada.addEventListener('click', function(){
     }    
 });
 
+// capturarListaOrdenada.addEventListener('dblclick', function(event){
+//     let pegarLi = document.getElementsByTagName('li');
+//     for (let index = 0; index < pegarLi.length; index += 1){
+//         pegarLi[index].classList.remove('completed');
+//         event.target.classList.add('completed');
+//     }        
+// });
+
 capturarListaOrdenada.addEventListener('dblclick', function(event){
-    let pegarLi = document.getElementsByTagName('li');
-    for (let index = 0; index < pegarLi.length; index += 1){
-        pegarLi[index].classList.remove('completed');
+    if (event.target.classList.contains('completed')){
+        event.target.classList.remove('completed');
+    } else {
         event.target.classList.add('completed');
-    }        
+    }
 });
 
 
