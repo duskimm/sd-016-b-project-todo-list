@@ -24,6 +24,15 @@ function colorGrey(event) {
     event.target.style.backgroundColor = 'rgb(128,128,128)'
     }
 
+listaTarefa.addEventListener('dblclick', linhaCortada)
+function linhaCortada(event) {
+    if (event.target.classList.contains ('completed')){
+        event.target.classList.remove ('completed')
+    } else {
+        event.target.classList.add ('completed')
+    }
+}
+
 /* for (let index = 0; index < tarefas.length; index += 1) {
     tarefas[index].addEventListener('click',function(){
     tarefas[index].style.backgroundColor = 'rgb(128, 128, 128)';
