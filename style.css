@@ -55,3 +55,12 @@ h1, #texto-tarefa{ /* h1, Input */
     width: 100px;
     height: 25px;
 }
+
+#remover-finalizados {
+    background-color: rgb(43, 92, 226);
+    border: none;
+    border-radius: 20px;
+    color: aliceblue;
+    width: 150px;
+    height: 25px;
+}

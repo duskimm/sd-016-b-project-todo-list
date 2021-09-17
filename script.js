@@ -51,14 +51,27 @@ function clickCleanButton() {
 }
 
 function cleanTasks() {
-  alert ('funfou');
   let li = document.querySelectorAll('.tarefa');
   for(let index = 0; index < li.length; index += 1){
     let liClean = li[index];
     liClean.remove();
   }
-  
 }
+
+function buttonFinished(){
+  let buttonFinished = document.getElementById('remover-finalizados');
+  buttonFinished.addEventListener('click',removeFinished);
+}
+
+function removeFinished() {
+  let li = document.querySelectorAll('.completed');
+  for(let index = 0; index < li.length; index += 1){
+    li[index].remove();
+    }
+}
+
+
   clickButton();
   clickCleanButton()
+  buttonFinished();
 }
