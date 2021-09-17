@@ -20,6 +20,9 @@ const textoTarefa = q('#texto-tarefa');
 const apagaTudo = q('#apaga-tudo');
 const apagaTerminados = q('#remover-finalizados');
 const salvarTarefas = q('#salvar-tarefas');
+const moverCima = q('#mover-cima');
+const moverBaixo = q('#mover-baixo');
+const rgbSelected = 'rgb(128, 128, 128)';
 
 // reseta as cores
 function resetColor() {
@@ -46,7 +49,7 @@ function changeItemColor() {
   for (let i = 0; i < li.length; i += 1) {
     li[i].addEventListener('click', () => {
       resetColor();
-      li[i].style.backgroundColor = 'rgb(128, 128, 128)';
+      li[i].style.backgroundColor = rgbSelected;
     });
     li[i].addEventListener('dblclick', isCompleted);
   }
@@ -90,3 +93,23 @@ window.onload = () => {
   ol.innerHTML = content;
   changeItemColor();
 };
+
+// Mover pra cima function
+
+moverCima.addEventListener('click', () => {
+  const li = qAll('li');
+  for (let i = 0; i < li.length; i += 1) {
+    if (li[i].style.backgroundColor === rgbSelected && i > 0) {
+      ol.insertBefore(li[i], li[i - 1]);
+    }
+  }
+});
+
+moverBaixo.addEventListener('click', () => {
+  const li = qAll('li');
+  for (let i = 0; i < li.length; i += 1) {
+    if (li[i].style.backgroundColor === rgbSelected && i < li.length - 1) {
+      ol.insertBefore(li[i], li[i + 2]);
+    }
+  }
+});
