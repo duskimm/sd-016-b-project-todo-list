@@ -3,6 +3,9 @@ window.onload = function () {
   const addTaskButton = document.querySelector('#criar-tarefa');
   addTaskButton.addEventListener('click', addTask); // Quando o botao é clicado, a função addTask é chamada.
 
+  const removeAllButton = document.querySelector('#apaga-tudo');
+  removeAllButton.addEventListener('click', removeAllTasks); // Quando o botao é clicado, a função removeAllTasks é chamada.
+
 }
 
 function addTask() {
@@ -35,5 +38,13 @@ function addTask() {
       }
       task.classList.add('selected');
     });
+  }
+}
+
+function removeAllTasks() {
+  // Remove todos os elementos li da ol. Enquanto houver elemento filho na lista ordenada #lista-tarefas, o primeiro será deletado.
+  const toDoList = document.getElementById('lista-tarefas');
+  while (toDoList.firstElementChild) {
+    toDoList.removeChild(toDoList.firstElementChild);
   }
 }
