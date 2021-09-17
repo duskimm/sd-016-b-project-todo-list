@@ -1,6 +1,7 @@
 const btnTask = document.getElementById('criar-tarefa');
 const btnRemove = document.getElementById('apaga-tudo');
 const btnSave = document.getElementById('salvar-tarefas');
+const btnFinish = document.getElementById('remover-finalizados');
 
 function removeClass(list) {
   list.forEach((item) => {
@@ -13,12 +14,12 @@ function checkTask(event) {
 }
 
 function captureTasks() {
-  setTimeout(() => {
-    const arrTasks = document.querySelectorAll('.tarefa');
-    arrTasks.forEach((item) => {
-      item.addEventListener('dblclick', checkTask);
-    });
-  }, 300);
+  const arrTasks = document.querySelectorAll('.tarefa');
+  arrTasks.forEach((item) => {
+    item.addEventListener('dblclick', checkTask);
+  });
+  // setTimeout(() => {
+  // }, 300);
 }
 
 function itemTask() {
@@ -96,6 +97,14 @@ btnRemove.addEventListener('click', () => {
   /** referência retirada do site da MDN Web Docs para remover todos os elementos filhos */
   while (list.firstChild) {
     list.removeChild(list.firstChild);
+  }
+});
+
+btnFinish.addEventListener('click', () => {
+  const items = itemsLi;
+  const selectTask = document.getElementsByClassName('completed');
+  while (selectTask.length > 0) {
+    items.removeChild(selectTask[selectTask.length - 1]);
   }
 });
 
