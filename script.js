@@ -24,6 +24,7 @@ const moverCima = q('#mover-cima');
 const moverBaixo = q('#mover-baixo');
 const rgbSelected = 'rgb(128, 128, 128)';
 const removerSelecionado = q('#remover-selecionado');
+const btnColors = ['#8ECAE6', '#219EBC', '#023047', '#FFB703', '#FB8500', '#480ca8'];
 
 // reseta as cores
 function resetColor() {
@@ -124,3 +125,9 @@ removerSelecionado.addEventListener('click', () => {
     }
   }
 });
+
+// Add coros nos btns
+const btns = qAll('main > button');
+for (let i = 0; i < btns.length; i += 1) {
+  btns[i].style.backgroundColor = btnColors[i];
+}
