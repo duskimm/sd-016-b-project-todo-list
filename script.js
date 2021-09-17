@@ -30,6 +30,19 @@ function addItemList() {
   texto.value = '';
 }
 
-/* Input */
-const button = document.getElementById('criar-tarefa');
-button.addEventListener('click', addItemList);
+/* Apagando os itens da lista */
+function deletItemList() {
+  const lis = document.querySelectorAll('li');
+  console.log(lis);
+  for (let index = 0; index < lis.length; index += 1) {
+    lis[index].remove();
+  }
+}
+
+/* Botão criar itens na lista */
+const buttonCreat = document.getElementById('criar-tarefa');
+buttonCreat.addEventListener('click', addItemList);
+
+/* Botão que apaga todos os itens da lista */
+const buttonDelet = document.getElementById('apaga-tudo');
+buttonDelet.addEventListener('click', deletItemList);
