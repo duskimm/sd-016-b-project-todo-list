@@ -6,7 +6,7 @@
 
 body { background-color: rgb(45, 192, 70); font-family: 'Roboto Mono', monospace; }
 hr { margin: 1.5% auto; width: 40%; height: 1px; background-color:rgb(182, 182, 182); }
-li[selected] { color:rgb(45, 192, 70); font-size: 12pt !important; }
+li[selected] { /* color:rgb(128, 128, 128); */ font-size: 12pt !important; }
 
 
 /* Libraries */
@@ -17,6 +17,8 @@ li[selected] { color:rgb(45, 192, 70); font-size: 12pt !important; }
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.completed { text-decoration: line-through solid black; }
 
 .wrapper {
   background-color: white;
@@ -43,7 +45,6 @@ header p {
 }
 
 /* Icon */
-
 .icon {
   content:' ';
   background: url('/images/task.png') center no-repeat;
@@ -60,17 +61,17 @@ header p {
 }
 
 /* Inputs */
-input[name=submit-task], input[name=clearend-task] { background-color: rgb(77, 164, 235); }
-input[name=up-task], input[name=down-task] { background-color: orange; }
-input[name=remove-task], input[name=clearlist-task] { background-color: rgb(177, 35, 35); }
-input[name=savelist-task] { background-color: rgb(45, 192, 70); }
+button[name=submit-task], button[name=clearend-task], button[type=submit] { background-color: rgb(77, 164, 235); }
+button[name=up-task], button[name=down-task] { background-color: orange; }
+button[name=remove-task], button[name=clearlist-task] { background-color: rgb(177, 35, 35); }
+button[name=savelist-task] { background-color: rgb(45, 192, 70); }
 
-input {
+input, button[type=submit] {
   padding: 1.5% 5%;
   outline: none;
 }
 
-input[type=submit] { 
+input[type=submit], button[type=submit] { 
   color: white; 
   cursor: pointer;
   
