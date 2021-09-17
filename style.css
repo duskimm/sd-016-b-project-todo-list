@@ -13,3 +13,6 @@ main {
     margin-right: auto;
     text-align: center;
 }
+.completed {
+    text-decoration: line-through;
+}

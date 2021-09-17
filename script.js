@@ -2,6 +2,7 @@ const addTaskButton = document.getElementById('criar-tarefa');
 const list = document.getElementById('lista-tarefas');
 const text = document.getElementById('texto-tarefa');
 
+addTaskButton.addEventListener('click', addTasks);
 function addTasks (){
     const newListItem = document.createElement('li');
     newListItem.addEventListener('click', changeToGrey);
@@ -9,7 +10,6 @@ function addTasks (){
     newListItem.innerText = text.value;
     text.value = '';
 }
-addTaskButton.addEventListener('click', addTasks);
 
 function changeToGrey (event){
     const listItems = document.querySelectorAll('li');
@@ -20,3 +20,15 @@ function changeToGrey (event){
     }
     event.target.style.backgroundColor = 'rgb(128,128,128)'
     }
+
+list.addEventListener('dblclick', lineThrough);
+function lineThrough (event){
+    if (event.target.classList.contains('completed')) {
+        event.target.classList.remove('completed');
+    } else {
+        event.target.classList.add('completed');
+    }
+}
+
+
+
