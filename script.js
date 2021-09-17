@@ -39,6 +39,14 @@ function deletItemList() {
   }
 }
 
+/* Apaga os itens finalizados */
+function deletItensFilizados() {
+  const lisFinalizados = document.querySelectorAll('li.completed');
+  for (let index = 0; index < lisFinalizados.length; index += 1) {
+    lisFinalizados[index].remove();
+  }
+}
+
 /* Botão criar itens na lista */
 const buttonCreat = document.getElementById('criar-tarefa');
 buttonCreat.addEventListener('click', addItemList);
@@ -46,3 +54,7 @@ buttonCreat.addEventListener('click', addItemList);
 /* Botão que apaga todos os itens da lista */
 const buttonDelet = document.getElementById('apaga-tudo');
 buttonDelet.addEventListener('click', deletItemList);
+
+/* Botão que apaga os itens finalizados */
+const buttonFinalizados = document.getElementById('remover-finalizados');
+buttonFinalizados.addEventListener('click', deletItensFilizados);
