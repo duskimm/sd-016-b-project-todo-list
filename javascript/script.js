@@ -26,6 +26,13 @@ function setList(value) {
  * Executa funções assim que o DOM for carregado;
  */
 window.onload = () =>  {
+  if (localStorage.hasOwnProperty('list-task')) {
+    elis = JSON.parse(localStorage.getItem('list-task'));
+    for (let value of elis) {
+      setList(value);
+    }
+    localStorage.removeItem('list-task');
+  }
   /** 
    * Adiciona o valor do INPUT na lista; 
    */
@@ -45,7 +52,6 @@ window.onload = () =>  {
     const elements = document.getElementById('lista-tarefas').childNodes;
      /* Delegação de eventos; */
     const target = event.target;
-    
     /* Verifica se o elemento ja possúi o atributo selected; */
     if (!target.hasAttribute('selected')) {
       /* Laço responsável por remover os atributos selected de todos os elementos da lista; */
@@ -94,7 +100,7 @@ window.onload = () =>  {
   /** Prototipo de Função; Remove todos os elementos da lista; */
   document.getElementById('apaga-tudo').addEventListener('click', () => {
     const main = document.getElementById('lista-tarefas');
-    for (let i = (main.childNodes.length - 1); i > 0; i--) {
+    for (let i = (main.childNodes.length - 1); i >= 0; i--) {
       if (main.childNodes[i].tagName == 'LI' && main.childNodes[i].nodeName == 'LI') {
         main.childNodes[i].remove();
       }
@@ -103,10 +109,25 @@ window.onload = () =>  {
 
   document.getElementById('remover-finalizados').addEventListener('click', () => {
     const main = document.getElementById('lista-tarefas');
-    for (let i = (main.childNodes.length -1); i > 0; i--) {
+    for (let i = (main.childNodes.length -1); i >= 0; i--) {
       if (main.childNodes[i].tagName == 'LI' && main.childNodes[i].nodeName == 'LI' && main.childNodes[i].classList.contains('completed')) {
         main.childNodes[i].remove();
+      }
+    }
+  });
 
+  document.getElementById('salvar-tarefas').addEventListener('click', () => {
+    const main = document.getElementById('lista-tarefas');
+    if (main.hasChildNodes) {
+      elis = [];
+      for (let element of main.childNodes) {
+        if (element.nodeName == 'LI' && element.tagName === 'LI') {
+          elis.push(element.innerHTML);
+        }
+      }
+      localStorage.setItem('list-task', JSON.stringify(elis));
+      if (localStorage.hasOwnProperty('list-task')) {
+        alert('salvo com sucesso');
       }
     }
   });
