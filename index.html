@@ -7,6 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tarefas | To Do List</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- 
+    Para o HTML, foram consultados os materiais de W3Schools, Course da Trybe e MDN Web Docs.
+
+    Links:
+    https://www.w3schools.com/
+    https://app.betrybe.com/course
+    https://developer.mozilla.org/en-US 
+    -->
+
 </head>
 
 <body>
@@ -20,7 +30,8 @@
                 <div class="new-task-bar" id="barra-nova-tarefa">
                     <form action="script.js" method="get" class="new-tasks" id="novas-tarefas"></form>
                     <label for="texto-tarefa">Nova tarefa:</label>
-                    <input type="text" class="task-text" id="texto-tarefa" name="tarefa" placeholder=" O que eu preciso fazer? ">
+                    <input type="text" class="task-text" id="texto-tarefa" name="tarefa"
+                        placeholder=" O que eu preciso fazer? ">
                     <button type="submit" class="add-task" id="criar-tarefa">Adicionar</button>
                     </form>
                 </div>
@@ -30,7 +41,8 @@
                 </div>
                 <div class="change-list-bar" id="barra-alterar-lista">
                     <button type="button" class="remove-all" id="apaga-tudo">Apagar lista</button>
-                    <button type="button" class="remove-completed-tasks" id="remover-finalizados">Remover tarefas finalizadas</button>
+                    <button type="button" class="remove-completed-tasks" id="remover-finalizados">Remover tarefas
+                        finalizadas</button>
                 </div>
             </section>
         </main>
