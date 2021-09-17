@@ -19,6 +19,7 @@ const ol = q('#lista-tarefas');
 const textoTarefa = q('#texto-tarefa');
 const apagaTudo = q('#apaga-tudo');
 const apagaTerminados = q('#remover-finalizados');
+const salvarTarefas = q('#salvar-tarefas');
 
 // reseta as cores
 function resetColor() {
@@ -41,12 +42,14 @@ function isCompleted(event) {
 
 // Ao clicar em um item muda sua cor de fundo
 function changeItemColor() {
-  const li = ol.lastChild;
-  li.addEventListener('click', () => {
-    resetColor();
-    li.style.backgroundColor = 'rgb(128, 128, 128)';
-  });
-  li.addEventListener('dblclick', isCompleted);
+  const li = qAll('li');
+  for (let i = 0; i < li.length; i += 1) {
+    li[i].addEventListener('click', () => {
+      resetColor();
+      li[i].style.backgroundColor = 'rgb(128, 128, 128)';
+    });
+    li[i].addEventListener('dblclick', isCompleted);
+  }
 }
 
 // Adicionando itens a lista
@@ -73,3 +76,17 @@ apagaTerminados.addEventListener('click', () => {
     }
   }
 });
+
+// Salvando no Local Storage
+salvarTarefas.addEventListener('click', () => {
+  const content = `${ol.innerHTML}`;
+  localStorage.setItem('list', content);
+  // referencia para aplicar uma lista de itens no LocalStorage: https://stackoverflow.com/questions/25712602/storing-lists-in-localstorage
+});
+
+// onload
+window.onload = () => {
+  const content = localStorage.getItem('list');
+  ol.innerHTML = content;
+  changeItemColor();
+};
