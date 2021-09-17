@@ -12,7 +12,7 @@ function adicionaTarefa () {
 }
 
 let botaoAdicionar = document.querySelector('#criar-tarefa')
-botaoAdicionar.onclick = adicionaTarefa
+botaoAdicionar.addEventListener('click', adicionaTarefa) 
 
 function colorGrey(event) {
     let tarefas = document.getElementsByClassName('tarefa')
@@ -41,6 +41,16 @@ function apagaTudo (){
     listaTarefa.innerHTML = '';
 }
 
+let tarefasCompletadas = document.getElementsByClassName('completed')
+let buttonCompletados = document.getElementById('remover-finalizados')
+buttonCompletados.addEventListener('click', tarefaCompletada)
+
+function tarefaCompletada () {
+    for (index = tarefasCompletadas.length - 1; index >= 0; index -= 1){
+        listaTarefa.removeChild(tarefasCompletadas[index])
+    }
+
+}
 
 
 
