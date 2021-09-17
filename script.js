@@ -35,7 +35,8 @@ capturarBotaoAdicionar.addEventListener('click', function(){
         capturarListaOrdenada.appendChild(criarNovaLinha);
         capturarInput.value = '';
         let capturarNovaLinha = document.querySelectorAll('li');
-        capturarNovaLinha[0].classList.add('selector');               
+        capturarNovaLinha[0].classList.add('selector');  
+                  
     } else {
         alert('Nenhum elemento foi adicionado!!!');     
     }
@@ -60,3 +61,16 @@ capturarListaOrdenada.addEventListener('click', function(){
         }
     }    
 });
+
+capturarListaOrdenada.addEventListener('dblclick', function(event){
+    let pegarLi = document.getElementsByTagName('li');
+    for (let index = 0; index < pegarLi.length; index += 1){
+        pegarLi[index].classList.remove('completed');
+        event.target.classList.add('completed');
+    }        
+});
+
+
+
+
+
