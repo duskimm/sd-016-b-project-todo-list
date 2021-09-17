@@ -52,7 +52,7 @@ function addList() {
   if(txtVal.length > 0) {
 
     let liNode = document.createElement('li');
-    // liNode.classList.add('selected');
+    liNode.id = 'list';
     // liNode.classList.add('completed');
 
     let txtNode = document.createTextNode(txtVal);
@@ -125,17 +125,18 @@ buttonErase.id = 'apaga-tudo';
 buttonErase.innerText = 'Apagar';
 document.body.append(buttonErase);
 
-function EraseAll() {
-  let erase = document.getElementsByTagName('ol')
-  for(let index = 0; index < erase.length; index += 1) {
-    erase[index].addEventListener('click', () => {
-      erase[index].remove.appendChild('li')
-    })
+const element = document.getElementById('lista-tarefas');
+// Exercicio 5.2 parte 3
+function eraseAll() {
+  for(let index = element.childNodes.length -1; index >= 0; index -= 1) {
+    const currentChildren  = element.childNodes[index];
+    if (currentChildren.class !== '.list' ) {
+
+    currentChildren.remove()
+    }
   }
-  
 }
-
-
+buttonErase.addEventListener('click', eraseAll );
 
 
 
