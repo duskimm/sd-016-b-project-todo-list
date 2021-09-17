@@ -10,9 +10,13 @@ function addButtonTask () {
 }
 taskButton.addEventListener('click', addButtonTask);
 
-taskList.addEventListener('click', function (event) {
-    if (event.target.id != 'lista-tarefas') {
-        event.target.style.backgroundColor = 'rgb(128, 128, 128)';
-    }
-});
 
+taskList.addEventListener('click', function (event) {
+    const itemTask = document.querySelectorAll('li');
+    for (let index = 0; index < itemTask.length; index += 1) {
+        itemTask[index].style.backgroundColor = '';
+        itemTask[index].classList.remove('selected');
+            event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+            event.target.classList.add('selected');
+        }
+    });
