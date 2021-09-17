@@ -52,8 +52,9 @@ function addList() {
   if(txtVal.length > 0) {
 
     let liNode = document.createElement('li');
-    liNode.classList.add('selected')
-    liNode.classList.add('completed')
+    // liNode.classList.add('selected');
+    // liNode.classList.add('completed');
+
     let txtNode = document.createTextNode(txtVal);
 
     liNode.appendChild(txtNode);
@@ -81,7 +82,10 @@ function selectingItem(event) {
   
   for( let index = 0; index < lista.length; index += 1){
     lista[index].style.backgroundColor = "transparent"
+    lista[index].classList.remove('selected');
+  
   }
+  event.target.classList.add('selected')
   event.target.style.backgroundColor = 'rgb(128,128,128)';
 }
 
@@ -93,18 +97,44 @@ clickSelecting.addEventListener('click', selectingItem);
 // * Crie uma classe CSS com o nome "completed" e defina a propriedade "text-decoration" com o valor "line-through".
 // * Utilize a classe CSS "completed" para adicionar o efeito de letra tachada (riscada) às tarefas finalizadas.
 
-let clickLine = document.getElementById('lista-tarefas')
+// let clickLine = document.getElementById('lista-tarefas')
 
-function markLine(event) {
-  let lista2 = document.getElementsByClassName('completed')
+function markLine() {
+  let lista2 = document.querySelectorAll('ol');
   
-  for( let index = 0; index < lista2.length; index += 1){
-    lista2[index].style.textDecoration = 'none';
+  for(let index = 0; index < lista2.length; index += 1){
+
+    lista2[index].addEventListener('dblclick', (event) => {
+      if(event.target.classList.contains('completed')) {
+        event.target.style.textDecoration = 'none';
+        event.target.classList.remove('completed')
+      } else {
+        event.target.style.textDecoration = 'line-through';
+        event.target.classList.add('completed');
+      }
+    });
   }
-  event.target.style.textDecoration = 'line-through';
+}
+markLine()
+
+
+// 10 - Adicione um botão com id="apaga-tudo" que quando clicado deve apagar todos os itens da lista
+
+const buttonErase = document.createElement('button');
+buttonErase.id = 'apaga-tudo';
+buttonErase.innerText = 'Apagar';
+document.body.append(buttonErase);
+
+function EraseAll() {
+  let erase = document.getElementsByTagName('ol')
+  for(let index = 0; index < erase.length; index += 1) {
+    erase[index].addEventListener('click', () => {
+      erase[index].remove.appendChild('li')
+    })
+  }
+  
 }
 
-clickSelecting.addEventListener('dblclick', markLine );
 
 
 
@@ -119,22 +149,38 @@ clickSelecting.addEventListener('dblclick', markLine );
 
 
 
+// function selectingItem() {
+//   let lista = document.querySelectorAll('ol');
+  
+//   for(let index = 0; index < lista.length; index += 1){
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// if(liNode[index] === setNewColor){
-//   event.target.style.backgroundColor = 'rgb(128,128,128)';
-// } else {
-//   event.target.style.backgroundColor = 'transparent';
+//     lista[index].addEventListener('click', (event) => {
+//       if(event.target.classList.contains('selected')) {
+//         event.target.style.backgroundColor = 'transparent';
+//         event.target.classList.remove('selected')
+//       } else {
+//         event.target.classList.add('selected')
+//         event.target.style.backgroundColor = 'rgb(128,128,128)';
+//       }
+//     });
+//   }
 // }
+// selectingItem()
+
+
+// tracando e trocando posições
+
+// let clickLine = document.getElementById('lista-tarefas')
+
+// function markLine(event) {
+//   let lista2 = document.getElementsByClassName('selected')
+  
+//   for( let index = 0; index < lista2.length; index += 1){
+//     lista2[index].style.textDecoration = 'none';
+//     lista2[index].classList.remove('completed')
+//   }
+//   event.target.style.textDecoration = 'line-through';
+//   event.target.classList.add('completed')
+// }
+
+// clickSelecting.addEventListener('dblclick', markLine );
