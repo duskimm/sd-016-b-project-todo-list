@@ -22,7 +22,8 @@
   align-self: center;
 }
 
-li {text-align: center;
+li {background-color: rgb(221 , 185 , 255);
+  text-align: center;
   margin: auto;
   margin-bottom: 5px;
   height: 30px;
@@ -40,7 +41,8 @@ li {text-align: center;
   border: solid rgb(44 , 40 , 40) 2px;
   border-radius: 10px;
   padding: 10px;
-  font-family: Courier New, Courier, monospace;
-  background-color: rgb(171 , 117 , 219);
 }
+
+.addTarefa {font-family: Courier New, Courier, monospace;
+  background-color: rgb(171 , 117 , 219);}
 
