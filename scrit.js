@@ -101,11 +101,65 @@ function clearCompleted() {
         list.removeChild(task)
     })
 }
-
+//Requisito 12
+function setBtnSaveListEvent() {
+    let btn = document.getElementById('salvar-tarefas')
+    btn.addEventListener('click', saveList)
+}
+function clearLocal() {
+    localStorage.clear()    
+}
+function setLocal() {
+    if(localStorage.getItem('taskText', JSON.stringify([])) === null){
+        localStorage.setItem('taskText', JSON.stringify([]))
+    }
+    if (localStorage.getItem('taskClass') === null) {
+        localStorage.setItem('taskClass', JSON.stringify([]))
+    }
+}
+function saveList() {
+    let taskList = document.querySelectorAll('.task')
+    clearLocal()
+    setLocal()
+    let savedTaskClass = JSON.parse(localStorage.getItem('taskClass'))
+    let savedTaskText = JSON.parse(localStorage.getItem('taskText'))        
+    taskList.forEach(task =>{
+        savedTaskClass.push(task.className)
+        savedTaskText.push(task.innerText)
+        localStorage.setItem('taskClass', JSON.stringify(savedTaskClass))
+        localStorage.setItem('taskText', JSON.stringify(savedTaskText))
+    })
+}
+function initialRenderization() {
+    if(localStorage.getItem('taskText', JSON.stringify([])) === null){
+        localStorage.setItem('taskText', JSON.stringify([]))
+    }
+    if (localStorage.getItem('taskClass') === null) {
+        localStorage.setItem('taskClass', JSON.stringify([]))
+    }else{
+        let taskClassList = JSON.parse(localStorage.getItem('taskClass'))
+        let taskTextList = JSON.parse(localStorage.getItem('taskText'))
+        let list = document.getElementById('lista-tarefas')
+        if (taskClassList.length === taskTextList.length){
+            let aux = taskTextList.length - 1
+            for (let i = 0; i <= aux; i++) {
+                let li = document.createElement('li')
+                li.innerText = taskTextList[i]
+                li.className = taskClassList[i]
+                list.appendChild(li)
+                li.addEventListener('dblclick', completeTask)
+                li.addEventListener('click', selectTask)
+            }
+        }
+        
+    }
+}
 
 
 window.onload = function(){
+    initialRenderization()
     setBtnAddTaskEvent()
     setBtnClearListEvent()
     setBtnClearCompletedTaskEvent()
+    setBtnSaveListEvent()
 }
