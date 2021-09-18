@@ -20,9 +20,9 @@ function addTaskToList() {
 function selectTask(event) {
     let task = event.target
     let taskList = document.querySelectorAll('.task')    
-    if (alreadySelected(task)) {
+/*     if (alreadySelected(task)) {
         task.classList.remove('selected')
-    } else {
+    } else { */
         for (let j = 0; j < taskList.length; j++) {
             if (taskList[j].innerText !== task.innerText){
                 taskList[j].classList.remove('selected')
@@ -30,7 +30,7 @@ function selectTask(event) {
                 taskList[j].classList.add('selected')           
             }        
         }   
-    }
+/*     } */
          
 }
 function alreadySelected(task) {
@@ -154,6 +154,33 @@ function initialRenderization() {
         
     }
 }
+//Requisitos 13
+function setBtnMoverEvents() {
+    let btnCima = document.getElementById('mover-cima')
+    let btnBaixo = document.getElementById('mover-baixo')
+    btnBaixo.addEventListener('click', moverBaixo)
+    btnCima.addEventListener('click', moverCima)
+}
+function moverCima() {
+    let taskSelected = document.querySelector('.selected')
+    if(taskSelected){
+        if(taskSelected.previousElementSibling){
+            taskSelected.parentNode.insertBefore(taskSelected, taskSelected.previousElementSibling)
+        }
+    }
+    
+}
+function moverBaixo() {
+    let taskSelected = document.querySelector('.selected')
+    if(taskSelected){
+        if(taskSelected.nextElementSibling){
+            taskSelected.parentNode.insertBefore(taskSelected.nextElementSibling, taskSelected)
+        }else{
+            return false
+        }
+    }
+    
+}
 
 
 window.onload = function(){
@@ -162,4 +189,5 @@ window.onload = function(){
     setBtnClearListEvent()
     setBtnClearCompletedTaskEvent()
     setBtnSaveListEvent()
+    setBtnMoverEvents()
 }
