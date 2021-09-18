@@ -77,10 +77,35 @@ function alreadyCompleted(task) {
         }
     }
 }
-   
+//Requisito 10
+function setBtnClearListEvent() {
+    let btn = document.getElementById('apaga-tudo')
+    btn.addEventListener('click', clearList)
+}
+function clearList() {
+    let taskList = document.querySelectorAll('.task')
+    let list = document.getElementById('lista-tarefas')
+    taskList.forEach(task => {
+        list.removeChild(task)
+    })
+}
+//Requisito 11
+function setBtnClearCompletedTaskEvent() {
+    let btn = document.getElementById('remover-finalizados')
+    btn.addEventListener('click', clearCompleted)
+}
+function clearCompleted() {
+    let taskList = document.querySelectorAll('.completed')
+    let list = document.getElementById('lista-tarefas')
+    taskList.forEach(task => {
+        list.removeChild(task)
+    })
+}
+
 
 
 window.onload = function(){
     setBtnAddTaskEvent()
-    //setTaskSelectEvent()
+    setBtnClearListEvent()
+    setBtnClearCompletedTaskEvent()
 }
