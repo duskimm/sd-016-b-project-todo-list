@@ -11,6 +11,15 @@ function pintaTarefa(event) {
 }
 // requisito 7: referência: https://www.w3schools.com/howto/howto_js_todolist.asp;
 
+function riscaTarefa(evento) {
+  const tarefaRiscadaOrigem = evento.target;
+  if (tarefaRiscadaOrigem.classList.contains('completed') === false) {
+    tarefaRiscadaOrigem.classList.add('completed');
+  } else {
+    tarefaRiscadaOrigem.classList.remove('completed');
+  }
+}
+
 const criarTarefa = (evento) => {
   evento.preventDefault(); // previne o comportamento padrão
   const lista = document.querySelector('#lista-tarefas');
@@ -19,6 +28,7 @@ const criarTarefa = (evento) => {
   const addTarefa = document.createElement('li');
   const conteudo = `${valor}`; // pega o valor do javascript
   lista.addEventListener('click', pintaTarefa);
+  lista.addEventListener('dblclick', riscaTarefa);
   addTarefa.className = 'tarefaAdd';
   addTarefa.innerHTML = conteudo;
 
