@@ -1,6 +1,13 @@
 function pintaTarefa(event) {
   const eventTarget = event.target;
-  eventTarget.style.backgroundColor = ' rgb(128, 128, 128)';
+  const tarefaPintada = document.querySelectorAll('.tarefaAdd');
+
+  for (let i = 0; i < tarefaPintada.length; i += 1) {
+    if (tarefaPintada[i].classList.contains('tarefaPintada')) {
+      tarefaPintada[i].classList.remove('tarefaPintada');
+    }
+  }
+  eventTarget.classList.add('tarefaPintada');
 }
 // requisito 7: referência: https://www.w3schools.com/howto/howto_js_todolist.asp;
 

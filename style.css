@@ -46,3 +46,6 @@ li {background-color: rgb(221 , 185 , 255);
 .addTarefa {font-family: Courier New, Courier, monospace;
   background-color: rgb(171 , 117 , 219);}
 
+.tarefaPintada {
+  background-color: rgb(128 , 128 , 128);
+}
