@@ -14,36 +14,6 @@ function btnApagaTudo() {
 
 btnApagaTudo()
 
-function completaTafefa() {
-  let itensList = document.getElementsByClassName('colorTarefa')
-  for(let i = 0; i < itensList.length; i++) {
-    itensList[i].addEventListener('dbclick',function(event){
-          if(event.target.classList.contains('completed')){
-             event.target.classList.remove('completed')
-          }else{
-             event.target.classList.add('completed') 
-          }
-    })
-  }
-}    
- 
-function pintaTarefa() {
-  let itensList = document.getElementsByClassName('colorTarefa')
-  
-  for(let i = 0; i < itensList.length; i++) {
-    itensList[i].addEventListener('click',function(event){
-          let selectedClass = document.getElementsByClassName('selected')
-          if(selectedClass.length == 0){
-             event.target.classList.add('selected')
-          }else{
-             for(let i = 0; i < itensList.length; i++ ) {
-               itensList[i].classList.remove('selected')
-             } 
-                event.target.classList.add('selected') 
-          }
-    })
-  }
-}
 
 function adicionaTarefa() {
     let input = document.getElementById('texto-tarefa')
@@ -51,7 +21,25 @@ function adicionaTarefa() {
     let criaTarefa = document.createElement('li')
     criaTarefa.innerHTML = input.value + '<br>'
     criaTarefa.className = "colorTarefa"
-    criaTarefa.addEventListener('click',pintaTarefa)
+    criaTarefa.addEventListener('dblclick', function(event){
+        if(event.target.classList.contains('completed')){
+            event.target.classList.remove('completed')
+         }else{
+            event.target.classList.add('completed') 
+         }
+    })
+    criaTarefa.addEventListener('click',function(event) {
+        let itensList = document.getElementsByClassName('colorTarefa')
+        let selectedClass = document.getElementsByClassName('selected')
+        if(selectedClass.length == 0){
+           event.target.classList.add('selected')
+        }else{
+           for(let i = 0; i < itensList.length; i++ ) {
+             itensList[i].classList.remove('selected')
+           } 
+              event.target.classList.add('selected') 
+        }
+    })
     listaTarefas.appendChild(criaTarefa)
     input.value = ''
 }
