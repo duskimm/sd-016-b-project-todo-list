@@ -7,6 +7,10 @@ button.addEventListener('click', function (){
   let item = document.createElement('li')
   item.innerText = text.value;
   list.appendChild(item);
+  item.classList = 'conte'
   text.value = null
+  item.addEventListener('click', function(){
+    item.style.backgroundColor = 'grey'
+  })
 }
 })
